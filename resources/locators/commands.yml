@@ -1,0 +1,131 @@
+# Locators do modulo commands do smart separados por modulos
+
+menu:
+  menu: //android.view.View[@content-desc="Menu"]
+  sync: //android.widget.TextView[@resource-id="ConfigDrawerMenuDrawerMenuItemViewText_0" and @text="Sincronizar dados"]
+  order_list: //android.widget.TextView[@resource-id="ConfigDrawerMenuDrawerMenuItemViewText_0" and @text="Lista de Pedidos"]
+  settings: //android.widget.TextView[@resource-id="ConfigDrawerMenuDrawerMenuItemViewText_0" and @text="Configurações"]
+  logoff: //android.widget.TextView[@resource-id="ConfigDrawerMenuDrawerMenuItemViewText_0" and @text="Realizar Logoff"]
+
+table_panel:
+  open_table: //android.widget.TextView[@resource-id="ComandaPainelMesasScreenTopBarButtonText_0"]
+  filter: //android.view.View[@content-desc="Filtro"]
+  table_search: //android.widget.EditText
+  table: //android.view.View[@resource-id="ComandaPainelMesasScreenComandaPainelMesasItem_0"]
+  table_panel: //android.view.View[@resource-id="ComandaPainelMesasScreenColumn_0"]
+  clear_search: //android.view.View[@content-desc="Limpar pesquisa"]
+
+open_table:
+  number_table: //android.view.View[@resource-id="OpenMesaDialogBasicOutlinedField_1"]/android.widget.EditText
+  client_table: //android.view.View[@resource-id="OpenMesaDialogBasicOutlinedField_2"]/android.widget.EditText
+  search_client: //android.view.View[@content-desc="Buscar cliente"]
+  add_people: //android.view.View[@content-desc="Aumentar"]
+  sub_people: //android.view.View[@content-desc="Diminuir"]
+  confirm: //android.widget.TextView[@resource-id="OpenMesaDialogText_6"]
+  cancel: //android.widget.TextView[@resource-id="OpenMesaDialogText_5"]
+
+table:
+  menu: //android.view.View[@content-desc="Menu"]
+  conference_print: //android.view.View[@content-desc="Imprimir"]
+  search_item: //android.widget.EditText
+  filter: //android.view.View[@content-desc="Filtrar"]
+  advance: //android.widget.TextView[@resource-id="ComandaMesaScreenBottomBarText_3"]
+  cancel: //android.widget.TextView[@resource-id="ComandaMesaScreenBottomBarText_2"]
+  products: //android.widget.TextView[@resource-id="ComandaMesaScreenText_1"]
+  conference: //android.widget.TextView[@resource-id="ComandaMesaScreenText_5"]
+  released: //android.widget.TextView[@resource-id="ComandaMesaScreenText_6"]
+  clean_search: //android.view.View[@content-desc="Limpar pesquisa"]
+
+products:
+  product: //android.view.View[@resource-id="ComandaMesaProdutosContentComandaMesaProdutoItem_0"]/android.view.View
+  item_obs: //android.widget.TextView[@resource-id="ComandaAddProdutoObservacoesSectionText_0"]
+  item_obs_text: //android.view.View[@resource-id="ComandaAddProdutoObservacoesSectionBasicOutlinedField_0"]/android.widget.EditText
+  item_adc_add: (//android.view.View[@content-desc="Adicionar"])[1]
+  item_adc_sub: (//android.view.View[@content-desc="Remover"])[1]
+  item_adc_obs: (//android.widget.TextView[@text="Observação"])[1]
+  item_adc_obs_text: //android.widget.EditText
+  item_adc_obs_confirm: //android.widget.TextView[@text="Confirmar"]
+  item_adc_obs_cancel: //android.widget.TextView[@text="Cancelar"]
+  add_item: //android.view.View[@resource-id="ComandaAddProdutoBottomBarButton_0"]
+
+client:
+  client: //android.view.View[@resource-id="ComandaSelecionarClienteScreenClienteListItem_0"]/android.view.View
+  search_client: //android.view.View[@resource-id="ComandaSelecionarClienteScreenSearchBarCustom_0"]//android.widget.EditText
+
+tables:
+  table_01: //android.widget.TextView[@resource-id="ComandaPainelMesasItemText_0" and @text="01"]
+
+menu_table:
+  back: //android.widget.TextView[@resource-id="ConfigDrawerMenuDrawerMenuItemViewText_0" and @text="Voltar"]
+  invoice: //android.widget.TextView[@resource-id="ConfigDrawerMenuDrawerMenuItemViewText_0" and @text="Faturar"]
+  advance: //android.widget.TextView[@resource-id="ConfigDrawerMenuDrawerMenuItemViewText_0" and @text="Adiantamento"]
+  split_account: //android.widget.TextView[@resource-id="ConfigDrawerMenuDrawerMenuItemViewText_0" and @text="Dividir conta"]
+  change_client: //android.widget.TextView[@resource-id="ConfigDrawerMenuDrawerMenuItemViewText_0" and @text="Alterar cliente"]
+  join_accounts: //android.widget.TextView[@resource-id="ConfigDrawerMenuDrawerMenuItemViewText_0" and @text="Juntar Contas"]
+  cancel_table: //android.widget.TextView[@resource-id="ConfigDrawerMenuDrawerMenuItemViewText_0" and @text="Cancelar Mesa"]
+  manage_service_charge: //android.widget.TextView[@resource-id="ConfigDrawerMenuDrawerMenuItemViewText_0" and @text="Gerenciar taxa de serviço"]
+
+invoice:
+  money: //android.widget.TextView[@resource-id="PaymentMethodTileText_0"]
+  pixoff: //android.widget.TextView[@resource-id="PaymentMethodTileText_4"]
+  confirm: //android.widget.TextView[@resource-id="ValorPagamentoDialogText_23"]
+  cancel: //android.widget.TextView[@resource-id="ValorPagamentoDialogText_22"]
+  finalize_sale: //android.widget.TextView[@resource-id="PaymentBottomBarText_0"]
+
+advance:
+  new_advance: //android.widget.TextView[@resource-id="ComandaAdiantamentosScreenBottomBarText_0"]
+  advance_client: //android.widget.TextView[@text="Informe o nome do cliente"]
+  advance_client_text: //android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.EditText
+  advance_value: //android.widget.TextView[@text="R$ 0,00"]
+  advance_value_text: //android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText
+  advance_paymentform: //android.widget.TextView[@text="Selecione"]
+  advance_money: //android.widget.TextView[@text="Dinheiro"]
+  advance_pixoff: //android.widget.TextView[@text="Pix Off"]
+  advance_confirm: //android.widget.TextView[@text="Confirmar"]
+  advance_cancel: //android.widget.TextView[@text="Cancelar"]
+  back: //android.view.View[@content-desc="Voltar"]
+
+split_account:
+  split_account: //android.widget.TextView[@text="Divisão da Conta"]
+  add_people: //android.view.View[@content-desc="Aumentar"]
+  sub_people: //android.view.View[@content-desc="Diminuir"]
+  back: //android.widget.TextView[@text="Voltar"]
+
+change_client:
+  client: //android.view.View[@resource-id="CustomerChangeDialogBasicOutlinedField_0"]/android.widget.EditText
+  search: //android.view.View[@content-desc="Buscar cliente"]
+  add_people: //android.view.View[@content-desc="Aumentar"]
+  sub_people: //android.view.View[@content-desc="Diminuir"]
+  confirm: //android.widget.TextView[@resource-id="CustomerChangeDialogText_4"]
+  cancel: //android.widget.TextView[@resource-id="CustomerChangeDialogText_3"]
+
+supervisor:
+  supervisor: //android.widget.TextView[@text="Selecione"]
+  seller_1: //android.widget.TextView[@text="Seller_1"]
+  password: //android.widget.TextView[@text="Informe a senha"]
+  password_text: //android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText
+  advance: //android.widget.TextView[@text="Avançar"]
+  confirm: //android.widget.TextView[@text="Confirmar"]
+
+join_table:
+  table: //android.widget.ScrollView/android.view.View
+  confirm: //android.widget.TextView[@text="Confirmar"]
+  cancel: //android.widget.TextView[@text="Cancelar"]
+  join_table_question: //android.widget.TextView[@text="Confirmar juntar as contas com a Mesa 08?"]
+  confirm_join: //android.widget.TextView[@text="Sim"]
+  confirm_not_join: //android.widget.TextView[@text="Não"]
+
+cancel_table:
+  table_advance: //android.widget.TextView[@text="Esta mesa possui adiantamentos lançados e não pode ser cancelada."]
+  ok: //android.widget.TextView[@text="OK"]
+  cancel_reason: //android.widget.TextView[@text="Digite aqui o motivo do cancelamento"]
+  cancel_reason_text: //android.widget.EditText
+  confirm: //android.widget.TextView[@text="Confirmar"]
+  cancel_question: //android.widget.TextView[@text="Deseja realmente cancelar a Mesa 10?"]
+  confirm_cancel: //android.widget.TextView[@text="Sim"]
+
+service:
+  active: (//android.widget.TextView[@text="Taxa de Serviço"])[2]
+  confirm: //android.widget.TextView[@text="Confirmar"]
+  alter_service_question: //android.widget.TextView[@text="Confirma alteração na Taxa de Serviço?"]
+  yes: //android.widget.TextView[@text="Sim"]

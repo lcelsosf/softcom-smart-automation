@@ -1,0 +1,135 @@
+# Locators do modulo padrão do smart separados por modulos
+
+# ----------------------------------------------------------------------------
+# Menu
+# ----------------------------------------------------------------------------
+menu:
+  menu: //android.widget.ImageButton[@content-desc="Abrir a navegação"]
+  logoff: ${APP_PACKAGE}:id/nav_logout
+  logoff_confirm: android:id/button1
+  settings: ${APP_PACKAGE}:id/nav_configuracoes
+  new_order: ${APP_PACKAGE}:id/nav_pedido
+  orders_list: ${APP_PACKAGE}:id/nav_lista_pedidos
+  register_client: ${APP_PACKAGE}:id/nav_cadastro_clientes
+
+# ----------------------------------------------------------------------------
+# Configurações
+# ----------------------------------------------------------------------------
+settings:
+  printers: //android.widget.TextView[@resource-id="${APP_PACKAGE}:id/settings_title" and @text="Impressões"]
+  printer_list: ${APP_PACKAGE}:id/btn_list_print
+  select_printer: ${APP_PACKAGE}:id/lista_dispositivo_checkBox
+  select_close: ${APP_PACKAGE}:id/btnlistadispositivocancelar
+  back: ${APP_PACKAGE}:id/buttom_back
+  exit_settings: ${APP_PACKAGE}:id/btn_voltar
+  payments_forms: //android.widget.TextView[@resource-id="${APP_PACKAGE}:id/settings_title" and @text="Formas de Pagamento"]
+  enable_payment: ${APP_PACKAGE}:id/config_dialog_pagamento_swt_ativado
+  save_button: ${APP_PACKAGE}:id/config_dialog_pagamento_btn_confirmar
+  pix_off: //android.widget.TextView[@resource-id="${APP_PACKAGE}:id/config_pagamentos_tv_xPagto" and @text="PIX OFF"]
+  ticket: //android.widget.TextView[@resource-id="${APP_PACKAGE}:id/settings_title" and @text="Emissão de Ticket"]
+  enable_ticket: //android.widget.TextView[@text="Habilitar ticket para retirada"]
+  enable_ticket_reprint: //android.widget.TextView[@text="Permitir reimpressão de ticket"]
+  exit_ticket: //android.widget.TextView[@text="Voltar"]
+  orders: //android.widget.TextView[@resource-id="${APP_PACKAGE}:id/settings_title" and @text="Pedidos"]
+  sales_change_price: ${APP_PACKAGE}:id/sales_change_price
+  block_stock: ${APP_PACKAGE}:id/sales_bloquear_estoque
+  fractional_quantity: ${APP_PACKAGE}:id/sales_fractional
+  bankslip: //android.widget.TextView[@resource-id="${APP_PACKAGE}:id/config_pagamentos_tv_xPagto" and @text="Boleto Bancário"]
+  price_table: //android.widget.Switch[@resource-id="${APP_PACKAGE}:id/sales_price_table"]
+
+# ----------------------------------------------------------------------------
+# Sincronização
+# ----------------------------------------------------------------------------
+sync:
+  sync: ${APP_PACKAGE}:id/nav_sync
+  products: ${APP_PACKAGE}:id/dialog_sincronizar_tgb_produtos
+  clients: ${APP_PACKAGE}:id/dialog_sincronizar_tgb_clientes
+  orders: ${APP_PACKAGE}:id/dialog_sincronizar_tgb_pedidos
+  sync_button: ${APP_PACKAGE}:id/dialog_sincronizar_btn_confirmar
+  ok_button: android:id/button1
+  cancel_button: ${APP_PACKAGE}:id/dialog_sincronizar_btn_cancelar
+
+# ----------------------------------------------------------------------------
+# Pedidos
+# ----------------------------------------------------------------------------
+orders:
+  group: //android.widget.TextView[@resource-id="${APP_PACKAGE}:id/pedido_catalogo_tv_categoria_descricao" and @text="TODOS"]
+  search: ${APP_PACKAGE}:id/btn_pesquisa
+  search_text: ${APP_PACKAGE}:id/search_src_text
+  item: //android.widget.TextView[@resource-id="${APP_PACKAGE}:id/text_produto_nome"]
+  search_close: ${APP_PACKAGE}:id/search_close_btn
+  value: ${APP_PACKAGE}:id/pedido_checkout_dialog_valor_edt_vPago
+  pay: ${APP_PACKAGE}:id/btn_pagar
+  money: //android.widget.TextView[@resource-id="${APP_PACKAGE}:id/pedido_checkout_tv_xPagtoFormas" and @text="Dinheiro"]
+  pixoff: //android.widget.TextView[@resource-id="${APP_PACKAGE}:id/pedido_checkout_tv_xPagtoFormas" and @text="PIX OFF"]
+  bankslip: //android.widget.TextView[@resource-id="${APP_PACKAGE}:id/pedido_checkout_tv_xPagtoFormas" and @text="Boleto Bancário"]
+  bankslip_parce: ${APP_PACKAGE}:id/pedido_checkout_dialog_valor_btn_parcelas_mais
+  bankslip_term: ${APP_PACKAGE}:id/pedido_checkout_dialog_valor_edt_prazo
+  confirm: ${APP_PACKAGE}:id/pedido_checkout_dialog_valor_btn_confirmar
+  finish: ${APP_PACKAGE}:id/pedido_checkout_btn_finalizar
+  print: android:id/button1
+  item_cart: ${APP_PACKAGE}:id/carrinho_item_lista_tv_info
+  item_quantity: ${APP_PACKAGE}:id/dialog_editar_item_edt_quantidade
+  item_confirm: ${APP_PACKAGE}:id/dialog_editar_item_btn_confirmar
+  cart_confirm: ${APP_PACKAGE}:id/carrinho_btn_confirmar
+  cart_item_quantity: ${APP_PACKAGE}:id/dialog_editar_item_edt_quantidade
+  btn_cart: ${APP_PACKAGE}:id/btn_carrinho
+  cart_item1: ${APP_PACKAGE}:id/carrinho_item_lista_tv_info
+  cart_item_price: ${APP_PACKAGE}:id/dialog_editar_item_edt_preco
+  cart_item_save: ${APP_PACKAGE}:id/dialog_editar_item_btn_confirmar
+  cart_item_add: ${APP_PACKAGE}:id/dialog_editar_item_btn_qtd_mais
+  cart_item_sub: ${APP_PACKAGE}:id/dialog_editar_item_btn_qtd_menos
+  cart_remove_item: ${APP_PACKAGE}:id/dialog_editar_item_btn_excluir
+  cart_remove_confirm: android:id/button1
+  item_combo1: //androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View[2]/android.view.View[2]/android.widget.Button
+  item_combo2: //androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View[5]/android.view.View[2]/android.widget.Button
+  add_item_combo: //androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[5]/android.widget.Button
+  client_button: ${APP_PACKAGE}:id/btn_cliente
+  client_search: ${APP_PACKAGE}:id/search_src_text
+  client_1: ${APP_PACKAGE}:id/cliente_item_lista_tv_nome
+  cart_add: ${APP_PACKAGE}:id/carrinho_btn_acrescimo
+  integer: ${APP_PACKAGE}:id/dialog_desc_acres_edt_valor
+  percent: ${APP_PACKAGE}:id/dialog_desc_acres_edt_percentual
+  discount_confirm: ${APP_PACKAGE}:id/dialog_desc_acres_btn_aplicar
+  sum: ${APP_PACKAGE}:id/dialog_desc_acres_rdb_tipo_somar
+  replace: ${APP_PACKAGE}:id/dialog_desc_acres_rdb_tipo_substituir
+  cart_discount: ${APP_PACKAGE}:id/carrinho_btn_desconto
+  price_table: ${APP_PACKAGE}:id/btn_tipo_preco
+  price_a: ${APP_PACKAGE}:id/radio_a
+  price_save: ${APP_PACKAGE}:id/btn_salvar
+  price_confirm: android:id/button1
+
+  # ----------------------------------------------------------------------------
+  # Exclusivos
+  # ----------------------------------------------------------------------------
+exclusive:
+  safra_item_combo1: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View[2]/android.view.View[2]/android.widget.Button
+  safra_item_combo2: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View[5]/android.view.View[2]/android.widget.Button
+  safra_add_item_combo: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.view.View/android.view.View/android.view.View/android.view.View[5]/android.widget.Button
+
+# ----------------------------------------------------------------------------
+# Clientes
+# ----------------------------------------------------------------------------
+clients:
+  add_client: ${APP_PACKAGE}:id/pedido_dialog_cliente_fab_novo
+  cpf: ${APP_PACKAGE}:id/cliente_dialog_edt_cnpj
+  name: ${APP_PACKAGE}:id/cliente_dialog_edt_nome
+  email: ${APP_PACKAGE}:id/cliente_dialog_edt_contato_email
+  zip_code: ${APP_PACKAGE}:id/cliente_dialog_edt_cep
+  address: ${APP_PACKAGE}:id/cliente_dialog_edt_endereco
+  number: ${APP_PACKAGE}:id/cliente_dialog_edt_numero
+  neighborhood: ${APP_PACKAGE}:id/cliente_dialog_edt_bairro
+  complement: ${APP_PACKAGE}:id/cliente_dialog_edt_complemento
+  state: ${APP_PACKAGE}:id/cliente_dialog_edt_uf
+  city: ${APP_PACKAGE}:id/cliente_dialog_edt_cidade
+  ddd: ${APP_PACKAGE}:id/cliente_dialog_edt_contato_ddd
+  telephone: ${APP_PACKAGE}:id/cliente_dialog_edt_contato_telefone
+  save_client: ${APP_PACKAGE}:id/cliente_dialog_btn_confirmar
+  exit_client: ${APP_PACKAGE}:id/pedido_dialog_cliente_btn_cancelar
+
+# ----------------------------------------------------------------------------
+# Lista de pedidos
+# ----------------------------------------------------------------------------
+orders_list:
+  order: //android.widget.ListView[@resource-id="${APP_PACKAGE}:id/pedidos_lv"]/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout
+  reprint: //android.widget.TextView[@resource-id="android:id/title" and @text="Reimprimir Comprovante"]

@@ -493,38 +493,91 @@ __pycache__/
 
 ## 18. Plano de migração — ordem de execução
 
-Execute nesta ordem para migrar do estado atual para a arquitetura alvo:
-
-| # | Ação | Arquivos afetados | Risco |
-|---|---|---|---|
-| 1 | Remover import `.venv` de `commands/main_navigation.resource` | 1 arquivo | Baixo |
-| 2 | Renomear `common/validation.robot` → `resources/helpers/validation.resource` | 1 arquivo | Baixo |
-| 3 | Refatorar `DevicesConfig.py` — adicionar `get_tag_from_udid()` e `get_device_config()`, migrar para `python-dotenv` | 1 arquivo | Médio |
-| 4 | Adicionar `system_port` e `appium_server` ao `devices.yaml` para todos os adquirentes | 1 arquivo | Baixo |
-| 5 | Simplificar todos os `.args` — remover tudo exceto `--variable DEVICE_TAG:<tag>` | 19 arquivos | Baixo |
-| 6 | Criar `resources/base/base.resource` com variáveis globais (substitui `variables.resource`) | 1 arquivo novo | Médio |
-| 7 | Mover e adaptar arquivos de `common/` para `resources/base/` e `resources/helpers/` | 6 arquivos | Médio |
-| 8 | Eliminar `common/device.resource` — adaptar `Close Keyboard` e `comboPage.resource` | 2 arquivos | Médio |
-| 9 | Criar `base_<modulo>.resource` para cada módulo centralizando todos os imports | 5 arquivos | Médio |
-| 10 | Adaptar suites para importar apenas o `base_<modulo>.resource` do módulo | 5 suites | Médio |
-| 11 | Mover `pages/` e `navigation/` para dentro de `modules/<modulo>/` | ~40 arquivos | Alto |
-| 12 | Resolver `base_minimarket.resource` — implementar ou remover | 1-5 arquivos | Baixo |
-| 13 | Limpar `orders_navigation.resource` (shim) e código morto em `commands/` | 2 arquivos | Médio |
+| # | Ação | Arquivos afetados | Risco | Status |
+|---|---|---|---|---|
+| 1 | Remover import `.venv` de `commands/main_navigation.resource` | 1 arquivo | Baixo | ✅ 2026-05-05 |
+| 2 | Renomear `common/validation.robot` → `resources/helpers/validation.resource` | 1 arquivo | Baixo | ✅ 2026-05-05 |
+| 3 | Refatorar `DevicesConfig.py` — adicionar `get_tag_from_udid()` e `get_device_config()`, migrar para `python-dotenv` | 1 arquivo | Médio | ✅ 2026-05-05 |
+| 4 | Adicionar `system_port` e `appium_server` ao `devices.yaml` para todos os adquirentes | 1 arquivo | Baixo | ✅ 2026-05-05 |
+| 5 | Simplificar todos os `.args` — remover tudo exceto `--variable DEVICE_TAG:<tag>` | 19 arquivos | Baixo | ✅ 2026-05-05 |
+| 6 | Criar `resources/base/base.resource` com variáveis globais (substitui `variables.resource`) | 1 arquivo novo | Médio | ✅ 2026-05-05 |
+| 7 | Mover e adaptar arquivos de `common/` para `resources/base/` e `resources/helpers/` | 6 arquivos | Médio | ✅ 2026-05-05 |
+| 8 | Eliminar `common/device.resource` — adaptar `Close Keyboard` e `comboPage.resource` | 2 arquivos | Médio | ✅ 2026-05-05 |
+| 9 | Criar `base_<modulo>.resource` para cada módulo centralizando todos os imports | 5 arquivos | Médio | ⏳ Pendente |
+| 10 | Adaptar suites para importar apenas o `base_<modulo>.resource` do módulo | 5 suites | Médio | ⏳ Pendente |
+| 11 | Mover `pages/` e `navigation/` para dentro de `modules/<modulo>/` | ~40 arquivos | Alto | ⏳ Pendente |
+| 12 | Resolver `base_minimarket.resource` — implementar ou remover | 1-5 arquivos | Baixo | ⏳ Pendente |
+| 13 | Limpar `orders_navigation.resource` (shim) e código morto em `commands/` | 2 arquivos | Médio | ⏳ Pendente |
 
 ---
 
 ## 19. Arquivos já refatorados
 
-Os arquivos abaixo já foram refatorados e estão prontos para uso:
+**Estado final da arquitetura: implementada** (Fases 1 e 2 concluídas em 2026-05-05)
 
-- ✅ `resources/helpers/common_keywords.resource`
-- ✅ `resources/base/open_app.resource`
-- ✅ `run_tests.sh`
+### Fase 1 — Fundação
 
-Próximos a refatorar (sugerido):
-- `resources/libraries/DevicesConfig.py` — adicionar `get_tag_from_udid()` e `get_device_config()`
-- `resources/data/devices.yaml` — adicionar `system_port` e `appium_server`
-- `resources/base/base.resource` — criar com variáveis globais
-- `resources/helpers/structured_logging.resource` — corrigir formatação de `&{kwargs}`
-- `resources/helpers/error_handling.resource` — mover sem mudanças estruturais
-- `resources/helpers/validation.resource` — extrair helpers internos, renomear extensão
+- ✅ `resources/base/base.resource` — variáveis globais, imports centralizados
+- ✅ `resources/base/open_app.resource` — abertura de sessão via DevicesConfig.py
+- ✅ `resources/base/setup.resource` — Suite/Test Setup e Teardown padronizados
+- ✅ `resources/libraries/DevicesConfig.py` — get_device_udid, get_device_config, get_keyboard_close_method, get_tag_from_udid
+- ✅ `resources/data/devices.yaml` — 19 adquirentes com system_port e appium_server
+- ✅ `resources/variables/env_variables.py` — UDIDs via python-dotenv
+- ✅ `pabot_configs/*.args` — 19 arquivos simplificados (apenas DEVICE_TAG)
+- ✅ `run_tests.sh` — detecção automática de devices via ADB
+
+### Fase 2 — Dissolução de common/
+
+- ✅ `resources/helpers/common_keywords.resource` — keywords utilitárias com padrão _Do
+- ✅ `resources/helpers/structured_logging.resource` — Log Action com timestamp
+- ✅ `resources/helpers/error_handling.resource` — screenshot em falha
+- ✅ `resources/helpers/validation.resource` — validação via logcat (era validation.robot)
+
+### Pendentes (Fases 3 e 4)
+
+- ⏳ `modules/*/base_<modulo>.resource` — implementar conteúdo real (arquivos criados, vazios)
+- ⏳ `modules/*/navigation/` — criar após análise do legado
+- ⏳ `tests/regression/` — adaptar suites para importar apenas base_<modulo>.resource
+
+---
+
+## 20. Histórico de refatoração
+
+### Data de início
+
+2026-05-05 — início da migração do projeto `shield-softcom-smart-automation` para a arquitetura alvo `shield-smart-test-automation`.
+
+### Principais decisões tomadas
+
+1. **Dissolução de `common/`** — pasta genérica substituída por hierarquia clara: `resources/base/` (infraestrutura de sessão) e `resources/helpers/` (utilitários reutilizáveis)
+2. **DevicesConfig.py como fonte única** — toda configuração de device (UDID, system_port, appium_server, app_package, keyboard_close) centralizada em `devices.yaml` lido via `DevicesConfig.py`; eliminadas variáveis hardcoded por adquirente
+3. **python-dotenv como padrão** — substituída a sintaxe customizada `%{VAR=default}` por `os.getenv("VAR", default)` com `load_dotenv()`, alinhando com convenção Python padrão
+4. **Padrão `_Do`** — todas as keywords com tratamento de falha delegam lógica real a uma keyword interna prefixada com `_Do`, chamada via `Run With Screenshot On Failure`
+5. **Arquitetura modular** — cada módulo de negócio (default, pdv, commands, prevenda, mini_mercado) é auto-contido em `modules/<modulo>/` com seu próprio `base_<modulo>.resource` como único ponto de entrada
+
+### Arquivos eliminados
+
+| Arquivo | Motivo |
+|---|---|
+| `common/device.resource` | Lógica de `Get Device Type` absorvida por `Close Keyboard` em `common_keywords.resource` via `get_tag_from_udid()` |
+| `resources/variables/variables.resource` | Variáveis globais migradas para seção `*** Variables ***` do `base.resource`; configurações de device migradas para `devices.yaml` |
+| `common/` (pasta) | Dissolvida — arquivos redistribuídos para `resources/base/` e `resources/helpers/` |
+
+### Arquivos renomeados
+
+| Nome original | Nome final | Motivo |
+|---|---|---|
+| `common/validation.robot` | `resources/helpers/validation.resource` | Não é suite de teste — é helper reutilizável; extensão `.robot` reservada para suites |
+| `common/open_app.resource` | `resources/base/open_app.resource` | Movido para camada de infraestrutura de sessão |
+| `common/common_keywords.resource` | `resources/helpers/common_keywords.resource` | Movido para camada de helpers globais |
+| `common/error_handling.resource` | `resources/helpers/error_handling.resource` | Movido para camada de helpers globais |
+| `common/structured_logging.resource` | `resources/helpers/structured_logging.resource` | Movido para camada de helpers globais |
+
+### Keywords renomeadas
+
+| Nome antigo | Nome novo | Motivo |
+|---|---|---|
+| `Wait Until Element Is Not Visible` | `Wait For Element To Disappear` | Colisão de nome com AppiumLibrary |
+| `Element Should Not Be Visible` | `Assert Element Not Visible` | Colisão de nome com AppiumLibrary |
+| `Limpar Logcat` | `Clear Logcat` | Wrapper eliminado — keyword exposta diretamente pela LogcatLibrary |
+| `Wait And Click Element` | `Wait Visible And Click Element` | Renomeado para maior clareza; aceita `timeout` opcional |
