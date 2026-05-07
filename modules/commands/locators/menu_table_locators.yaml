@@ -1,0 +1,28 @@
+# Locators — Menu Lateral da Mesa (ConfigDrawerMenu — itens específicos da mesa)
+# testTag via testTagsAsResourceId=true → xpath @resource-id com @text para diferenciação
+# contentDescription → accessibility id
+
+menu_table:
+  # Item "Voltar" no menu lateral
+  back: xpath=//*[@resource-id='ConfigDrawerMenuDrawerMenuItemViewText_0' and @text='Voltar']
+
+  # Item "Faturar" no menu lateral
+  invoice: xpath=//*[@resource-id='ConfigDrawerMenuDrawerMenuItemViewText_0' and @text='Faturar']
+
+  # Item "Adiantamento" no menu lateral
+  advance: xpath=//*[@resource-id='ConfigDrawerMenuDrawerMenuItemViewText_0' and @text='Adiantamento']
+
+  # Item "Dividir conta" no menu lateral
+  split_account: xpath=//*[@resource-id='ConfigDrawerMenuDrawerMenuItemViewText_0' and @text='Dividir conta']
+
+  # Item "Alterar cliente" no menu lateral
+  change_client: xpath=//*[@resource-id='ConfigDrawerMenuDrawerMenuItemViewText_0' and @text='Alterar cliente']
+
+  # Item "Juntar Contas" no menu lateral
+  join_accounts: xpath=//*[@resource-id='ConfigDrawerMenuDrawerMenuItemViewText_0' and @text='Juntar Contas']
+
+  # Item "Cancelar Mesa" no menu lateral
+  cancel_table: xpath=//*[@resource-id='ConfigDrawerMenuDrawerMenuItemViewText_0' and @text='Cancelar Mesa']
+
+  # Item "Gerenciar taxa de serviço" no menu lateral
+  manage_service_charge: xpath=//*[@resource-id='ConfigDrawerMenuDrawerMenuItemViewText_0' and @text='Gerenciar taxa de serviço']

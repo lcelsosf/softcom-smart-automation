@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(rtk find *)",
-      "Bash(rtk gain *)"
+      "Bash(rtk gain *)",
+      "Bash(rtk ls *)",
+      "Bash(rtk grep *)",
+      "Bash(xargs grep -l \"fun testTagWithPosition\")"
     ]
   }
 }

@@ -1,0 +1,22 @@
+# Locators — Dialog: Juntar Contas (ComandaJuntarContasDialogNew)
+# Sem testTags — usa texto e hierarquia (GAP: solicitar tags ao dev)
+# contentDescription → accessibility id
+
+join_table:
+  # Container rolável com lista de mesas disponíveis para juntar
+  table: xpath=//android.widget.ScrollView/android.view.View
+
+  # Botão confirmar seleção de mesa
+  confirm: xpath=//*[@text='Confirmar']
+
+  # Botão cancelar junção
+  cancel: xpath=//*[@text='Cancelar']
+
+  # Texto de confirmação da junção (contém número da mesa destino)
+  join_table_question: xpath=//*[contains(@text,'Confirmar juntar as contas com a Mesa')]
+
+  # Botão "Sim" na confirmação
+  confirm_join: xpath=//*[@text='Sim']
+
+  # Botão "Não" na confirmação
+  confirm_not_join: xpath=//*[@text='Não']

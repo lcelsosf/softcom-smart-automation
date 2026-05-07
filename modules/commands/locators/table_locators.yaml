@@ -1,0 +1,31 @@
+# Locators — Tela: Mesa Aberta (ComandaMesaScreen)
+# testTag via testTagsAsResourceId=true → xpath @resource-id
+# contentDescription → accessibility id
+
+table:
+  # Ícone menu hamburguer (contentDescription="Menu")
+  menu: accessibility id=Menu
+
+  # Ícone imprimir conferência (contentDescription="Imprimir")
+  conference_print: accessibility id=Imprimir
+
+  # Aba Produtos na TabRow
+  products: xpath=//*[@resource-id='ComandaMesaScreenText_1']
+
+  # Aba Conferência na TabRow
+  conference: xpath=//*[@resource-id='ComandaMesaScreenText_5']
+
+  # Aba Lançados na TabRow
+  released: xpath=//*[@resource-id='ComandaMesaScreenText_6']
+
+  # Botão avançar/receber pedido na barra inferior (texto)
+  advance: xpath=//*[@resource-id='ComandaMesaScreenBottomBarText_3']
+
+  # Botão cancelar/voltar na barra inferior (texto)
+  cancel: xpath=//*[@resource-id='ComandaMesaScreenBottomBarText_2']
+
+  # Ícone filtrar itens (contentDescription="Filtrar")
+  filter: accessibility id=Filtrar
+
+  # Ícone limpar pesquisa (contentDescription="Limpar pesquisa")
+  clean_search: accessibility id=Limpar pesquisa

@@ -1,0 +1,22 @@
+# Locators — Dialog: Alterar Cliente (CustomerChangeDialog)
+# testTag via testTagsAsResourceId=true → xpath @resource-id
+# contentDescription → accessibility id
+
+change_client:
+  # Campo nome do cliente (BasicOutlinedField_0)
+  client: xpath=//*[@resource-id='CustomerChangeDialogBasicOutlinedField_0']//android.widget.EditText
+
+  # Ícone buscar cliente (contentDescription="Buscar cliente")
+  search: accessibility id=Buscar cliente
+
+  # Botão aumentar pessoas (contentDescription="Aumentar")
+  add_people: accessibility id=Aumentar
+
+  # Botão diminuir pessoas (contentDescription="Diminuir")
+  sub_people: accessibility id=Diminuir
+
+  # Botão confirmar alteração
+  confirm: xpath=//*[@resource-id='CustomerChangeDialogButton_0']
+
+  # Botão cancelar alteração
+  cancel: xpath=//*[@resource-id='CustomerChangeDialogOutlinedButton_0']

@@ -1,0 +1,37 @@
+# Locators — Tela: Painel de Mesas (ComandaPainelMesasScreen)
+# testTag via testTagsAsResourceId=true → xpath @resource-id
+# contentDescription → accessibility id
+
+table_panel:
+  # Botão principal: "Abrir Mesa" ou "Abrir Comanda" (cenário sem tab row)
+  open_table: xpath=//*[@resource-id='ComandaPainelMesasScreenTopBarButtonText_0']
+
+  # Ícone de menu hamburguer (contentDescription="Menu")
+  menu: accessibility id=Menu
+
+  # Ícone de home na top bar (contentDescription="Home")
+  home: accessibility id=Home
+
+  # Campo de busca de mesas/comandas — EditText dentro do SearchBarCustom
+  table_search: xpath=//*[@resource-id='ComandaPainelMesasScreenSearchAndFilterSectionSearchBarCustom_0']//android.widget.EditText
+
+  # Botão de filtro (contentDescription="Filtro" no ícone)
+  filter: accessibility id=Filtro
+
+  # Primeiro item de mesa/comanda no grid (posição 0)
+  table_item: xpath=//*[@resource-id='ComandaPainelMesasScreenComandaPainelMesasItem_0']
+
+  # Container principal do painel — usado para verificar que a tela está visível
+  table_panel: xpath=//*[@resource-id='ComandaPainelMesasScreenColumn_0']
+
+  # FAB "Abrir Mesa ou Comanda" — visível apenas quando mesa+comanda estão ativos
+  fab_open: accessibility id=Abrir Mesa ou Comanda
+
+  # Limpar pesquisa (contentDescription="Limpar pesquisa" no ícone dentro da SearchBar)
+  clear_search: accessibility id=Limpar pesquisa
+
+  # Aba "Mesas" na TabRow (cenário mesa+comanda ativo)
+  tab_mesas: xpath=//*[@resource-id='ComandaPainelMesasScreenTabText_0']
+
+  # Aba "Comandas" na TabRow (cenário mesa+comanda ativo)
+  tab_comandas: xpath=//*[@resource-id='ComandaPainelMesasScreenTabText_1']

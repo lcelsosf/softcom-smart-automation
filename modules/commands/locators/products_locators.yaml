@@ -1,0 +1,41 @@
+# Locators — Tela: Produtos da Mesa (ComandaMesaProdutosContent + ComandaAddProduto)
+# testTag via testTagsAsResourceId=true → xpath @resource-id
+# contentDescription → accessibility id
+
+products:
+  # ---- Lista de produtos ----
+
+  # Campo de busca de produtos na aba Produtos
+  search_item: xpath=//*[@resource-id='ComandaMesaProdutosContentSearchBarCustom_0']//android.widget.EditText
+
+  # Primeiro item de produto na lista (posição 0)
+  product: xpath=//*[@resource-id='ComandaMesaProdutosContentComandaMesaProdutoItem_0']
+
+  # ---- Dialog: Adicionar Produto ----
+
+  # Seção de observações do item
+  item_obs: xpath=//*[@resource-id='ComandaAddProdutoObservacoesSectionText_0']
+
+  # Campo de texto da observação do item
+  item_obs_text: xpath=//*[@resource-id='ComandaAddProdutoObservacoesSectionBasicOutlinedField_0']//android.widget.EditText
+
+  # Botão adicionar adicional (contentDescription="Adicionar") — primeiro
+  item_adc_add: (xpath=//*[@content-desc='Adicionar'])[1]
+
+  # Botão remover adicional (contentDescription="Remover") — primeiro
+  item_adc_sub: (xpath=//*[@content-desc='Remover'])[1]
+
+  # Label "Observação" no adicional — primeiro
+  item_adc_obs: xpath=(//*[@text='Observação'])[1]
+
+  # Campo de texto da observação do adicional
+  item_adc_obs_text: xpath=//*[@resource-id='ComandaAddProdutoAdicionaisBasicOutlinedField_0']//android.widget.EditText
+
+  # Botão confirmar observação do adicional
+  item_adc_obs_confirm: xpath=//*[@text='Confirmar']
+
+  # Botão cancelar observação do adicional
+  item_adc_obs_cancel: xpath=//*[@text='Cancelar']
+
+  # Botão adicionar item ao pedido (barra inferior)
+  add_item: xpath=//*[@resource-id='ComandaAddProdutoBottomBarButton_0']

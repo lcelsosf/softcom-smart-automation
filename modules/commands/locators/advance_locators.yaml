@@ -1,0 +1,45 @@
+# Locators — Tela: Adiantamentos (ComandaAdiantamentosScreen + ComandaAdiantamentoDialog)
+# ComandaAdiantamentosScreen: tem testTags
+# ComandaAdiantamentoDialog: sem testTags — usa texto/hierarquia (GAP: solicitar tags ao dev)
+# contentDescription → accessibility id
+
+advance:
+  # ---- Tela lista de adiantamentos ----
+
+  # Botão "Novo Adiantamento" na barra inferior
+  new_advance: xpath=//*[@resource-id='ComandaAdiantamentosScreenBottomBarButton_0']
+
+  # Ícone voltar (contentDescription="Voltar")
+  back: accessibility id=Voltar
+
+  # Ícone imprimir (contentDescription="Imprimir")
+  print: accessibility id=Imprimir
+
+  # ---- Dialog: Novo Adiantamento (sem testTags) ----
+
+  # Label "Informe o nome do cliente" — hint do campo cliente
+  advance_client: xpath=//*[@text='Informe o nome do cliente']
+
+  # Campo EditText do nome do cliente (primeiro EditText no dialog)
+  advance_client_text: xpath=//android.view.ViewGroup//android.view.View//android.view.View[1]//android.widget.EditText
+
+  # Label "R$ 0,00" — hint do campo valor
+  advance_value: xpath=//*[@text='R$ 0,00']
+
+  # Campo EditText do valor (segundo EditText no dialog)
+  advance_value_text: xpath=//android.view.ViewGroup//android.view.View//android.view.View[2]//android.widget.EditText
+
+  # Spinner seleção de forma de pagamento
+  advance_paymentform: xpath=//*[@text='Selecione']
+
+  # Opção Dinheiro no dropdown de pagamento
+  advance_money: xpath=//*[@text='Dinheiro']
+
+  # Opção Pix Off no dropdown de pagamento
+  advance_pixoff: xpath=//*[@text='Pix Off']
+
+  # Botão confirmar adiantamento
+  advance_confirm: xpath=//*[@text='Confirmar']
+
+  # Botão cancelar adiantamento
+  advance_cancel: xpath=//*[@text='Cancelar']

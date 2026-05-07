@@ -1,0 +1,16 @@
+# Locators — Dialog: Dividir Conta (ComandaDividirContaDialog)
+# Sem testTags — usa texto e contentDescription (GAP: solicitar tags ao dev)
+# contentDescription → accessibility id
+
+split_account:
+  # Título do dialog (verificação de presença da tela)
+  split_account: xpath=//*[@text='Divisão da Conta']
+
+  # Botão aumentar número de pessoas (contentDescription="Aumentar")
+  add_people: accessibility id=Aumentar
+
+  # Botão diminuir número de pessoas (contentDescription="Diminuir")
+  sub_people: accessibility id=Diminuir
+
+  # Botão voltar/fechar dialog
+  back: xpath=//*[@text='Voltar']

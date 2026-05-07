@@ -1,0 +1,28 @@
+# Locators — Tela: Dialog Abrir Mesa (OpenMesaDialog)
+# testTag via testTagsAsResourceId=true → xpath @resource-id
+# contentDescription → accessibility id
+
+open_table:
+  # Campo número da mesa (BasicOutlinedField_1)
+  number_table: xpath=//*[@resource-id='OpenMesaDialogBasicOutlinedField_1']//android.widget.EditText
+
+  # Campo número da comanda (BasicOutlinedField_0) — cenário comanda+mesa
+  comanda_number: xpath=//*[@resource-id='OpenMesaDialogBasicOutlinedField_0']//android.widget.EditText
+
+  # Campo nome do cliente (BasicOutlinedField_2)
+  client_name: xpath=//*[@resource-id='OpenMesaDialogBasicOutlinedField_2']//android.widget.EditText
+
+  # Ícone buscar cliente (contentDescription="Buscar cliente")
+  search_client: accessibility id=Buscar cliente
+
+  # Botão aumentar pessoas (contentDescription="Aumentar")
+  add_people: accessibility id=Aumentar
+
+  # Botão diminuir pessoas (contentDescription="Diminuir")
+  sub_people: accessibility id=Diminuir
+
+  # Botão confirmar abertura
+  confirm: xpath=//*[@resource-id='OpenMesaDialogButton_0']
+
+  # Botão cancelar abertura
+  cancel: xpath=//*[@resource-id='OpenMesaDialogOutlinedButton_0']
