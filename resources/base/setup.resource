@@ -25,6 +25,7 @@ Suite Setup Default
     ...
     ...    Uso na suite:
     ...    Suite Setup    Suite Setup Default
+    Set Suite Variable    ${UI_FAILURE_DETECTED}    ${FALSE}
     Log Action    action=suite_start    message=Iniciando suite    suite=${SUITE_NAME}
     Open App
 
@@ -43,19 +44,28 @@ Suite Teardown Default
 
 Test Setup Default
     [Documentation]    Setup padrão de teste — registra início do caso de teste no log.
+    ...    Ignora o teste automaticamente se uma falha de UI foi detectada no teste anterior,
+    ...    evitando falhas em cadeia por estado inválido da interface.
     ...
     ...    Uso na suite:
     ...    Test Setup    Test Setup Default
+    ${_ui_failed}=    Get Variable Value    ${UI_FAILURE_DETECTED}    ${FALSE}
+    IF    ${_ui_failed}
+        Skip    Teste ignorado: falha de UI detectada no teste anterior — o app pode estar em estado inválido.
+    END
     Log Action    action=test_start    message=Iniciando teste    test=${TEST_NAME}
 
 Test Teardown Default
     [Documentation]    Teardown padrão de teste — captura screenshot em caso de falha.
-    ...    Deve ser usado como Test Teardown em todas as suites para garantir
-    ...    evidência visual em caso de falha.
+    ...    Em caso de falha, ativa o flag de suite para que testes subsequentes
+    ...    sejam ignorados (SKIP), evitando falhas em cadeia por estado inválido do app.
     ...
     ...    Uso na suite:
     ...    Test Teardown    Test Teardown Default
     Run Keyword If Test Failed    Capture Failure Screenshot
+    IF    '${TEST_STATUS}' == 'FAIL'
+        Set Suite Variable    ${UI_FAILURE_DETECTED}    ${TRUE}
+    END
     Log Action    action=test_end
     ...    message=Teste finalizado
     ...    test=${TEST_NAME}
