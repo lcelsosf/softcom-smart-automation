@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.12.11 on win32)" generated="2026-05-07T17:05:12.929364" rpa="false" schemaversion="5">
+<suite id="s1" name="Commands" source="D:\Softcom\LAB\softcom-smart-automation\tests\regression\commands\commands.robot">
+<kw name="Suite Setup Default" type="SETUP">
+<msg time="2026-05-07T17:05:15.792352" level="FAIL">No keyword with name 'Suite Setup Default' found.</msg>
+<status status="FAIL" start="2026-05-07T17:05:15.792352" elapsed="0.000000">No keyword with name 'Suite Setup Default' found.</status>
+</kw>
+<test id="s1-t1" name="Abrir mesa e faturar com dinheiro" line="20">
+<tag>@allure.label.severity:critical</tag>
+<tag>commands</tag>
+<tag>invoice</tag>
+<tag>regression</tag>
+<status status="FAIL" start="2026-05-07T17:05:15.792352" elapsed="0.000000">Parent suite setup failed:
+No keyword with name 'Suite Setup Default' found.</status>
+</test>
+<test id="s1-t2" name="Abrir mesa e faturar com Pix Off" line="27">
+<tag>@allure.label.severity:critical</tag>
+<tag>commands</tag>
+<tag>invoice</tag>
+<tag>regression</tag>
+<status status="FAIL" start="2026-05-07T17:05:15.792352" elapsed="0.000000">Parent suite setup failed:
+No keyword with name 'Suite Setup Default' found.</status>
+</test>
+<test id="s1-t3" name="Abrir mesa e registrar adiantamento com dinheiro" line="34">
+<tag>@allure.label.severity:normal</tag>
+<tag>advance</tag>
+<tag>commands</tag>
+<tag>regression</tag>
+<status status="FAIL" start="2026-05-07T17:05:15.792352" elapsed="0.000000">Parent suite setup failed:
+No keyword with name 'Suite Setup Default' found.</status>
+</test>
+<test id="s1-t4" name="Abrir mesa e registrar adiantamento com Pix Off" line="40">
+<tag>@allure.label.severity:normal</tag>
+<tag>advance</tag>
+<tag>commands</tag>
+<tag>regression</tag>
+<status status="FAIL" start="2026-05-07T17:05:15.792352" elapsed="0.008451">Parent suite setup failed:
+No keyword with name 'Suite Setup Default' found.</status>
+</test>
+<test id="s1-t5" name="Abrir mesa e dividir conta" line="46">
+<tag>@allure.label.severity:normal</tag>
+<tag>commands</tag>
+<tag>regression</tag>
+<tag>split_account</tag>
+<status status="FAIL" start="2026-05-07T17:05:15.800803" elapsed="0.000000">Parent suite setup failed:
+No keyword with name 'Suite Setup Default' found.</status>
+</test>
+<test id="s1-t6" name="Abrir mesa e alterar cliente" line="54">
+<tag>@allure.label.severity:normal</tag>
+<tag>change_client</tag>
+<tag>commands</tag>
+<tag>regression</tag>
+<status status="FAIL" start="2026-05-07T17:05:15.801811" elapsed="0.000000">Parent suite setup failed:
+No keyword with name 'Suite Setup Default' found.</status>
+</test>
+<test id="s1-t7" name="Abrir mesa e cancelar" line="64">
+<tag>@allure.label.severity:normal</tag>
+<tag>cancel</tag>
+<tag>commands</tag>
+<tag>regression</tag>
+<status status="FAIL" start="2026-05-07T17:05:15.801811" elapsed="0.001000">Parent suite setup failed:
+No keyword with name 'Suite Setup Default' found.</status>
+</test>
+<test id="s1-t8" name="Buscar mesa existente pelo número" line="71">
+<tag>@allure.label.severity:minor</tag>
+<tag>commands</tag>
+<tag>regression</tag>
+<tag>search</tag>
+<status status="FAIL" start="2026-05-07T17:05:15.802811" elapsed="0.000000">Parent suite setup failed:
+No keyword with name 'Suite Setup Default' found.</status>
+</test>
+<test id="s1-t9" name="Verificar painel de mesas acessível" line="77">
+<tag>@allure.label.severity:minor</tag>
+<tag>commands</tag>
+<tag>regression</tag>
+<tag>smoke</tag>
+<status status="FAIL" start="2026-05-07T17:05:15.803935" elapsed="0.000000">Parent suite setup failed:
+No keyword with name 'Suite Setup Default' found.</status>
+</test>
+<kw name="Suite Teardown Default" type="TEARDOWN">
+<msg time="2026-05-07T17:05:15.806903" level="FAIL">No keyword with name 'Suite Teardown Default' found.</msg>
+<status status="FAIL" start="2026-05-07T17:05:15.806903" elapsed="0.000000">No keyword with name 'Suite Teardown Default' found.</status>
+</kw>
+<doc>Suite de regressão — módulo Commands (Comanda/Mesa)
+
+Cobre os fluxos principais de abertura, operação e encerramento de mesas.
+Pré-condição: app iniciado no Painel de Mesas.</doc>
+<status status="FAIL" start="2026-05-07T17:05:12.929364" elapsed="2.877539">Suite setup failed:
+No keyword with name 'Suite Setup Default' found.
+
+Also suite teardown failed:
+No keyword with name 'Suite Teardown Default' found.</status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="9" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="2" skip="0">@allure.label.severity:critical</stat>
+<stat pass="0" fail="2" skip="0">@allure.label.severity:minor</stat>
+<stat pass="0" fail="5" skip="0">@allure.label.severity:normal</stat>
+<stat pass="0" fail="2" skip="0">advance</stat>
+<stat pass="0" fail="1" skip="0">cancel</stat>
+<stat pass="0" fail="1" skip="0">change_client</stat>
+<stat pass="0" fail="9" skip="0">commands</stat>
+<stat pass="0" fail="2" skip="0">invoice</stat>
+<stat pass="0" fail="9" skip="0">regression</stat>
+<stat pass="0" fail="1" skip="0">search</stat>
+<stat pass="0" fail="1" skip="0">smoke</stat>
+<stat pass="0" fail="1" skip="0">split_account</stat>
+</tag>
+<suite>
+<stat name="Commands" id="s1" pass="0" fail="9" skip="0">Commands</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2026-05-07T17:05:15.595761" level="ERROR">Error in file 'D:\Softcom\LAB\softcom-smart-automation\resources\base\base.resource' on line 29: Library '..\..\libraries\devicesconfig.py' does not exist.</msg>
+<msg time="2026-05-07T17:05:15.595761" level="ERROR">Error in file 'D:\Softcom\LAB\softcom-smart-automation\resources\base\base.resource' on line 30: Library '..\..\libraries\logcatlibrary.py' does not exist.</msg>
+</errors>
+</robot>
