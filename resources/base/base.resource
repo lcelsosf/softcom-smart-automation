@@ -26,7 +26,7 @@ Documentation    Configuração global do projeto — importada por todos os bas
 Library     AppiumLibrary
 
 # --- Bibliotecas customizadas ---
-Library     ../libraries/DevicesConfig.py
+Library     ../libraries/devicesconfig.py
 Library     ../libraries/logcatlibrary.py
             
 # --- Variáveis de ambiente via python-dotenv ---

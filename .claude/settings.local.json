@@ -5,7 +5,12 @@
       "Bash(rtk gain *)",
       "Bash(rtk ls *)",
       "Bash(rtk grep *)",
-      "Bash(xargs grep -l \"fun testTagWithPosition\")"
+      "Bash(xargs grep -l \"fun testTagWithPosition\")",
+      "Bash(uv run *)",
+      "Bash(rtk git *)",
+      "Bash(Get-ChildItem *)",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(Sort-Object)"
     ]
   }
 }

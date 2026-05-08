@@ -50,9 +50,8 @@ Get Device UDID From Tag
 
 Open App Session
     [Documentation]    Abre a sessão Appium no dispositivo resolvido.
-    ...    Todas as configurações do dispositivo (system_port, appium_server,
-    ...    app_package) são lidas do devices.yaml via DevicesConfig.py.
-    ...    Parâmetros opcionais permitem sobrescrever valores do YAML quando necessário.
+    ...    Conecta ao device sem lançar nem resetar o app — o app deve estar aberto em foreground.
+    ...    Configurações de system_port e appium_server são lidas do devices.yaml via DevicesConfig.py.
     ...
     ...    Args:
     ...    - udid: UDID explícito. Se omitido, resolve via Get Device UDID From Tag
@@ -90,8 +89,6 @@ Open App Session
     ...    udid=${final_udid}
     ...    systemPort=${config.system_port}
     ...    deviceName=${device_tag}
-    ...    appPackage=${config.app_package}
-    ...    appActivity=.MainActivity
 
 
 Open App
