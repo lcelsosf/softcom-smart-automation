@@ -11,27 +11,29 @@ Test Teardown    Test Teardown Default
 
 
 *** Variables ***
-${TABLE_NUMBER}          10
 ${TABLE_CLIENT}          Cliente Teste
 ${CANCEL_REASON}         Motivo de cancelamento automático
 
 
 *** Test Cases ***
-Abrir mesa e faturar com dinheiro
+Commands - Open table and invoice with money
+    [Documentation]    Verifica o fluxo de abertura de mesa, adição de itens, e pagamento com dinheiro.    
     [Tags]    @allure.label.severity:critical    regression    commands    invoice
-    Commands - Navigate To Open Table    ${TABLE_NUMBER}    ${TABLE_CLIENT}
-    Commands - Navigate To Search Table And Open    ${TABLE_NUMBER}
-    Commands - Add Items To Table    Frango    Cerveja
+    Commands - Navigate To Open Table    1    ${TABLE_CLIENT}
+    Commands - Add Items To Table    product_1
+    Commands - Navigate To Search Table And Open    1 
     Commands - Navigate To Invoice And Pay    money
 
-Abrir mesa e faturar com Pix Off
+Commands - Open table and invoice with Pix Off
+    [Documentation]    Verifica o fluxo de abertura de mesa, adição de itens, e pagamento com Pix Off.
     [Tags]    @allure.label.severity:critical    regression    commands    invoice
     Commands - Navigate To Open Table    ${TABLE_NUMBER}    ${TABLE_CLIENT}
     Commands - Navigate To Search Table And Open    ${TABLE_NUMBER}
     Commands - Add Items To Table    Água 500ml
     Commands - Navigate To Invoice And Pay    pixoff
 
-Abrir mesa e registrar adiantamento com dinheiro
+Commands - Open table, register advance with money and invoice with money
+    [Documentation]    Verifica o fluxo de abertura de mesa, registro de adiantamento, e pagamento com a forma de pagamento dinheiro.
     [Tags]    @allure.label.severity:normal    regression    commands    advance
     Commands - Navigate To Open Table    ${TABLE_NUMBER}    ${TABLE_CLIENT}
     Commands - Navigate To Search Table And Open    ${TABLE_NUMBER}

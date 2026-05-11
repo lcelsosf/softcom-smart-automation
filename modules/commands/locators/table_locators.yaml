@@ -4,7 +4,7 @@
 
 table:
   # Ícone menu hamburguer (contentDescription="Menu")
-  menu: accessibility id=Menu
+  menu: //android.view.View[@content-desc="Menu"]
 
   # Ícone imprimir conferência (contentDescription="Imprimir")
   conference_print: accessibility id=Imprimir
@@ -28,4 +28,4 @@ table:
   filter: accessibility id=Filtrar
 
   # Ícone limpar pesquisa (contentDescription="Limpar pesquisa")
-  clean_search: accessibility id=Limpar pesquisa
+  clean_search: //android.view.View[@content-desc="Limpar pesquisa"]

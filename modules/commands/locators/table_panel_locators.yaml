@@ -7,7 +7,7 @@ table_panel:
   open_table: xpath=//*[@resource-id='ComandaPainelMesasScreenTopBarButtonText_0']
 
   # Ícone de menu hamburguer (contentDescription="Menu")
-  menu: accessibility id=Menu
+  menu: //android.view.View[@content-desc="Menu"]
 
   # Ícone de home na top bar (contentDescription="Home")
   home: accessibility id=Home

@@ -238,9 +238,11 @@ Close Keyboard
     ...    - hide: chama Hide Keyboard do AppiumLibrary
     ...    Em caso de falha inesperada, aplica Hide Keyboard como fallback.
     TRY
-        ${tag}=    Set Variable If    '${DEVICE_TAG}' != ''
-        ...    ${DEVICE_TAG}
-        ...    Get Tag From Udid    ${DEVICE_UDID}
+        IF    '${DEVICE_TAG}' != ''
+            ${tag}=    Set Variable    ${DEVICE_TAG}
+        ELSE
+            ${tag}=    Get Tag From Udid    ${DEVICE_UDID}
+        END
         ${tag_lower}=    Convert To Lower Case    ${tag}
         ${method}=    Get Keyboard Close Method    ${tag_lower}
         IF    '${method}' == 'back'
