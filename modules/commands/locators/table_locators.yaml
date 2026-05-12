@@ -7,7 +7,16 @@ table:
   menu: //android.view.View[@content-desc="Menu"]
 
   # Ícone imprimir conferência (contentDescription="Imprimir")
-  conference_print: accessibility id=Imprimir
+  conference_print: //android.view.View[@content-desc="Imprimir"]
+
+  # View de confirmacao da impressao de conferencia
+  conference_question: //android.widget.TextView[@text="Deseja solicitar a conferência?"]
+
+  # Botão confirmar conferência
+  conference_confirm: //android.widget.TextView[@text="Sim"]
+
+  # Botão cancelar conferência
+  conference_cancel: //android.widget.TextView[@text="Não"]
 
   # Aba Produtos na TabRow
   products: xpath=//*[@resource-id='ComandaMesaScreenText_1']
@@ -29,3 +38,5 @@ table:
 
   # Ícone limpar pesquisa (contentDescription="Limpar pesquisa")
   clean_search: //android.view.View[@content-desc="Limpar pesquisa"]
+
+  empty_state: //android.widget.TextView[@resource-id="EmptyStateCustomText_0"]

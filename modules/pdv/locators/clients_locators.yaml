@@ -1,0 +1,54 @@
+# Locators — Tela: Clientes (ClientsScreen)
+# Sem testTags — usa texto e XPath por posição (GAP: solicitar tags ao dev)
+
+clients:
+  # Botão novo cliente
+  new_client: //android.widget.TextView[@text="+ Novo Cliente"]
+  # Abrir menu de tipo de cliente
+  type_client: //android.widget.ImageView[@content-desc="Abrir menu"]
+  # Opção pessoa física
+  Fisic: //android.widget.TextView[@text="Física"]
+  # Opção pessoa jurídica
+  Juridic: //android.widget.TextView[@text="Jurídica"]
+  # Campo CPF (posição 2 no ScrollView)
+  cpf: //android.widget.ScrollView/android.view.View[2]/android.widget.EditText
+  # Campo nome (posição 3 no ScrollView)
+  name: //android.widget.ScrollView/android.view.View[3]/android.widget.EditText
+  # Campo telefone (posição 4 no ScrollView)
+  telephone: //android.widget.ScrollView/android.view.View[4]/android.widget.EditText
+  # Campo email (posição 5 no ScrollView)
+  email: //android.widget.ScrollView/android.view.View[5]/android.widget.EditText
+  # Campo observações (posição 6 no ScrollView)
+  obs: //android.widget.ScrollView/android.view.View[6]/android.widget.EditText
+  # Aba de endereço
+  address_page: //android.widget.TextView[@text="Endereço"]
+  # Campo logradouro (posição 3 no ScrollView do endereço)
+  address: //android.widget.ScrollView/android.view.View[3]/android.widget.EditText
+  # Campo bairro (posição 5 no ScrollView do endereço)
+  neighborhood: //android.widget.ScrollView/android.view.View[5]/android.widget.EditText
+  # Seletor de UF
+  UF: //android.widget.TextView[@text="Selecione a UF"]
+  # Opção UF Paraíba
+  UF_PB: //android.widget.TextView[@text="PB"]
+  # Campo CEP (posição 1 no ScrollView do endereço)
+  cep: //android.widget.ScrollView/android.view.View[1]/android.widget.EditText
+  # Campo número (posição 4 no ScrollView do endereço)
+  number: //android.widget.ScrollView/android.view.View[4]/android.widget.EditText
+  # Seletor de cidade
+  city: //android.widget.TextView[@text="Selecione a cidade"]
+  # Campo de busca de cidade
+  city_search: //android.widget.EditText
+  # Selecionar primeira cidade da lista
+  city_select: //android.view.ViewGroup[@resource-id="android:id/content"]/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.ScrollView/android.view.View
+  # Campo complemento (posição 8 no ScrollView do endereço)
+  complement: //android.widget.ScrollView/android.view.View[8]/android.widget.EditText
+  # Botão salvar dados
+  save: //android.widget.TextView[@text="Salvar Dados"]
+  # Voltar da tela de clientes
+  back_clients: //android.view.View[@content-desc="Voltar"]
+  # Campo de busca de cliente
+  search_client: //android.widget.EditText
+  # Cliente cadastrado (Client_Credit)
+  client1: //android.widget.TextView[@text="Client_Credit"]
+  # Botão iniciar venda para cliente selecionado
+  new_order_client: //android.widget.TextView[@text="Iniciar Venda"]

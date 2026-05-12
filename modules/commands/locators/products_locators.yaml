@@ -20,10 +20,20 @@ products:
   item_obs_text: xpath=//*[@resource-id='ComandaAddProdutoObservacoesSectionBasicOutlinedField_0']//android.widget.EditText
 
   # Botão adicionar adicional (contentDescription="Adicionar") — primeiro
-  item_adc_add: (xpath=//*[@content-desc='Adicionar'])[1]
+  item_adc_add: xpath=//*[@resource-id='ComandaAddProdutoItemSectionProdutoComboItemCard_0']//*[@content-desc='Adicionar']
+
+  # Botão adicionar adicional (contentDescription="Adicionar") — segundo
+  item_adc_add_2: xpath=//*[@resource-id='ComandaAddProdutoItemSectionProdutoComboItemCard_1']//*[@content-desc='Adicionar']
+
+  # Botão + de quantidade
+  # Ancora pela barra inferior — resource-id único na tela
+  quantity_add: xpath=//*[@resource-id='ComandaAddProdutoBottomBarQuantityRowSelector_0']//*[@content-desc='Adicionar']
+
+  # Botão - de quantidade (bônus — mesmo padrão)
+  quantity_sub: xpath=//*[@resource-id='ComandaAddProdutoBottomBarQuantityRowSelector_0']//*[@content-desc='Remover']
 
   # Botão remover adicional (contentDescription="Remover") — primeiro
-  item_adc_sub: (xpath=//*[@content-desc='Remover'])[1]
+  item_adc_sub: xpath=(//*[@content-desc='Remover'])[1]
 
   # Label "Observação" no adicional — primeiro
   item_adc_obs: xpath=(//*[@text='Observação'])[1]

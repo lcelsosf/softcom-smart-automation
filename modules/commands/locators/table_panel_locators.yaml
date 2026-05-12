@@ -28,7 +28,7 @@ table_panel:
   fab_open: accessibility id=Abrir Mesa ou Comanda
 
   # Limpar pesquisa (contentDescription="Limpar pesquisa" no ícone dentro da SearchBar)
-  clear_search: accessibility id=Limpar pesquisa
+  clear_search: //android.view.View[@content-desc="Limpar pesquisa"]
 
   # Aba "Mesas" na TabRow (cenário mesa+comanda ativo)
   tab_mesas: xpath=//*[@resource-id='ComandaPainelMesasScreenTabText_0']

@@ -1,7 +1,6 @@
 # Locators — Tela: Adiantamentos (ComandaAdiantamentosScreen + ComandaAdiantamentoDialog)
 # ComandaAdiantamentosScreen: tem testTags
 # ComandaAdiantamentoDialog: sem testTags — usa texto/hierarquia (GAP: solicitar tags ao dev)
-# contentDescription → accessibility id
 
 advance:
   # ---- Tela lista de adiantamentos ----
@@ -10,10 +9,10 @@ advance:
   new_advance: xpath=//*[@resource-id='ComandaAdiantamentosScreenBottomBarButton_0']
 
   # Ícone voltar (contentDescription="Voltar")
-  back: accessibility id=Voltar
+  back: //android.view.View[@content-desc="Voltar"]
 
   # Ícone imprimir (contentDescription="Imprimir")
-  print: accessibility id=Imprimir
+  print: //android.view.View[@content-desc="Imprimir"]
 
   # ---- Dialog: Novo Adiantamento (sem testTags) ----
 

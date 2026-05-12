@@ -1,0 +1,87 @@
+# Locators — Tela: Pedidos / Carrinho (OrdersScreen / CartScreen)
+# testTag via testTagsAsResourceId=true → xpath @resource-id
+# contentDescription → accessibility id
+
+orders:
+  # Item primário do catálogo (contentDescription)
+  item: //android.view.View[@content-desc="Item_primary"]
+  # Item secundário do catálogo (contentDescription)
+  item2: //android.view.View[@content-desc="Item_secondary"]
+  # Item com desconto do catálogo (contentDescription)
+  item_discount: //android.view.View[@content-desc="Item_discount"]
+  # Botão de remoção via long press — opção no menu
+  remove_item: //android.widget.TextView[@text="Remover item"]
+  # Texto de confirmação de remoção
+  remove_item_text: //android.widget.TextView[@text="Deseja remover o item do pedido?"]
+  # Confirmar remoção de item
+  remove_item_confirm: //android.widget.TextView[@text="Sim"]
+  # Cancelar remoção de item
+  remove_item_cancel: //android.widget.TextView[@text="Não"]
+  # Ícone de remover item no carrinho (contentDescription)
+  remove_item_icon: //android.widget.ImageView[@content-desc="Remover"]
+  # Botão de conferência/avançar (CheckoutFooterText_0)
+  conference: //android.widget.TextView[@resource-id="CheckoutFooterText_0"]
+  # Botão de aumentar quantidade (ProdutoItemCarrinhoText_2)
+  quantity_add: //android.widget.TextView[@resource-id="ProdutoItemCarrinhoText_2"]
+  # Botão de diminuir quantidade — valor "-" (ProdutoItemCarrinhoText_0)
+  quantity_remove: //android.widget.TextView[@resource-id="ProdutoItemCarrinhoText_0" and @text="-"]
+  # Campo de quantidade atual — valor "1" (ProdutoItemCarrinhoText_1)
+  quantity: //android.widget.TextView[@resource-id="ProdutoItemCarrinhoText_1" and @text="1"]
+  # Input de quantidade no dialog
+  quantity_input: //android.widget.EditText
+  # Confirmar alteração de quantidade
+  quantity_confirm: //android.widget.TextView[@text="Confirmar"]
+  # Finalizar pedido (CarrinhoItensText_1)
+  finalize_order: //android.widget.TextView[@resource-id="CarrinhoItensText_1"]
+  # Pagamento em dinheiro (PaymentMethodTileColumn_0)
+  money: //android.view.View[@resource-id="PaymentMethodTileColumn_0"]
+  # Pagamento Pix Off (PaymentMethodTileText_5)
+  pixoff: //android.widget.TextView[@resource-id="PaymentMethodTileText_5"]
+  # Pagamento boleto bancário (PaymentMethodTileText_3)
+  bankslip: //android.widget.TextView[@resource-id="PaymentMethodTileText_3"]
+  # Confirmar valor do pagamento (ValorPagamentoDialogText_23)
+  confirm_value: //android.widget.TextView[@resource-id="ValorPagamentoDialogText_23"]
+  # Botão finalizar venda (PaymentBottomBarText_0)
+  finish_order: //android.widget.TextView[@resource-id="PaymentBottomBarText_0"]
+  # Botão voltar para tela inicial
+  home: //android.widget.TextView[@text="Tela Inicial"]
+  # Cancelar pedido na tela de novo pedido (PdvScreenText_1)
+  cancel_order1: //android.widget.TextView[@resource-id="PdvScreenText_1"]
+  # Cancelar pedido na tela de carrinho (CarrinhoText_1)
+  cancel_order2: //android.widget.TextView[@resource-id="CarrinhoText_1"]
+  # Texto de confirmação de cancelamento
+  cancel_order_text: //android.widget.TextView[@text="Ei, vai mesmo cancelar esse pedido?"]
+  # Confirmar cancelamento do pedido
+  cancel_order_confirm: //android.widget.TextView[@text="Sim"]
+  # Cancelar (não confirmar) o cancelamento do pedido
+  cancel_order_cancel: //android.widget.TextView[@text="Não"]
+  # Campo de busca de item
+  item_search: //android.widget.EditText
+  # Desconto em valor inteiro (R$)
+  discount_integer: //android.widget.TextView[@text="R$"]
+  # Desconto em percentual (%)
+  discount_percent: //android.widget.TextView[@text="%"]
+  # Campo de input do valor de desconto
+  discount_value: //android.widget.EditText
+  # Adicionar parcela de boleto (ValorPagamentoDialogText_5)
+  bankslip_parce_add: //android.widget.TextView[@resource-id="ValorPagamentoDialogText_5"]
+  # Remover parcela de boleto (ValorPagamentoDialogText_2)
+  bankslip_parce_remove: //android.widget.TextView[@resource-id="ValorPagamentoDialogText_2"]
+  # Campo de prazo de boleto
+  bankslip_term: //android.widget.EditText
+  # Seletor de data de vencimento (contentDescription)
+  bankslip_term_calendar: //android.view.View[@content-desc="Selecionar data"]
+  # Prefixo de data do calendário de boleto
+  bankslip_term_prefix: //android.view.ViewGroup[@resource-id="android:id/content"]/android.view.View/android.view.View/android.view.View/android.view.View[9]
+  # Seção de busca de cliente (ClienteSectionText_0)
+  client_search: //android.widget.TextView[@resource-id="ClienteSectionText_0"]
+  # Campo de cliente padrão "CONSUMIDOR"
+  client: //android.widget.EditText[@text="CONSUMIDOR"]
+  # Campo de texto do cliente
+  client_text: //android.widget.EditText
+  # Cliente com crédito (Client_Credit)
+  client_credit: //android.widget.TextView[@text="Client_Credit"]
+  # Confirmar seleção de cliente
+  client_confirm: //android.widget.TextView[@text="Confirmar"]
+  # Botão carrinho (CheckoutFooterFilledTonalButton_0)
+  cart: //android.view.View[@resource-id="CheckoutFooterFilledTonalButton_0"]

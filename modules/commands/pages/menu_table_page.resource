@@ -26,4 +26,4 @@ Commands - Menu Table - Click Cancel Table
     Wait Visible And Click Element    ${menu_table.cancel_table}
 
 Commands - Menu Table - Click Manage Service Charge
-    Wait Visible And Click Element    ${menu_table.manage_service_charge}
+    Swipe Until Visible And Click Element    ${menu_table.manage_service_charge}

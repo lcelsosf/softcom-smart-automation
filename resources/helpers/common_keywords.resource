@@ -92,6 +92,62 @@ _Do Wait Visible And Click Element With Retry
     END
 
 
+Swipe Until Visible And Click Element
+    [Documentation]    Tenta clicar no elemento diretamente. Se não estiver visível,
+    ...    realiza swipes na tela até que o elemento apareça e clica nele.
+    ...    Usar em menus ou listas onde o elemento pode estar fora da área visível
+    ...    em dispositivos com DPI menor.
+    ...
+    ...    Args:
+    ...    - locator: Localizador do elemento
+    ...    - direction: Direção do swipe — up (padrão) ou down
+    ...    - max_swipes: Número máximo de swipes antes de falhar (padrão: 5)
+    ...    - swipe_timeout: Timeout de visibilidade por tentativa (padrão: 3s)
+    [Arguments]    ${locator}    ${direction}=up    ${max_swipes}=5    ${swipe_timeout}=3s
+    Run With Screenshot On Failure    _Do Swipe Until Visible And Click Element    swipe_click_error
+    ...    Erro ao localizar e clicar no elemento '${locator}' após ${max_swipes} swipes
+    ...    ${locator}    ${direction}    ${max_swipes}    ${swipe_timeout}
+
+_Do Swipe Until Visible And Click Element
+    [Arguments]    ${locator}    ${direction}    ${max_swipes}    ${swipe_timeout}
+    ${width}=     Get Window Width
+    ${height}=    Get Window Height
+    ${center_x}=    Evaluate    int(${width} / 2)
+    ${start_y}=    Evaluate    int(${height} * 0.70)
+    ${end_y}=    Evaluate    int(${height} * 0.30)
+    IF    '${direction}' == 'down'
+        ${start_y}=    Evaluate    int(${height} * 0.30)
+        ${end_y}=    Evaluate    int(${height} * 0.70)
+    END
+    ${visible_status}    ${err}=    Run Keyword And Ignore Error
+    ...    Wait Until Element Is Visible    ${locator}    timeout=${swipe_timeout}
+    IF    '${visible_status}' == 'PASS'
+        ${loc}=    Get Element Location    ${locator}
+        ${el_y}=    Set Variable    ${loc}[y]
+        ${in_viewport}=    Evaluate    0 <= int(${el_y}) < int(${height})
+        IF    ${in_viewport}
+            Click Element    ${locator}
+            RETURN
+        END
+    END
+    ${found}=    Set Variable    ${FALSE}
+    FOR    ${i}    IN RANGE    ${max_swipes}
+        Swipe    start_x=${center_x}    start_y=${start_y}    end_x=${center_x}    end_y=${end_y}    duration=500ms
+        ${status}    ${error}=    Run Keyword And Ignore Error
+        ...    Wait Until Element Is Visible    ${locator}    timeout=${swipe_timeout}
+        IF    '${status}' == 'PASS'
+            ${found}=    Set Variable    ${TRUE}
+            BREAK
+        END
+        Log Action    action=swipe_scroll    message=Elemento não visível após swipe
+        ...    locator=${locator}    swipe=${i + 1}    max=${max_swipes}    level=WARN
+    END
+    IF    not ${found}
+        Fail    Elemento '${locator}' não encontrado após ${max_swipes} swipes na direção '${direction}'.
+    END
+    Click Element    ${locator}
+
+
 Wait Visible And Long Press Element
     [Documentation]    Aguarda o elemento ficar visível e realiza long press.
     ...

@@ -1,0 +1,21 @@
+# Locators — Tela: Home / Menu Principal (HomeScreen)
+# testTag via testTagsAsResourceId=true → xpath @resource-id
+# contentDescription → accessibility id
+
+home:
+  # Opção logoff (HomeOptionCard_4)
+  logoff: //android.view.View[@resource-id="HomeOptionCard_4"]
+  # Confirmação de logoff
+  logoff_confirm: //android.widget.TextView[@text="Sim"]
+  # Botão configurações (contentDescription)
+  settings: //android.view.View[@content-desc="Configurações"]
+  # Novo pedido (NovoPedidoText_0)
+  new_order: //android.widget.TextView[@resource-id="NovoPedidoText_0"]
+  # Verificador de tela inicial (MainBox_0)
+  home: //android.view.View[@resource-id="MainBox_0"]
+  # Clientes (HomeOptionText_0)
+  clients: //android.widget.TextView[@resource-id="HomeOptionText_0"]
+  # Lista de pedidos (HomeActionWideTitleText_0)
+  list_orders: //android.widget.TextView[@resource-id="HomeActionWideTitleText_0"]
+  # Sincronização (HomeOptionText_1)
+  sync: //android.widget.TextView[@resource-id="HomeOptionText_1"]

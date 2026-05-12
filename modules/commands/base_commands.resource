@@ -28,6 +28,7 @@ Variables    locators/split_account_locators.yaml
 Variables    locators/join_table_locators.yaml
 Variables    locators/change_client_locators.yaml
 Variables    locators/cancel_table_locators.yaml
+Variables    locators/manage_service_charge_locators.yaml
 
 # --- Navigation do módulo (importa pages transitivamente) ---
 Resource    navigation/commands_navigation.resource

@@ -26,6 +26,9 @@ Commands - Products - Input Item Obs Text
 Commands - Products - Click Additional Add
     Wait Visible And Click Element    ${products.item_adc_add}
 
+Commands - Products - Click Additional Add 2
+    Wait Visible And Click Element    ${products.item_adc_add_2}
+
 Commands - Products - Click Additional Sub
     Wait Visible And Click Element    ${products.item_adc_sub}
 

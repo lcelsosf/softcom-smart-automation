@@ -1,0 +1,18 @@
+# Locators — Tela: Sincronização (SyncScreen)
+# Sem testTags — usa texto (GAP: solicitar tags ao dev)
+
+sync:
+  # Opção sincronizar produtos
+  products: //android.widget.TextView[@text="Produtos"]
+  # Opção sincronizar clientes
+  clients: //android.widget.TextView[@text="Clientes"]
+  # Opção sincronizar pedidos
+  orders: //android.widget.TextView[@text="Pedidos"]
+  # Botão sincronizar
+  sync_button: //android.widget.TextView[@text="Sincronizar"]
+  # Botão cancelar sincronização
+  sync_cancel: //android.widget.TextView[@text="Cancelar"]
+  # Texto de confirmação de sincronização concluída
+  sync_text: //android.widget.TextView[@text="Atualização concluída!"]
+  # Botão Ok após sincronização
+  sync_confirm: //android.widget.TextView[@text="Ok"]

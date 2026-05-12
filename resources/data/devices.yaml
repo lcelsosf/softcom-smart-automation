@@ -81,7 +81,7 @@ devices:
 
   sipag_dx8000:
     udid: "${SIPAG_DX8000_UDID}"
-    keyboard_close: "hide"
+    keyboard_close: "back"
     system_port: 8224
     appium_server: "${APPIUM_SERVER_URL}"
 

@@ -7,10 +7,10 @@ split_account:
   split_account: xpath=//*[@text='Divisão da Conta']
 
   # Botão aumentar número de pessoas (contentDescription="Aumentar")
-  add_people: accessibility id=Aumentar
+  add_people: //android.view.View[@content-desc="Aumentar"]
 
   # Botão diminuir número de pessoas (contentDescription="Diminuir")
-  sub_people: accessibility id=Diminuir
+  sub_people: //android.view.View[@content-desc="Diminuir"]
 
   # Botão voltar/fechar dialog
   back: xpath=//*[@text='Voltar']

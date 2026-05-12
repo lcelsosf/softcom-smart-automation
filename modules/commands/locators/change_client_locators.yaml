@@ -7,13 +7,13 @@ change_client:
   client: xpath=//*[@resource-id='CustomerChangeDialogBasicOutlinedField_0']//android.widget.EditText
 
   # Ícone buscar cliente (contentDescription="Buscar cliente")
-  search: accessibility id=Buscar cliente
+  search: //android.view.View[@content-desc="Buscar cliente"]
 
   # Botão aumentar pessoas (contentDescription="Aumentar")
-  add_people: accessibility id=Aumentar
+  add_people: //android.view.View[@content-desc="Aumentar"]
 
   # Botão diminuir pessoas (contentDescription="Diminuir")
-  sub_people: accessibility id=Diminuir
+  sub_people: //android.view.View[@content-desc="Diminuir"]
 
   # Botão confirmar alteração
   confirm: xpath=//*[@resource-id='CustomerChangeDialogButton_0']
