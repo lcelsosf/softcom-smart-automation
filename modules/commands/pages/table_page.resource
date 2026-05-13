@@ -5,7 +5,7 @@ Resource    ../../../resources/helpers/common_keywords.resource
 
 *** Keywords ***
 Commands - Table - Click Menu
-    Wait Visible And Click Element    ${table.menu}
+    Wait Visible And Click Element With Retry  ${table.menu}  3   
 
 Commands - Table - Verify Conference Question
     Wait Until Element Is Visible    ${table.conference_question}
@@ -42,3 +42,18 @@ Commands - Table - Click Clean Search
 
 Commands - Table - Empty State
     Wait Until Element Is Visible    ${table.empty_state}
+
+Commands - Table - Receive Order
+    Wait Visible And Click Element    ${table.receive_order}
+
+Commands - Table - Click Remove Item
+    Wait Visible And Click Element    ${table.remove_item}
+
+Commands - Table - Confirm Remove Item
+    Wait Visible And Click Element    ${table.remove_item_confirm}
+
+Commands - Table - Cancel Remove Item
+    Wait Visible And Click Element    ${table.remove_item_cancel}
+
+Commands - Table - Verify Remove Item Text
+    Wait Until Element Is Visible    ${table.remove_item_text}

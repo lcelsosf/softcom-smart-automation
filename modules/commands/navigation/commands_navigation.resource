@@ -66,12 +66,23 @@ Commands - Search item and select
     [Arguments]    ${item_name}
     Commands - Products - Search Item    ${item_name}
     Commands - Products - Click Product
+
 Commands - Add item throw
     [Documentation]    Adiciona um item à mesa.
     Commands - Products - Click Add Item
     Commands - Table - Click Clean Search
     Commands - Table - Click Advance
     Commands - Table - Click Advance
+
+Commands - Navigate To Released Screen
+    [Documentation]    Navega até a tela de lancados.
+    Commands - Table - Click Tab Released
+
+Commands - Add Observation To Item
+    [Documentation]    Adiciona uma observação a um item da mesa.
+    [Arguments]    ${observation}
+    Commands - Products - Click Item Obs
+    Commands - Products - Input Item Obs Text    ${observation}
 
 # =============================================================================
 # NAVEGAÇÃO — FATURAMENTO
@@ -83,6 +94,20 @@ Commands - Navigate To Invoice And Pay
     [Arguments]    ${payment_method}
     Commands - Table - Click Menu
     Commands - Menu Table - Click Invoice
+    IF    '${payment_method}' == 'money'
+        Commands - Invoice - Click Payment Money
+    ELSE IF    '${payment_method}' == 'pixoff'
+        Commands - Invoice - Click Payment Pixoff
+    END
+    Commands - Invoice - Click Confirm Value
+    Commands - Invoice - Click Finalize Sale
+    Commands - Table Panel - Verify Panel Visible
+
+Commands - Invoice To Released Screen
+    [Documentation]    Navega até o dialog de faturamento pela tela de lancados.
+    ...    Métodos suportados: money, pixoff
+    [Arguments]    ${payment_method}
+    Commands - Table - Receive Order
     IF    '${payment_method}' == 'money'
         Commands - Invoice - Click Payment Money
     ELSE IF    '${payment_method}' == 'pixoff'
@@ -196,120 +221,157 @@ Commands - Complete Flow - Open Table And Record Advance
 # =============================================================================
 # FLUXOS COMPLETOS - REGRESSION
 # =============================================================================
-
+Commands - Complete Flow - Add Observation
+    [Documentation]    Fluxo completo: adiciona uma observação ao produto e realiza o pagamento.
+    [Arguments]    ${table_number}    ${client_name}    ${observation}    ${payment_method}
+    Commands - Navigate To Open Table    ${table_number}    ${client_name}
+    Commands - Products - Search Item  product_1
+    Commands - Products - Click Product
+    Commands - Add Observation To Item    ${observation}
+    Commands - Add item throw
+    Commands - Navigate To Search Table And Open  ${table_number}
+    Commands - Navigate To Invoice And Pay    ${payment_method}
+    
 Commands - Complete Flow - Select Product And Alter Quantity
     [Documentation]    Fluxo completo: seleciona um produto, altera a quantidade e realiza o pagamento.
-    [Arguments]    ${table_number}    ${client_name}    ${quantity}    ${payment_method}
+    [Arguments]    ${table_number}    ${client_name}    ${payment_method}
     Commands - Navigate To Open Table    ${table_number}    ${client_name}
-    Commands - Search item and select    product_additional
-    Commands - 
+    Commands - Search item and select    product_1
+    Commands - Products - Click Quantity Add
+    Commands - Products - Click Quantity Sub
+    Commands - Products - Click Quantity Add
+    Commands - Add item throw
+    Commands - Navigate To Search Table And Open    ${table_number}
     Commands - Navigate To Invoice And Pay    ${payment_method}
 
 Commands - Complete Flow - Select Product Not Service
     [Documentation]    Fluxo completo: seleciona um produto que não contabiliza serviço.
-    [Arguments]    ${table_number}    ${client_name}
+    [Arguments]    ${table_number}    ${client_name}    ${payment_method}
     Commands - Navigate To Open Table    ${table_number}    ${client_name}
     Commands - Add Items To Table    product_not_service
     Commands - Navigate To Search Table And Open    ${table_number}
-    Commands - Navigate To Invoice And Pay    money
+    Commands - Navigate To Invoice And Pay    ${payment_method}
 
 Commands - Complete Flow - Select Product Disabled
     [Documentation]    Fluxo completo: seleciona um produto desativado.
-    [Arguments]    ${table_number}    ${client_name}
+    [Arguments]    ${table_number}    ${client_name}    ${payment_method}
     Commands - Navigate To Open Table    ${table_number}    ${client_name}
     Commands - Products - Search Item    product_disabled
     Commands - Products - Product Not Visible
+    Commands - Table - Click Clean Search
     Commands - Add Items To Table    product_1
     Commands - Navigate To Search Table And Open    ${table_number}
-    Commands - Navigate To Invoice And Pay    money
+    Commands - Navigate To Invoice And Pay     ${payment_method}
 
 Commands- Complete Flow - Select Product Not Send To Order
     [Documentation]    Fluxo completo: seleciona um produto que não é enviado para a comanda.
-    [Arguments]    ${table_number}    ${client_name}
+    [Arguments]    ${table_number}    ${client_name}    ${payment_method}
     Commands - Navigate To Open Table    ${table_number}    ${client_name}
     Commands - Products - Search Item    product_not_send_to_order
     Commands - Products - Product Not Visible
+    Commands - Table - Click Clean Search
     Commands - Add Items To Table  product_1
     Commands - Navigate To Search Table And Open  ${table_number}
-    Commands - Navigate To Invoice And Pay    money
+    Commands - Navigate To Invoice And Pay    ${payment_method}
 
 Commands - Complete Flow - Select Product Not Selling
     [Documentation]    Fluxo completo: seleciona um produto que está marcado para não vender.
-    [Arguments]    ${table_number}    ${client_name}
+    [Arguments]    ${table_number}    ${client_name}    ${payment_method}
     Commands - Navigate To Open Table    ${table_number}    ${client_name}
     Commands - Products - Search Item    product_not_selling
     Commands - Products - Product Not Visible
+    Commands - Table - Click Clean Search
     Commands - Add Items To Table  product_1
     Commands - Navigate To Search Table And Open  ${table_number}
-    Commands - Navigate To Invoice And Pay    money
+    Commands - Navigate To Invoice And Pay    ${payment_method}
 
 Commands - Complete Flow - Select Product Promotion
     [Documentation]    Fluxo completo: seleciona um produto em promoção.
-    [Arguments]    ${table_number}    ${client_name}
+    [Arguments]    ${table_number}    ${client_name}    ${payment_method}
     Commands - Navigate To Open Table    ${table_number}    ${client_name}
     Commands - Add Items To Table  product_promotion
     Commands - Navigate To Search Table And Open  ${table_number}
-    Commands - Navigate To Invoice And Pay    money
+    Commands - Navigate To Invoice And Pay    ${payment_method}
 
 Commands - Complete Flow - Select Product Additionals
     [Documentation]    Fluxo completo: seleciona adicionais de um produto.
-    [Arguments]    ${table_number}    ${client_name}
+    [Arguments]    ${table_number}    ${client_name}    ${payment_method}
     Commands - Navigate To Open Table    ${table_number}    ${client_name}
     Commands - Search item and select    product_additional
     Commands - Products - Click Additional Add
-#    Commands - Products - Click Additional Add 2
     Commands - Add item throw
     Commands - Navigate To Search Table And Open  ${table_number}
-    Commands - Navigate To Invoice And Pay    money
+    Commands - Navigate To Invoice And Pay    ${payment_method}
+
+Commands - Complete Flow - Remove Items And Invoice
+    [Documentation]    Fluxo completo: remove itens da mesa e realiza o pagamento.
+    [Arguments]    ${table_number}    ${client_name}    ${payment_method}
+    Commands - Navigate To Open Table    ${table_number}    ${client_name}
+    Commands - Add Items To Table  product_1  product_2
+    Commands - Navigate To Search Table And Open  ${table_number}
+    Commands - Navigate To Released Screen
+    Commands - Table - Click Remove Item
+    Commands - Table - Verify Remove Item Text
+    Commands - Table - Confirm Remove Item
+    Commands - Invoice To Released Screen  ${payment_method}
+
+Commands - Complete Flow - Invoice To Released Screen
+    [Documentation]    Fluxo completo: realiza o pagamento pela tela de lancados.
+    [Arguments]    ${table_number}    ${client_name}    ${payment_method}
+    Commands - Navigate To Open Table  ${table_number}  ${client_name}
+    Commands - Add Items To Table  product_1
+    Commands - Navigate To Search Table And Open  ${table_number}
+    Commands - Navigate To Released Screen
+    Commands - Invoice To Released Screen  ${payment_method}
 
 Commands - Complete Flow - Print Conference
     [Documentation]    Fluxo completo: imprime a conferência da mesa.
-    [Arguments]    ${table_number}    ${client_name}
+    [Arguments]    ${table_number}    ${client_name}    ${payment_method}
     Commands - Navigate To Open Table    ${table_number}    ${client_name}
     Commands - Add Items To Table  product_1
     Commands - Navigate To Search Table And Open    ${table_number}
     Commands - Table - Click Conference Print
-    Commands - Table - View Conference Question
+    Commands - Table - Verify Conference Question
     Commands - Table - Conference Confirm
-    Commands - Navigate To Invoice And Pay    money
+    Commands - Navigate To Invoice And Pay    ${payment_method}
 
 Commands - Complete Flow - Invoice With Money
     [Documentation]    Fluxo completo: realiza o pagamento com dinheiro.
-    [Arguments]    ${table_number}    ${client_name}
+    [Arguments]    ${table_number}    ${client_name}    ${payment_method}
     Commands - Navigate To Open Table    ${table_number}    ${client_name}
     Commands - Add Items To Table  product_1
     Commands - Navigate To Search Table And Open    ${table_number}
-    Commands - Navigate To Invoice And Pay    money
+    Commands - Navigate To Invoice And Pay    ${payment_method}
 
 Commands - Complete Flow - Invoice With Pix Off
     [Documentation]    Fluxo completo: realiza o pagamento com Pix Off.
-    [Arguments]    ${table_number}    ${client_name}
+    [Arguments]    ${table_number}    ${client_name}    ${payment_method}
     Commands - Navigate To Open Table    ${table_number}    ${client_name}
     Commands - Add Items To Table  product_1
     Commands - Navigate To Search Table And Open    ${table_number}
-    Commands - Navigate To Invoice And Pay    pixoff
+    Commands - Navigate To Invoice And Pay    ${payment_method}
 
 Commands - Complete Flow - Advance With Money
     [Documentation]    Fluxo completo: registra um adiantamento com dinheiro.
-    [Arguments]    ${table_number}    ${client_name}
+    [Arguments]    ${table_number}    ${client_name}    ${payment_method}
     Commands - Navigate To Open Table    ${table_number}    ${client_name}
     Commands - Add Items To Table    product_1    product_2
     Commands - Navigate To Search Table And Open    ${table_number}
-    Commands - Navigate To Advance    ${client_name}    1,00    money
-    Commands - Navigate To Invoice And Pay    money
+    Commands - Navigate To Advance    ${client_name}    1,00    ${payment_method}
+    Commands - Navigate To Invoice And Pay    ${payment_method}
 
 Commands - Complete Flow - Advance With Pix Off
     [Documentation]    Fluxo completo: registra um adiantamento com Pix Off.
-    [Arguments]    ${table_number}    ${client_name}
+    [Arguments]    ${table_number}    ${client_name}    ${payment_method}
     Commands - Navigate To Open Table    ${table_number}    ${client_name}
     Commands - Add Items To Table    product_1    product_2
     Commands - Navigate To Search Table And Open    ${table_number}
-    Commands - Navigate To Advance    ${client_name}    1,00    pixoff
-    Commands - Navigate To Invoice And Pay    pixoff
+    Commands - Navigate To Advance    ${client_name}    1,00    ${payment_method}
+    Commands - Navigate To Invoice And Pay    ${payment_method}
 
 Commands - Complete Flow - Split Account
     [Documentation]    Fluxo completo: divide a conta da mesa.
-    [Arguments]    ${table_number}    ${client_name}
+    [Arguments]    ${table_number}    ${client_name}    ${payment_method}
     Commands - Navigate To Open Table    ${table_number}    ${client_name}
     Commands - Add Items To Table    product_1
     Commands - Navigate To Search Table And Open    ${table_number}
@@ -317,11 +379,11 @@ Commands - Complete Flow - Split Account
     Commands - Split Account - Click Add People
     Commands - Split Account - Click Sub People
     Commands - Split Account - Click Back
-    Commands - Navigate To Invoice And Pay  money
+    Commands - Navigate To Invoice And Pay  ${payment_method}
 
 Commands - Complete Flow - Change Client
     [Documentation]    Fluxo completo: altera o cliente da mesa.
-    [Arguments]    ${table_number}    ${client_name}
+    [Arguments]    ${table_number}    ${client_name}    ${payment_method}
     Commands - Navigate To Open Table    ${table_number}    ${client_name}
     Commands - Add Items To Table    product_1
     Commands - Navigate To Search Table And Open    ${table_number}
@@ -330,11 +392,11 @@ Commands - Complete Flow - Change Client
     Commands - Change Client - Click Add People
     Commands - Change Client - Click Sub People
     Commands - Change Client - Click Confirm
-    Commands - Navigate To Invoice And Pay  money
+    Commands - Navigate To Invoice And Pay  ${payment_method}
 
 Commands - Complete Flow - Join Accounts
     [Documentation]    Fluxo completo: junta as contas da mesa.
-    [Arguments]    ${table_number}    ${table_number_2}    ${client_name}
+    [Arguments]    ${table_number}    ${table_number_2}    ${client_name}    ${payment_method}
     Commands - Navigate To Open Table    ${table_number}    ${client_name}
     Commands - Add Items To Table    product_1
     Commands - Navigate To Open Table    ${table_number_2}    ${client_name}
@@ -345,7 +407,7 @@ Commands - Complete Flow - Join Accounts
     Commands - Join Accounts - Click Confirm
     Commands - Join Accounts - Verify Join Question
     Commands - Join Accounts - Click Confirm Join
-    Commands - Navigate To Invoice And Pay  money
+    Commands - Navigate To Invoice And Pay  ${payment_method}
 
 Commands - Complete Flow - Cancel Table
     [Documentation]    Fluxo completo: cancela a mesa.
@@ -369,9 +431,9 @@ Commands - Complete Flow - Cancel Table no-reason
 
 Commands - Complete Flow - Manage Service Charge
     [Documentation]    Fluxo completo: gerencia taxas de serviço.
-    [Arguments]    ${table_number}    ${client_name}
+    [Arguments]    ${table_number}    ${client_name}    ${payment_method}
     Commands - Navigate To Open Table    ${table_number}    ${client_name}
     Commands - Add Items To Table    product_1
     Commands - Navigate To Search Table And Open    ${table_number}
     Commands - Navigate To Manage Service Charge
-    Commands - Navigate To Invoice And Pay  money
+    Commands - Navigate To Invoice And Pay  ${payment_method}

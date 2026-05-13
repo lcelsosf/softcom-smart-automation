@@ -70,6 +70,7 @@ Open App Session
     ELSE
         ${final_udid}=    Set Variable    ${udid}
     END
+    Set Suite Variable    ${DEVICE_UDID}    ${final_udid}
 
     # Lê configurações do devices.yaml para a tag atual
     ${config}=    Get Device Config    ${device_tag}

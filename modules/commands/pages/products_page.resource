@@ -45,3 +45,9 @@ Commands - Products - Click Additional Obs Confirm
 
 Commands - Products - Click Additional Obs Cancel
     Wait Visible And Click Element    ${products.item_adc_obs_cancel}
+
+Commands - Products - Click Quantity Add
+    Wait Visible And Click Element    ${products.quantity_add}
+
+Commands - Products - Click Quantity Sub
+    Wait Visible And Click Element    ${products.quantity_sub}

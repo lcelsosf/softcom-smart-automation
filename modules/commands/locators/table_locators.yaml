@@ -39,4 +39,18 @@ table:
   # Ícone limpar pesquisa (contentDescription="Limpar pesquisa")
   clean_search: //android.view.View[@content-desc="Limpar pesquisa"]
 
+  # View de produtos nao encontrados
   empty_state: //android.widget.TextView[@resource-id="EmptyStateCustomText_0"]
+
+  # Botao Receber Pedido
+  receive_order: //android.widget.TextView[@resource-id="ComandaMesaScreenBottomBarText_3"]
+
+  # Botao de remover item
+  remove_item: //android.view.View[@content-desc="Remover item"]
+
+  #
+  remove_item_confirm: //android.widget.TextView[@text="Sim"]
+
+  remove_item_cancel: //android.widget.TextView[@text="Não"]
+
+  remove_item_text: //android.widget.TextView[@resource-id="ComandaNaMesaContentConfirmCancelText_0"]

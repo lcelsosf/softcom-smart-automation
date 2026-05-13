@@ -1,0 +1,16 @@
+clients:
+  add_client: softcom.mobile.smart2:id/pedido_dialog_cliente_fab_novo
+  cpf: softcom.mobile.smart2:id/cliente_dialog_edt_cnpj
+  name: softcom.mobile.smart2:id/cliente_dialog_edt_nome
+  email: softcom.mobile.smart2:id/cliente_dialog_edt_contato_email
+  zip_code: softcom.mobile.smart2:id/cliente_dialog_edt_cep
+  address: softcom.mobile.smart2:id/cliente_dialog_edt_endereco
+  number: softcom.mobile.smart2:id/cliente_dialog_edt_numero
+  neighborhood: softcom.mobile.smart2:id/cliente_dialog_edt_bairro
+  complement: softcom.mobile.smart2:id/cliente_dialog_edt_complemento
+  state: softcom.mobile.smart2:id/cliente_dialog_edt_uf
+  city: softcom.mobile.smart2:id/cliente_dialog_edt_cidade
+  ddd: softcom.mobile.smart2:id/cliente_dialog_edt_contato_ddd
+  telephone: softcom.mobile.smart2:id/cliente_dialog_edt_contato_telefone
+  save_client: softcom.mobile.smart2:id/cliente_dialog_btn_confirmar
+  exit_client: softcom.mobile.smart2:id/pedido_dialog_cliente_btn_cancelar

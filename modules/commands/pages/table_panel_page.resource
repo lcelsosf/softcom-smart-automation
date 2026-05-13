@@ -37,4 +37,4 @@ Commands - Table Panel - Click Tab Comandas
     Wait Visible And Click Element    ${table_panel.tab_comandas}
 
 Commands - Table Panel - Verify Panel Visible
-    Wait Until Element Is Visible    ${table_panel.table_panel}
+    Wait Until Element Is Visible    ${table_panel.table_panel}    ${ELEMENT_TIMEOUT}
