@@ -39,7 +39,7 @@ products:
   item_adc_obs: xpath=(//*[@text='Observação'])[1]
 
   # Campo de texto da observação do adicional
-  item_adc_obs_text: xpath=//*[@resource-id='ComandaAddProdutoAdicionaisBasicOutlinedField_0']//android.widget.EditText
+  item_adc_obs_text: //android.widget.EditText
 
   # Botão confirmar observação do adicional
   item_adc_obs_confirm: xpath=//*[@text='Confirmar']

@@ -84,6 +84,13 @@ Commands - Add Observation To Item
     Commands - Products - Click Item Obs
     Commands - Products - Input Item Obs Text    ${observation}
 
+Commands - Add Observation To Additional item
+    [Documentation]    Adiciona uma observacao a um adicional do item da mesa.
+    [Arguments]    ${observation}
+    Commands - Products - Click Additional Obs
+    Commands - Products - Input Additional Obs Text    ${observation}
+    Commands - Products - Click Additional Obs Confirm
+
 # =============================================================================
 # NAVEGAÇÃO — FATURAMENTO
 # =============================================================================
@@ -221,6 +228,18 @@ Commands - Complete Flow - Open Table And Record Advance
 # =============================================================================
 # FLUXOS COMPLETOS - REGRESSION
 # =============================================================================
+
+Commands - Complete Flow - Add Observation To Additional
+    [Documentation]    Fluxo completo: adiciona uma observação aos adicionais de um produto e realiza o pagamento.
+    [Arguments]    ${table_number}    ${client_name}    ${observation}    ${payment_method}
+    Commands - Navigate To Open Table    ${table_number}    ${client_name}
+    Commands - Products - Search Item    product_1
+    Commands - Products - Click Product
+    Commands - Add Observation To Additional item    ${observation}
+    Commands - Add item throw
+    Commands - Navigate To Search Table And Open  ${table_number}
+    Commands - Navigate To Invoice And Pay    ${payment_method}
+    
 Commands - Complete Flow - Add Observation
     [Documentation]    Fluxo completo: adiciona uma observação ao produto e realiza o pagamento.
     [Arguments]    ${table_number}    ${client_name}    ${observation}    ${payment_method}
