@@ -45,7 +45,7 @@ devices:
 
   stone:
     udid: "${STONE_UDID}"
-    keyboard_close: "hide"
+    keyboard_close: "back"
     system_port: 8212
     appium_server: "${APPIUM_SERVER_URL}"
 

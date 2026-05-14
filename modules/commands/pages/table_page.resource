@@ -37,6 +37,17 @@ Commands - Table - Click Cancel
 Commands - Table - Click Filter
     Wait Visible And Click Element    ${table.filter}
 
+Commands - Table - Filter Text
+    [Arguments]    ${Text}
+    Wait Visible And Input Text    ${table.filter_text}    ${Text}
+    Close Keyboard
+
+Commands - Table - Select group
+    Wait Visible And Click Element    ${table.group}
+
+Commands - Table - Confirm Filter
+    Wait Visible And Click Element    ${table.filter_confirm}
+
 Commands - Table - Click Clean Search
     Wait Visible And Click Element    ${table.clean_search}
 

@@ -61,13 +61,13 @@ Commands - Products - Product Not Visible
     [Documentation]    Verifica se está sendo exibida a tela de produto nao encontrado.
     Commands - Table - Empty State
 
-Commands - Search item and select
+Commands - Search Item And Select
     [Documentation]    Busca um item na lista de produtos.
     [Arguments]    ${item_name}
     Commands - Products - Search Item    ${item_name}
     Commands - Products - Click Product
 
-Commands - Add item throw
+Commands - Add Item Throw
     [Documentation]    Adiciona um item à mesa.
     Commands - Products - Click Add Item
     Commands - Table - Click Clean Search
@@ -90,6 +90,24 @@ Commands - Add Observation To Additional item
     Commands - Products - Click Additional Obs
     Commands - Products - Input Additional Obs Text    ${observation}
     Commands - Products - Click Additional Obs Confirm
+
+Commands - Apply Filter Group
+    [Documentation]    Aplica o filtro de grupo na listagem de produtos.
+    [Arguments]    ${group}
+    Commands - Table - Click Filter
+    Commands - Table - Filter Text    ${group}
+    Commands - Table - Select group
+    Commands - Table - Confirm Filter
+
+Commands - Add Item Combo
+    [Documentation]    Adiciona um item combo Flexivel + Produto Final
+    ...  esse item é exclusivo da automacao, nao ira funcionar em outro produto combo.
+    Commands - Products - Click Additional Add
+    Commands - Products - Click Additional Add 2
+    Commands - Products - Click Additional Add
+    Commands - Products - Click Additional Add 2
+    Commands - Products - Click Additional Add 
+    Commands - Products - Click Additional Add 2
 
 # =============================================================================
 # NAVEGAÇÃO — FATURAMENTO
@@ -318,8 +336,27 @@ Commands - Complete Flow - Select Product Additionals
     Commands - Navigate To Open Table    ${table_number}    ${client_name}
     Commands - Search item and select    product_additional
     Commands - Products - Click Additional Add
-    Commands - Add item throw
+    Commands - Add Item Throw
     Commands - Navigate To Search Table And Open  ${table_number}
+    Commands - Navigate To Invoice And Pay    ${payment_method}
+
+Commands - Complete Flow - Add Item Combo
+    [Documentation]    Fluxo completo: adiciona um item combo (flexivel + produto final) a mesa.
+    [Arguments]    ${table_number}    ${client_name}    ${payment_method}
+    Commands - Navigate To Open Table    ${table_number}    ${client_name}
+    Commands - Search Item And Select    product_combo_1
+    Commands - Add Item Combo
+    Commands - Add Item Throw
+    Commands - Navigate To Search Table And Open    ${table_number}
+    Commands - Navigate To Invoice And Play    ${payment_method}
+
+Commands - Complete Flow - Apply Filter
+    [Documentation]    Fluxo completo: aplica filtro e pesquisa um produto na mesa.
+    [Arguments]    ${table_number}    ${client_name}    ${group}    ${payment_method}
+    Commands - Navigate To Open Table  ${table_number}  ${client_name}
+    Commands - Apply Filter Group    ${group}
+    Commands - Add Items To Table    product_1
+    Commands - Navigate To Search Table And Open    ${table_number}
     Commands - Navigate To Invoice And Pay    ${payment_method}
 
 Commands - Complete Flow - Remove Items And Invoice

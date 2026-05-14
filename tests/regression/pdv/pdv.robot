@@ -38,11 +38,6 @@ Test Teardown    Test Teardown Default
 #     [Tags]    @allure.label.severity:normal    regression    pdv    settings    setup
 #     Pdv - Navigate To ...
 
-# PDV - Clients - Register Client
-#     [Documentation]    Cadastra um novo cliente pessoa física com dados gerados aleatoriamente.
-#     [Tags]    @allure.label.severity:normal    regression    pdv    clients
-#     Pdv - Navigate To Register Client
-
 PDV - Orders - Client Order
     [Documentation]    Realiza pedido iniciado a partir da tela de clientes.
     [Tags]    @allure.label.severity:normal    regression    pdv    orders

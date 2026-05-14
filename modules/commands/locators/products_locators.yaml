@@ -25,6 +25,12 @@ products:
   # Botão adicionar adicional (contentDescription="Adicionar") — segundo
   item_adc_add_2: xpath=//*[@resource-id='ComandaAddProdutoItemSectionProdutoComboItemCard_1']//*[@content-desc='Adicionar']
 
+  # Botão adicionar adicional (contentDescription="Adicionar") — segundo
+  item_adc_add_3: xpath=//*[@resource-id='ComandaAddProdutoItemSectionProdutoComboItemCard_2']//*[@content-desc='Adicionar']
+
+  # Botão adicionar adicional (contentDescription="Adicionar") — segundo
+  item_adc_add_4: xpath=//*[@resource-id='ComandaAddProdutoItemSectionProdutoComboItemCard_3']//*[@content-desc='Adicionar']
+
   # Botão + de quantidade
   # Ancora pela barra inferior — resource-id único na tela
   quantity_add: xpath=//*[@resource-id='ComandaAddProdutoBottomBarQuantityRowSelector_0']//*[@content-desc='Adicionar']

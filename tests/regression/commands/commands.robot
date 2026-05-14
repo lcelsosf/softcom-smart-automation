@@ -26,6 +26,11 @@ Commands - Open table, select product Additionals and invoice
     [Documentation]    Verifica o fluxo de abertura de mesa, seleção de produto com adicional e pagamento com dinheiro.
     [Tags]    @allure.label.severity:critical    regression    commands    additionals
     Commands - Complete Flow - Select Product Additionals   2    ${TABLE_CLIENT}    money
+
+Commands - Open table, select product combo and invoice
+    [Documentation]    Verifica o fluxo de abertura de mesa, selecao de produto combo flexivel + produto final e pagamento.
+    [Tags]    @allure.label.severity:critical    regression    commands    combo_flexivel_produto_final
+    Commands - Complete Flow - Add Item Combo    3    ${TABLE_CLIENT}    money
     
 Commands - Open table, select product, add observations to additional to item and invoice
     [Documentation]    Verifica o fluxo de abertura de mesa, seleção de produto, adição de observação aos adicionais e pagamento.
@@ -61,6 +66,11 @@ Commands - Open table, select product promotion and invoice
     [Documentation]    Verifica o fluxo de abertura de mesa, seleção de produto em promoção e pagamento com dinheiro.
     [Tags]    @allure.label.severity:critical    regression    commands    promotion
     Commands - Complete Flow - Select Product Promotion   7    ${TABLE_CLIENT}    money
+
+Commands - Open table, apply filter, select product and invoice
+    [Documentation]    Verifica o fluxo de abertura de mesa, aplicacao de filtro, selecao de produto e pagamento em dinheiro.
+    [Tags]    @allure.label.severity:normal    regression    commands    filter
+    Commands - Complete Flow - Apply Filter    8    ${TABLE_CLIENT}    common    money
 
 Commmands - Open table, select products, remove itens and invoice
     [Documentation]    Verifica o fluxo de abertura de mesa, seleção de produtos, remoção de itens e pagamento.

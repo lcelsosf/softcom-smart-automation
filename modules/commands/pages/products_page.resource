@@ -29,6 +29,12 @@ Commands - Products - Click Additional Add
 Commands - Products - Click Additional Add 2
     Wait Visible And Click Element    ${products.item_adc_add_2}
 
+Commands - Products - Click Additional Add 3
+    Wait Visible And Click Element    ${products.item_adc_add_3}
+    
+Commands - Products - Click Additional Add 4
+    Wait Visible And Click Element    ${products.item_adc_add_4}
+
 Commands - Products - Click Additional Sub
     Wait Visible And Click Element    ${products.item_adc_sub}
 

@@ -34,7 +34,19 @@ table:
   cancel: xpath=//*[@resource-id='ComandaMesaScreenBottomBarText_2']
 
   # Ícone filtrar itens (contentDescription="Filtrar")
-  filter: accessibility id=Filtrar
+  filter: //android.view.View[@content-desc="Filtrar"]
+
+  # Campo de pesquisa na tela de filtro de grupos
+  filter_text: //android.widget.EditText
+
+  # Grupo resultado do filter
+  group: //android.view.View[@resource-id="ComandaMesaProdutosContentFilterDialogComandaMesaGrupoFilterCard_0"]
+
+  # Botao de confirmacao do filtro
+  filter_confirm: //android.widget.TextView[@resource-id="ComandaMesaProdutosContentFilterDialogText_4"]
+
+  # Botao de cancelamento do filtro
+  filter_cancel: //android.view.View[@resource-id="ComandaMesaProdutosContentFilterDialogOutlinedButton_0"]
 
   # Ícone limpar pesquisa (contentDescription="Limpar pesquisa")
   clean_search: //android.view.View[@content-desc="Limpar pesquisa"]
