@@ -11,7 +11,8 @@
       "Bash(Get-ChildItem *)",
       "Bash(Select-Object -ExpandProperty FullName)",
       "Bash(Sort-Object)",
-      "Bash(dir D:\\\\Softcom\\\\LAB *)"
+      "Bash(dir D:\\\\Softcom\\\\LAB *)",
+      "Bash(dir *)"
     ]
   }
 }

@@ -78,6 +78,7 @@ Pdv - Orders - Click Client Consumer
 
 Pdv - Orders - Input Client Name
     [Arguments]    ${client_name}
+    Clear Text    ${orders.client_text}
     Wait Visible And Input Text    ${orders.client_text}    ${client_name}
     Close Keyboard
 
@@ -90,11 +91,23 @@ Pdv - Orders - Click Client Confirm
 Pdv - Orders - Click Cart
     Wait Visible And Click Element    ${orders.cart}
 
-Pdv - Orders - Click Discount Integer
-    Wait Visible And Click Element    ${orders.discount_integer}
+Pdv - Orders - Click Discount-Sum
+    Wait Visible And Click Element    ${orders.discount_sum}
 
-Pdv - Orders - Click Discount Percent
-    Wait Visible And Click Element    ${orders.discount_percent}
+Pdv - Orders - Click Discount
+    Wait Visible And Click Element    ${orders.discount}
+
+Pdv - Orders - Click R$
+    Wait Visible And Click Element    ${orders.r_currency}
+
+Pdv - Orders - Click Percent
+    Wait Visible And Click Element    ${orders.percent}
+
+Pdv - Orders - Click Apply Discount
+    Wait Visible And Click Element    ${orders.apply}
+
+Pdv - Orders - Click Remove Discount
+    Wait Visible And Click Element    ${orders.apply}
 
 Pdv - Orders - Input Discount Value
     [Arguments]    ${value}

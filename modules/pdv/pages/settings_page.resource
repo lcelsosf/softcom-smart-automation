@@ -38,7 +38,7 @@ Pdv - Settings - Click Ticket Noaction
     Wait Visible And Click Element    ${settings.ticket_noaction}
 
 Pdv - Settings - Verify Ticket Quest Visible
-    Wait Until Element Is Visible    ${settings.ticket_quest_text}
+    Wait Until Element Is Visible    ${settings.ticket_quest_text}    timeout=${ELEMENT_TIMEOUT}
 
 Pdv - Settings - Click Ticket Quest Confirm
     Wait Visible And Click Element    ${settings.ticket_quest_confirm}
@@ -49,5 +49,14 @@ Pdv - Settings - Click Ticket Quest Cancel
 Pdv - Settings - Click Smart PDV
     Wait Visible And Click Element    ${settings.smart_pdv}
 
-Pdv - Settings - Click Conference Order
-    Wait Visible And Click Element    ${settings.conference_order}
+Pdv - Settings - Click Mod Operation
+    Wait Visible And Click Element    ${settings.mod_operation}
+
+Pdv - Settings - Click Express
+    Wait Visible And Click Element    ${settings.express}
+
+Pdv - Settings - Click Mini PDV
+    Wait Visible And Click Element    ${settings.mini_pdv}
+
+Pdv - Settings - Click Default
+    Wait Visible And Click Element    ${settings.default}

@@ -67,7 +67,6 @@ Pdv - Navigate To Create Order
         Pdv - Orders - Click Bankslip Parcel Remove
         Pdv - Orders - Click Bankslip Term Calendar
         Pdv - Orders - Click Bankslip Term Prefix
-        Pdv - Orders - Input Bankslip Term    7
     END
     Pdv - Orders - Click Confirm Value
     Pdv - Orders - Click Finish Order
@@ -158,7 +157,17 @@ Pdv - Navigate To Toggle Conference Setting
     [Documentation]    Alterna o toggle de conferência ao finalizar pedido nas configurações.
     Pdv - Navigate To Settings
     Pdv - Settings - Click Smart PDV
-    Pdv - Settings - Click Conference Order
+    Pdv - Settings - Click Mod Operation
+    Pdv - Settings - Click Express
+    Pdv - Settings - Click Back Settings
+    Pdv - Settings - Click Back Settings
+
+Pdv - Navigate To Toggle Conference Setting (Default)
+    [Documentation]    Alterna o toggle de conferência ao finalizar pedido nas configurações.
+    Pdv - Navigate To Settings
+    Pdv - Settings - Click Smart PDV
+    Pdv - Settings - Click Mod Operation
+    Pdv - Settings - Click Default
     Pdv - Settings - Click Back Settings
     Pdv - Settings - Click Back Settings
 
@@ -173,7 +182,6 @@ Pdv - Navigate To Order Conference Off
     Pdv - Orders - Click Finish Order
     Pdv - Orders - Click Home
     Pdv - Home - Verify Visible
-    Pdv - Navigate To Toggle Conference Setting
 
 Pdv - Navigate To Order Conference Off Cart
     [Documentation]    Realiza pedido com conferência desativada validando o carrinho.
@@ -187,7 +195,7 @@ Pdv - Navigate To Order Conference Off Cart
     Pdv - Orders - Click Finish Order
     Pdv - Orders - Click Home
     Pdv - Home - Verify Visible
-    Pdv - Navigate To Toggle Conference Setting
+    Pdv - Navigate To Toggle Conference Setting (Default)
 
 # =============================================================================
 # NAVEGAÇÃO — DESCONTO
@@ -195,18 +203,20 @@ Pdv - Navigate To Order Conference Off Cart
 
 Pdv - Navigate To Apply Discount
     [Documentation]    Aplica desconto em item e finaliza o pedido. Modos: percent, integer.
-    [Arguments]    ${mode}=percent
+    [Arguments]    ${mode}    ${value}
     Pdv - Navigate To New Order
     Pdv - Orders - Click Item Discount
     Pdv - Orders - Click Conference
-    Pdv - Orders - Click Finalize Order
+    Pdv - Orders - Click Discount-Sum
+    Pdv - Orders - Click Discount
     IF    '${mode}' == 'percent'
-        Pdv - Orders - Click Discount Percent
+        Pdv - Orders - Click Percent
     ELSE
-        Pdv - Orders - Click Discount Integer
+        Pdv - Orders - Click R$
     END
-    Pdv - Orders - Input Discount Value    1200
-    Pdv - Orders - Clear And Input Discount Value    1000
+    Pdv - Orders - Input Discount Value    ${value}
+    Pdv - Orders - Click Apply Discount
+    Pdv - Orders - Click Finalize Order
     Pdv - Orders - Click Payment Money
     Pdv - Orders - Click Confirm Value
     Pdv - Orders - Click Finish Order
@@ -375,6 +385,7 @@ Pdv - Navigate To Print Cancel
     Pdv - Navigate To List Orders
     Pdv - List Orders - Click Print
     Pdv - List Orders - Click Print Back
+    Pdv - List Orders - Click Back
     Pdv - Home - Verify Visible
 
 # =============================================================================

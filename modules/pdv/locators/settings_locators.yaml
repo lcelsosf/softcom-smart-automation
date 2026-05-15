@@ -46,3 +46,11 @@ settings:
   smart_pdv: //android.widget.TextView[@text="Smart PDV"]
   # Toggle de conferência ao finalizar pedido
   conference_order: //android.widget.TextView[@text="Conferência ao finalizar o pedido"]
+  # Spinner "Modo de operacao"
+  mod_operation: //android.widget.Spinner
+  # Express (Venda Rápida)
+  express: //android.widget.TextView[@text="Express (Venda Rápida)"]
+  # Mini PDV
+  mini_pdv: //android.widget.TextView[@text="Mini PDV"]
+  # Padrao (Conferencia Ativa)
+  default: //android.widget.TextView[@text="Padrão (Conferência Ativa)"]

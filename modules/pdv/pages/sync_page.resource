@@ -20,7 +20,7 @@ Pdv - Sync - Click Cancel
     Wait Visible And Click Element    ${sync.sync_cancel}
 
 Pdv - Sync - Verify Sync Done
-    Wait Until Element Is Visible    ${sync.sync_text}
+    Wait Until Element Is Visible    ${sync.sync_text}    timeout=${ELEMENT_TIMEOUT}
 
 Pdv - Sync - Click Sync Confirm
     Wait Visible And Click Element    ${sync.sync_confirm}

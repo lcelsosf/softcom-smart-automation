@@ -57,12 +57,6 @@ orders:
   cancel_order_cancel: //android.widget.TextView[@text="Não"]
   # Campo de busca de item
   item_search: //android.widget.EditText
-  # Desconto em valor inteiro (R$)
-  discount_integer: //android.widget.TextView[@text="R$"]
-  # Desconto em percentual (%)
-  discount_percent: //android.widget.TextView[@text="%"]
-  # Campo de input do valor de desconto
-  discount_value: //android.widget.EditText
   # Adicionar parcela de boleto (ValorPagamentoDialogText_5)
   bankslip_parce_add: //android.widget.TextView[@resource-id="ValorPagamentoDialogText_5"]
   # Remover parcela de boleto (ValorPagamentoDialogText_2)
@@ -85,3 +79,17 @@ orders:
   client_confirm: //android.widget.TextView[@text="Confirmar"]
   # Botão carrinho (CheckoutFooterFilledTonalButton_0)
   cart: //android.view.View[@resource-id="CheckoutFooterFilledTonalButton_0"]
+  # Botao de Desconto/Acrescimo
+  discount_sum: //android.view.View[@resource-id="CarrinhoItensOutlinedButton_1"]
+  # Botao Discount
+  discount: xpath=(//android.widget.TextView[@text="Desconto"])[1]
+  # Botao R$
+  r_currency: //android.widget.TextView[@text="R$"]
+  # Botao %
+  percent: //android.widget.TextView[@text="%"]
+  # Input do valor do desconto
+  discount_value: //android.widget.EditText
+  # Botao "Aplicar" tela de desconto
+  apply: //android.widget.TextView[@text="Aplicar"]
+  # Botao "Remover" tela de desconto
+  remove: //android.widget.TextView[@text="Remover"]

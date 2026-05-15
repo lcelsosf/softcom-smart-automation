@@ -81,13 +81,13 @@ PDV - Orders - Order Conference Off Cart
 PDV - Orders - Discount Percent
     [Documentation]    Aplica desconto percentual em um item e finaliza o pedido.
     [Tags]    @allure.label.severity:normal    regression    pdv    orders    discount
-    Pdv - Navigate To Apply Discount    mode=percent
+    Pdv - Navigate To Apply Discount    mode=percent    value=10,00
 
 PDV - Orders - Discount Integer
     [Documentation]    Aplica desconto em valor inteiro em um item e finaliza o pedido.
     [Tags]    @allure.label.severity:normal    regression    pdv    orders    discount
-    Pdv - Navigate To Apply Discount    mode=integer
-
+    Pdv - Navigate To Apply Discount    mode=integer    value=1,00
+    
 PDV - Orders - Remove Item
     [Documentation]    Remove itens do pedido via long press e ícone do carrinho (confirma).
     [Tags]    @allure.label.severity:normal    regression    pdv    orders
