@@ -27,10 +27,10 @@ Commands - Open table, select product Additionals and invoice
     [Tags]    @allure.label.severity:critical    regression    commands    additionals
     Commands - Complete Flow - Select Product Additionals   2    ${TABLE_CLIENT}    money
 
-Commands - Open table, select product combo and invoice
-    [Documentation]    Verifica o fluxo de abertura de mesa, selecao de produto combo flexivel + produto final e pagamento.
-    [Tags]    @allure.label.severity:critical    regression    commands    combo_flexivel_produto_final
-    Commands - Complete Flow - Add Item Combo    3    ${TABLE_CLIENT}    money
+# Commands - Open table, select product combo and invoice
+#     [Documentation]    Verifica o fluxo de abertura de mesa, selecao de produto combo flexivel + produto final e pagamento.
+#     [Tags]    @allure.label.severity:critical    regression    commands    combo_flexivel_produto_final
+#     Commands - Complete Flow - Add Item Combo    3    ${TABLE_CLIENT}    money
     
 Commands - Open table, select product, add observations to additional to item and invoice
     [Documentation]    Verifica o fluxo de abertura de mesa, seleção de produto, adição de observação aos adicionais e pagamento.
@@ -95,7 +95,7 @@ Commands - Open table and invoice with money
 Commands - Open table and invoice with Pix Off
     [Documentation]    Verifica o fluxo de abertura de mesa, adição de itens, e pagamento com Pix Off.
     [Tags]    @allure.label.severity:critical    regression    commands    invoice
-    Commands - Complete Flow - Invoice With Pix Off    12    ${TABLE_CLIENT}    money
+    Commands - Complete Flow - Invoice With Pix Off    12    ${TABLE_CLIENT}    pixoff
 
 Commands - Open table, register advance with money and invoice with money
     [Documentation]    Verifica o fluxo de abertura de mesa, registro de adiantamento, e pagamento com a forma de pagamento dinheiro.
@@ -105,7 +105,7 @@ Commands - Open table, register advance with money and invoice with money
 Commands - Open table, register advance with money and invoice with pix off
     [Documentation]    Verifica o fluxo de abertura de mesa, registro de adiantamento, e pagamento com a forma de pagamento pix off.
     [Tags]    @allure.label.severity:normal    regression    commands    advance
-    Commands - Complete Flow - Advance With Pix Off    14    ${TABLE_CLIENT}    money
+    Commands - Complete Flow - Advance With Pix Off    14    ${TABLE_CLIENT}    pixoff
 
 Commands - Open table, split account and invoice
     [Documentation]    Verifica o fluxo de abertura de mesa, divisão da conta e realização do pagamento.

@@ -30,6 +30,12 @@ ${FRACTIONAL_QUANTITY}      0,500
 
 
 *** Test Cases ***
+
+Default - Configure printer
+    [Documentation]    Verifica o fluxo de configuração de impressora nas configurações.
+    [Tags]    @allure.label.severity:normal    regression    default    settings
+    Default - Navigate To Configure Printer
+
 Default - Create order and pay with money
     [Documentation]    Verifica o fluxo de criação de pedido e pagamento com dinheiro.
     [Tags]    @allure.label.severity:critical    regression    default    invoice
@@ -84,6 +90,11 @@ Default - Create order with grid (two products)
     [Documentation]    Verifica o fluxo de criação de pedido com dois produtos via pesquisa.
     [Tags]    @allure.label.severity:normal    regression    default    grid
     Default - Navigate To Create Order With Grid    ${PRODUCT_GRID_1}    ${PRODUCT_GRID_2}
+
+Default - Configure price table
+    [Documentation]    Verifica o fluxo de ativação/desativação da tabela de preços nas configurações.
+    [Tags]    @allure.label.severity:normal    regression    default    settings
+    Default - Navigate To Configure Price Table
 
 Default - Create order with price table
     [Documentation]    Verifica o fluxo de criação de pedido com tabela de preços.
@@ -171,10 +182,6 @@ Default - Toggle fractional quantity setting
     [Tags]    @allure.label.severity:normal    regression    default    settings
     Default - Navigate To Fractional Quantity Setting
 
-Default - Configure printer
-    [Documentation]    Verifica o fluxo de configuração de impressora nas configurações.
-    [Tags]    @allure.label.severity:normal    regression    default    settings
-    Default - Navigate To Configure Printer
 
 Default - Enable Pix Off payment
     [Documentation]    Verifica o fluxo de habilitação da forma de pagamento Pix Off nas configurações.
@@ -191,7 +198,4 @@ Default - Configure ticket
     [Tags]    @allure.label.severity:normal    regression    default    settings
     Default - Navigate To Configure Ticket
 
-Default - Configure price table
-    [Documentation]    Verifica o fluxo de ativação/desativação da tabela de preços nas configurações.
-    [Tags]    @allure.label.severity:normal    regression    default    settings
-    Default - Navigate To Configure Price Table
+

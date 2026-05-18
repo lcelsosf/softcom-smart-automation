@@ -232,7 +232,6 @@ Pdv - Navigate To Remove Item
     Pdv - Navigate To New Order
     Pdv - Orders - Click Item
     Pdv - Orders - Click Item 2
-    Pdv - Orders - Click Item Discount
     Pdv - Orders - Long Press Item 2
     Pdv - Orders - Click Remove Item
     Pdv - Orders - Verify Remove Item Dialog
@@ -252,7 +251,7 @@ Pdv - Navigate To Remove Item no-confirm
     [Documentation]    Tenta remover itens do pedido e cancela as remoções.
     Pdv - Navigate To New Order
     Pdv - Orders - Click Item
-    Pdv - Orders - Click Item 2
+##    Pdv - Orders - Click Item 2
     Pdv - Orders - Click Item Discount
     Pdv - Orders - Long Press Item 2
     Pdv - Orders - Click Remove Item

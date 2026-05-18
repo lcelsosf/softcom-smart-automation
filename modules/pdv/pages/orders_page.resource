@@ -111,7 +111,7 @@ Pdv - Orders - Click Remove Discount
 
 Pdv - Orders - Input Discount Value
     [Arguments]    ${value}
-    Wait Visible And Input Text Pause    ${orders.discount_value}    ${value}
+    Wait Visible And Input Text    ${orders.discount_value}    ${value}
     Close Keyboard
 
 Pdv - Orders - Clear And Input Discount Value

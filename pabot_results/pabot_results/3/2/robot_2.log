@@ -1,0 +1,85 @@
+2026-05-15 09:44:49.267502 ==============================================================================
+2026-05-15 09:44:49.281611 Pdv :: Suite de regress�o � m�dulo Pdv (Smart PDV)
+2026-05-15 09:44:49.281611 ==============================================================================
+2026-05-15 09:45:28.495459 PDV - Orders - Client Order :: Realiza pedido iniciado a partir da... | PASS |
+2026-05-15 09:45:28.549566 ------------------------------------------------------------------------------
+2026-05-15 09:45:34.842564 PDV - Orders - Cancel Order (New Order) :: Cancela um pedido em an... | PASS |
+2026-05-15 09:45:34.845565 ------------------------------------------------------------------------------
+2026-05-15 09:45:43.296743 PDV - Orders - Cancel Order (Cart) :: Cancela um pedido em andamen... | PASS |
+2026-05-15 09:45:43.332771 ------------------------------------------------------------------------------
+2026-05-15 09:46:03.116524 PDV - Orders - Cancel Order (New Order) no-confirm :: Abre o cance... | PASS |
+2026-05-15 09:46:03.117597 ------------------------------------------------------------------------------
+2026-05-15 09:46:23.220325 PDV - Orders - Cancel Order (Cart) no-confirm :: Abre o cancelamen... | PASS |
+2026-05-15 09:46:23.273453 ------------------------------------------------------------------------------
+2026-05-15 09:46:47.330686 PDV - Orders - Change Item Quantity :: Altera a quantidade de um i... | PASS |
+2026-05-15 09:46:47.357684 ------------------------------------------------------------------------------
+2026-05-15 09:47:18.467925 PDV - Orders - Order Conference Off :: Realiza pedido com confer�n... | PASS |
+2026-05-15 09:47:18.492779 ------------------------------------------------------------------------------
+2026-05-15 09:48:01.569142 PDV - Orders - Order Conference Off Cart :: Realiza pedido com con... | PASS |
+2026-05-15 09:48:01.576992 ------------------------------------------------------------------------------
+2026-05-15 09:48:28.472645 PDV - Orders - Discount Percent :: Aplica desconto percentual em u... | PASS |
+2026-05-15 09:48:28.520664 ------------------------------------------------------------------------------
+2026-05-15 09:48:55.959607 PDV - Orders - Discount Integer :: Aplica desconto em valor inteir... | PASS |
+2026-05-15 09:48:55.978607 ------------------------------------------------------------------------------
+2026-05-15 09:49:32.225270 PDV - Orders - Remove Item :: Remove itens do pedido via long pres... | FAIL |
+2026-05-15 09:49:32.225270 [ WARN ] [SCREENSHOT_CAPTURED] Screenshot capturado | file=FAIL_PDV - Orders - Remove Item.png | timestamp=2026-05-15 09:49:32
+2026-05-15 09:49:32.267277 Erro ao clicar no elemento '//android.widget.TextView[@text="Remover item"]': Element locator '//android.widget.TextView[@text="Remover item"]' did not match any elements after 30 seconds
+2026-05-15 09:49:32.267277 ------------------------------------------------------------------------------
+2026-05-15 09:49:32.267277 PDV - Orders - Remove Item no-confirm :: Tenta remover itens do pe... | SKIP |
+2026-05-15 09:49:32.272621 Teste ignorado: falha de UI detectada no teste anterior � o app pode estar em estado inv�lido.
+2026-05-15 09:49:32.272621 ------------------------------------------------------------------------------
+2026-05-15 09:49:32.272621 PDV - Orders - Ticket Print :: Realiza pedido com ticket configura... | SKIP |
+2026-05-15 09:49:32.277356 Teste ignorado: falha de UI detectada no teste anterior � o app pode estar em estado inv�lido.
+2026-05-15 09:49:32.277356 ------------------------------------------------------------------------------
+2026-05-15 09:49:32.277356 PDV - Orders - Ticket Quest Yes :: Realiza pedido com ticket confi... | SKIP |
+2026-05-15 09:49:32.289265 Teste ignorado: falha de UI detectada no teste anterior � o app pode estar em estado inv�lido.
+2026-05-15 09:49:32.289265 ------------------------------------------------------------------------------
+2026-05-15 09:49:32.289265 PDV - Orders - Ticket Quest No :: Realiza pedido com ticket config... | SKIP |
+2026-05-15 09:49:32.297264 Teste ignorado: falha de UI detectada no teste anterior � o app pode estar em estado inv�lido.
+2026-05-15 09:49:32.297264 ------------------------------------------------------------------------------
+2026-05-15 09:49:32.297264 PDV - Orders - Order Money :: Realiza pedido com pagamento em dinh... | SKIP |
+2026-05-15 09:49:32.303264 Teste ignorado: falha de UI detectada no teste anterior � o app pode estar em estado inv�lido.
+2026-05-15 09:49:32.303264 ------------------------------------------------------------------------------
+2026-05-15 09:49:32.303264 PDV - Orders - Order Pix Off :: Realiza pedido com pagamento em Pi... | SKIP |
+2026-05-15 09:49:32.309265 Teste ignorado: falha de UI detectada no teste anterior � o app pode estar em estado inv�lido.
+2026-05-15 09:49:32.309265 ------------------------------------------------------------------------------
+2026-05-15 09:49:32.309265 PDV - Orders - Order Bankslip :: Realiza pedido com pagamento em b... | SKIP |
+2026-05-15 09:49:32.315264 Teste ignorado: falha de UI detectada no teste anterior � o app pode estar em estado inv�lido.
+2026-05-15 09:49:32.315264 ------------------------------------------------------------------------------
+2026-05-15 09:49:32.315264 PDV - List Orders - Visualize Order :: Visualiza os detalhes do pr... | SKIP |
+2026-05-15 09:49:32.321265 Teste ignorado: falha de UI detectada no teste anterior � o app pode estar em estado inv�lido.
+2026-05-15 09:49:32.321265 ------------------------------------------------------------------------------
+2026-05-15 09:49:32.321265 PDV - List Orders - Reprint Order :: Reimprime o primeiro pedido n... | SKIP |
+2026-05-15 09:49:32.328264 Teste ignorado: falha de UI detectada no teste anterior � o app pode estar em estado inv�lido.
+2026-05-15 09:49:32.328264 ------------------------------------------------------------------------------
+2026-05-15 09:49:32.328264 PDV - List Orders - Cancel Order :: Cancela o primeiro pedido na l... | SKIP |
+2026-05-15 09:49:32.334265 Teste ignorado: falha de UI detectada no teste anterior � o app pode estar em estado inv�lido.
+2026-05-15 09:49:32.334265 ------------------------------------------------------------------------------
+2026-05-15 09:49:32.334265 PDV - List Orders - Print Receipts :: Imprime os recebimentos a pa... | SKIP |
+2026-05-15 09:49:32.341265 Teste ignorado: falha de UI detectada no teste anterior � o app pode estar em estado inv�lido.
+2026-05-15 09:49:32.341265 ------------------------------------------------------------------------------
+2026-05-15 09:49:32.341265 PDV - List Orders - Print Sales Summary :: Imprime o resumo de ven... | SKIP |
+2026-05-15 09:49:32.341265 Teste ignorado: falha de UI detectada no teste anterior � o app pode estar em estado inv�lido.
+2026-05-15 09:49:32.341265 ------------------------------------------------------------------------------
+2026-05-15 09:49:32.341265 PDV - List Orders - Print Cancel :: Abre o menu de impress�o da li... | SKIP |
+2026-05-15 09:49:32.354766 Teste ignorado: falha de UI detectada no teste anterior � o app pode estar em estado inv�lido.
+2026-05-15 09:49:32.354766 ------------------------------------------------------------------------------
+2026-05-15 09:49:32.354766 PDV - Sync - Cancel Sync :: Abre a sincroniza��o e cancela antes d... | SKIP |
+2026-05-15 09:49:32.360764 Teste ignorado: falha de UI detectada no teste anterior � o app pode estar em estado inv�lido.
+2026-05-15 09:49:32.360764 ------------------------------------------------------------------------------
+2026-05-15 09:49:32.360764 PDV - Sync - Sync Products :: Realiza a sincroniza��o de produtos.    | SKIP |
+2026-05-15 09:49:32.366768 Teste ignorado: falha de UI detectada no teste anterior � o app pode estar em estado inv�lido.
+2026-05-15 09:49:32.366768 ------------------------------------------------------------------------------
+2026-05-15 09:49:32.366768 PDV - Sync - Sync Clients :: Realiza a sincroniza��o de clientes.     | SKIP |
+2026-05-15 09:49:32.374768 Teste ignorado: falha de UI detectada no teste anterior � o app pode estar em estado inv�lido.
+2026-05-15 09:49:32.374768 ------------------------------------------------------------------------------
+2026-05-15 09:49:32.374768 PDV - Sync - Sync Orders :: Realiza a sincroniza��o de pedidos.       | SKIP |
+2026-05-15 09:49:32.380936 Teste ignorado: falha de UI detectada no teste anterior � o app pode estar em estado inv�lido.
+2026-05-15 09:49:32.380936 ------------------------------------------------------------------------------
+2026-05-15 09:49:32.380936 PDV - Sync - Sync All :: Realiza a sincroniza��o de todos os dados.   | SKIP |
+2026-05-15 09:49:32.388937 Teste ignorado: falha de UI detectada no teste anterior � o app pode estar em estado inv�lido.
+2026-05-15 09:49:32.388937 ------------------------------------------------------------------------------
+2026-05-15 09:49:32.446447 Pdv :: Suite de regress�o � m�dulo Pdv (Smart PDV)                    | FAIL |
+2026-05-15 09:49:32.446447 29 tests, 10 passed, 1 failed, 18 skipped
+2026-05-15 09:49:32.446447 ==============================================================================
+2026-05-15 09:49:32.446447 Output:  D:\Softcom\LAB\softcom-smart-automation\pabot_results\pabot_results\3\2\output.xml

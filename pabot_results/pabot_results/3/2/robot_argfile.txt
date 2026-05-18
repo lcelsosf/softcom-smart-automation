@@ -1,0 +1,17 @@
+--suite Pdv
+--variable CALLER_ID:63821a09de7a4c8f834f26c939f62198
+--variable PABOTLIBURI:127.0.0.1:8270
+--variable PABOTEXECUTIONPOOLID:2
+--variable PABOTISLASTEXECUTIONINPOOL:1
+--variable PABOTNUMBEROFPROCESSES:3
+--variable PABOTQUEUEINDEX:2
+--variable PABOTLASTLEVEL:
+--outputdir pabot_results\pabot_results\3\2
+--argumentfile pabot_configs/pagbank.args
+--output output.xml
+--log NONE
+--report NONE
+--xunit NONE
+--consolecolors off
+--consolemarkers off
+tests/regression/pdv/pdv.robot

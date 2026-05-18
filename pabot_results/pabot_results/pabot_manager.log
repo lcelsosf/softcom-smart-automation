@@ -1,0 +1,306 @@
+[INFO]    Initialized logging in pabot_results\pabot_results
+[INFO]    Robot Framework remote server at 127.0.0.1:8270 started.
+[DEBUG]   2026-05-15 09:44:48.197194 [PID:21248] [0] [ID:0] EXECUTING Pdv {pabot_configs/cielo.args}
+[DEBUG]   2026-05-15 09:44:48.197194 [PID:10424] [1] [ID:1] EXECUTING Pdv {pabot_configs/sipag_dx8000.args}
+[DEBUG]   2026-05-15 09:44:48.197194 [PID:15688] [2] [ID:2] EXECUTING Pdv {pabot_configs/pagbank.args}
+[DEBUG]   2026-05-15 09:44:53.228877 [PID:21248] [0] [ID:0] still running Pdv {pabot_configs/cielo.args} after 5.0s
+[DEBUG]   2026-05-15 09:44:53.228877 [PID:15688] [2] [ID:2] still running Pdv {pabot_configs/pagbank.args} after 5.0s
+[DEBUG]   2026-05-15 09:44:53.231405 [PID:10424] [1] [ID:1] still running Pdv {pabot_configs/sipag_dx8000.args} after 5.0s
+[DEBUG]   2026-05-15 09:45:03.258197 [PID:15688] [2] [ID:2] still running Pdv {pabot_configs/pagbank.args} after 15.0s
+[DEBUG]   2026-05-15 09:45:03.258197 [PID:10424] [1] [ID:1] still running Pdv {pabot_configs/sipag_dx8000.args} after 15.0s
+[DEBUG]   2026-05-15 09:45:03.258702 [PID:21248] [0] [ID:0] still running Pdv {pabot_configs/cielo.args} after 15.0s
+[DEBUG]   2026-05-15 09:45:18.310211 [PID:10424] [1] [ID:1] still running Pdv {pabot_configs/sipag_dx8000.args} after 30.0s
+[DEBUG]   2026-05-15 09:45:18.311729 [PID:15688] [2] [ID:2] still running Pdv {pabot_configs/pagbank.args} after 30.0s
+[DEBUG]   2026-05-15 09:45:18.311729 [PID:21248] [0] [ID:0] still running Pdv {pabot_configs/cielo.args} after 30.0s
+[DEBUG]   2026-05-15 09:45:38.372479 [PID:15688] [2] [ID:2] still running Pdv {pabot_configs/pagbank.args} after 50.0s
+[DEBUG]   2026-05-15 09:45:38.372993 [PID:10424] [1] [ID:1] still running Pdv {pabot_configs/sipag_dx8000.args} after 50.0s
+[DEBUG]   2026-05-15 09:45:38.397356 [PID:21248] [0] [ID:0] still running Pdv {pabot_configs/cielo.args} after 50.0s
+[DEBUG]   2026-05-15 09:46:03.452274 [PID:10424] [1] [ID:1] still running Pdv {pabot_configs/sipag_dx8000.args} after 75.0s
+[DEBUG]   2026-05-15 09:46:03.457023 [PID:15688] [2] [ID:2] still running Pdv {pabot_configs/pagbank.args} after 75.0s
+[DEBUG]   2026-05-15 09:46:03.478414 [PID:21248] [0] [ID:0] still running Pdv {pabot_configs/cielo.args} after 75.0s
+[DEBUG]   2026-05-15 09:46:33.553328 [PID:10424] [1] [ID:1] still running Pdv {pabot_configs/sipag_dx8000.args} after 105.0s
+[DEBUG]   2026-05-15 09:46:33.553328 [PID:15688] [2] [ID:2] still running Pdv {pabot_configs/pagbank.args} after 105.0s
+[DEBUG]   2026-05-15 09:46:33.575844 [PID:21248] [0] [ID:0] still running Pdv {pabot_configs/cielo.args} after 105.0s
+[DEBUG]   2026-05-15 09:47:08.671890 [PID:10424] [1] [ID:1] still running Pdv {pabot_configs/sipag_dx8000.args} after 140.0s
+[DEBUG]   2026-05-15 09:47:08.677400 [PID:15688] [2] [ID:2] still running Pdv {pabot_configs/pagbank.args} after 140.0s
+[DEBUG]   2026-05-15 09:47:08.693404 [PID:21248] [0] [ID:0] still running Pdv {pabot_configs/cielo.args} after 140.0s
+[DEBUG]   2026-05-15 09:47:48.793162 [PID:10424] [1] [ID:1] still running Pdv {pabot_configs/sipag_dx8000.args} after 180.0s
+[DEBUG]   2026-05-15 09:47:48.795166 [PID:15688] [2] [ID:2] still running Pdv {pabot_configs/pagbank.args} after 180.0s
+[DEBUG]   2026-05-15 09:47:48.811694 [PID:21248] [0] [ID:0] still running Pdv {pabot_configs/cielo.args} after 180.0s
+[DEBUG]   2026-05-15 09:48:33.946376 [PID:10424] [1] [ID:1] still running Pdv {pabot_configs/sipag_dx8000.args} after 225.0s
+[DEBUG]   2026-05-15 09:48:33.946376 [PID:15688] [2] [ID:2] still running Pdv {pabot_configs/pagbank.args} after 225.0s
+[DEBUG]   2026-05-15 09:48:33.953382 [PID:21248] [0] [ID:0] still running Pdv {pabot_configs/cielo.args} after 225.0s
+[INFO]    2026-05-15 09:48:58.049396 [PID:10424] [1] [ID:1] Execution failed in Pdv {pabot_configs/sipag_dx8000.args} with 1 failing test(s)
+==============================================================================
+Pdv :: Suite de regressï¿½o ï¿½ mï¿½dulo Pdv (Smart PDV)
+==============================================================================
+PDV - Orders - Client Order :: Realiza pedido iniciado a partir da... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Cancel Order (New Order) :: Cancela um pedido em an... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Cancel Order (Cart) :: Cancela um pedido em andamen... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Cancel Order (New Order) no-confirm :: Abre o cance... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Cancel Order (Cart) no-confirm :: Abre o cancelamen... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Change Item Quantity :: Altera a quantidade de um i... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Order Conference Off :: Realiza pedido com conferï¿½n... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Order Conference Off Cart :: Realiza pedido com con... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Discount Percent :: Aplica desconto percentual em u... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Discount Integer :: Aplica desconto em valor inteir... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Remove Item :: Remove itens do pedido via long pres... | FAIL |
+Erro ao clicar no elemento '//android.widget.TextView[@text="Remover item"]': Element locator '//android.widget.TextView[@text="Remover item"]' did not match any elements after 30 seconds
+------------------------------------------------------------------------------
+PDV - Orders - Remove Item no-confirm :: Tenta remover itens do pe... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Orders - Ticket Print :: Realiza pedido com ticket configura... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Orders - Ticket Quest Yes :: Realiza pedido com ticket confi... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Orders - Ticket Quest No :: Realiza pedido com ticket config... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Orders - Order Money :: Realiza pedido com pagamento em dinh... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Orders - Order Pix Off :: Realiza pedido com pagamento em Pi... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Orders - Order Bankslip :: Realiza pedido com pagamento em b... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - List Orders - Visualize Order :: Visualiza os detalhes do pr... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - List Orders - Reprint Order :: Reimprime o primeiro pedido n... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - List Orders - Cancel Order :: Cancela o primeiro pedido na l... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - List Orders - Print Receipts :: Imprime os recebimentos a pa... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - List Orders - Print Sales Summary :: Imprime o resumo de ven... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - List Orders - Print Cancel :: Abre o menu de impressï¿½o da li... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Sync - Cancel Sync :: Abre a sincronizaï¿½ï¿½o e cancela antes d... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Sync - Sync Products :: Realiza a sincronizaï¿½ï¿½o de produtos.    | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Sync - Sync Clients :: Realiza a sincronizaï¿½ï¿½o de clientes.     | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Sync - Sync Orders :: Realiza a sincronizaï¿½ï¿½o de pedidos.       | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Sync - Sync All :: Realiza a sincronizaï¿½ï¿½o de todos os dados.   | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+Pdv :: Suite de regressï¿½o ï¿½ mï¿½dulo Pdv (Smart PDV)                    | FAIL |
+29 tests, 10 passed, 1 failed, 18 skipped
+==============================================================================
+Output:  D:\Softcom\LAB\softcom-smart-automation\pabot_results\pabot_results\2\1\output.xml
+
+[ WARN ] [SCREENSHOT_CAPTURED] Screenshot capturado | file=FAIL_PDV - Orders - Remove Item.png | timestamp=2026-05-15 09:48:57
+[INFO]    2026-05-15 09:48:59.559588 [PID:21248] [0] [ID:0] Execution failed in Pdv {pabot_configs/cielo.args} with 1 failing test(s)
+==============================================================================
+Pdv :: Suite de regressï¿½o ï¿½ mï¿½dulo Pdv (Smart PDV)
+==============================================================================
+PDV - Orders - Client Order :: Realiza pedido iniciado a partir da... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Cancel Order (New Order) :: Cancela um pedido em an... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Cancel Order (Cart) :: Cancela um pedido em andamen... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Cancel Order (New Order) no-confirm :: Abre o cance... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Cancel Order (Cart) no-confirm :: Abre o cancelamen... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Change Item Quantity :: Altera a quantidade de um i... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Order Conference Off :: Realiza pedido com conferï¿½n... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Order Conference Off Cart :: Realiza pedido com con... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Discount Percent :: Aplica desconto percentual em u... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Discount Integer :: Aplica desconto em valor inteir... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Remove Item :: Remove itens do pedido via long pres... | FAIL |
+Erro ao clicar no elemento '//android.widget.TextView[@text="Remover item"]': Element locator '//android.widget.TextView[@text="Remover item"]' did not match any elements after 30 seconds
+------------------------------------------------------------------------------
+PDV - Orders - Remove Item no-confirm :: Tenta remover itens do pe... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Orders - Ticket Print :: Realiza pedido com ticket configura... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Orders - Ticket Quest Yes :: Realiza pedido com ticket confi... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Orders - Ticket Quest No :: Realiza pedido com ticket config... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Orders - Order Money :: Realiza pedido com pagamento em dinh... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Orders - Order Pix Off :: Realiza pedido com pagamento em Pi... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Orders - Order Bankslip :: Realiza pedido com pagamento em b... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - List Orders - Visualize Order :: Visualiza os detalhes do pr... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - List Orders - Reprint Order :: Reimprime o primeiro pedido n... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - List Orders - Cancel Order :: Cancela o primeiro pedido na l... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - List Orders - Print Receipts :: Imprime os recebimentos a pa... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - List Orders - Print Sales Summary :: Imprime o resumo de ven... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - List Orders - Print Cancel :: Abre o menu de impressï¿½o da li... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Sync - Cancel Sync :: Abre a sincronizaï¿½ï¿½o e cancela antes d... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Sync - Sync Products :: Realiza a sincronizaï¿½ï¿½o de produtos.    | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Sync - Sync Clients :: Realiza a sincronizaï¿½ï¿½o de clientes.     | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Sync - Sync Orders :: Realiza a sincronizaï¿½ï¿½o de pedidos.       | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Sync - Sync All :: Realiza a sincronizaï¿½ï¿½o de todos os dados.   | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+Pdv :: Suite de regressï¿½o ï¿½ mï¿½dulo Pdv (Smart PDV)                    | FAIL |
+29 tests, 10 passed, 1 failed, 18 skipped
+==============================================================================
+Output:  D:\Softcom\LAB\softcom-smart-automation\pabot_results\pabot_results\1\0\output.xml
+
+[ WARN ] [SCREENSHOT_CAPTURED] Screenshot capturado | file=FAIL_PDV - Orders - Remove Item.png | timestamp=2026-05-15 09:48:58
+[DEBUG]   2026-05-15 09:49:24.149963 [PID:15688] [2] [ID:2] still running Pdv {pabot_configs/pagbank.args} after 275.0s
+[INFO]    2026-05-15 09:49:32.705568 [PID:15688] [2] [ID:2] Execution failed in Pdv {pabot_configs/pagbank.args} with 1 failing test(s)
+==============================================================================
+Pdv :: Suite de regressï¿½o ï¿½ mï¿½dulo Pdv (Smart PDV)
+==============================================================================
+PDV - Orders - Client Order :: Realiza pedido iniciado a partir da... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Cancel Order (New Order) :: Cancela um pedido em an... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Cancel Order (Cart) :: Cancela um pedido em andamen... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Cancel Order (New Order) no-confirm :: Abre o cance... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Cancel Order (Cart) no-confirm :: Abre o cancelamen... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Change Item Quantity :: Altera a quantidade de um i... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Order Conference Off :: Realiza pedido com conferï¿½n... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Order Conference Off Cart :: Realiza pedido com con... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Discount Percent :: Aplica desconto percentual em u... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Discount Integer :: Aplica desconto em valor inteir... | PASS |
+------------------------------------------------------------------------------
+PDV - Orders - Remove Item :: Remove itens do pedido via long pres... | FAIL |
+Erro ao clicar no elemento '//android.widget.TextView[@text="Remover item"]': Element locator '//android.widget.TextView[@text="Remover item"]' did not match any elements after 30 seconds
+------------------------------------------------------------------------------
+PDV - Orders - Remove Item no-confirm :: Tenta remover itens do pe... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Orders - Ticket Print :: Realiza pedido com ticket configura... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Orders - Ticket Quest Yes :: Realiza pedido com ticket confi... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Orders - Ticket Quest No :: Realiza pedido com ticket config... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Orders - Order Money :: Realiza pedido com pagamento em dinh... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Orders - Order Pix Off :: Realiza pedido com pagamento em Pi... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Orders - Order Bankslip :: Realiza pedido com pagamento em b... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - List Orders - Visualize Order :: Visualiza os detalhes do pr... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - List Orders - Reprint Order :: Reimprime o primeiro pedido n... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - List Orders - Cancel Order :: Cancela o primeiro pedido na l... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - List Orders - Print Receipts :: Imprime os recebimentos a pa... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - List Orders - Print Sales Summary :: Imprime o resumo de ven... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - List Orders - Print Cancel :: Abre o menu de impressï¿½o da li... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Sync - Cancel Sync :: Abre a sincronizaï¿½ï¿½o e cancela antes d... | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Sync - Sync Products :: Realiza a sincronizaï¿½ï¿½o de produtos.    | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Sync - Sync Clients :: Realiza a sincronizaï¿½ï¿½o de clientes.     | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Sync - Sync Orders :: Realiza a sincronizaï¿½ï¿½o de pedidos.       | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+PDV - Sync - Sync All :: Realiza a sincronizaï¿½ï¿½o de todos os dados.   | SKIP |
+Teste ignorado: falha de UI detectada no teste anterior ï¿½ o app pode estar em estado invï¿½lido.
+------------------------------------------------------------------------------
+Pdv :: Suite de regressï¿½o ï¿½ mï¿½dulo Pdv (Smart PDV)                    | FAIL |
+29 tests, 10 passed, 1 failed, 18 skipped
+==============================================================================
+Output:  D:\Softcom\LAB\softcom-smart-automation\pabot_results\pabot_results\3\2\output.xml
+
+[ WARN ] [SCREENSHOT_CAPTURED] Screenshot capturado | file=FAIL_PDV - Orders - Remove Item.png | timestamp=2026-05-15 09:49:32
+[INFO]    87 tests, 30 passed, 3 failed, 54 skipped.
+[INFO]    ===================================================
+[INFO]    Output:  D:\Softcom\LAB\softcom-smart-automation\pabot_results\output.xml
+[INFO]    Log:     D:\Softcom\LAB\softcom-smart-automation\pabot_results\log.html
+[INFO]    Report:  D:\Softcom\LAB\softcom-smart-automation\pabot_results\report.html
+[DEBUG]   Finalizing Pabot execution...
+[DEBUG]   Stopping PabotLib process
+[INFO]    Robot Framework remote server at 127.0.0.1:8270 stopped.
+[DEBUG]   PabotLib process stopped
+[INFO]    Total testing: 13 minutes 5.60 seconds
+[INFO]    Elapsed time:  4 minutes 46.72 seconds
+[DEBUG]   Logs flushed successfully.

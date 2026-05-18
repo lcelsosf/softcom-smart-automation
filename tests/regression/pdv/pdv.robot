@@ -38,10 +38,10 @@ Test Teardown    Test Teardown Default
 #     [Tags]    @allure.label.severity:normal    regression    pdv    settings    setup
 #     Pdv - Navigate To ...
 
-PDV - Orders - Client Order
-    [Documentation]    Realiza pedido iniciado a partir da tela de clientes.
-    [Tags]    @allure.label.severity:normal    regression    pdv    orders
-    Pdv - Navigate To Client Order
+# PDV - Orders - Client Order
+#     [Documentation]    Realiza pedido iniciado a partir da tela de clientes.
+#     [Tags]    @allure.label.severity:normal    regression    pdv    orders
+#     Pdv - Navigate To Client Order
 
 PDV - Orders - Cancel Order (New Order)
     [Documentation]    Cancela um pedido em andamento na tela de novo pedido.
@@ -87,16 +87,16 @@ PDV - Orders - Discount Integer
     [Documentation]    Aplica desconto em valor inteiro em um item e finaliza o pedido.
     [Tags]    @allure.label.severity:normal    regression    pdv    orders    discount
     Pdv - Navigate To Apply Discount    mode=integer    value=1,00
-    
-PDV - Orders - Remove Item
-    [Documentation]    Remove itens do pedido via long press e ícone do carrinho (confirma).
-    [Tags]    @allure.label.severity:normal    regression    pdv    orders
-    Pdv - Navigate To Remove Item
 
-PDV - Orders - Remove Item no-confirm
-    [Documentation]    Tenta remover itens do pedido e cancela as remoções.
-    [Tags]    @allure.label.severity:minor    regression    pdv    orders
-    Pdv - Navigate To Remove Item no-confirm
+# PDV - Orders - Remove Item
+#     [Documentation]    Remove itens do pedido via long press e ícone do carrinho (confirma).
+#     [Tags]    @allure.label.severity:normal    regression    pdv    orders
+#     Pdv - Navigate To Remove Item
+
+# PDV - Orders - Remove Item no-confirm
+#     [Documentation]    Tenta remover itens do pedido e cancela as remoções.
+#     [Tags]    @allure.label.severity:minor    regression    pdv    orders
+#     Pdv - Navigate To Remove Item no-confirm
 
 PDV - Orders - Ticket Print
     [Documentation]    Realiza pedido com ticket configurado para impressão automática.

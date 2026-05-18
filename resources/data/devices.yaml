@@ -3,7 +3,7 @@ default_app_package: "softcom.mobile.smart2"
 devices:
   cielo:
     udid: "${CIELO_DX8000_UDID}"
-    keyboard_close: "hide"
+    keyboard_close: "back"
     system_port: 8200
     appium_server: "${APPIUM_SERVER_URL}"
 
@@ -57,7 +57,7 @@ devices:
 
   pagbank_a11:
     udid: "${PAGBANK_A11_UDID}"
-    keyboard_close: "hide"
+    keyboard_close: "back"
     system_port: 8216
     appium_server: "${APPIUM_SERVER_URL}"
 
@@ -87,13 +87,13 @@ devices:
 
   safra:
     udid: "${SAFRA_UDID}"
-    keyboard_close: "hide"
+    keyboard_close: "back"
     system_port: 8226
     appium_server: "${APPIUM_SERVER_URL}"
 
   mercadopago:
     udid: "${MERCADOPAGO_UDID}"
-    keyboard_close: "hide"
+    keyboard_close: "back"
     system_port: 8228
     appium_server: "${APPIUM_SERVER_URL}"
 
