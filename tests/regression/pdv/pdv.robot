@@ -38,10 +38,10 @@ Test Teardown    Test Teardown Default
 #     [Tags]    @allure.label.severity:normal    regression    pdv    settings    setup
 #     Pdv - Navigate To ...
 
-# PDV - Orders - Client Order
-#     [Documentation]    Realiza pedido iniciado a partir da tela de clientes.
-#     [Tags]    @allure.label.severity:normal    regression    pdv    orders
-#     Pdv - Navigate To Client Order
+PDV - Orders - Client Order
+    [Documentation]    Realiza pedido iniciado a partir da tela de clientes.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders
+    Pdv - Navigate To Client Order
 
 PDV - Orders - Cancel Order (New Order)
     [Documentation]    Cancela um pedido em andamento na tela de novo pedido.
