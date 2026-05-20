@@ -16,12 +16,7 @@ Documentation    Base do módulo Pdv — único import necessário nas suites.
 Resource    ../../resources/base/base.resource
 
 # --- Locators do módulo (1 YAML por tela) ---
-Variables    locators/home_locators.yaml
-Variables    locators/settings_locators.yaml
-Variables    locators/orders_locators.yaml
-Variables    locators/clients_locators.yaml
-Variables    locators/list_orders_locators.yaml
-Variables    locators/sync_locators.yaml
+Variables    ../../resources/libraries/locators_loader.py    modules/pdv/locators/home_locators.yaml    modules/pdv/locators/settings_locators.yaml    modules/pdv/locators/orders_locators.yaml    modules/pdv/locators/clients_locators.yaml    modules/pdv/locators/list_orders_locators.yaml    modules/pdv/locators/sync_locators.yaml    ${DEVICE_TAG}
 
 # --- Navigation do módulo (importa pages transitivamente) ---
 Resource    navigation/pdv_navigation.resource

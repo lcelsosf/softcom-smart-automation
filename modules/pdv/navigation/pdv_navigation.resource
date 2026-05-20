@@ -36,37 +36,66 @@ Pdv - Navigate To Clients
 Pdv - Navigate To Settings
     [Documentation]    Navega da tela inicial para as configurações.
     Pdv - Home - Click Settings
+# =============================================================================
+# NAVEGAÇÃO — CONFIGURACOES
+# =============================================================================
+
+Pdv - Navigate configure printer
+    [Documentation]    Acessa a tela de configuracoes e realiza a configuracao da impressora.
+    Pdv - Home - Click Settings
+    Pdv - Settings - Click Printers
+    Pdv - Settings - Click List Printers
+    Pdv - Settings - Click Printer Checkbox
+    Pdv - Settings - Click Printer Close
+    Pdv - Settings - Click Back
+    Pdv - Settings - Click Back Settings
+
+Pdv - Navigate active payments
+    [Documentation]    Acessa a tela de configuracoes e reliza a ativacao dos metodos de pagamentos.
+    Pdv - Home - Click Settings
+    Pdv - Settings - Click Payment Forms
+    Pdv - Settings - Click Enable Bankslip
+    Pdv - Settings - Click Enable Pix
+    Pdv - Settings - Click Enable Pixoff
+    Pdv - Settings - Click Back
+    Pdv - Settings - Click Back Settings
+
+Pdv - Navigate configure softcompay
+    [Documentation]    Acessa a tela de configuracoes e realiza a configuracao do pix.
+    Pdv - Home - Click Settings
+    Pdv - Settings - Click SoftcomPay
+    Pdv - Settings - Click Test Env
+    Pdv - Settings - Client Id    ${CLIENT_ID}
+    Pdv - Settings - Client Secret    ${CLIENT_SECRET}
+    Pdv - Settings - Click Check Keys
+    Pdv - Settings - Click Thanks
+    Pdv - Settings - Click Back
+    Pdv - Settings - Click Back Settings
 
 # =============================================================================
-# NAVEGAÇÃO — PEDIDOS BÁSICOS
+# NAVEGAÇÃO — PEDIDOS
 # =============================================================================
 
-Pdv - Navigate To Create Order
-    [Documentation]    Cria um pedido e finaliza com a forma de pagamento informada.
-    ...    Métodos suportados: money, pixoff, bankslip
-    [Arguments]    ${payment_method}
-    Pdv - Navigate To New Order
+Pdv - Create Order
+    [Documentation]    Realiza a criacao de um pedido.
+    Pdv - Home - Verify Visible
+    Pdv - Home - Click New Order
+
+Pdv - Search item
+    [Documentation]    Realiza a busca por um item na tela de novo pedido.
+    [Arguments]    ${Text}
+    Pdv - Orders - Search Item    ${Text}
     Pdv - Orders - Click Item
+
+Pdv - Finalize Order And Select Payment Method
+    [Documentation]    Finaliza o pedido e selecionando o método de pagamento.
+    [Arguments]    ${payment_method}
     Pdv - Orders - Click Conference
-    IF    '${payment_method}' == 'bankslip'
-        Pdv - Orders - Click Client Search
-        Pdv - Orders - Click Client Consumer
-        Pdv - Orders - Input Client Name    Client_Credit
-        Pdv - Orders - Click Client Credit
-        Pdv - Orders - Click Client Confirm
-    END
     Pdv - Orders - Click Finalize Order
     IF    '${payment_method}' == 'money'
         Pdv - Orders - Click Payment Money
     ELSE IF    '${payment_method}' == 'pixoff'
         Pdv - Orders - Click Payment Pixoff
-    ELSE IF    '${payment_method}' == 'bankslip'
-        Pdv - Orders - Click Payment Bankslip
-        Pdv - Orders - Click Bankslip Parcel Add
-        Pdv - Orders - Click Bankslip Parcel Add
-        Pdv - Orders - Click Bankslip Parcel Remove
-        Pdv - Orders - Click Bankslip Term Calendar
-        Pdv - Orders - Click Bankslip Term Prefix
     END
     Pdv - Orders - Click Confirm Value
     Pdv - Orders - Click Finish Order
@@ -474,4 +503,36 @@ Pdv - Navigate To Register Client
     Pdv - Clients - Input Complement    ${complement}
     Pdv - Clients - Click Save
     Pdv - Clients - Click Back
+    Pdv - Home - Verify Visible
+
+# =============================================================================
+# FLUXOS COMPLETOS - REGRESSION
+# =============================================================================
+
+Pdv - Orders - Common Order
+    [Documentation]    Executa um fluxo de pedido comum.
+    Pdv - Create Order
+    Pdv - Search Item  Item_primary
+    Pdv - Finalize Order And Select Payment Method    money
+
+Pdv - Orders - Cancel Order Screen New Order
+    [Documentation]    Cancela um pedido na tela de novo pedido.
+    Pdv - Create Order
+    Pdv - Orders - Click Cancel Order New
+    Pdv - Orders - Verify Cancel Dialog
+    Pdv - Orders - Click Cancel Confirm
+    Pdv - Home - Verify Visible
+
+Pdv - Orders - Search for order by name, reference, and barcode
+    [Documentation]    Busca um item pelo nome, refere.
+    Pdv - Create Order
+    Pdv - Search Item    Item_primary
+    Pdv - Orders - Click Clean Search
+    Pdv - Search Item    9000000000002
+    Pdv - Orders - Click Clean Search
+    Pdv - Search Item    9000000000123
+    Pdv - Orders - Click Clean Search
+    Pdv - Orders - Cancel Order (New Order)
+    Pdv - Orders - Verify Cancel Dialog
+    Pdv - Orders - Click Cancel Confirm
     Pdv - Home - Verify Visible

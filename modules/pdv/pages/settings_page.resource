@@ -60,3 +60,40 @@ Pdv - Settings - Click Mini PDV
 
 Pdv - Settings - Click Default
     Wait Visible And Click Element    ${settings.default}
+
+# Payment_Forms - Formas de Pagamento
+Pdv - Settings - Click Payment Forms
+    Wait Visible And Click Element    ${settings.payments_forms}
+
+Pdv - Settings - Click Enable Pixoff
+    Wait Visible And Click Element    ${settings.enable_pixoff}
+
+Pdv - Settings - Click Enable Bankslip
+    Wait Visible And Click Element    ${settings.enable_bankslip}
+
+Pdv - Settings - Click Enable Pix
+    Wait Visible And Click Element    ${settings.enable_pix}
+
+# SoftcomPay
+
+Pdv - Settings - Click SoftcomPay
+    Wait Visible And Click Element    ${settings.softcompay}
+
+Pdv - Settings - Click Test Env
+    Wait Visible And Click Element    ${settings.test_env}
+
+Pdv - Settings - Client Id
+    [Arguments]    ${text}
+    Wait Visible And Input Text    ${settings.client_id}    ${text}
+    Close Keyboard
+
+Pdv - Settings - Client Secret
+    [Arguments]    ${text}
+    Wait Visible And Input Text    ${settings.client_secret}    ${text}
+    Close Keyboard
+
+Pdv - Settings - Click Check Keys 
+    Wait Visible And Click Element    ${settings.check_keys}
+
+Pdv - Settings - Click Thanks
+    Wait Visible And Click Element    ${settings.thanks}

@@ -21,3 +21,6 @@ SAFRA_UDID = os.getenv("SAFRA_UDID", "emulator-5554")
 MERCADOPAGO_UDID = os.getenv("MERCADOPAGO_UDID", "emulator-5554")
 QUICKPAY_A910_UDID = os.getenv("QUICKPAY_A910_UDID", "emulator-5554")
 CLOVER_UDID = os.getenv("CLOVER_UDID", "emulator-5554")
+
+CLIENT_ID = os.getenv("CLIENT_ID", "")
+CLIENT_SECRET = os.getenv("CLIENT_SECRET", "")

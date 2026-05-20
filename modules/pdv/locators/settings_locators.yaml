@@ -54,3 +54,15 @@ settings:
   mini_pdv: //android.widget.TextView[@text="Mini PDV"]
   # Padrao (Conferencia Ativa)
   default: //android.widget.TextView[@text="Padrão (Conferência Ativa)"]
+  # Softcompay
+  softcompay: //android.widget.TextView[@text="SoftcomPay"]
+  # Ambiente de teste
+  test_env: //android.widget.ScrollView/android.view.View/android.view.View[2]
+  # Client ID
+  client_id: //android.widget.ScrollView/android.view.View/android.view.View[4]/android.widget.EditText
+  # Client Secret
+  client_secret: //android.widget.ScrollView/android.view.View/android.view.View[6]/android.widget.EditText
+  # Verificar Chaves
+  check_keys: //android.widget.TextView[@text="Verificar Chaves"]
+  # Confirm button
+  thanks: //android.widget.TextView[@text="Obrigado!"]

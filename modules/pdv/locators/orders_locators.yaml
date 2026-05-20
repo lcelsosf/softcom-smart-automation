@@ -4,7 +4,7 @@
 
 orders:
   # Item primário do catálogo (contentDescription)
-  item: //android.view.View[@content-desc="Item_primary"]
+  item: //android.view.View[@resource-id="ProdutoCardPdvBox_0"]
   # Item secundário do catálogo (contentDescription)
   item2: //android.view.View[@content-desc="Item_secondary"]
   # Item com desconto do catálogo (contentDescription)
@@ -46,7 +46,7 @@ orders:
   # Botão voltar para tela inicial
   home: //android.widget.TextView[@text="Tela Inicial"]
   # Cancelar pedido na tela de novo pedido (PdvScreenText_1)
-  cancel_order1: //android.widget.TextView[@resource-id="PdvScreenText_1"]
+  cancel_order_new_order: //android.widget.TextView[@resource-id="PdvScreenText_1"]
   # Cancelar pedido na tela de carrinho (CarrinhoText_1)
   cancel_order2: //android.widget.TextView[@resource-id="CarrinhoText_1"]
   # Texto de confirmação de cancelamento
@@ -56,7 +56,9 @@ orders:
   # Cancelar (não confirmar) o cancelamento do pedido
   cancel_order_cancel: //android.widget.TextView[@text="Não"]
   # Campo de busca de item
-  item_search: //android.widget.EditText
+  item_search: //android.view.View[@resource-id="PdvScreenBox_1"]/android.view.View/android.widget.EditText
+  # Botão de limpar busca
+  clean_search: //android.view.View[@content-desc="Limpar pesquisa"]
   # Adicionar parcela de boleto (ValorPagamentoDialogText_5)
   bankslip_parce_add: //android.widget.TextView[@resource-id="ValorPagamentoDialogText_5"]
   # Remover parcela de boleto (ValorPagamentoDialogText_2)

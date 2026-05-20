@@ -4,6 +4,11 @@ Resource    ../../../resources/helpers/common_keywords.resource
 
 
 *** Keywords ***
+Pdv - Orders - Search Item
+    [Arguments]    ${Text}
+    Wait Visible And Input Text    ${orders.item_search}    ${Text}
+    Close Keyboard
+
 Pdv - Orders - Click Item
     Wait Visible And Click Element    ${orders.item}
 
@@ -38,7 +43,7 @@ Pdv - Orders - Click Home
     Wait Visible And Click Element    ${orders.home}
 
 Pdv - Orders - Click Cancel Order New
-    Wait Visible And Click Element    ${orders.cancel_order1}
+    Wait Visible And Click Element    ${orders.cancel_order_new_order}
 
 Pdv - Orders - Click Cancel Order Cart
     Wait Visible And Click Element    ${orders.cancel_order2}
@@ -73,6 +78,9 @@ Pdv - Orders - Click Quantity Confirm
 Pdv - Orders - Click Client Search
     Wait Visible And Click Element    ${orders.client_search}
 
+Pdv - Orders - Click Clean Search 
+    Wait Visible And Click Element    ${orders.clean_search}
+    
 Pdv - Orders - Click Client Consumer
     Wait Visible And Click Element    ${orders.client}
 

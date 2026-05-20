@@ -26,4 +26,4 @@ Pdv - Home - Click Logoff Confirm
     Wait Visible And Click Element    ${home.logoff_confirm}
 
 Pdv - Home - Verify Visible
-    Wait Until Element Is Visible    ${home.home}
+    Wait Until Element Is Visible    ${home.home}   ${TIMEOUT}
