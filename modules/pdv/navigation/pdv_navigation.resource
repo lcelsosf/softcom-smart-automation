@@ -532,7 +532,7 @@ Pdv - Orders - Search for order by name, reference, and barcode
     Pdv - Orders - Click Clean Search
     Pdv - Search Item    9000000000123
     Pdv - Orders - Click Clean Search
-    Pdv - Orders - Cancel Order (New Order)
+    Pdv - Orders - Click Cancel Order New
     Pdv - Orders - Verify Cancel Dialog
     Pdv - Orders - Click Cancel Confirm
     Pdv - Home - Verify Visible
