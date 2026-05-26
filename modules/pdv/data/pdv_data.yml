@@ -1,0 +1,8 @@
+#
+# Dados de teste centralizados - Modulo PDV
+#
+
+products:
+  product_1: Item_primary
+  product_2: Item_secondary
+  fractional: Item_fractional_quantity

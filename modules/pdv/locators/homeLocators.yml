@@ -1,0 +1,55 @@
+##########################################################################
+# Tela Principal - Home
+##########################################################################
+home:
+  # Card "Novo Pedido" — destaque na home
+  btn_new_order: xpath=//*[@resource-id='NovoPedidoCard_0']
+  # Card "Lista de Pedidos"
+  btn_orders_list: xpath=//*[@resource-id='HomeActionWideCard_0']
+  # Card "Clientes"
+  btn_clients: xpath=//*[@resource-id='HomeOptionCard_0']
+  # Card "Sincronizar Dados"
+  btn_sync: xpath=//*[@resource-id='HomeOptionCard_1']
+  # Card "Configurações"
+  btn_settings: xpath=//*[@resource-id='HomeOptionCard_3']
+  # Card "Logoff"
+  btn_logoff: xpath=//*[@resource-id='HomeOptionCard_4']
+
+##########################################################################
+# Modal de Sincronização - Exibido após clicar no card "Sincronizar Dados"
+##########################################################################
+sync:
+  # Opção "Produtos"
+  option_products: xpath=//android.view.View[.//android.widget.TextView[@text='Produtos'] and @clickable='true']
+  # Opção "Clientes"
+  option_clients: xpath=//android.view.View[.//android.widget.TextView[@text='Clientes'] and @clickable='true']
+  # Opção "Pedidos"
+  option_orders: xpath=//android.view.View[.//android.widget.TextView[@text='Pedidos'] and @clickable='true']
+  # Botão "Sincronizar" — inicia a sincronização das opções selecionadas
+  btn_sync: xpath=//android.view.View[.//android.widget.TextView[@text='Sincronizar']]
+  # Botão "Cancelar" — fecha o modal sem sincronizar
+  btn_cancel: xpath=//android.view.View[.//android.widget.TextView[@text='Cancelar']]
+
+#########################################################################
+# Modal de confirmacao do logoff - Exibido após clicar no card "Logoff"
+#########################################################################
+logoff:
+  # Botão "Sim" — confirma o logoff
+  btn_yes: xpath=//android.view.View[.//android.widget.TextView[@text='Sim']]
+  # Botão "Não" — cancela o logoff
+  btn_no: xpath=//android.view.View[.//android.widget.TextView[@text='Não']]
+  # Texto de confirmação
+  text_confirmation: xpath=//android.widget.TextView[@text="Deseja realizar logoff?"]
+
+##############################
+# Tela Home - Status do Pedido
+##############################
+orders_status:
+  # Botão Reimprimir (top bar)
+  btn_reprint: xpath=//*[android.view.View[@content-desc="Reimprimir"]]
+  # Botão "Novo Pedido" — inicia um novo ciclo de venda
+  btn_new_order: xpath=//android.view.View[.//android.widget.TextView[@text='Novo Pedido'] and @clickable='true']
+  # Botão "Compartilhar" — compartilha o comprovante
+  btn_share: xpath=//android.view.View[.//android.widget.TextView[@text='Compartilhar'] and @clickable='true']
+  # Botão "Tela Inicial" — retorna para a Home
+  btn_home: xpath=//android.view.View[.//android.widget.TextView[@text='Tela Inicial'] and @clickable='true']

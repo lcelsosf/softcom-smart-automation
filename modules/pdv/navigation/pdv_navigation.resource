@@ -7,6 +7,7 @@ Library    FakerLibrary    locale=pt_BR    WITH NAME    faker
 Resource    ../pages/home_page.resource
 Resource    ../pages/settings_page.resource
 Resource    ../pages/orders_page.resource
+Resource    ../pages/checkout_page.resource
 Resource    ../pages/clients_page.resource
 Resource    ../pages/list_orders_page.resource
 Resource    ../pages/sync_page.resource
@@ -536,3 +537,17 @@ Pdv - Orders - Search for order by name, reference, and barcode
     Pdv - Orders - Verify Cancel Dialog
     Pdv - Orders - Click Cancel Confirm
     Pdv - Home - Verify Visible
+
+Pdv - Orders - Alter Quantity
+    [Documentation]    Altera a quantidade de um item no pedido.
+    Pdv - Create Order
+    Pdv - Search item    Item_primary
+    Pdv - Orders - Click Clean Search
+    Pdv - Orders - Click Item
+    Pdv - Orders - Click Item
+    Pdv - Orders - Click Item
+    Pdv - Search item    Item_secondary
+    Pdv - Orders - Click Clean Search 
+    Pdv - Orders - Click Item
+    Pdv - Orders - Long Press Item
+    Pdv - Orders - 

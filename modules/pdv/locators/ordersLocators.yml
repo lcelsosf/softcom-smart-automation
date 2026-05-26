@@ -1,0 +1,122 @@
+##########################################################################
+# Tela de Pedidos - Novo Pedido
+##########################################################################
+orders:
+  # Botão voltar
+  btn_back: xpath=//*[@resource-id='PdvScreenIconButton_0']
+  # Botão Cancelar (texto clicável no canto direito)
+  btn_cancel: xpath=//*[@resource-id='PdvScreenText_1']
+  # Campo de busca de produto — EditText dentro do container de busca
+  search_input: xpath=//*[@resource-id='PdvScreenBox_1']//android.widget.EditText
+  # Filtro "Todos"
+  filter_all: xpath=//*[@resource-id='PdvScreenText_2']
+  # Botão "Conferir pedido" — habilitado apenas quando há itens no pedido
+  btn_checkout: xpath=//*[@resource-id='CheckoutFooterButton_0']
+
+########################################################################
+# Modal de quantidade - Exibido após executar o long press sobre um item
+########################################################################
+quantity_modal:
+  # Input de quantidade — EditText dentro do container View entre os botões
+  quantity_input: xpath=//android.widget.TextView[@text='Quantidade']/following-sibling::android.view.View[1]//android.widget.EditText
+  # Botão - (diminuir quantidade)
+  quantity_sub: xpath=//android.widget.TextView[@text='Quantidade']/following-sibling::android.widget.Button[1]
+  # Botão + (aumentar quantidade)
+  quantity_add: xpath=//android.widget.TextView[@text='Quantidade']/following-sibling::android.widget.Button[2]
+  # Botão "Remover item" — remove o produto do pedido
+  btn_remove_item: xpath=//android.view.View[.//android.widget.TextView[@text='Remover item']]
+  # Botão "Confirmar" — confirma a quantidade e fecha o modal
+  btn_confirm: xpath=//android.view.View[.//android.widget.TextView[@text='Confirmar']]
+
+##################################################################################
+# Dialog de confirmacao de remocao de item - Exibido após clicar em "Remover item"
+##################################################################################
+order_remove_dialog:
+  # Mensagem de confirmação — usado para verificar que o dialog abriu
+  confirm_message: xpath=//*[@text='Deseja remover o item do pedido?']
+  # Botão "Não" — cancela a remoção e volta ao modal de quantidade
+  btn_no: xpath=//android.view.View[.//android.widget.TextView[@text='Não']]
+  # Botão "Sim" — confirma a remoção do item do pedido
+  btn_yes: xpath=//android.view.View[.//android.widget.TextView[@text='Sim']]
+
+############################################################################################
+# Dialog de confirmacao de cancelamento do pedido - Exibido após clicar em "Cancelar pedido"
+############################################################################################
+order_cancel_dialog:
+  # Mensagem de confirmação — usado para verificar que o dialog abriu
+  confirm_message: xpath=//android.widget.TextView[@text="Ei, vai mesmo cancelar esse pedido?"]
+  # Botão "Não" — cancela o cancelamento e volta ao modal de quantidade
+  btn_no: xpath=//android.view.View[.//android.widget.TextView[@text='Não']]
+  # Botão "Sim" — confirma o cancelamento do pedido
+  btn_yes: xpath=//android.view.View[.//android.widget.TextView[@text='Sim']]
+
+##########################################################################
+# Tela de Pedidos - Carrinho
+##########################################################################
+cart:
+  # Botão Voltar
+  btn_back: xpath=//*[@resource-id='CarrinhoIconButton_0']
+  # Botão Cancelar (canto direito)
+  btn_cancel: xpath=//*[@resource-id='CarrinhoText_1']
+  # Ícone/botão de editar cliente
+  btn_edit_client: accessibility id=Editar cliente
+  # Botão remover item (X) — ícone "Remover" no canto do card
+  item_btn_remove: xpath=//*[@resource-id='ProdutoItemCarrinhoIcon_0']
+  # Botão - (decrementar quantidade do item no carrinho)
+  item_btn_sub: xpath=//*[@resource-id='ProdutoItemCarrinhoOutlinedButton_0']
+  # Campo de quantidade do item — clicável, abre modal de edição
+  # Texto varia (1, 2, 5...) — âncora pelo resource-id
+  item_quantity: xpath=//*[@resource-id='ProdutoItemCarrinhoText_1']
+  # Botão + (incrementar quantidade do item no carrinho)
+  item_btn_add: xpath=//*[@resource-id='ProdutoItemCarrinhoOutlinedButton_1']
+  # Botão "Desconto/Acréscimo"
+  btn_discount: xpath=//*[@resource-id='CarrinhoItensOutlinedButton_1']
+  # Botão "Adicionar itens" — volta para tela de produtos
+  btn_add_items: xpath=//*[@resource-id='CarrinhoItensOutlinedButton_0']
+  # Botão "Finalizar Pedido" — avança para pagamento
+  btn_finish_order: xpath=//*[@resource-id='CarrinhoItensButton_0']
+
+############################################################################
+# Modal de informar cliente - Exibido após clicar no botao de editar cliente
+############################################################################
+client_modal:
+  # Campo de seleção de cliente (Spinner/EditText)
+  client_input: xpath=//*[@text='Cliente']/following-sibling::android.view.View[1]//android.widget.EditText
+  # Campo CPF/CNPJ — EditText com placeholder "000.000.000-00"
+  cpf_input: xpath=//*[@text='CPF/CNPJ']/following-sibling::android.view.View[1]//android.widget.EditText
+  # Botão "Cadastrar novo cliente!" — navega para tela de cadastro
+  btn_register_client: xpath=//android.view.View[.//android.widget.TextView[contains(@text,'Cadastrar novo cliente')]]
+  # Botão "Cancelar" — fecha o modal sem salvar
+  btn_cancel: xpath=//android.view.View[.//android.widget.TextView[@text='Cancelar']]
+  # Botão "Confirmar" — confirma o cliente e fecha o modal
+  btn_confirm: xpath=//android.view.View[.//android.widget.TextView[@text='Confirmar']]
+
+#################################################################################################################
+# Dialog de confirmacao de remocao de item - Exibido após clicar no icone da lixeira e zerar a quantidade do item
+#################################################################################################################
+item_remove_dialog:
+  # Mensagem de confirmação — usado para verificar que o dialog abriu
+  confirm_message: xpath=//android.widget.TextView[@text="Deseja remover o item do pedido?"]
+  # Botão "Não" — cancela a remoção e fecha o dialog
+  btn_no: xpath=//android.view.View[.//android.widget.TextView[@text='Não']]
+  # Botão "Sim" — confirma a remoção do item
+  btn_yes: xpath=//android.view.View[.//android.widget.TextView[@text='Sim']]
+
+#######################################################################
+# Modal de Desconto - Exibido após clicar no botão "Desconto/Acréscimo"
+#######################################################################
+discount_modal:
+  # Tab "Desconto"
+  tab_discount: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Desconto']][1]
+  # Tab "Acréscimo"
+  tab_addition: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Acréscimo']]
+  # Botão tipo "R$" (valor fixo)
+  btn_type_value: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='R$']]
+  # Botão tipo "%" (percentual)
+  btn_type_percent: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='%']]
+  # Campo de valor — texto varia conforme digitação
+  value_input: xpath=//android.widget.EditText
+  # Botão "Remover" — remove desconto/acréscimo aplicado anteriormente
+  btn_remove: xpath=//android.view.View[.//android.widget.TextView[@text='Remover'] and @clickable='true']
+  # Botão "Aplicar" — aplica o desconto/acréscimo informado
+  btn_apply: xpath=//android.view.View[.//android.widget.TextView[@text='Aplicar'] and @clickable='true']
