@@ -8,6 +8,10 @@ orders:
   btn_cancel: xpath=//*[@resource-id='PdvScreenText_1']
   # Campo de busca de produto — EditText dentro do container de busca
   search_input: xpath=//*[@resource-id='PdvScreenBox_1']//android.widget.EditText
+  # Produto retornado na busca, selecionado pelo nome
+  product_by_name: xpath=//*[@text='PRODUCT_NAME']/ancestor::android.view.View[@clickable='true'][1]
+  # Ícone limpar pesquisa
+  clear_search: xpath=//android.view.View[@content-desc='Limpar pesquisa']
   # Filtro "Todos"
   filter_all: xpath=//*[@resource-id='PdvScreenText_2']
   # Botão "Conferir pedido" — habilitado apenas quando há itens no pedido

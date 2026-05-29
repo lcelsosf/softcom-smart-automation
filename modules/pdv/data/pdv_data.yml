@@ -1,8 +1,15 @@
-#
+###########################################
 # Dados de teste centralizados - Modulo PDV
-#
+###########################################
 
 products:
   product_1: Item_primary
+  product_1_reference: 9000000000002
+  product_1_barcode: 9000000000123
   product_2: Item_secondary
   fractional: Item_fractional_quantity
+  price_table: Item_price_table
+  grid: Item_grid
+  promotion: Item_promotion
+  promotion: Item_promotion_disable
+  discount: Item_discount
