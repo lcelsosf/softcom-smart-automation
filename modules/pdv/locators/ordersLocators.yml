@@ -28,20 +28,20 @@ quantity_modal:
   # Botão + (aumentar quantidade)
   quantity_add: xpath=//android.widget.TextView[@text='Quantidade']/following-sibling::android.widget.Button[2]
   # Botão "Remover item" — remove o produto do pedido
-  btn_remove_item: xpath=//android.view.View[.//android.widget.TextView[@text='Remover item']]
+  btn_remove_item: xpath=//android.widget.TextView[@text='Remover item']/ancestor::android.view.View[@clickable='true'][1]
   # Botão "Confirmar" — confirma a quantidade e fecha o modal
-  btn_confirm: xpath=//android.view.View[.//android.widget.TextView[@text='Confirmar']]
+  btn_confirm: xpath=//android.widget.TextView[@text='Confirmar']/ancestor::android.view.View[@clickable='true'][1]
 
 ##################################################################################
 # Dialog de confirmacao de remocao de item - Exibido após clicar em "Remover item"
 ##################################################################################
 order_remove_dialog:
   # Mensagem de confirmação — usado para verificar que o dialog abriu
-  confirm_message: xpath=//*[@text='Deseja remover o item do pedido?']
+  confirm_message: xpath=//android.widget.TextView[@text='Deseja remover o item do pedido?']
   # Botão "Não" — cancela a remoção e volta ao modal de quantidade
-  btn_no: xpath=//android.view.View[.//android.widget.TextView[@text='Não']]
+  btn_no: xpath=//android.widget.TextView[@text='Não']/ancestor::android.view.View[@clickable='true'][1]
   # Botão "Sim" — confirma a remoção do item do pedido
-  btn_yes: xpath=//android.view.View[.//android.widget.TextView[@text='Sim']]
+  btn_yes: xpath=//android.widget.TextView[@text='Sim']/ancestor::android.view.View[@clickable='true'][1]
 
 ############################################################################################
 # Dialog de confirmacao de cancelamento do pedido - Exibido após clicar em "Cancelar pedido"

@@ -26,3 +26,11 @@ PDV - Filter name, reference and barcode
     ...    ${products.product_1_reference}
     ...    ${products.product_1_barcode}
     ...    money
+
+PDV - Alter Quantity and Remove item
+    [Documentation]    Altera a quantidade de um item e remove outro item antes de finalizar a venda.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders    quantity    remove
+    PDV - Complete Flow - Alter Quantity And Remove Item
+    ...    ${products.product_1}
+    ...    ${products.product_2}
+    ...    money

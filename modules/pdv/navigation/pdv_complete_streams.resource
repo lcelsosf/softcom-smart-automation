@@ -37,3 +37,25 @@ PDV - Complete Flow - Filter Name Reference And Barcode
     Pdv - Navigate To Finish Sale
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
+
+
+PDV - Complete Flow - Alter Quantity And Remove Item
+    [Documentation]    Altera a quantidade de um item, remove outro item e finaliza a venda.
+    [Arguments]    ${product_primary}    ${product_secondary}    ${payment_method}
+    Pdv - Navigate To New Order
+    Pdv - Navigate To Select Product    ${product_primary}
+    Pdv - Navigate To Long Press Product    ${product_primary}
+    Pdv - Navigate To Add Quantity    3
+    Pdv - Navigate To Remove Quantity    2
+    Pdv - Navigate To Confirm Quantity
+    Pdv - Navigate To Clear Product Search
+    Pdv - Navigate To Select Product    ${product_secondary}
+    Pdv - Navigate To Long Press Product    ${product_secondary}
+    Pdv - Navigate To Remove Product From Order
+    Pdv - Navigate To Check Order
+    Pdv - Navigate To Finish Order
+    Pdv - Navigate To Select Payment Method    ${payment_method}
+    Pdv - Navigate To Confirm Payment Value
+    Pdv - Navigate To Finish Sale
+    Pdv - Navigate To Initial Screen
+    Pdv - Home - Verify Visible

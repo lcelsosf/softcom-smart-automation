@@ -53,6 +53,39 @@ Pdv - Navigate To Finish Order
     [Documentation]    Finaliza o pedido e avança para pagamento.
     Pdv - Orders - Click Finalize Order
 
+Pdv - Navigate To Long Press Product
+    [Documentation]    Seleciona um produto pelo nome usando long press.
+    [Arguments]    ${product_name}
+    ${locator}=    Replace String    ${orders.product_by_name}    PRODUCT_NAME    ${product_name}
+    Wait Visible And Long Press Element    ${locator}
+
+Pdv - Navigate To Search And Long Press Product
+    [Documentation]    Pesquisa e seleciona um produto pelo nome usando long press.
+    [Arguments]    ${product_name}
+    Pdv - Orders - Click Search Input
+    Pdv - Orders - Type Product Name    ${product_name}
+    Pdv - Navigate To Long Press Product    ${product_name}
+
+Pdv - Navigate To Add Quantity
+    [Documentation]    Aumenta a quantidade do item no modal de quantidade.
+    [Arguments]    ${times}
+    Repeat Keyword    ${times} times    Pdv - Orders - Click Quantity Add
+
+Pdv - Navigate To Remove Quantity
+    [Documentation]    Diminui a quantidade do item no modal de quantidade.
+    [Arguments]    ${times}
+    Repeat Keyword    ${times} times    Pdv - Orders - Click Quantity Remove
+
+Pdv - Navigate To Confirm Quantity
+    [Documentation]    Confirma a quantidade no modal de quantidade.
+    Pdv - Orders - Click Quantity Confirm
+
+Pdv - Navigate To Remove Product From Order
+    [Documentation]    Remove o produto selecionado no modal de quantidade.
+    Pdv - Orders - Click Remove Item
+    Pdv - Orders - Verify Remove Item Dialog
+    Pdv - Orders - Click Remove Item Confirm
+
 
 # =============================================================================
 # CONFIGURAÇÃO — PAGAMENTO
