@@ -45,6 +45,12 @@ Pdv - Navigate To Clear Product Search
     [Documentation]    Limpa a pesquisa de produto.
     Pdv - Orders - Click Clear Search
 
+Pdv - Navigate To Cancel Order
+    [Documentation]    Cancela o pedido atual e confirma o modal de cancelamento.
+    Pdv - Orders - Click Cancel Order New
+    Pdv - Orders - Verify Cancel Dialog
+    Pdv - Orders - Click Cancel Confirm
+
 Pdv - Navigate To Check Order
     [Documentation]    Avança para a conferência do pedido.
     Pdv - Orders - Click Conference
@@ -52,6 +58,18 @@ Pdv - Navigate To Check Order
 Pdv - Navigate To Finish Order
     [Documentation]    Finaliza o pedido e avança para pagamento.
     Pdv - Orders - Click Finalize Order
+
+Pdv - Navigate To Select Client
+    [Documentation]    Pesquisa, seleciona e confirma o cliente no carrinho.
+    [Arguments]    ${client_name}
+    Pdv - Orders - Click Edit Client
+    Pdv - Orders - Input Client Modal Client    ${client_name}
+    Pdv - Orders - Click Client By Name    ${client_name}
+    Pdv - Orders - Click Client Modal Confirm
+
+Pdv - Navigate To Add Items From Cart
+    [Documentation]    Retorna do carrinho para a tela de produtos para adicionar itens.
+    Pdv - Orders - Click Cart
 
 Pdv - Navigate To Long Press Product
     [Documentation]    Seleciona um produto pelo nome usando long press.
@@ -85,6 +103,42 @@ Pdv - Navigate To Remove Product From Order
     Pdv - Orders - Click Remove Item
     Pdv - Orders - Verify Remove Item Dialog
     Pdv - Orders - Click Remove Item Confirm
+
+Pdv - Navigate To Apply Discount Integer
+    [Documentation]    Aplica desconto em valor fixo no carrinho.
+    [Arguments]    ${discount_value}
+    Pdv - Orders - Click Discount-Sum
+    Pdv - Orders - Click Discount
+    Pdv - Orders - Click R$
+    Pdv - Orders - Input Discount Value    ${discount_value}
+    Pdv - Orders - Click Apply Discount
+
+Pdv - Navigate To Apply Discount Percent
+    [Documentation]    Aplica desconto percentual no carrinho.
+    [Arguments]    ${discount_value}
+    Pdv - Orders - Click Discount-Sum
+    Pdv - Orders - Click Discount
+    Pdv - Orders - Click Percent
+    Pdv - Orders - Input Discount Value    ${discount_value}
+    Pdv - Orders - Click Apply Discount
+
+Pdv - Navigate To Apply Additional Percent
+    [Documentation]    Aplica acréscimo percentual no carrinho.
+    [Arguments]    ${additional_value}
+    Pdv - Orders - Click Discount-Sum
+    Pdv - Orders - Click Addition
+    Pdv - Orders - Click Percent
+    Pdv - Orders - Input Discount Value    ${additional_value}
+    Pdv - Orders - Click Apply Discount
+
+Pdv - Navigate To Apply Additional Integer
+    [Documentation]    Aplica acréscimo em valor fixo no carrinho.
+    [Arguments]    ${additional_value}
+    Pdv - Orders - Click Discount-Sum
+    Pdv - Orders - Click Addition
+    Pdv - Orders - Click R$
+    Pdv - Orders - Input Discount Value    ${additional_value}
+    Pdv - Orders - Click Apply Discount
 
 
 # =============================================================================

@@ -50,9 +50,9 @@ order_cancel_dialog:
   # Mensagem de confirmação — usado para verificar que o dialog abriu
   confirm_message: xpath=//android.widget.TextView[@text="Ei, vai mesmo cancelar esse pedido?"]
   # Botão "Não" — cancela o cancelamento e volta ao modal de quantidade
-  btn_no: xpath=//android.view.View[.//android.widget.TextView[@text='Não']]
+  btn_no: xpath=//android.widget.TextView[@text='Não']/ancestor::android.view.View[@clickable='true'][1]
   # Botão "Sim" — confirma o cancelamento do pedido
-  btn_yes: xpath=//android.view.View[.//android.widget.TextView[@text='Sim']]
+  btn_yes: xpath=//android.widget.TextView[@text='Sim']/ancestor::android.view.View[@clickable='true'][1]
 
 ##########################################################################
 # Tela de Pedidos - Carrinho
@@ -63,7 +63,7 @@ cart:
   # Botão Cancelar (canto direito)
   btn_cancel: xpath=//*[@resource-id='CarrinhoText_1']
   # Ícone/botão de editar cliente
-  btn_edit_client: accessibility id=Editar cliente
+  btn_edit_client: xpath=//*[@content-desc='Editar cliente']
   # Botão remover item (X) — ícone "Remover" no canto do card
   item_btn_remove: xpath=//*[@resource-id='ProdutoItemCarrinhoIcon_0']
   # Botão - (decrementar quantidade do item no carrinho)
@@ -84,16 +84,20 @@ cart:
 # Modal de informar cliente - Exibido após clicar no botao de editar cliente
 ############################################################################
 client_modal:
-  # Campo de seleção de cliente (Spinner/EditText)
-  client_input: xpath=//*[@text='Cliente']/following-sibling::android.view.View[1]//android.widget.EditText
+  # Spinner do campo Cliente — abre a pesquisa de cliente
+  client_spinner: xpath=//*[@text='Cliente']/following-sibling::android.view.View[1]//android.widget.Spinner
+  # Campo de pesquisa de cliente aberto pelo spinner — quando vazio exibe o placeholder "Pesquise por nome ou CPF/CNPJ"
+  client_input: xpath=//android.widget.EditText[@focused='true' or .//android.widget.TextView[@text='Pesquise por nome ou CPF/CNPJ']]
+  # Cliente retornado na busca, selecionado pelo nome
+  client_by_name: xpath=//android.widget.TextView[@text='CLIENT_NAME']/ancestor::android.view.View[@clickable='true'][1]
   # Campo CPF/CNPJ — EditText com placeholder "000.000.000-00"
   cpf_input: xpath=//*[@text='CPF/CNPJ']/following-sibling::android.view.View[1]//android.widget.EditText
   # Botão "Cadastrar novo cliente!" — navega para tela de cadastro
   btn_register_client: xpath=//android.view.View[.//android.widget.TextView[contains(@text,'Cadastrar novo cliente')]]
   # Botão "Cancelar" — fecha o modal sem salvar
-  btn_cancel: xpath=//android.view.View[.//android.widget.TextView[@text='Cancelar']]
+  btn_cancel: xpath=//android.widget.TextView[@text='Cancelar']/ancestor::android.view.View[@clickable='true'][1]
   # Botão "Confirmar" — confirma o cliente e fecha o modal
-  btn_confirm: xpath=//android.view.View[.//android.widget.TextView[@text='Confirmar']]
+  btn_confirm: xpath=//android.widget.TextView[@text='Confirmar']/ancestor::android.view.View[@clickable='true'][1]
 
 #################################################################################################################
 # Dialog de confirmacao de remocao de item - Exibido após clicar no icone da lixeira e zerar a quantidade do item

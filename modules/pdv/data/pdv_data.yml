@@ -13,3 +13,6 @@ products:
   promotion: Item_promotion
   promotion: Item_promotion_disable
   discount: Item_discount
+
+clients:
+  client_credit: Client_Credit

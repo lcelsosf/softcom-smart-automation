@@ -137,10 +137,20 @@ Pdv - Orders - Click Finalize Order
     Wait Visible And Click Element    ${cart.btn_finish_order}
 
 Pdv - Orders - Input Client Modal Client
-    [Documentation]    Campo de seleção de cliente (Spinner/EditText).
+    [Documentation]    Abre o spinner de cliente, limpa o campo de pesquisa e pesquisa pelo cliente informado.
     [Arguments]    ${text}
-    Wait Visible And Input Text    ${client_modal.client_input}    ${text}
+    Wait Visible And Click Element    ${client_modal.client_spinner}
+    Wait Until Element Is Visible    ${client_modal.client_input}
+    Click Element    ${client_modal.client_input}
+    Clear Text    ${client_modal.client_input}
+    Input Text    ${client_modal.client_input}    ${text}
     Close Keyboard
+
+Pdv - Orders - Click Client By Name
+    [Documentation]    Cliente retornado na busca, selecionado pelo nome.
+    [Arguments]    ${client_name}
+    ${locator}=    Replace String    ${client_modal.client_by_name}    CLIENT_NAME    ${client_name}
+    Wait Visible And Click Element    ${locator}
 
 Pdv - Orders - Input Client Modal CPF
     [Documentation]    Campo CPF/CNPJ — EditText com placeholder "000.000.000-00".

@@ -34,3 +34,50 @@ PDV - Alter Quantity and Remove item
     ...    ${products.product_1}
     ...    ${products.product_2}
     ...    money
+
+PDV - Cancel Order
+    [Documentation]    Seleciona um item, limpa a pesquisa e cancela o pedido retornando para a tela inicial.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders    cancel
+    PDV - Complete Flow - Cancel Order After Select Product
+    ...    ${products.product_1}
+
+PDV - Alter Client and Add Itens from Cart
+    [Documentation]    Altera o cliente no carrinho, adiciona outro item e finaliza a venda.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders    client    cart
+    PDV - Complete Flow - Alter Client And Add Itens From Cart
+    ...    ${products.product_1}
+    ...    ${clients.client_credit}
+    ...    ${products.product_2}
+    ...    money
+
+PDV - Discount Integer
+    [Documentation]    Aplica desconto em valor fixo de 1,00 no carrinho e finaliza a venda.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders    discount
+    PDV - Complete Flow - Discount Integer
+    ...    ${products.discount}
+    ...    1,00
+    ...    money
+
+PDV - Discount Percent
+    [Documentation]    Aplica desconto percentual de 10,00 no carrinho e finaliza a venda.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders    discount
+    PDV - Complete Flow - Discount Percent
+    ...    ${products.discount}
+    ...    10,00
+    ...    money
+
+PDV - Additional Percent
+    [Documentation]    Aplica acréscimo percentual de 10,00 no carrinho e finaliza a venda.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders    additional
+    PDV - Complete Flow - Additional Percent
+    ...    ${products.discount}
+    ...    10,00
+    ...    money
+
+PDV - Additional Integer
+    [Documentation]    Aplica acréscimo em valor fixo de 1,00 no carrinho e finaliza a venda.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders    additional
+    PDV - Complete Flow - Additional Integer
+    ...    ${products.discount}
+    ...    1,00
+    ...    money
