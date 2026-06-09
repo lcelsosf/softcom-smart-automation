@@ -81,3 +81,12 @@ PDV - Additional Integer
     ...    ${products.discount}
     ...    1,00
     ...    money
+
+PDV - Item edition
+    [Documentation]    Edita quantidades e remove item no carrinho antes de finalizar a venda.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders    quantity    remove    edit
+    PDV - Complete Flow - Item Edition
+    ...    ${products.product_1}
+    ...    ${products.product_2}
+    ...    ${products.discount}
+    ...    money

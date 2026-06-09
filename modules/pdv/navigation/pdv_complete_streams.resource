@@ -154,3 +154,24 @@ PDV - Complete Flow - Additional Integer
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
 
+
+PDV - Complete Flow - Item Edition
+    [Documentation]    Edita quantidades e remove item no carrinho antes de finalizar a venda.
+    [Arguments]    ${product_primary}    ${product_secondary}    ${product_discount}    ${payment_method}
+    Pdv - Navigate To New Order
+    Pdv - Navigate To Select Product    ${product_primary}
+    Pdv - Navigate To Clear Product Search
+    Pdv - Navigate To Select Product    ${product_secondary}
+    Pdv - Navigate To Clear Product Search
+    Pdv - Navigate To Select Product    ${product_discount}
+    Pdv - Navigate To Check Order
+    Pdv - Navigate To Add Cart Item Quantity    ${product_discount}    3
+    Pdv - Navigate To Remove Cart Item Quantity    ${product_discount}    2
+    Pdv - Navigate To Remove Cart Item By Name    ${product_secondary}
+    Pdv - Navigate To Remove Cart Item By Name    ${product_primary}
+    Pdv - Navigate To Finish Order
+    Pdv - Navigate To Select Payment Method    ${payment_method}
+    Pdv - Navigate To Confirm Payment Value
+    Pdv - Navigate To Finish Sale
+    Pdv - Navigate To Initial Screen
+    Pdv - Home - Verify Visible

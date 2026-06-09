@@ -83,6 +83,7 @@ Pdv - Orders - Click Remove Item Cancel
 Pdv - Orders - Click Remove Item Confirm
     [Documentation]    Botão "Sim" — confirma a remoção do item do pedido.
     Wait Visible And Click Element    ${order_remove_dialog.btn_yes}
+    Wait For Element To Disappear    ${order_remove_dialog.confirm_message}
 
 Pdv - Orders - Verify Cancel Dialog
     [Documentation]    Mensagem de confirmação — usado para verificar que o dialog abriu.
@@ -123,6 +124,30 @@ Pdv - Orders - Click Cart Item Quantity
 Pdv - Orders - Click Cart Item Add
     [Documentation]    Botão + (incrementar quantidade do item no carrinho).
     Wait Visible And Click Element    ${cart.item_btn_add}
+
+Pdv - Orders - Click Remove Item Icon By Name
+    [Documentation]    Botão remover item (X) no card do produto informado.
+    [Arguments]    ${product_name}
+    ${locator}=    Replace String    ${cart.item_btn_remove_by_name}    PRODUCT_NAME    ${product_name}
+    Wait Visible And Click Element    ${locator}
+
+Pdv - Orders - Click Cart Item Sub By Name
+    [Documentation]    Botão - (decrementar quantidade) no card do produto informado.
+    [Arguments]    ${product_name}
+    ${locator}=    Replace String    ${cart.item_btn_sub_by_name}    PRODUCT_NAME    ${product_name}
+    Wait Visible And Click Element    ${locator}
+
+Pdv - Orders - Click Cart Item Quantity By Name
+    [Documentation]    Campo de quantidade no card do produto informado.
+    [Arguments]    ${product_name}
+    ${locator}=    Replace String    ${cart.item_quantity_by_name}    PRODUCT_NAME    ${product_name}
+    Wait Visible And Click Element    ${locator}
+
+Pdv - Orders - Click Cart Item Add By Name
+    [Documentation]    Botão + (incrementar quantidade) no card do produto informado.
+    [Arguments]    ${product_name}
+    ${locator}=    Replace String    ${cart.item_btn_add_by_name}    PRODUCT_NAME    ${product_name}
+    Wait Visible And Click Element    ${locator}
 
 Pdv - Orders - Click Discount-Sum
     [Documentation]    Botão "Desconto/Acréscimo".
@@ -181,6 +206,7 @@ Pdv - Orders - Click Remove Item Icon Cancel
 Pdv - Orders - Click Remove Item Icon Confirm
     [Documentation]    Botão "Sim" — confirma a remoção do item.
     Wait Visible And Click Element    ${item_remove_dialog.btn_yes}
+    Wait For Element To Disappear    ${item_remove_dialog.confirm_message}
 
 Pdv - Orders - Click Discount
     [Documentation]    Tab "Desconto".

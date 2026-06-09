@@ -264,7 +264,7 @@ Wait For Element To Disappear
 
 _Do Wait For Element To Disappear
     [Arguments]    ${element}    ${timeout}=${DEFAULT_TIMEOUT}
-    Wait Until Keyword Succeeds    ${timeout}    1s    Assert Element Not Visible    ${element}
+    Wait Until Page Does Not Contain Element    ${element}    timeout=${timeout}
 
 
 Assert Element Not Visible

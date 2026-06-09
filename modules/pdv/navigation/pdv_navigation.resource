@@ -104,6 +104,32 @@ Pdv - Navigate To Remove Product From Order
     Pdv - Orders - Verify Remove Item Dialog
     Pdv - Orders - Click Remove Item Confirm
 
+Pdv - Navigate To Add Cart Item Quantity
+    [Documentation]    Aumenta a quantidade do item informado diretamente no carrinho.
+    [Arguments]    ${product_name}    ${times}
+    Repeat Keyword    ${times} times    Pdv - Orders - Click Cart Item Add By Name    ${product_name}
+
+Pdv - Navigate To Remove Cart Item Quantity
+    [Documentation]    Diminui a quantidade do item informado diretamente no carrinho.
+    [Arguments]    ${product_name}    ${times}
+    Repeat Keyword    ${times} times    Pdv - Orders - Click Cart Item Sub By Name    ${product_name}
+
+Pdv - Navigate To Remove Cart Item By Name
+    [Documentation]    Abre o modal de edição do item informado, remove o item e confirma o dialog.
+    [Arguments]    ${product_name}
+    Pdv - Orders - Click Cart Item Quantity By Name    ${product_name}
+    Pdv - Orders - Click Remove Item
+    Pdv - Orders - Verify Remove Item Dialog
+    Pdv - Orders - Click Remove Item Confirm
+
+Pdv - Navigate To Edit Cart Item Quantity By Name
+    [Documentation]    Abre o modal de quantidade pelo item informado, ajusta e confirma.
+    [Arguments]    ${product_name}    ${add_times}    ${remove_times}
+    Pdv - Orders - Click Cart Item Quantity By Name    ${product_name}
+    Pdv - Navigate To Add Quantity    ${add_times}
+    Pdv - Navigate To Remove Quantity    ${remove_times}
+    Pdv - Navigate To Confirm Quantity
+
 Pdv - Navigate To Apply Discount Integer
     [Documentation]    Aplica desconto em valor fixo no carrinho.
     [Arguments]    ${discount_value}

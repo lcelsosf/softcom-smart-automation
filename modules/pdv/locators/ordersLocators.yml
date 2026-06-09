@@ -73,6 +73,14 @@ cart:
   item_quantity: xpath=//*[@resource-id='ProdutoItemCarrinhoText_1']
   # Botão + (incrementar quantidade do item no carrinho)
   item_btn_add: xpath=//*[@resource-id='ProdutoItemCarrinhoOutlinedButton_1']
+  # Botão remover item (X) no card do produto informado
+  item_btn_remove_by_name: xpath=//*[@text='PRODUCT_NAME']/ancestor::android.view.View[.//*[@resource-id='ProdutoItemCarrinhoIcon_0']][1]//*[@resource-id='ProdutoItemCarrinhoIcon_0']
+  # Botão - (decrementar quantidade) no card do produto informado
+  item_btn_sub_by_name: xpath=//*[@text='PRODUCT_NAME']/ancestor::android.view.View[.//*[@resource-id='ProdutoItemCarrinhoOutlinedButton_0']][1]//*[@resource-id='ProdutoItemCarrinhoOutlinedButton_0']
+  # Campo de quantidade no card do produto informado
+  item_quantity_by_name: xpath=//*[@text='PRODUCT_NAME']/ancestor::android.view.View[.//*[@resource-id='ProdutoItemCarrinhoText_1']][1]//*[@resource-id='ProdutoItemCarrinhoText_1']
+  # Botão + (incrementar quantidade) no card do produto informado
+  item_btn_add_by_name: xpath=//*[@text='PRODUCT_NAME']/ancestor::android.view.View[.//*[@resource-id='ProdutoItemCarrinhoOutlinedButton_1']][1]//*[@resource-id='ProdutoItemCarrinhoOutlinedButton_1']
   # Botão "Desconto/Acréscimo"
   btn_discount: xpath=//*[@resource-id='CarrinhoItensOutlinedButton_1']
   # Botão "Adicionar itens" — volta para tela de produtos
@@ -106,9 +114,9 @@ item_remove_dialog:
   # Mensagem de confirmação — usado para verificar que o dialog abriu
   confirm_message: xpath=//android.widget.TextView[@text="Deseja remover o item do pedido?"]
   # Botão "Não" — cancela a remoção e fecha o dialog
-  btn_no: xpath=//android.view.View[.//android.widget.TextView[@text='Não']]
+  btn_no: xpath=//android.widget.TextView[@text='Não']/ancestor::android.view.View[@clickable='true'][1]
   # Botão "Sim" — confirma a remoção do item
-  btn_yes: xpath=//android.view.View[.//android.widget.TextView[@text='Sim']]
+  btn_yes: xpath=//android.widget.TextView[@text='Sim']/ancestor::android.view.View[@clickable='true'][1]
 
 #######################################################################
 # Modal de Desconto - Exibido após clicar no botão "Desconto/Acréscimo"
