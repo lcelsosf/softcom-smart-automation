@@ -90,3 +90,60 @@ PDV - Item edition
     ...    ${products.product_2}
     ...    ${products.discount}
     ...    money
+
+PDV - Bankslip
+    [Documentation]    Realiza pedido alterando o cliente e finalizando com boleto bancário.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders    bankslip
+    PDV - Complete Flow - Bankslip
+    ...    ${products.product_1}
+    ...    ${clients.client_credit}
+    ...    ${payment_data.bank_slip_calendar_day}
+
+PDV - Pix Off
+    [Documentation]    Realiza pedido finalizando com Pix Off.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders    pixoff
+    PDV - Complete Flow - Pix Off
+    ...    ${products.product_1}
+
+
+PDV - Item Variations
+    [Documentation]    Realiza pedido com variações de item, badge de promoção e pagamento Pix Off.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders    quantity    promotion    pixoff
+    PDV - Complete Flow - Item Variations
+    ...    ${products.fractional}
+    ...    ${products.composition}
+    ...    ${products.barcode_variation_1}
+    ...    ${products.barcode_variation_2}
+    ...    ${products.promotion}
+    ...    money
+
+PDV - Price Table
+    [Documentation]    Realiza pedido com tabela de preço A e pagamento em dinheiro.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders    price-table
+    PDV - Complete Flow - Price Table
+    ...    ${products.price_table}
+    ...    money
+
+PDV - Express Mode
+    [Documentation]    Realiza pedido adicionando itens pelo modo expresso e finaliza a venda.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders    express
+    PDV - Complete Flow - Express Mode
+    ...    ${products.product_1}
+    ...    ${products.product_2}
+    ...    money
+
+PDV - Mini PDV Mode
+    [Documentation]    Realiza pedido adicionando item por seleção e por código de barras via ADB.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders    mini-pdv
+    PDV - Complete Flow - Mini PDV Mode
+    ...    ${products.product_1}
+    ...    ${products.product_1_barcode}
+    ...    money
+
+PDV - Smart PDV Functions
+    [Documentation]    Seleciona cliente, valida estoque, altera preço unitário e finaliza a venda.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders    smart-pdv
+    PDV - Complete Flow - Smart PDV Functions
+    ...    ${clients.client_credit}
+    ...    ${products.product_1}
+    ...    5,00

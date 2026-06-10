@@ -44,24 +44,51 @@ Pdv - Checkout - Click Value Confirm
 
 Pdv - Checkout - Click Bank Slip Add
     [Documentation]    Botao de adicionar parcela.
+    ${previous_quantity}=    Get Text    ${bank_slip.parcels_quantity}
     Wait Visible And Click Element    ${bank_slip.btn_add}
+    ${expected_quantity}=    Evaluate    int(${previous_quantity}) + 1
+    ${expected_quantity}=    Convert To String    ${expected_quantity}
+    Wait Until Keyword Succeeds    5x    1s    Element Text Should Be    ${bank_slip.parcels_quantity}    ${expected_quantity}
 
 Pdv - Checkout - Click Bank Slip Sub
     [Documentation]    Botao de remover parcela.
+    ${previous_quantity}=    Get Text    ${bank_slip.parcels_quantity}
     Wait Visible And Click Element    ${bank_slip.btn_sub}
+    ${expected_quantity}=    Evaluate    int(${previous_quantity}) - 1
+    ${expected_quantity}=    Convert To String    ${expected_quantity}
+    Wait Until Keyword Succeeds    5x    1s    Element Text Should Be    ${bank_slip.parcels_quantity}    ${expected_quantity}
 
 Pdv - Checkout - Input Bank Slip Term
     [Documentation]    Input de prazo — visível apenas em métodos que exigem prazo (ex: Boleto Bancário).
     [Arguments]    ${text}
-    Wait Visible And Input Text    ${bank_slip.term_input}    ${text}
-    Close Keyboard
+    Wait Until Element Is Visible    ${bank_slip.term_input}
+    Click Element    ${bank_slip.term_input}
+    Pdv - Checkout - Click Value Clear
+    ${digits}=    Convert To String    ${text}
+    ${length}=    Get Length    ${digits}
+    FOR    ${index}    IN RANGE    ${length}
+        ${digit}=    Get Substring    ${digits}    ${index}    ${index + 1}
+        Pdv - Checkout - Click Value Key    ${digit}
+    END
+
+Pdv - Checkout - Click Value Key
+    [Documentation]    Clica em uma tecla numérica do teclado do modal de pagamento.
+    [Arguments]    ${digit}
+    ${locator}=    Replace String    ${payment_value_modal.key_by_digit}    DIGIT    ${digit}
+    Wait Visible And Click Element    ${locator}
 
 Pdv - Checkout - Click Calendar
     [Documentation]    Botao Calendario.
     Wait Visible And Click Element    ${bank_slip.calendar}
 
+Pdv - Checkout - Verify Calendar Day Visible
+    [Documentation]    Verifica se o calendário está visível validando o dia informado.
+    [Arguments]    ${day_number}
+    ${locator}=    Replace String    ${bank_slip.day_by_number}    DAY_NUMBER    ${day_number}
+    Wait Until Element Is Visible    ${locator}
+
 Pdv - Checkout - Click Day By Number
-    [Documentation]    Uso: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='DAY']].
+    [Documentation]    Uso: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='DAY_NUMBER']].
     [Arguments]    ${day_number}
     ${locator}=    Replace String    ${bank_slip.day_by_number}    DAY_NUMBER    ${day_number}
     Wait Visible And Click Element    ${locator}

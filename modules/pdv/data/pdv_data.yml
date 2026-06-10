@@ -10,9 +10,15 @@ products:
   fractional: Item_fractional_quantity
   price_table: Item_price_table
   grid: Item_grid
+  composition: Item_composition
   promotion: Item_promotion
-  promotion: Item_promotion_disable
+  promotion_disable: Item_promotion_disable
+  barcode_variation_1: 9000008004015
+  barcode_variation_2: 9000008005017
   discount: Item_discount
 
 clients:
   client_credit: Client_Credit
+
+payment_data:
+  bank_slip_calendar_day: 7

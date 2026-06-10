@@ -41,9 +41,56 @@ Pdv - Navigate To Search Product
     Pdv - Orders - Type Product Name    ${search_term}
     Pdv - Orders - Click Product By Name    ${product_name}
 
+Pdv - Navigate To Search And Select First Product Card
+    [Documentation]    Pesquisa pelo termo informado e seleciona o primeiro card retornado.
+    [Arguments]    ${search_term}
+    Pdv - Orders - Click Search Input
+    Pdv - Orders - Type Product Name    ${search_term}
+    Pdv - Orders - Click First Product Card
+
+Pdv - Navigate To Input Barcode By Adb
+    [Documentation]    Insere código de barras via ADB e confirma com Enter.
+    [Arguments]    ${barcode}
+    Pdv - Orders - Input Barcode By Adb    ${barcode}
+
+Pdv - Navigate To Search Product And Verify Promotion Badge
+    [Documentation]    Pesquisa um produto e valida o badge de promoção antes da seleção.
+    [Arguments]    ${product_name}
+    Pdv - Orders - Click Search Input
+    Pdv - Orders - Type Product Name    ${product_name}
+    Pdv - Orders - Verify Promotion Badge Visible
+
+Pdv - Navigate To Search Product And Verify Stock
+    [Documentation]    Pesquisa um produto e valida a exibição do estoque antes da seleção.
+    [Arguments]    ${product_name}
+    Pdv - Orders - Click Search Input
+    Pdv - Orders - Type Product Name    ${product_name}
+    Pdv - Orders - Verify Stock Info Visible
+
+Pdv - Navigate To Select Product With Stock
+    [Documentation]    Pesquisa, valida estoque e seleciona o produto.
+    [Arguments]    ${product_name}
+    Pdv - Navigate To Search Product And Verify Stock    ${product_name}
+    Pdv - Orders - Click Product By Name    ${product_name}
+
+Pdv - Navigate To Select Product With Promotion Badge
+    [Documentation]    Pesquisa, valida o badge de promoção e seleciona o produto.
+    [Arguments]    ${product_name}
+    Pdv - Navigate To Search Product And Verify Promotion Badge    ${product_name}
+    Pdv - Orders - Click Product By Name    ${product_name}
+
 Pdv - Navigate To Clear Product Search
     [Documentation]    Limpa a pesquisa de produto.
     Pdv - Orders - Click Clear Search
+
+Pdv - Navigate To Select Price Table A
+    [Documentation]    Abre o modal de tabela de preço, seleciona Preço A e confirma.
+    Pdv - Orders - Click Price Table Button
+    Pdv - Orders - Verify Price Table Modal Visible
+    Pdv - Orders - Click Price Table A
+    Pdv - Orders - Click Price Table Modal Confirm
+    Pdv - Orders - Verify Price Table Change Dialog Visible
+    Pdv - Orders - Click Price Table Change Confirm
 
 Pdv - Navigate To Cancel Order
     [Documentation]    Cancela o pedido atual e confirma o modal de cancelamento.
@@ -59,10 +106,18 @@ Pdv - Navigate To Finish Order
     [Documentation]    Finaliza o pedido e avança para pagamento.
     Pdv - Orders - Click Finalize Order
 
+Pdv - Navigate To Finish Order From New Order
+    [Documentation]    Finaliza o pedido pela tela de Novo Pedido e avança para pagamento.
+    Pdv - Orders - Click Finalize Order New Order
+
 Pdv - Navigate To Select Client
-    [Documentation]    Pesquisa, seleciona e confirma o cliente no carrinho.
+    [Documentation]    Pesquisa, seleciona e confirma o cliente no carrinho ou no modal já aberto.
     [Arguments]    ${client_name}
-    Pdv - Orders - Click Edit Client
+    ${edit_client_visible}=    Run Keyword And Return Status
+    ...    Wait Until Element Is Visible    ${cart.btn_edit_client}    timeout=5s
+    IF    ${edit_client_visible}
+        Pdv - Orders - Click Edit Client
+    END
     Pdv - Orders - Input Client Modal Client    ${client_name}
     Pdv - Orders - Click Client By Name    ${client_name}
     Pdv - Orders - Click Client Modal Confirm
@@ -98,6 +153,13 @@ Pdv - Navigate To Confirm Quantity
     [Documentation]    Confirma a quantidade no modal de quantidade.
     Pdv - Orders - Click Quantity Confirm
 
+Pdv - Navigate To Edit Quantity
+    [Documentation]    Edita a quantidade diretamente no modal de quantidade.
+    [Arguments]    ${quantity}
+    Pdv - Orders - Click Quantity Field
+    Pdv - Orders - Input Quantity    ${quantity}
+    Pdv - Navigate To Confirm Quantity
+
 Pdv - Navigate To Remove Product From Order
     [Documentation]    Remove o produto selecionado no modal de quantidade.
     Pdv - Orders - Click Remove Item
@@ -122,6 +184,12 @@ Pdv - Navigate To Remove Cart Item By Name
     Pdv - Orders - Verify Remove Item Dialog
     Pdv - Orders - Click Remove Item Confirm
 
+Pdv - Navigate To Remove Cart Item By Icon
+    [Documentation]    Remove o item pelo ícone de remoção exibido no carrinho e confirma o dialog.
+    Pdv - Orders - Click Remove Item Icon
+    Pdv - Orders - Verify Remove Item Icon Dialog
+    Pdv - Orders - Click Remove Item Icon Confirm
+
 Pdv - Navigate To Edit Cart Item Quantity By Name
     [Documentation]    Abre o modal de quantidade pelo item informado, ajusta e confirma.
     [Arguments]    ${product_name}    ${add_times}    ${remove_times}
@@ -129,6 +197,13 @@ Pdv - Navigate To Edit Cart Item Quantity By Name
     Pdv - Navigate To Add Quantity    ${add_times}
     Pdv - Navigate To Remove Quantity    ${remove_times}
     Pdv - Navigate To Confirm Quantity
+
+Pdv - Navigate To Edit Cart Item Unit Price By Name
+    [Documentation]    Abre o modal de edição do item, altera preço unitário e confirma.
+    [Arguments]    ${product_name}    ${unit_price}
+    Pdv - Orders - Click Cart Item Quantity By Name    ${product_name}
+    Pdv - Orders - Input Cart Item Unit Price    ${unit_price}
+    Pdv - Orders - Click Cart Item Edit Confirm
 
 Pdv - Navigate To Apply Discount Integer
     [Documentation]    Aplica desconto em valor fixo no carrinho.
@@ -178,7 +253,7 @@ Pdv - Resolve Payment Method Name
     IF    '${payment_method}' == 'money'
         ${payment_method_name}=    Set Variable    Dinheiro
     ELSE IF    '${payment_method}' == 'pixoff'
-        ${payment_method_name}=    Set Variable    Pix Off
+        ${payment_method_name}=    Set Variable    PIX OFF
     ELSE IF    '${payment_method}' == 'bankslip'
         ${payment_method_name}=    Set Variable    Boleto Bancário
     END
@@ -198,6 +273,17 @@ Pdv - Navigate To Select Payment Method
 Pdv - Navigate To Confirm Payment Value
     [Documentation]    Confirma o valor sugerido no modal de pagamento.
     Pdv - Checkout - Click Value Confirm
+
+Pdv - Navigate To Configure Bank Slip Payment
+    [Documentation]    Configura parcelas, prazo e data do boleto antes de confirmar o pagamento.
+    [Arguments]    ${parcels_add_times}    ${term_days}    ${due_day}
+    ${due_day}=    Convert To Integer    ${due_day}
+    ${due_day}=    Convert To String    ${due_day}
+    Repeat Keyword    ${parcels_add_times} times    Pdv - Checkout - Click Bank Slip Add
+    Pdv - Checkout - Input Bank Slip Term    ${term_days}
+    Pdv - Checkout - Click Calendar
+    Pdv - Checkout - Verify Calendar Day Visible    ${due_day}
+    Pdv - Checkout - Click Day By Number    ${due_day}
 
 Pdv - Navigate To Finish Sale
     [Documentation]    Finaliza a venda no checkout.

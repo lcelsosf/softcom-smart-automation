@@ -10,12 +10,18 @@ orders:
   search_input: xpath=//*[@resource-id='PdvScreenBox_1']//android.widget.EditText
   # Produto retornado na busca, selecionado pelo nome
   product_by_name: xpath=//*[@text='PRODUCT_NAME']/ancestor::android.view.View[@clickable='true'][1]
+  # Primeiro card de produto retornado na busca, sem validar descrição
+  first_product_card: xpath=(//*[starts-with(@resource-id,'ProdutoCardPdvBox_') and @clickable='true'])[1]
   # Ícone limpar pesquisa
   clear_search: xpath=//android.view.View[@content-desc='Limpar pesquisa']
   # Filtro "Todos"
   filter_all: xpath=//*[@resource-id='PdvScreenText_2']
   # Botão "Conferir pedido" — habilitado apenas quando há itens no pedido
   btn_checkout: xpath=//*[@resource-id='CheckoutFooterButton_0']
+  # Botao de tabela de preco
+  price_table_btn: xpath=//android.view.View[@resource-id="PdvScreenTabelaPrecoButton_0"]
+  # Botão Carrinho — ícone à esquerda do footer
+  btn_cart: xpath=//*[@resource-id='CheckoutFooterFilledTonalButton_0']
 
 ########################################################################
 # Modal de quantidade - Exibido após executar o long press sobre um item
@@ -107,17 +113,6 @@ client_modal:
   # Botão "Confirmar" — confirma o cliente e fecha o modal
   btn_confirm: xpath=//android.widget.TextView[@text='Confirmar']/ancestor::android.view.View[@clickable='true'][1]
 
-#################################################################################################################
-# Dialog de confirmacao de remocao de item - Exibido após clicar no icone da lixeira e zerar a quantidade do item
-#################################################################################################################
-item_remove_dialog:
-  # Mensagem de confirmação — usado para verificar que o dialog abriu
-  confirm_message: xpath=//android.widget.TextView[@text="Deseja remover o item do pedido?"]
-  # Botão "Não" — cancela a remoção e fecha o dialog
-  btn_no: xpath=//android.widget.TextView[@text='Não']/ancestor::android.view.View[@clickable='true'][1]
-  # Botão "Sim" — confirma a remoção do item
-  btn_yes: xpath=//android.widget.TextView[@text='Sim']/ancestor::android.view.View[@clickable='true'][1]
-
 #######################################################################
 # Modal de Desconto - Exibido após clicar no botão "Desconto/Acréscimo"
 #######################################################################
@@ -130,9 +125,75 @@ discount_modal:
   btn_type_value: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='R$']]
   # Botão tipo "%" (percentual)
   btn_type_percent: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='%']]
-  # Campo de valor — texto varia conforme digitação
-  value_input: xpath=//android.widget.EditText
+  # Campo de valor — âncora pelo label "Desconto" visível no modal
+  # Mais seguro que //android.widget.EditText genérico
+  value_input: xpath=//android.widget.TextView[@text='Desconto']/following-sibling::android.widget.EditText[1]
   # Botão "Remover" — remove desconto/acréscimo aplicado anteriormente
   btn_remove: xpath=//android.view.View[.//android.widget.TextView[@text='Remover'] and @clickable='true']
   # Botão "Aplicar" — aplica o desconto/acréscimo informado
   btn_apply: xpath=//android.view.View[.//android.widget.TextView[@text='Aplicar'] and @clickable='true']
+
+#################
+# Item - Detalhes
+#################
+item_details:
+  # Badge que indica o item em promocao
+  promotion_badge: xpath=//*[starts-with(@resource-id,'ProdutoCardPdvPromocaoBadge_')]
+  # Estoque do produto — texto varia conforme o produto selecionado
+  stock_info: xpath=//*[android.view.View[@resource-id="ProdutoCardPdvEstoqueRow_0"]]
+
+############################################################################
+# Modal de tabela de preco - Exibido após clicar no botão de tabela de preço
+############################################################################
+price_table_modal:
+  # Título do modal - usado para verificar que o modal abriu
+  title: xpath=//*[@text='Selecione a tabela de preço desejada para esse pedido:']
+  # Linha da tabela de preço referente ao produto selecionado, identificada pelo nome do produto
+  product_row_by_name: xpath=//*[@text='PRODUCT_NAME']/ancestor::android.view.View[@clickable='false'][1]
+  # Tabela de Preço Padrão
+  option_default: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Tabela de Preço Padrão']]
+  # Preço A
+  option_price_a: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Preço A']]
+  # Preço B
+  option_price_b: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Preço B']]
+  # Preço C
+  option_price_c: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Preço C']]
+  # Opção genérica pelo nome — usar via argumento na page
+  # Uso: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='OPTION_NAME']]
+  option_by_name: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='OPTION_NAME']]
+  # Botão "Cancelar" — fecha o modal sem selecionar tabela
+  btn_cancel: xpath=//android.view.View[.//android.widget.TextView[@text='Cancelar'] and @clickable='true']
+  # Botão "Confirmar" — confirma a tabela selecionada
+  btn_confirm: xpath=//android.view.View[.//android.widget.TextView[@text='Confirmar'] and @clickable='true']
+
+############################################################################################################################################
+# Dialog de confirmação de tabela de preço - Exibido após selecionar uma tabela de preço e clicar em "Confirmar" no modal de tabela de preço
+############################################################################################################################################
+price_table_change_dialog:
+  # Título do dialog — usado para verificação de abertura
+  title: xpath=//*[@text='Alterar a tabela de preço?']
+  # Botão "Não" — cancela a alteração e mantém tabela atual
+  btn_no: xpath=//android.view.View[.//android.widget.TextView[@text='Não'] and @clickable='true']
+  # Botão "Sim" — confirma a alteração e recalcula os itens
+  btn_yes: xpath=//android.view.View[.//android.widget.TextView[@text='Sim'] and @clickable='true']
+
+#####################################################################################################
+# Modal de edicao de item na tela de Carrinho - Exibido após clicar na quantidade do item no carrinho
+#####################################################################################################
+cart_item_edit_modal:
+  # Input de preco unitário — EditText dentro do container de preço unitário
+  unit_price_input: xpath=//android.widget.TextView[@text='Preço unitário']/following-sibling::android.view.View[1]//android.widget.EditText
+  # Tab "Desconto"
+  tab_discount: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Desconto']][1]
+  # Tab "Acréscimo"
+  tab_addition: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Acréscimo']]
+  # Botão tipo "R$" (valor fixo)
+  btn_type_value: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='R$']]
+  # Botão tipo "%" (percentual)
+  btn_type_percent: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='%']]
+  # Input de desconto/acréscimo — EditText dentro da seção
+  discount_input: xpath=//android.widget.TextView[@text='Desconto']/following-sibling::android.view.View[1]//android.widget.EditText
+  # Botão "Remover item" — remove o produto do carrinho
+  btn_remove_item: xpath=//android.view.View[.//android.widget.TextView[@text='Remover item'] and @clickable='true']
+  # Botão "Confirmar" — salva as alterações e fecha o modal
+  btn_confirm: xpath=//android.view.View[.//android.widget.TextView[@text='Confirmar'] and @clickable='true']

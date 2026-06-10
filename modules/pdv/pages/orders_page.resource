@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Ações atômicas — Tela de pedidos e carrinho do módulo PDV.
+Library     Process
 Resource    ../../../resources/helpers/common_keywords.resource
 
 
@@ -28,11 +29,23 @@ Pdv - Orders - Search Item
     Wait Visible And Input Text    ${orders.search_input}    ${text}
     Close Keyboard
 
+Pdv - Orders - Input Barcode By Adb
+    [Documentation]    Insere código de barras via ADB e confirma com Enter.
+    [Arguments]    ${barcode}
+    ${input_result}=    Run Process    adb    -s    ${DEVICE_UDID}    shell    input    text    ${barcode}
+    Should Be Equal As Integers    ${input_result.rc}    0
+    ${enter_result}=    Run Process    adb    -s    ${DEVICE_UDID}    shell    input    keyevent    66
+    Should Be Equal As Integers    ${enter_result.rc}    0
+
 Pdv - Orders - Click Product By Name
     [Documentation]    Produto retornado na busca, selecionado pelo nome.
     [Arguments]    ${product_name}
     ${locator}=    Replace String    ${orders.product_by_name}    PRODUCT_NAME    ${product_name}
     Wait Visible And Click Element    ${locator}
+
+Pdv - Orders - Click First Product Card
+    [Documentation]    Primeiro card de produto retornado na busca, sem validar descrição.
+    Wait Visible And Click Element    ${orders.first_product_card}
 
 Pdv - Orders - Click Clear Search
     [Documentation]    Limpa o campo de pesquisa de produto.
@@ -46,6 +59,30 @@ Pdv - Orders - Click Conference
     [Documentation]    Botão "Conferir pedido" — habilitado apenas quando há itens no pedido.
     Wait Visible And Click Element    ${orders.btn_checkout}
 
+Pdv - Orders - Click Price Table Button
+    [Documentation]    Botão de tabela de preço.
+    Wait Visible And Click Element    ${orders.price_table_btn}
+
+Pdv - Orders - Verify Price Table Modal Visible
+    [Documentation]    Título do modal de tabela de preço.
+    Wait Until Element Is Visible    ${price_table_modal.title}
+
+Pdv - Orders - Click Price Table A
+    [Documentation]    Opção "Preço A" no modal de tabela de preço.
+    Wait Visible And Click Element    ${price_table_modal.option_price_a}
+
+Pdv - Orders - Click Price Table Modal Confirm
+    [Documentation]    Botão "Confirmar" do modal de tabela de preço.
+    Wait Visible And Click Element    ${price_table_modal.btn_confirm}
+
+Pdv - Orders - Verify Price Table Change Dialog Visible
+    [Documentation]    Título do dialog de confirmação da alteração de tabela de preço.
+    Wait Until Element Is Visible    ${price_table_change_dialog.title}
+
+Pdv - Orders - Click Price Table Change Confirm
+    [Documentation]    Botão "Sim" do dialog de confirmação da alteração de tabela de preço.
+    Wait Visible And Click Element    ${price_table_change_dialog.btn_yes}
+
 Pdv - Orders - Click Quantity Field
     [Documentation]    Input de quantidade — EditText dentro do container View entre os botões.
     Wait Visible And Click Element    ${quantity_modal.quantity_input}
@@ -53,7 +90,10 @@ Pdv - Orders - Click Quantity Field
 Pdv - Orders - Input Quantity
     [Documentation]    Input de quantidade — EditText dentro do container View entre os botões.
     [Arguments]    ${text}
-    Wait Visible And Input Text    ${quantity_modal.quantity_input}    ${text}
+    Wait Until Element Is Visible    ${quantity_modal.quantity_input}
+    Click Element    ${quantity_modal.quantity_input}
+    Clear Text    ${quantity_modal.quantity_input}
+    Input Text    ${quantity_modal.quantity_input}    ${text}
     Close Keyboard
 
 Pdv - Orders - Click Quantity Remove
@@ -149,6 +189,19 @@ Pdv - Orders - Click Cart Item Add By Name
     ${locator}=    Replace String    ${cart.item_btn_add_by_name}    PRODUCT_NAME    ${product_name}
     Wait Visible And Click Element    ${locator}
 
+Pdv - Orders - Input Cart Item Unit Price
+    [Documentation]    Input de preço unitário no modal de edição do item no carrinho.
+    [Arguments]    ${unit_price}
+    Wait Until Element Is Visible    ${cart_item_edit_modal.unit_price_input}
+    Click Element    ${cart_item_edit_modal.unit_price_input}
+    Clear Text    ${cart_item_edit_modal.unit_price_input}
+    Input Text    ${cart_item_edit_modal.unit_price_input}    ${unit_price}
+    Close Keyboard
+
+Pdv - Orders - Click Cart Item Edit Confirm
+    [Documentation]    Botão "Confirmar" do modal de edição do item no carrinho.
+    Wait Visible And Click Element    ${cart_item_edit_modal.btn_confirm}
+
 Pdv - Orders - Click Discount-Sum
     [Documentation]    Botão "Desconto/Acréscimo".
     Wait Visible And Click Element    ${cart.btn_discount}
@@ -160,6 +213,10 @@ Pdv - Orders - Click Cart
 Pdv - Orders - Click Finalize Order
     [Documentation]    Botão "Finalizar Pedido" — avança para pagamento.
     Wait Visible And Click Element    ${cart.btn_finish_order}
+
+Pdv - Orders - Click Finalize Order New Order
+    [Documentation]    Botão "Finalizar Pedido" na tela de Novo Pedido — avança para pagamento.
+    Wait Visible And Click Element    ${orders.btn_checkout}
 
 Pdv - Orders - Input Client Modal Client
     [Documentation]    Abre o spinner de cliente, limpa o campo de pesquisa e pesquisa pelo cliente informado.
@@ -197,16 +254,16 @@ Pdv - Orders - Click Client Modal Confirm
 
 Pdv - Orders - Verify Remove Item Icon Dialog
     [Documentation]    Mensagem de confirmação — usado para verificar que o dialog abriu.
-    Wait Until Element Is Visible    ${item_remove_dialog.confirm_message}
+    Wait Until Element Is Visible    ${order_remove_dialog.confirm_message}
 
 Pdv - Orders - Click Remove Item Icon Cancel
     [Documentation]    Botão "Não" — cancela a remoção e fecha o dialog.
-    Wait Visible And Click Element    ${item_remove_dialog.btn_no}
+    Wait Visible And Click Element    ${order_remove_dialog.btn_no}
 
 Pdv - Orders - Click Remove Item Icon Confirm
     [Documentation]    Botão "Sim" — confirma a remoção do item.
-    Wait Visible And Click Element    ${item_remove_dialog.btn_yes}
-    Wait For Element To Disappear    ${item_remove_dialog.confirm_message}
+    Wait Visible And Click Element    ${order_remove_dialog.btn_yes}
+    Wait For Element To Disappear    ${order_remove_dialog.confirm_message}
 
 Pdv - Orders - Click Discount
     [Documentation]    Tab "Desconto".
@@ -238,6 +295,14 @@ Pdv - Orders - Click Apply Discount
     [Documentation]    Botão "Aplicar" — aplica o desconto/acréscimo informado.
     Wait Visible And Click Element    ${discount_modal.btn_apply}
 
+Pdv - Orders - Verify Promotion Badge Visible
+    [Documentation]    Badge que indica item em promoção.
+    Wait Until Element Is Visible    ${item_details.promotion_badge}
+
+Pdv - Orders - Verify Stock Info Visible
+    [Documentation]    Informação de estoque exibida no card do produto.
+    Wait Until Element Is Visible    ${item_details.stock_info}
+
 Pdv - Orders - Click Item
     [Documentation]    Filtro "Todos".
     Wait Visible And Click Element    ${orders.filter_all}
@@ -253,3 +318,7 @@ Pdv - Orders - Long Press Item
 Pdv - Orders - Long Press Item 2
     [Documentation]    Filtro "Todos".
     Wait Visible And Long Press Element    ${orders.filter_all}
+
+Pdv - Orders - Click Cart Button
+    [Documentation]    Botão "Carrinho" — ícone à esquerda do footer.
+    Wait Visible And Click Element    ${orders.btn_cart}

@@ -167,8 +167,120 @@ PDV - Complete Flow - Item Edition
     Pdv - Navigate To Check Order
     Pdv - Navigate To Add Cart Item Quantity    ${product_discount}    3
     Pdv - Navigate To Remove Cart Item Quantity    ${product_discount}    2
-    Pdv - Navigate To Remove Cart Item By Name    ${product_secondary}
+    Pdv - Navigate To Remove Cart Item By Icon    ${product_secondary}
     Pdv - Navigate To Remove Cart Item By Name    ${product_primary}
+    Pdv - Navigate To Finish Order
+    Pdv - Navigate To Select Payment Method    ${payment_method}
+    Pdv - Navigate To Confirm Payment Value
+    Pdv - Navigate To Finish Sale
+    Pdv - Navigate To Initial Screen
+    Pdv - Home - Verify Visible
+
+
+PDV - Complete Flow - Bankslip
+    [Documentation]    Realiza pedido com cliente alterado e pagamento por boleto bancário.
+    [Arguments]    ${product_name}    ${client_name}    ${calendar_day}    ${term_days}=7    ${parcels_add_times}=4   ${payment_method}=bankslip
+    Pdv - Navigate To New Order
+    Pdv - Navigate To Select Product    ${product_name}
+    Pdv - Navigate To Check Order
+    Pdv - Navigate To Select Client    ${client_name}
+    Pdv - Navigate To Finish Order
+    Pdv - Navigate To Select Payment Method    ${payment_method}
+    Pdv - Navigate To Configure Bank Slip Payment    ${parcels_add_times}    ${term_days}    ${calendar_day}
+    Pdv - Navigate To Confirm Payment Value
+    Pdv - Navigate To Finish Sale
+    Pdv - Navigate To Initial Screen
+    Pdv - Home - Verify Visible
+
+
+PDV - Complete Flow - Item Variations
+    [Documentation]    Realiza pedido com variações de item, badge de promoção e pagamento Pix Off.
+    [Arguments]    ${product_fractional}    ${product_composition}    ${barcode_variation_1}    ${barcode_variation_2}    ${product_promotion}    ${payment_method}
+    Pdv - Navigate To New Order
+    Pdv - Navigate To Select Product    ${product_fractional}
+    Pdv - Navigate To Long Press Product    ${product_fractional}
+    Pdv - Navigate To Edit Quantity    500
+    Pdv - Navigate To Clear Product Search
+    Pdv - Navigate To Select Product    ${product_composition}
+    Pdv - Navigate To Clear Product Search
+    Pdv - Navigate To Search And Select First Product Card    ${barcode_variation_1}
+    Pdv - Navigate To Clear Product Search
+    Pdv - Navigate To Search And Select First Product Card    ${barcode_variation_2}
+    Pdv - Navigate To Clear Product Search
+    Pdv - Navigate To Select Product With Promotion Badge    ${product_promotion}
+    Pdv - Navigate To Check Order
+    Pdv - Navigate To Finish Order
+    Pdv - Navigate To Select Payment Method    ${payment_method}
+    Pdv - Navigate To Confirm Payment Value
+    Pdv - Navigate To Finish Sale
+    Pdv - Navigate To Initial Screen
+    Pdv - Home - Verify Visible
+
+
+PDV - Complete Flow - Express Mode
+    [Documentation]    Adiciona itens pelo modo expresso e finaliza a venda.
+    [Arguments]    ${product_primary}    ${product_secondary}    ${payment_method}
+    Pdv - Navigate To New Order
+    Pdv - Navigate To Select Product    ${product_primary}
+    Pdv - Orders - Click Cart Button
+    Pdv - Navigate To Add Items From Cart
+    Pdv - Navigate To Select Product    ${product_secondary}
+    Pdv - Orders - Click Finalize Order New Order
+    Pdv - Navigate To Select Payment Method    ${payment_method}
+    Pdv - Navigate To Confirm Payment Value
+    Pdv - Navigate To Finish Sale
+    Pdv - Navigate To Initial Screen
+    Pdv - Home - Verify Visible
+
+
+PDV - Complete Flow - Mini PDV Mode
+    [Documentation]    Adiciona item via seleção e outro via código de barras ADB, depois finaliza a venda.
+    [Arguments]    ${product_name}    ${barcode}    ${payment_method}
+    Pdv - Navigate To New Order
+    Pdv - Navigate To Input Barcode By Adb    ${barcode}
+    Pdv - Navigate To Finish Order
+    Pdv - Navigate To Select Payment Method    ${payment_method}
+    Pdv - Navigate To Confirm Payment Value
+    Pdv - Navigate To Finish Sale
+    Pdv - Navigate To Initial Screen
+    Pdv - Home - Verify Visible
+
+
+PDV - Complete Flow - Smart PDV Functions
+    [Documentation]    Seleciona cliente, valida estoque, altera preço unitário e finaliza a venda.
+    [Arguments]    ${client_name}    ${product_name}    ${unit_price}
+    Pdv - Navigate To New Order
+    Pdv - Navigate To Select Client    ${client_name}
+    Pdv - Navigate To Select Product With Stock    ${product_name}
+    Pdv - Navigate To Check Order
+    Pdv - Navigate To Edit Cart Item Unit Price By Name    ${product_name}    ${unit_price}
+    Pdv - Navigate To Finish Order
+    Pdv - Navigate To Finish Sale
+    Pdv - Navigate To Initial Screen
+    Pdv - Home - Verify Visible
+
+
+PDV - Complete Flow - Price Table
+    [Documentation]    Seleciona tabela de preço A, adiciona item da tabela e finaliza a venda.
+    [Arguments]    ${product_name}    ${payment_method}
+    Pdv - Navigate To New Order
+    Pdv - Navigate To Select Price Table A
+    Pdv - Navigate To Select Product    ${product_name}
+    Pdv - Navigate To Check Order
+    Pdv - Navigate To Finish Order
+    Pdv - Navigate To Select Payment Method    ${payment_method}
+    Pdv - Navigate To Confirm Payment Value
+    Pdv - Navigate To Finish Sale
+    Pdv - Navigate To Initial Screen
+    Pdv - Home - Verify Visible
+
+
+PDV - Complete Flow - Pix Off
+    [Documentation]    Realiza pedido com pagamento via Pix Off.
+    [Arguments]    ${product_name}    ${payment_method}=pixoff
+    Pdv - Navigate To New Order
+    Pdv - Navigate To Select Product    ${product_name}
+    Pdv - Navigate To Check Order
     Pdv - Navigate To Finish Order
     Pdv - Navigate To Select Payment Method    ${payment_method}
     Pdv - Navigate To Confirm Payment Value
