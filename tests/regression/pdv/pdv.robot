@@ -59,15 +59,23 @@ PDV - Discount Integer
     ...    money
 
 PDV - Discount Percent
-    [Documentation]    Aplica desconto percentual de 10,00 no carrinho e finaliza a venda.
+    [Documentation]    Aplica desconto percentual de 10% no carrinho e finaliza a venda.
     [Tags]    @allure.label.severity:normal    regression    pdv    orders    discount
     PDV - Complete Flow - Discount Percent
     ...    ${products.discount}
     ...    10,00
     ...    money
 
+PDV - Discount Item
+    [Documentation]    Aplica desconto percentual em um item e desconto em valor fixo em outro item antes de finalizar a venda.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders    discount    item
+    PDV - Complete Flow - Discount Item
+    ...    ${products.discount}
+    ...    ${products.promotion}
+    ...    money
+
 PDV - Additional Percent
-    [Documentation]    Aplica acréscimo percentual de 10,00 no carrinho e finaliza a venda.
+    [Documentation]    Aplica acréscimo percentual de 10% no carrinho e finaliza a venda.
     [Tags]    @allure.label.severity:normal    regression    pdv    orders    additional
     PDV - Complete Flow - Additional Percent
     ...    ${products.discount}
@@ -107,7 +115,7 @@ PDV - Pix Off
 
 
 PDV - Item Variations
-    [Documentation]    Realiza pedido com variações de item, badge de promoção e pagamento Pix Off.
+    [Documentation]    Realiza pedido com variações de item e promoção.
     [Tags]    @allure.label.severity:normal    regression    pdv    orders    quantity    promotion    pixoff
     PDV - Complete Flow - Item Variations
     ...    ${products.fractional}
@@ -118,7 +126,7 @@ PDV - Item Variations
     ...    money
 
 PDV - Price Table
-    [Documentation]    Realiza pedido com tabela de preço A e pagamento em dinheiro.
+    [Documentation]    Realiza pedido com tabela de preço.
     [Tags]    @allure.label.severity:normal    regression    pdv    orders    price-table
     PDV - Complete Flow - Price Table
     ...    ${products.price_table}
@@ -133,7 +141,7 @@ PDV - Express Mode
     ...    money
 
 PDV - Mini PDV Mode
-    [Documentation]    Realiza pedido adicionando item por seleção e por código de barras via ADB.
+    [Documentation]    Realiza pedido adicionando item pelo modo mini PDV.
     [Tags]    @allure.label.severity:normal    regression    pdv    orders    mini-pdv
     PDV - Complete Flow - Mini PDV Mode
     ...    ${products.product_1}
@@ -141,9 +149,22 @@ PDV - Mini PDV Mode
     ...    money
 
 PDV - Smart PDV Functions
-    [Documentation]    Seleciona cliente, valida estoque, altera preço unitário e finaliza a venda.
+    [Documentation]    Seleciona cliente no inicio do pedido, valida estoque e altera preço unitário.
     [Tags]    @allure.label.severity:normal    regression    pdv    orders    smart-pdv
     PDV - Complete Flow - Smart PDV Functions
     ...    ${clients.client_credit}
     ...    ${products.product_1}
     ...    5,00
+
+PDV - Fiscal Disable
+    [Documentation]    Realiza pedido com fiscal desativado.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders    fiscal
+    PDV - Complete Flow - Fiscal Disable
+    ...    ${products.product_1}
+    ...    money
+
+PDV - No Payment Method
+    [Documentation]    Realiza pedido sem método de pagamento.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders    no-payment
+    PDV - Complete Flow - No Payment Method
+    ...    ${products.product_1}

@@ -198,6 +198,24 @@ Pdv - Orders - Input Cart Item Unit Price
     Input Text    ${cart_item_edit_modal.unit_price_input}    ${unit_price}
     Close Keyboard
 
+Pdv - Orders - Click Cart Item Discount
+    [Documentation]    Tab "Desconto" do modal de edição do item no carrinho.
+    Wait Visible And Click Element    ${cart_item_edit_modal.tab_discount}
+
+Pdv - Orders - Click Cart Item R$
+    [Documentation]    Botão tipo "R$" do modal de edição do item no carrinho.
+    Wait Visible And Click Element    ${cart_item_edit_modal.btn_type_value}
+
+Pdv - Orders - Click Cart Item Percent
+    [Documentation]    Botão tipo "%" do modal de edição do item no carrinho.
+    Wait Visible And Click Element    ${cart_item_edit_modal.btn_type_percent}
+
+Pdv - Orders - Input Cart Item Discount Value
+    [Documentation]    Input de desconto/acréscimo do modal de edição do item no carrinho.
+    [Arguments]    ${discount_value}
+    Wait Visible And Input Text    ${cart_item_edit_modal.discount_input}    ${discount_value}
+    Close Keyboard
+
 Pdv - Orders - Click Cart Item Edit Confirm
     [Documentation]    Botão "Confirmar" do modal de edição do item no carrinho.
     Wait Visible And Click Element    ${cart_item_edit_modal.btn_confirm}
