@@ -124,7 +124,7 @@ PDV - Complete Flow - Discount Percent
 
 
 PDV - Complete Flow - Discount Item
-    [Documentation]    Aplica desconto percentual em um item e desconto em valor fixo em outro item antes de finalizar a venda.
+    [Documentation]    Aplica desconto em valor fixo no item com promoção e percentual no item de desconto antes de finalizar a venda.
     [Arguments]    ${product_discount}    ${product_promotion}    ${payment_method}=money
     Pdv - Home - Verify Visible
     Pdv - Navigate To New Order
@@ -132,8 +132,8 @@ PDV - Complete Flow - Discount Item
     Pdv - Navigate To Clear Product Search
     Pdv - Navigate To Select Product    ${product_promotion}
     Pdv - Navigate To Check Order
-    Pdv - Navigate To Apply Cart Item Discount Percent By Name    ${product_discount}    10,00
     Pdv - Navigate To Apply Cart Item Discount Integer By Name    ${product_promotion}    1,00
+    Pdv - Navigate To Apply Cart Item Discount Percent By Name    ${product_discount}    10,00
     Pdv - Navigate To Finish Order
     Pdv - Navigate To Select Payment Method    ${payment_method}
     Pdv - Navigate To Confirm Payment Value
@@ -274,6 +274,8 @@ PDV - Complete Flow - Smart PDV Functions
     Pdv - Navigate To Check Order
     Pdv - Navigate To Edit Cart Item Unit Price By Name    ${product_name}    ${unit_price}
     Pdv - Navigate To Finish Order
+    Pdv - Navigate To Select Payment Method    ${payment_method}
+    Pdv - Navigate To Confirm Payment Value
     Pdv - Navigate To Finish Sale
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
@@ -307,7 +309,7 @@ PDV - Complete Flow - Pix Off
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
 
-PDV - Complete Flow - Fiscal Disable
+PDV - Complete Flow - NFCe Disable
     [Documentation]    Realiza pedido com fiscal desativado.
     [Arguments]    ${product_name}    ${payment_method}
     PDV - Complete Flow - Order Common    ${product_name}    ${payment_method}

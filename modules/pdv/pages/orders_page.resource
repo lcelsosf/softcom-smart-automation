@@ -237,12 +237,11 @@ Pdv - Orders - Click Finalize Order New Order
     Wait Visible And Click Element    ${orders.btn_checkout}
 
 Pdv - Orders - Input Client Modal Client
-    [Documentation]    Abre o spinner de cliente, limpa o campo de pesquisa e pesquisa pelo cliente informado.
+    [Documentation]    Abre o spinner de cliente e pesquisa pelo cliente informado.
     [Arguments]    ${text}
     Wait Visible And Click Element    ${client_modal.client_spinner}
     Wait Until Element Is Visible    ${client_modal.client_input}
     Click Element    ${client_modal.client_input}
-    Clear Text    ${client_modal.client_input}
     Input Text    ${client_modal.client_input}    ${text}
     Close Keyboard
 

@@ -100,8 +100,8 @@ cart:
 client_modal:
   # Spinner do campo Cliente — abre a pesquisa de cliente
   client_spinner: xpath=//*[@text='Cliente']/following-sibling::android.view.View[1]//android.widget.Spinner
-  # Campo de pesquisa de cliente aberto pelo spinner — quando vazio exibe o placeholder "Pesquise por nome ou CPF/CNPJ"
-  client_input: xpath=//android.widget.EditText[@focused='true' or @text='Pesquise por nome ou CPF/CNPJ'] | //android.view.View[.//android.widget.TextView[@text='Pesquise por nome ou CPF/CNPJ']]//android.widget.EditText
+  # Campo de pesquisa de cliente aberto pelo spinner — quando aberto fica focado, mesmo sem placeholder
+  client_input: xpath=//android.widget.EditText[@focused='true'] | (//android.widget.EditText)[1]
   # Cliente retornado na busca, selecionado pelo nome
   client_by_name: xpath=//android.widget.TextView[@text='CLIENT_NAME']/ancestor::android.view.View[@clickable='true'][1]
   # Campo CPF/CNPJ — EditText com placeholder "000.000.000-00"

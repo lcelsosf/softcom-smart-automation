@@ -185,8 +185,9 @@ Pdv - Navigate To Remove Cart Item By Name
     Pdv - Orders - Click Remove Item Confirm
 
 Pdv - Navigate To Remove Cart Item By Icon
-    [Documentation]    Remove o item pelo ícone de remoção exibido no carrinho e confirma o dialog.
-    Pdv - Orders - Click Remove Item Icon
+    [Documentation]    Remove o item informado pelo ícone de remoção exibido no carrinho e confirma o dialog.
+    [Arguments]    ${product_name}
+    Pdv - Orders - Click Remove Item Icon By Name    ${product_name}
     Pdv - Orders - Verify Remove Item Icon Dialog
     Pdv - Orders - Click Remove Item Icon Confirm
 
@@ -203,6 +204,24 @@ Pdv - Navigate To Edit Cart Item Unit Price By Name
     [Arguments]    ${product_name}    ${unit_price}
     Pdv - Orders - Click Cart Item Quantity By Name    ${product_name}
     Pdv - Orders - Input Cart Item Unit Price    ${unit_price}
+    Pdv - Orders - Click Cart Item Edit Confirm
+
+Pdv - Navigate To Apply Cart Item Discount Integer By Name
+    [Documentation]    Aplica desconto em valor fixo no item informado do carrinho.
+    [Arguments]    ${product_name}    ${discount_value}
+    Pdv - Orders - Click Cart Item Quantity By Name    ${product_name}
+    Pdv - Orders - Click Cart Item Discount
+    Pdv - Orders - Click Cart Item R$
+    Pdv - Orders - Input Cart Item Discount Value    ${discount_value}
+    Pdv - Orders - Click Cart Item Edit Confirm
+
+Pdv - Navigate To Apply Cart Item Discount Percent By Name
+    [Documentation]    Aplica desconto percentual no item informado do carrinho.
+    [Arguments]    ${product_name}    ${discount_value}
+    Pdv - Orders - Click Cart Item Quantity By Name    ${product_name}
+    Pdv - Orders - Click Cart Item Discount
+    Pdv - Orders - Click Cart Item Percent
+    Pdv - Orders - Input Cart Item Discount Value    ${discount_value}
     Pdv - Orders - Click Cart Item Edit Confirm
 
 Pdv - Navigate To Apply Discount Integer
