@@ -1,9 +1,0 @@
-menu:
-  menu: //android.widget.ImageButton[@content-desc="Abrir a navegação"]
-  logoff: softcom.mobile.smart2:id/nav_logout
-  logoff_confirm: android:id/button1
-  settings: softcom.mobile.smart2:id/nav_configuracoes
-  new_order: softcom.mobile.smart2:id/nav_pedido
-  orders_list: softcom.mobile.smart2:id/nav_lista_pedidos
-  register_client: softcom.mobile.smart2:id/nav_cadastro_clientes
-  sync: softcom.mobile.smart2:id/nav_sync

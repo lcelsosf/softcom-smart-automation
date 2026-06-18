@@ -1,4 +1,0 @@
-exclusive:
-  safra_item_combo1: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View[2]/android.view.View[2]/android.widget.Button
-  safra_item_combo2: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View[5]/android.view.View[2]/android.widget.Button
-  safra_add_item_combo: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.view.View/android.view.View/android.view.View/android.view.View[5]/android.widget.Button
