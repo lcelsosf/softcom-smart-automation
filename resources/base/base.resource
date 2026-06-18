@@ -24,6 +24,7 @@ Documentation    Configuração global do projeto — importada por todos os bas
 
 # --- Bibliotecas externas ---
 Library     AppiumLibrary
+Library     FakerLibrary    locale=pt_BR
 
 # --- Bibliotecas customizadas ---
 Library     ../libraries/devicesconfig.py

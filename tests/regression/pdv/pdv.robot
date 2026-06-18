@@ -11,11 +11,11 @@ Test Teardown    Test Teardown Default
 
 
 *** Test Cases ***
-# PDV - Setup
-#     [Documentation]    Configura o ambiente do PDV.
-#     [Tags]    @allure.label.severity:critical    regression    pdv    setup
-#     Pdv - Setup Printers    Imprimir
-#     Pdv - Setup Payment Methods
+PDV - Setup
+    [Documentation]    Configura o ambiente do PDV.
+    [Tags]    @allure.label.severity:critical    regression    pdv    setup
+    Pdv - Setup Printers    Imprimir
+    Pdv - Setup Payment Methods
 
 PDV - Order common
     [Documentation]    Realiza um pedido simples com pagamento.
@@ -190,3 +190,27 @@ PDV - No Payment Method
     ...    ${products.product_1}
     Pdv - Setup Active/Deactive Payment Method
     PDV - Setup Active/Deactive NFCe
+
+PDV - Ticket
+    [Documentation]    Realiza pedido com emissão e reimpressão de ticket de retirada.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders    ticket
+    Pdv - Setup Active/Deactive Ticket    Imprimir
+    PDV - Complete Flow - Ticket Order
+    ...    ${products.product_1}
+    ...    money
+    Pdv - Setup Active/Deactive Ticket    Nenhuma Ação
+
+PDV - Sync Search Client And Init Order
+    [Documentation]    Sincroniza a lista de clientes, seleciona um cliente e inicia um pedido.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders    client    sync
+    PDV - Complete Flow - Sync Search Client And Init Order
+    ...    ${clients.client_credit}
+    ...    ${products.product_1}
+    ...    money
+
+PDV - Register Client Type Fisic
+    [Documentation]    Cadastra um cliente pessoa física com dados gerados pelo Faker e verifica o registro.
+    [Tags]    @allure.label.severity:normal    regression    pdv    clients    register
+    PDV - Complete Flow - Register Client Type Fisic
+    ...    Física
+    ...    ${client_data.cep}

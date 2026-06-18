@@ -125,3 +125,16 @@ Pdv - Setup Active/Deactive Payment Method
     Pdv - Settings Click Back
     Pdv - Home - Verify Visible
 
+Pdv - Setup Active/Deactive Ticket
+    [Documentation]    Seleciona a opção de ticket ao finalizar e alterna a reimpressão de ticket.
+    ...    Opções disponíveis: Imprimir, Perguntar, Nenhuma Ação.
+    [Arguments]    ${ticket_on_finish_option}
+    Pdv - Home - Verify Visible
+    Pdv - Home - Click Settings
+    Pdv - Settings Click Ticket
+    Pdv - Ticket Settings Select Ticket On Finish    ${ticket_on_finish_option}
+    Pdv - Ticket Settings Toggle Allow Reprint
+    Pdv - Settings Click Back
+    Pdv - Settings Click Back
+    Pdv - Home - Verify Visible
+

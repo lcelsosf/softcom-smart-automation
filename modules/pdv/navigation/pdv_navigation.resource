@@ -6,6 +6,7 @@ Documentation    Fluxos de navegação/configuração do módulo Pdv — composi
 Resource    ../pages/home_page.resource
 Resource    ../pages/orders_page.resource
 Resource    ../pages/checkout_page.resource
+Resource    ../pages/clients_page.resource
 
 
 *** Keywords ***
@@ -259,6 +260,62 @@ Pdv - Navigate To Apply Additional Integer
     Pdv - Orders - Click R$
     Pdv - Orders - Input Discount Value    ${additional_value}
     Pdv - Orders - Click Apply Discount
+
+
+# =============================================================================
+# NAVEGAÇÃO — LISTA DE CLIENTES
+# =============================================================================
+
+Pdv - Navigate To Clients
+    [Documentation]    Navega da Home para a Lista de Clientes.
+    Pdv - Home - Click Clients
+
+Pdv - Navigate To Sync Client List
+    [Documentation]    Aciona a sincronização na Lista de Clientes, aguarda o modal de confirmação e fecha.
+    Client List - Click Sync And Confirm
+
+Pdv - Navigate To Search And Select Client
+    [Documentation]    Pesquisa e seleciona um cliente na Lista de Clientes pelo nome.
+    [Arguments]    ${client_name}
+    Client List - Search Client    ${client_name}
+    Client List - Click Client By Name    ${client_name}
+
+Pdv - Navigate To Init Order From Client
+    [Documentation]    Clica em "Iniciar Venda" no cadastro do cliente para iniciar um novo pedido.
+    Client Register - Click Init Order
+
+Pdv - Navigate To New Client
+    [Documentation]    Clica em "+ Novo Cliente" e posiciona na tab Detalhes.
+    Client List - Click New Client
+    Client Register - Click Tab Details
+
+Pdv - Navigate To Fill Client Details
+    [Documentation]    Preenche os campos de detalhes do cadastro: tipo de pessoa, CPF, nome, telefone, e-mail e observação.
+    [Arguments]    ${person_type}    ${cpf}    ${name}    ${phone}    ${email}    ${note}
+    Client Register - Select Person Type    ${person_type}
+    Client Register - Fill Cpf    ${cpf}
+    Client Register - Fill Name    ${name}
+    Client Register - Fill Phone    ${phone}
+    Client Register - Fill Email    ${email}
+    Client Register - Fill Note    ${note}
+
+Pdv - Navigate To Fill Client Address
+    [Documentation]    Seleciona a tab Endereço, preenche CEP, consulta e preenche número e complemento.
+    [Arguments]    ${cep}    ${number}    ${complement}
+    Client Register - Click Tab Address
+    Client Register - Fill Cep    ${cep}
+    Client Register - Click Consultar Cep
+    Client Register - Fill Number    ${number}
+    Client Register - Fill Complement    ${complement}
+
+Pdv - Navigate To Save And Verify Client
+    [Documentation]    Salva o cadastro, aguarda o campo de busca da lista aparecer, pesquisa pelo nome, verifica e volta.
+    [Arguments]    ${client_name}
+    Client Register - Click Save
+    Wait Until Element Is Visible    ${client_list.search_input}
+    Client List - Search Client    ${client_name}
+    Client List - Client Should Be Visible    ${client_name}
+    Client List - Click Back
 
 
 # =============================================================================

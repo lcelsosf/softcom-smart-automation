@@ -1,0 +1,88 @@
+###########################
+# Tela de Lista de Clientes
+###########################
+client_list:
+  # Botao de Voltar
+  btn_back: xpath=//*[@content-desc='Voltar']
+  # Botao de Sincronizar
+  btn_sync: xpath=//*[@content-desc='Atualizar']
+  # Input de Pesquisa Cliente
+  search_input: xpath=(//android.widget.EditText)[1]
+  # Cliente pelo nome — genérico, usar via argumento na page
+  client_by_name: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='CLIENT_NAME']]
+  # Botao de Novo Cliente
+  btn_new_client: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='+ Novo Cliente']]
+
+###################################################################################################
+# Modal de confirmacao da sincronizacao de clientes - Exibido apos clicar no botao de sincronizacao
+###################################################################################################
+sync_success_modal:
+  # Título do modal — usado para verificação de abertura
+  title: xpath=//*[@text='Atualização concluída!']
+  # Mensagem de confirmação
+  message: xpath=//*[@text='Os dados foram sincronizados com sucesso!']
+  # Botão "Ok" — fecha o modal
+  btn_ok: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Ok']]
+
+######################################
+# Tela de Lista de Clientes - Cadastro
+######################################
+client_register:
+  # Tab de Destalhes
+  tab_details: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Detalhes']]
+  # Tab de Endereço
+  tab_address: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Endereço']]
+  # Abrir dropdown "Tipo de Pessoa"
+  person_type_open_menu: xpath=//*[@text='Tipo de Pessoa']/following-sibling::android.view.View[1]//*[@content-desc='Abrir menu']
+  # Opção "Física" no dropdown
+  person_type_option_individual: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Física']]
+  # Opção "Jurídica" no dropdown
+  person_type_option_legal: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Jurídica']]
+  # Opção por nome no dropdown - genérico, usar via argumento na page
+  person_type_option_by_name: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='OPTION_NAME']]
+  # cpf
+  cpf_input: xpath=//*[@text='CPF']/following-sibling::android.view.View[1]//android.widget.EditText
+  # cnpj
+  cnpj_input: xpath=//*[@text='CNPJ']/following-sibling::android.view.View[1]//android.widget.EditText
+  # Botao Consulta CNPJ
+  btn_consultar_cnpj: xpath=//*[@content-desc='Consultar CNPJ']
+  # nome
+  name_input: xpath=//*[@text='Nome *']/following-sibling::android.view.View[1]//android.widget.EditText
+  # Abrir dropdown "Contribuinte ICMS"
+  icms_contributor_open_menu: xpath=//*[@text='Contribuinte ICMS']/following-sibling::android.view.View[1]//*[@content-desc='Abrir menu']
+  # Opção do dropdown Contribuinte ICMS (códigos do CRT/regime tributário)
+  icms_contributor_option_1: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Contribuinte ICMS']]
+  # Opção do dropdown Contribuinte isento de Inscrição no cadastro de Contribuintes do ICMS (códigos do CRT/regime tributário)
+  icms_contributor_option_2: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Contribuinte isento de Inscrição no cadastro de Contribuintes do ICMS']]
+  # Opção do dropdown Não Contribuinte (códigos do CRT/regime tributário)
+  icms_contributor_option_9: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Não Contribuinte']]
+  # Opção do dropdown por nome - genérico, usar via argumento na page
+  icms_contributor_option_by_name: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='OPTION_NAME']]
+  # Telefone
+  phone_input: xpath=//*[@text='Telefone']/following-sibling::android.view.View[1]//android.widget.EditText
+  # Email
+  email_input: xpath=//*[@text='E-mail']/following-sibling::android.view.View[1]//android.widget.EditText
+  # Observacao
+  note_input: xpath=//*[@text='Observação']/following-sibling::android.view.View[1]//android.widget.EditText
+  # Cep
+  cep_input: xpath=//*[@text='CEP']/following-sibling::android.view.View[1]//android.widget.EditText
+  # Botão de Consulta de CEP
+  btn_consultar_cep: xpath=//*[@content-desc='Consultar CEP']
+  # Endereço
+  address_input: xpath=//*[@text='Endereço']/following-sibling::android.view.View[1]//android.widget.EditText
+  # Número
+  number_input: xpath=//*[@text='Número']/following-sibling::android.view.View[1]//android.widget.EditText
+  # Bairro
+  neighborhood_input: xpath=//*[@text='Bairro']/following-sibling::android.view.View[1]//android.widget.EditText
+  # Cidade
+  city_input: xpath=//*[@text='Cidade']/following-sibling::android.view.View[1]//android.widget.EditText
+  # Abrir dropdown "Cidade"
+  city_open_menu: xpath=//*[@text='Cidade']/following-sibling::android.view.View[1]//*[@content-desc='Abrir menu']
+  # Complemento
+  complement_input: xpath=//*[@text='Complemento']/following-sibling::android.view.View[1]//android.widget.EditText
+  # Botao Cancelar
+  btn_cancel: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Cancelar']]
+  # Botao Salvar Dados
+  btn_save: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Salvar Dados']]
+  # Botao Iniciar Pedido
+  btn_init_order: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Iniciar Venda']]

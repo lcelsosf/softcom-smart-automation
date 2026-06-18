@@ -324,3 +324,51 @@ PDV - Complete FLow - No Payment Method
     Pdv - Navigate To Finish Sale
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
+
+PDV - Complete Flow - Ticket Order
+    [Documentation]    Realiza pedido com emissão de ticket de retirada.
+    [Arguments]    ${product_name}    ${payment_method}
+    Pdv - Navigate To New Order
+    Pdv - Navigate To Select Product    ${product_name}
+    Pdv - Navigate To Check Order
+    Pdv - Navigate To Add Cart Item Quantity    ${product_name}    10
+    Pdv - Navigate To Finish Order
+    Pdv - Navigate To Select Payment Method    ${payment_method}
+    Pdv - Navigate To Confirm Payment Value
+    Pdv - Navigate To Finish Sale
+    Pdv - Navigate To Initial Screen
+    Pdv - Home - Verify Visible
+
+PDV - Complete Flow - Register Client Type Fisic
+    [Documentation]    Cadastra um cliente com dados gerados pelo Faker e verifica o registro na lista.
+    ...    Aceita Física ou Jurídica como tipo de pessoa.
+    [Arguments]    ${person_type}    ${cep}
+    ${cpf}=      FakerLibrary.Cpf
+    ${name}=     FakerLibrary.Name
+    ${phone}=    FakerLibrary.Phone Number
+    ${email}=    FakerLibrary.Email
+    ${number}=   FakerLibrary.Building Number
+    Pdv - Home - Verify Visible
+    Pdv - Home - Click Clients
+    Pdv - Navigate To New Client
+    Pdv - Navigate To Fill Client Details    ${person_type}    ${cpf}    ${name}    ${phone}    ${email}    teste cadastro de cliente
+    Pdv - Navigate To Fill Client Address    ${cep}    ${number}    teste cadastro de cliente
+    Pdv - Navigate To Save And Verify Client    ${name}
+    Pdv - Home - Verify Visible
+
+PDV - Complete Flow - Sync Search Client And Init Order
+    [Documentation]    Sincroniza a lista de clientes, seleciona o cliente e inicia um pedido.
+    [Arguments]    ${client_name}    ${product_name}    ${payment_method}
+    Pdv - Home - Verify Visible
+    Pdv - Navigate To Clients
+    Pdv - Navigate To Sync Client List
+    Pdv - Navigate To Search And Select Client    ${client_name}
+    Pdv - Navigate To Init Order From Client
+    Pdv - Navigate To Select Product    ${product_name}
+    Pdv - Navigate To Check Order
+    Pdv - Navigate To Finish Order
+    Pdv - Navigate To Select Payment Method    ${payment_method}
+    Pdv - Navigate To Confirm Payment Value
+    Pdv - Navigate To Finish Sale
+    Pdv - Navigate To Initial Screen
+    Pdv - Home - Verify Visible

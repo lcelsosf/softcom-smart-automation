@@ -22,3 +22,6 @@ clients:
 
 payment_data:
   bank_slip_calendar_day: 7
+
+client_data:
+  cep: 29134-685
