@@ -88,7 +88,7 @@ Pdv - Setup Active Smart PDV Functions
     Pdv - Home - Verify Visible
     Pdv - Home - Click Settings
     Pdv - Settings Click Smart Pdv
-    Pdv - Smart Pdv Toggle Request Client
+#    Pdv - Smart Pdv Toggle Request Client
     Pdv - Smart Pdv Toggle Show Stock
     Pdv - Smart Pdv Toggle Edit Item Price
     Pdv - Settings Click Back

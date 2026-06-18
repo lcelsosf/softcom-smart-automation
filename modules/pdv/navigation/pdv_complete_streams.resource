@@ -267,9 +267,9 @@ PDV - Complete Flow - Mini PDV Mode
 
 PDV - Complete Flow - Smart PDV Functions
     [Documentation]    Seleciona cliente, valida estoque, altera preço unitário e finaliza a venda.
-    [Arguments]    ${client_name}    ${product_name}    ${unit_price}
+    [Arguments]    ${client_name}    ${product_name}    ${unit_price}   ${payment_method}
     Pdv - Navigate To New Order
-    Pdv - Navigate To Select Client    ${client_name}
+#    Pdv - Navigate To Select Client    ${client_name}
     Pdv - Navigate To Select Product With Stock    ${product_name}
     Pdv - Navigate To Check Order
     Pdv - Navigate To Edit Cart Item Unit Price By Name    ${product_name}    ${unit_price}

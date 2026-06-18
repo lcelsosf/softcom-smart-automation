@@ -41,7 +41,7 @@ Pdv - Orders - Click Product By Name
     [Documentation]    Produto retornado na busca, selecionado pelo nome.
     [Arguments]    ${product_name}
     ${locator}=    Replace String    ${orders.product_by_name}    PRODUCT_NAME    ${product_name}
-    Wait Visible And Click Element    ${locator}
+    Wait Visible And Click Element With Retry    ${locator}
 
 Pdv - Orders - Click First Product Card
     [Documentation]    Primeiro card de produto retornado na busca, sem validar descrição.
@@ -181,7 +181,7 @@ Pdv - Orders - Click Cart Item Quantity By Name
     [Documentation]    Campo de quantidade no card do produto informado.
     [Arguments]    ${product_name}
     ${locator}=    Replace String    ${cart.item_quantity_by_name}    PRODUCT_NAME    ${product_name}
-    Wait Visible And Click Element    ${locator}
+    Wait Visible And Click Element With Retry    ${locator}
 
 Pdv - Orders - Click Cart Item Add By Name
     [Documentation]    Botão + (incrementar quantidade) no card do produto informado.
@@ -242,6 +242,7 @@ Pdv - Orders - Input Client Modal Client
     Wait Visible And Click Element    ${client_modal.client_spinner}
     Wait Until Element Is Visible    ${client_modal.client_input}
     Click Element    ${client_modal.client_input}
+    Clear Text    ${client_modal.client_input}
     Input Text    ${client_modal.client_input}    ${text}
     Close Keyboard
 

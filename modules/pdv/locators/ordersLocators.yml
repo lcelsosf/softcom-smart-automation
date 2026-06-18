@@ -9,7 +9,7 @@ orders:
   # Campo de busca de produto — EditText dentro do container de busca
   search_input: xpath=//*[@resource-id='PdvScreenBox_1']//android.widget.EditText
   # Produto retornado na busca, selecionado pelo nome
-  product_by_name: xpath=//*[@text='PRODUCT_NAME']/ancestor::android.view.View[@clickable='true'][1]
+  product_by_name: xpath=//*[@text='PRODUCT_NAME']/ancestor::android.view.View[starts-with(@resource-id,'ProdutoCardPdvBox_') and @clickable='true'][1]
   # Primeiro card de produto retornado na busca, sem validar descrição
   first_product_card: xpath=(//*[starts-with(@resource-id,'ProdutoCardPdvBox_') and @clickable='true'])[1]
   # Ícone limpar pesquisa
@@ -84,7 +84,7 @@ cart:
   # Botão - (decrementar quantidade) no card do produto informado
   item_btn_sub_by_name: xpath=//*[@text='PRODUCT_NAME']/ancestor::android.view.View[starts-with(@resource-id,'ProdutoItemCarrinhoBox_')][1]//*[starts-with(@resource-id,'ProdutoItemCarrinhoOutlinedButton_')][1]
   # Campo de quantidade no card do produto informado
-  item_quantity_by_name: xpath=//*[@text='PRODUCT_NAME']/ancestor::android.view.View[starts-with(@resource-id,'ProdutoItemCarrinhoBox_')][1]//android.widget.TextView[@clickable='true']
+  item_quantity_by_name: xpath=//*[@text='PRODUCT_NAME']/ancestor::android.view.View[starts-with(@resource-id,'ProdutoItemCarrinhoBox_')][1]//*[starts-with(@resource-id,'ProdutoItemCarrinhoText_') and @clickable='true']
   # Botão + (incrementar quantidade) no card do produto informado
   item_btn_add_by_name: xpath=//*[@text='PRODUCT_NAME']/ancestor::android.view.View[starts-with(@resource-id,'ProdutoItemCarrinhoBox_')][1]//*[starts-with(@resource-id,'ProdutoItemCarrinhoOutlinedButton_')][2]
   # Botão "Desconto/Acréscimo"

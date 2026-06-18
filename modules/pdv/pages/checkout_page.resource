@@ -44,6 +44,7 @@ Pdv - Checkout - Click Value Confirm
 
 Pdv - Checkout - Click Bank Slip Add
     [Documentation]    Botao de adicionar parcela.
+    Wait Until Element Is Visible    ${bank_slip.parcels_quantity}
     ${previous_quantity}=    Get Text    ${bank_slip.parcels_quantity}
     Wait Visible And Click Element    ${bank_slip.btn_add}
     ${expected_quantity}=    Evaluate    int(${previous_quantity}) + 1
@@ -52,6 +53,7 @@ Pdv - Checkout - Click Bank Slip Add
 
 Pdv - Checkout - Click Bank Slip Sub
     [Documentation]    Botao de remover parcela.
+    Wait Until Element Is Visible    ${bank_slip.parcels_quantity}
     ${previous_quantity}=    Get Text    ${bank_slip.parcels_quantity}
     Wait Visible And Click Element    ${bank_slip.btn_sub}
     ${expected_quantity}=    Evaluate    int(${previous_quantity}) - 1

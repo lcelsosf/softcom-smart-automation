@@ -37,7 +37,7 @@ bank_slip:
   # Botao de remover parcela
   btn_sub: xpath=//*[@resource-id='ValorPagamentoDialogButton_0']
   # Quantidade de parcelas exibida no seletor
-  parcels_quantity: xpath=//*[@resource-id='ValorPagamentoDialogColumn_0']/android.widget.TextView[1]
+  parcels_quantity: xpath=//*[@resource-id='ValorPagamentoDialogColumn_0']//android.widget.TextView[1]
   # Input de prazo — visível apenas em métodos que exigem prazo (ex: Boleto Bancário)
   term_input: xpath=//*[@resource-id='ValorPagamentoDialogBasicOutlinedField_0']
   # Botao Calendario

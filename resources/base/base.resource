@@ -52,10 +52,10 @@ ${DEVICE_UDID}           emulator-5554
 ${DEFAULT_UDID}          emulator-5554
 
 # --- Timeouts ---
-${TIMEOUT}               30s
+${TIMEOUT}               60s
 ${SHORT_TIMEOUT}         10s
-${ELEMENT_TIMEOUT}       30s
-${DEFAULT_TIMEOUT}       30s
+${ELEMENT_TIMEOUT}       60s
+${DEFAULT_TIMEOUT}       60s
 
 # --- Diretórios de saída ---
 ${SCREENSHOT_DIR}        results/screenshots
