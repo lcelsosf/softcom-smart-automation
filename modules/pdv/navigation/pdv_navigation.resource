@@ -7,6 +7,7 @@ Resource    ../pages/home_page.resource
 Resource    ../pages/orders_page.resource
 Resource    ../pages/checkout_page.resource
 Resource    ../pages/clients_page.resource
+Resource    ../pages/orderslist_page.resource
 
 
 *** Keywords ***
@@ -263,6 +264,57 @@ Pdv - Navigate To Apply Additional Integer
 
 
 # =============================================================================
+# NAVEGAÇÃO — LISTA DE PEDIDOS
+# =============================================================================
+
+Pdv - Navigate To View Order
+    [Documentation]    Clica no primeiro pedido, visualiza, verifica a tela e volta para a lista.
+    Orders List - Click First Order
+    Orders List - Actions Modal Click View Order
+    Orders List - View Order Screen Should Be Visible
+    Orders List - Click Back
+
+Pdv - Navigate To Reprint First Order Receipt
+    [Documentation]    Clica no primeiro pedido, reimprimi o comprovante e verifica o status de impressão.
+    Orders List - Click First Order
+    Orders List - Actions Modal Click Reprint Receipt
+    Orders List - Print Status Should Be Printing
+    Orders List - Print Status Should Not Be Completed
+
+Pdv - Navigate To Fiscal Details First Order
+    [Documentation]    Clica no primeiro pedido, abre Detalhes da Nota Fiscal, verifica e volta para a lista.
+    Orders List - Click First Order
+    Orders List - Actions Modal Click Fiscal Details
+    Orders List - Fiscal Details Screen Should Be Visible
+    Orders List - Click Back
+
+Pdv - Navigate To Cancel First Order
+    [Documentation]    Clica no primeiro pedido, cancela, confirma e fecha o modal de sucesso.
+    Orders List - Click First Order
+    Orders List - Actions Modal Click Cancel Order
+    Orders List - Cancel Order Modal Should Be Visible
+    Orders List - Cancel Order Modal Click Yes
+    Orders List - Cancel Order Success Should Be Visible
+    Orders List - Cancel Order Click Ok
+
+Pdv - Navigate To Print Receipts
+    [Documentation]    Abre o modal de impressão, seleciona Recebimentos e verifica o ciclo de status.
+    Orders List - Click Print
+    Orders List - Print Options Click Receipts
+    Orders List - Print Status Should Be Printing
+    Orders List - Print Status Should Be Completed
+    Orders List - Print Status Should Not Be Completed
+
+Pdv - Navigate To Print Sales Summary
+    [Documentation]    Abre o modal de impressão, seleciona Resumo de Vendas e verifica o ciclo de status.
+    Orders List - Click Print
+    Orders List - Print Options Click Sales Summary
+    Orders List - Print Status Should Be Printing
+    Orders List - Print Status Should Be Completed
+    Orders List - Print Status Should Not Be Completed
+
+
+# =============================================================================
 # NAVEGAÇÃO — LISTA DE CLIENTES
 # =============================================================================
 
@@ -299,6 +351,17 @@ Pdv - Navigate To Fill Client Details
     Client Register - Fill Email    ${email}
     Client Register - Fill Note    ${note}
 
+Pdv - Navigate To Fill Client Details Juridic
+    [Documentation]    Preenche os campos de detalhes do cadastro Jurídico: tipo de pessoa, CNPJ, nome fantasia, razão social, telefone, e-mail e observação.
+    [Arguments]    ${person_type}    ${cnpj}    ${fantasy_name}    ${social_reason}    ${phone}    ${email}    ${note}
+    Client Register - Select Person Type    ${person_type}
+    Client Register - Fill Cnpj    ${cnpj}
+    Client Register - Fill Fantasy Name    ${fantasy_name}
+    Client Register - Fill Social Reason    ${social_reason}
+    Client Register - Fill Phone    ${phone}
+    Client Register - Fill Email    ${email}
+    Client Register - Fill Note    ${note}
+
 Pdv - Navigate To Fill Client Address
     [Documentation]    Seleciona a tab Endereço, preenche CEP, consulta e preenche número e complemento.
     [Arguments]    ${cep}    ${number}    ${complement}
@@ -315,6 +378,16 @@ Pdv - Navigate To Save And Verify Client
     Wait Until Element Is Visible    ${client_list.search_input}
     Client List - Search Client    ${client_name}
     Client List - Client Should Be Visible    ${client_name}
+    Client List - Click Back
+
+Pdv - Navigate To Save And Verify Client By Cnpj
+    [Documentation]    Salva o cadastro, aguarda o formulário fechar, pesquisa pelo CNPJ, verifica pela Razão Social e volta.
+    [Arguments]    ${cnpj}    ${social_reason}
+    Client Register - Click Save
+    Wait For Element To Disappear    ${client_register.btn_save}
+    Wait Until Element Is Visible    ${client_list.search_input}
+    Client List - Search Client    ${cnpj}
+    Client List - Client Should Be Visible    ${social_reason}
     Client List - Click Back
 
 

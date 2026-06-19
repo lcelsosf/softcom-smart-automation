@@ -48,6 +48,10 @@ client_register:
   btn_consultar_cnpj: xpath=//*[@content-desc='Consultar CNPJ']
   # nome
   name_input: xpath=//*[@text='Nome *']/following-sibling::android.view.View[1]//android.widget.EditText
+  # Nome Fantasia (Jurídica)
+  fantasy_name_input: xpath=//*[@text='Nome Fantasia *']/following-sibling::android.view.View[1]//android.widget.EditText
+  # Razão Social (Jurídica)
+  social_reason_input: xpath=//*[@text='Razão Social *']/following-sibling::android.view.View[1]//android.widget.EditText
   # Abrir dropdown "Contribuinte ICMS"
   icms_contributor_open_menu: xpath=//*[@text='Contribuinte ICMS']/following-sibling::android.view.View[1]//*[@content-desc='Abrir menu']
   # Opção do dropdown Contribuinte ICMS (códigos do CRT/regime tributário)

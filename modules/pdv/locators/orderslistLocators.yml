@@ -1,0 +1,75 @@
+##########################
+# Tela de Lista de Pedidos
+##########################
+orders_list:
+  # Botao Voltar
+  btn_back: xpath=//*[@content-desc='Voltar']
+  # Botao Imprimir
+  btn_print: xpath=//*[@content-desc='Imprimir']
+  # Campo de busca — placeholder "Buscar por código, cliente ou vendedor"
+  search_input: xpath=//*[@text='Lista de Pedidos']/following::android.widget.EditText[1]
+  # Botao de filtros
+  btn_filters: xpath=//*[@content-desc='Filtros']
+  # Primeiro pedido da lista — independente do código/cliente
+  # Usa o primeiro card clicável dentro do container de resultados
+  first_order_card: xpath=(//android.view.View[@clickable='true' and .//*[@content-desc='Sincronizado']])[1]
+
+########################################################################
+# MODAL — Ações do Pedido (bottom sheet)
+# Exibido ao clicar em um pedido na Lista de Pedidos
+########################################################################
+order_actions_modal:
+  # Overlay — clique fora fecha o modal
+  btn_close_overlay: xpath=//*[@content-desc='Fechar planilha']
+  # Botao de Visualizar Pedido
+  btn_view_order: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Visualizar Pedido']]
+  # Tela de Visualizar Pedido
+  view_order_screen: xpath=//*[@text='Lista de Pedidos']
+  # Botao de Reimprimir Comprovante
+  btn_reprint_receipt: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Reimprimir Comprovante']]
+  # Botao de Detalhes da Nota Fiscal
+  btn_fiscal_details: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Detalhes da Nota Fiscal']]
+  # Tela de Detalhes da Nota Fiscal
+  fiscal_details_screen: xpath=//*[@text='Detalhes da Nota Fiscal']
+  # Botao de Cancelar Pedido
+  btn_cancel_order: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Cancelar Pedido']]
+
+########################################################################
+# MODAL — O que deseja imprimir? (bottom sheet)
+# Exibido ao clicar no botão Imprimir da top bar
+########################################################################
+print_options_modal:
+  # Título do modal — usado para verificação de abertura
+  title: xpath=//*[@text='O que deseja imprimir?']
+  # Botao de Recebimento
+  btn_receipts: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Recebimentos']]
+  # Botao de Resumo de Vendas
+  btn_sales_summary: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Resumo de Vendas']]
+  # Botao de Cancelar
+  btn_back: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Voltar']]
+
+########################################################################
+# MODAL — Status de Impressão (toast/dialog transitório)
+# Exibido após selecionar uma opção de impressão
+########################################################################
+print_status_modal:
+  # Mensagem "Realizando a impressão!" — estado intermediário
+  printing_message: xpath=//*[@text='Realizando a impressão!']
+  # Mensagem "Impressão concluída!" — estado final
+  completed_message: xpath=//*[@text='Impressão concluída!']
+
+####################################################################
+# MODAL - Cancelamento de pedido
+# Exibido ao clicar em "Cancelar Pedido" no modal de ações do pedido
+####################################################################
+cancel_order_modal:
+  # Mensagem "Ei, vai mesmo cancelar esse pedido?"
+  cancel_message: xpath=//*[@text='Ei, vai mesmo cancelar esse pedido?']
+  # Botao "Sim"
+  btn_yes: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Sim']]
+  # Botao "Não"
+  btn_no: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Não']]
+  # Mensagem de pedido cancelado com sucesso
+  success_message: xpath=//*[@text='Pedido cancelado com sucesso!']
+  # Botao "Ok!"
+  btn_ok: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Ok!']]

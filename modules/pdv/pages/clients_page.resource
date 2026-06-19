@@ -87,6 +87,30 @@ Client Register - Fill Cpf
     Input Text                        ${client_register.cpf_input}    ${cpf}
     Close Keyboard
 
+Client Register - Fill Cnpj
+    [Documentation]    Preenche o campo CNPJ.
+    [Arguments]    ${cnpj}
+    Wait Visible And Click Element    ${client_register.cnpj_input}
+    Clear Text                        ${client_register.cnpj_input}
+    Input Text                        ${client_register.cnpj_input}    ${cnpj}
+    Close Keyboard
+
+Client Register - Fill Fantasy Name
+    [Documentation]    Preenche o campo Nome Fantasia (Jurídica).
+    [Arguments]    ${fantasy_name}
+    Wait Visible And Click Element    ${client_register.fantasy_name_input}
+    Clear Text                        ${client_register.fantasy_name_input}
+    Input Text                        ${client_register.fantasy_name_input}    ${fantasy_name}
+    Close Keyboard
+
+Client Register - Fill Social Reason
+    [Documentation]    Preenche o campo Razão Social (Jurídica).
+    [Arguments]    ${social_reason}
+    Wait Visible And Click Element    ${client_register.social_reason_input}
+    Clear Text                        ${client_register.social_reason_input}
+    Input Text                        ${client_register.social_reason_input}    ${social_reason}
+    Close Keyboard
+
 Client Register - Fill Name
     [Documentation]    Preenche o campo Nome.
     [Arguments]    ${name}
@@ -112,9 +136,10 @@ Client Register - Select Icms Contributor
 
 Client Register - Fill Phone
     [Documentation]    Preenche o campo Telefone.
+    ...    Clica no campo, executa swipe para reposicioná-lo caso o teclado o oculte e digita o valor.
     [Arguments]    ${phone}
     Wait Visible And Click Element    ${client_register.phone_input}
-    Clear Text                        ${client_register.phone_input}
+    Swipe By Percent                  50    70    50    30
     Input Text                        ${client_register.phone_input}    ${phone}
     Close Keyboard
 

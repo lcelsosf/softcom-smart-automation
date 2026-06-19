@@ -339,21 +339,46 @@ PDV - Complete Flow - Ticket Order
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
 
-PDV - Complete Flow - Register Client Type Fisic
+PDV - Complete Flow - Register Client
     [Documentation]    Cadastra um cliente com dados gerados pelo Faker e verifica o registro na lista.
-    ...    Aceita Física ou Jurídica como tipo de pessoa.
+    ...    Física → gera CPF e Nome, pesquisa e verifica pelo nome.
+    ...    Jurídica → gera CNPJ, Nome Fantasia e Razão Social, pesquisa pelo CNPJ e verifica pela Razão Social.
     [Arguments]    ${person_type}    ${cep}
-    ${cpf}=      FakerLibrary.Cpf
-    ${name}=     FakerLibrary.Name
     ${phone}=    FakerLibrary.Phone Number
     ${email}=    FakerLibrary.Email
     ${number}=   FakerLibrary.Building Number
     Pdv - Home - Verify Visible
     Pdv - Home - Click Clients
     Pdv - Navigate To New Client
-    Pdv - Navigate To Fill Client Details    ${person_type}    ${cpf}    ${name}    ${phone}    ${email}    teste cadastro de cliente
-    Pdv - Navigate To Fill Client Address    ${cep}    ${number}    teste cadastro de cliente
-    Pdv - Navigate To Save And Verify Client    ${name}
+    IF    '${person_type}' == 'Física'
+        ${cpf}=     FakerLibrary.Cpf
+        ${name}=    FakerLibrary.Name
+        Pdv - Navigate To Fill Client Details    ${person_type}    ${cpf}    ${name}    ${phone}    ${email}    teste cadastro de cliente
+        Pdv - Navigate To Fill Client Address    ${cep}    ${number}    teste cadastro de cliente
+        Pdv - Navigate To Save And Verify Client    ${name}
+    ELSE IF    '${person_type}' == 'Jurídica'
+        ${cnpj}=            FakerLibrary.Cnpj
+        ${cnpj_search}=     Evaluate    '${cnpj}'.replace('.', '').replace('/', '').replace('-', '')
+        ${fantasy_name}=    FakerLibrary.Company
+        ${social_reason}=   FakerLibrary.Company
+        Pdv - Navigate To Fill Client Details Juridic    ${person_type}    ${cnpj}    ${fantasy_name}    ${social_reason}    ${phone}    ${email}    teste cadastro de cliente
+        Pdv - Navigate To Fill Client Address    ${cep}    ${number}    teste cadastro de cliente
+        Pdv - Navigate To Save And Verify Client By Cnpj    ${cnpj_search}    ${social_reason}
+    END
+    Pdv - Home - Verify Visible
+
+PDV - Complete Flow - List Orders Functions
+    [Documentation]    Navega pela Lista de Pedidos: visualiza, reimprimi, acessa nota fiscal, cancela pedido e imprime relatórios.
+    Pdv - Home - Verify Visible
+    Pdv - Home - Click List Orders
+    Orders List - Should Be Visible
+    Pdv - Navigate To View Order
+    Pdv - Navigate To Reprint First Order Receipt
+    Pdv - Navigate To Fiscal Details First Order
+    Pdv - Navigate To Cancel First Order
+    Pdv - Navigate To Print Receipts
+    Pdv - Navigate To Print Sales Summary
+    Orders List - Click Back
     Pdv - Home - Verify Visible
 
 PDV - Complete Flow - Sync Search Client And Init Order

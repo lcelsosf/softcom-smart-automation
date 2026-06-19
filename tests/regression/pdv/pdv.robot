@@ -211,6 +211,18 @@ PDV - Sync Search Client And Init Order
 PDV - Register Client Type Fisic
     [Documentation]    Cadastra um cliente pessoa física com dados gerados pelo Faker e verifica o registro.
     [Tags]    @allure.label.severity:normal    regression    pdv    clients    register
-    PDV - Complete Flow - Register Client Type Fisic
+    PDV - Complete Flow - Register Client
     ...    Física
     ...    ${client_data.cep}
+
+PDV - Register Client Type Juridic
+    [Documentation]    Cadastra um cliente pessoa jurídica com dados gerados pelo Faker e verifica o registro.
+    [Tags]    @allure.label.severity:normal    regression    pdv    clients    register
+    PDV - Complete Flow - Register Client
+    ...    Jurídica
+    ...    ${client_data.cep}
+
+PDV - List Orders Functions
+    [Documentation]    Navega pela Lista de Pedidos: visualiza, reimprimi, acessa nota fiscal, cancela pedido e imprime relatórios.
+    [Tags]    @allure.label.severity:normal    regression    pdv    orders    orders-list
+    PDV - Complete Flow - List Orders Functions
