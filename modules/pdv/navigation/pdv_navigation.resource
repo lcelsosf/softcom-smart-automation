@@ -372,10 +372,11 @@ Pdv - Navigate To Fill Client Address
     Client Register - Fill Complement    ${complement}
 
 Pdv - Navigate To Save And Verify Client
-    [Documentation]    Salva o cadastro, aguarda o campo de busca da lista aparecer, pesquisa pelo nome, verifica e volta.
+    [Documentation]    Salva o cadastro, aguarda o formulário fechar, pesquisa pelo nome, verifica e volta.
     [Arguments]    ${client_name}
     Client Register - Click Save
-    Wait Until Element Is Visible    ${client_list.search_input}
+    Wait For Element To Disappear    ${client_register.btn_save}
+    Wait Until Element Is Visible    ${client_list.search_input}    timeout=${ELEMENT_TIMEOUT}
     Client List - Search Client    ${client_name}
     Client List - Client Should Be Visible    ${client_name}
     Client List - Click Back

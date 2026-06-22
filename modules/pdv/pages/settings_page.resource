@@ -291,7 +291,7 @@ Pdv - Fiscal Settings Toggle Enable Nfe
 ##########################################################################
 Pdv - Ticket Settings Open Ticket On Finish Menu
     [Documentation]    Clica no campo para abrir o dropdown de ticket ao finalizar.
-    Wait Visible And Click Element    ${ticket_settings.ticket_on_finish_input}
+    Wait Visible And Click Element    ${ticket_settings.ticket_on_finish_open_menu}
 
 Pdv - Ticket Settings Select Ticket On Finish
     [Documentation]    Abre o dropdown e seleciona a opção pelo nome.

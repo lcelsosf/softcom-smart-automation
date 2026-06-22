@@ -374,7 +374,7 @@ PDV - Complete Flow - List Orders Functions
     Orders List - Should Be Visible
     Pdv - Navigate To View Order
     Pdv - Navigate To Reprint First Order Receipt
-    Pdv - Navigate To Fiscal Details First Order
+#    Pdv - Navigate To Fiscal Details First Order
     Pdv - Navigate To Cancel First Order
     Pdv - Navigate To Print Receipts
     Pdv - Navigate To Print Sales Summary

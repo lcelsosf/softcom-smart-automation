@@ -7,12 +7,12 @@ orders_list:
   # Botao Imprimir
   btn_print: xpath=//*[@content-desc='Imprimir']
   # Campo de busca — placeholder "Buscar por código, cliente ou vendedor"
-  search_input: xpath=//*[@text='Lista de Pedidos']/following::android.widget.EditText[1]
+  search_input: xpath=(//android.widget.EditText)[1]
   # Botao de filtros
   btn_filters: xpath=//*[@content-desc='Filtros']
   # Primeiro pedido da lista — independente do código/cliente
   # Usa o primeiro card clicável dentro do container de resultados
-  first_order_card: xpath=(//android.view.View[@clickable='true' and .//*[@content-desc='Sincronizado']])[1]
+  first_order_card: xpath=(//*[@content-desc='Sincronizado'])[1]/ancestor::android.view.View[@clickable='true'][1]
 
 ########################################################################
 # MODAL — Ações do Pedido (bottom sheet)
@@ -22,17 +22,17 @@ order_actions_modal:
   # Overlay — clique fora fecha o modal
   btn_close_overlay: xpath=//*[@content-desc='Fechar planilha']
   # Botao de Visualizar Pedido
-  btn_view_order: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Visualizar Pedido']]
+  btn_view_order: xpath=//android.widget.TextView[@text='Visualizar Pedido']/ancestor::android.view.View[@clickable='true'][1]
   # Tela de Visualizar Pedido
-  view_order_screen: xpath=//*[@text='Lista de Pedidos']
+  view_order_screen: xpath=//*[@text='Detalhes do Pedido']
   # Botao de Reimprimir Comprovante
-  btn_reprint_receipt: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Reimprimir Comprovante']]
+  btn_reprint_receipt: xpath=//android.widget.TextView[@text='Reimprimir Comprovante']/ancestor::android.view.View[@clickable='true'][1]
   # Botao de Detalhes da Nota Fiscal
-  btn_fiscal_details: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Detalhes da Nota Fiscal']]
+  btn_fiscal_details: xpath=//android.widget.TextView[@text='Detalhes da Nota Fiscal']/ancestor::android.view.View[@clickable='true'][1]
   # Tela de Detalhes da Nota Fiscal
   fiscal_details_screen: xpath=//*[@text='Detalhes da Nota Fiscal']
   # Botao de Cancelar Pedido
-  btn_cancel_order: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Cancelar Pedido']]
+  btn_cancel_order: xpath=//android.widget.TextView[@text='Cancelar Pedido']/ancestor::android.view.View[@clickable='true'][1]
 
 ########################################################################
 # MODAL — O que deseja imprimir? (bottom sheet)
@@ -42,11 +42,11 @@ print_options_modal:
   # Título do modal — usado para verificação de abertura
   title: xpath=//*[@text='O que deseja imprimir?']
   # Botao de Recebimento
-  btn_receipts: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Recebimentos']]
+  btn_receipts: xpath=//android.widget.TextView[@text='Recebimentos']/ancestor::android.view.View[@clickable='true'][1]
   # Botao de Resumo de Vendas
-  btn_sales_summary: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Resumo de Vendas']]
+  btn_sales_summary: xpath=//android.widget.TextView[@text='Resumo de Vendas']/ancestor::android.view.View[@clickable='true'][1]
   # Botao de Cancelar
-  btn_back: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Voltar']]
+  btn_back: xpath=//android.widget.TextView[@text='Voltar']/ancestor::android.view.View[@clickable='true'][1]
 
 ########################################################################
 # MODAL — Status de Impressão (toast/dialog transitório)
@@ -66,10 +66,10 @@ cancel_order_modal:
   # Mensagem "Ei, vai mesmo cancelar esse pedido?"
   cancel_message: xpath=//*[@text='Ei, vai mesmo cancelar esse pedido?']
   # Botao "Sim"
-  btn_yes: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Sim']]
+  btn_yes: xpath=//android.widget.TextView[@text='Sim']/ancestor::android.view.View[@clickable='true'][1]
   # Botao "Não"
-  btn_no: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Não']]
+  btn_no: xpath=//android.widget.TextView[@text='Não']/ancestor::android.view.View[@clickable='true'][1]
   # Mensagem de pedido cancelado com sucesso
   success_message: xpath=//*[@text='Pedido cancelado com sucesso!']
   # Botao "Ok!"
-  btn_ok: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Ok!']]
+  btn_ok: xpath=//android.widget.TextView[@text='Ok!']/ancestor::android.view.View[@clickable='true'][1]

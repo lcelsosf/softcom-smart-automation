@@ -32,7 +32,7 @@ Orders List - Click First Order
 Orders List - Actions Modal Should Be Visible
     [Documentation]    Verifica que o modal de ações do pedido está aberto.
     ...    Use após clicar em um pedido da lista.
-    Wait Until Element Is Visible    ${order_actions_modal.btn_view_order}
+    Wait Until Element Is Visible    ${order_actions_modal.btn_view_order}    timeout=${ELEMENT_TIMEOUT}
 
 Orders List - Actions Modal Should Not Be Visible
     [Documentation]    Verifica que o modal de ações do pedido foi fechado.
@@ -61,7 +61,7 @@ Orders List - Actions Modal Close By Overlay
 Orders List - Print Options Modal Should Be Visible
     [Documentation]    Verifica que o modal "O que deseja imprimir?" está aberto.
     ...    Use após clicar no botão Imprimir da top bar.
-    Wait Until Element Is Visible    ${print_options_modal.title}
+    Wait Until Element Is Visible    ${print_options_modal.title}    timeout=${ELEMENT_TIMEOUT}
 
 Orders List - Print Options Modal Should Not Be Visible
     [Documentation]    Verifica que o modal de opções de impressão foi fechado.
@@ -81,19 +81,19 @@ Orders List - Print Options Click Back
 
 Orders List - Should Be Visible
     [Documentation]    Verifica que a tela de Lista de Pedidos está visível.
-    Wait Until Element Is Visible    ${orders_list.search_input}
+    Wait Until Element Is Visible    ${orders_list.search_input}    timeout=${ELEMENT_TIMEOUT}
 
 Orders List - View Order Screen Should Be Visible
     [Documentation]    Verifica que a tela de Visualizar Pedido está visível.
-    Wait Until Element Is Visible    ${order_actions_modal.view_order_screen}
+    Wait Until Element Is Visible    ${order_actions_modal.view_order_screen}    timeout=${ELEMENT_TIMEOUT}
 
 Orders List - Fiscal Details Screen Should Be Visible
     [Documentation]    Verifica que a tela de Detalhes da Nota Fiscal está visível.
-    Wait Until Element Is Visible    ${order_actions_modal.fiscal_details_screen}
+    Wait Until Element Is Visible    ${order_actions_modal.fiscal_details_screen}    timeout=${ELEMENT_TIMEOUT}
 
 Orders List - Cancel Order Modal Should Be Visible
     [Documentation]    Verifica que o modal de confirmação de cancelamento está visível.
-    Wait Until Element Is Visible    ${cancel_order_modal.cancel_message}
+    Wait Until Element Is Visible    ${cancel_order_modal.cancel_message}    timeout=${ELEMENT_TIMEOUT}
 
 Orders List - Cancel Order Modal Click Yes
     [Documentation]    Clica em "Sim" — confirma o cancelamento do pedido.
@@ -101,7 +101,7 @@ Orders List - Cancel Order Modal Click Yes
 
 Orders List - Cancel Order Success Should Be Visible
     [Documentation]    Verifica que a mensagem de cancelamento com sucesso está visível.
-    Wait Until Element Is Visible    ${cancel_order_modal.success_message}
+    Wait Until Element Is Visible    ${cancel_order_modal.success_message}    timeout=${ELEMENT_TIMEOUT}
 
 Orders List - Cancel Order Click Ok
     [Documentation]    Clica em "Ok!" — fecha o modal de sucesso do cancelamento.
@@ -110,12 +110,12 @@ Orders List - Cancel Order Click Ok
 Orders List - Print Status Should Be Printing
     [Documentation]    Verifica que a mensagem "Realizando a impressão!" está visível.
     ...    Estado intermediário — a impressão ainda está em andamento.
-    Wait Until Element Is Visible    ${print_status_modal.printing_message}
+    Wait Until Element Is Visible    ${print_status_modal.printing_message}    timeout=${ELEMENT_TIMEOUT}
 
 Orders List - Print Status Should Be Completed
     [Documentation]    Verifica que a mensagem "Impressão concluída!" está visível.
     ...    Estado final — confirma que a impressão foi concluída com sucesso.
-    Wait Until Element Is Visible    ${print_status_modal.completed_message}
+    Wait Until Element Is Visible    ${print_status_modal.completed_message}    timeout=${ELEMENT_TIMEOUT}
 
 Orders List - Print Status Should Not Be Completed
     [Documentation]    Verifica que a mensagem "Impressão concluída!" não está mais visível.
