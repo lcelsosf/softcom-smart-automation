@@ -1,11 +1,12 @@
 *** Settings ***
-Documentation    Ações atômicas — Tela Mesa Aberta (ComandaMesaScreen)
-Resource    ../../../resources/helpers/common_keywords.resource
+Documentation       Ações atômicas — Tela Mesa Aberta (ComandaMesaScreen)
+
+Resource            ../../../resources/helpers/common_keywords.resource
 
 
 *** Keywords ***
 Commands - Table - Click Menu
-    Wait Visible And Click Element With Retry  ${table.menu}  3   
+    Wait Visible And Click Element With Retry    ${table.menu}    3
 
 Commands - Table - Verify Conference Question
     Wait Until Element Is Visible    ${table.conference_question}

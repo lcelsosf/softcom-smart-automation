@@ -1,6 +1,7 @@
 *** Settings ***
-Documentation    Ações atômicas — Dialog Gerenciar Taxas de Serviço
-Resource    ../../../resources/helpers/common_keywords.resource
+Documentation       Ações atômicas — Dialog Gerenciar Taxas de Serviço
+
+Resource            ../../../resources/helpers/common_keywords.resource
 
 
 *** Keywords ***

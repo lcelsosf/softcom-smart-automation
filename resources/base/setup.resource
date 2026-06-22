@@ -1,17 +1,17 @@
 *** Settings ***
-Documentation    Keywords de Setup e Teardown para suites e testes.
+Documentation       Keywords de Setup e Teardown para suites e testes.
 ...
-...    Responsabilidades:
-...    - Prover keywords padronizadas de Suite Setup/Teardown e Test Setup/Teardown
-...    - Garantir captura de screenshot em falha de teste
-...    - Centralizar lógica de inicialização e encerramento de sessão
+...                 Responsabilidades:
+...                 - Prover keywords padronizadas de Suite Setup/Teardown e Test Setup/Teardown
+...                 - Garantir captura de screenshot em falha de teste
+...                 - Centralizar lógica de inicialização e encerramento de sessão
 ...
-...    Dependências resolvidas pelo base.resource:
-...    - AppiumLibrary
-...    - LogcatLibrary
-...    - open_app.resource (Open App, Close App)
-...    - structured_logging.resource (Log Action)
-...    - error_handling.resource (Fail With Screenshot)
+...                 Dependências resolvidas pelo base.resource:
+...                 - AppiumLibrary
+...                 - LogcatLibrary
+...                 - open_app.resource (Open App, Close App)
+...                 - structured_logging.resource (Log Action)
+...                 - error_handling.resource (Fail With Screenshot)
 
 
 *** Keywords ***
@@ -36,7 +36,6 @@ Suite Teardown Default
     ...    Suite Teardown    Suite Teardown Default
     Log Action    action=suite_end    message=Encerrando suite    suite=${SUITE_NAME}
     Close App
-
 
 # =============================================================================
 # TEST SETUP / TEARDOWN
@@ -70,7 +69,6 @@ Test Teardown Default
     ...    message=Teste finalizado
     ...    test=${TEST_NAME}
     ...    status=${TEST_STATUS}
-
 
 # =============================================================================
 # UTILITÁRIOS DE SETUP

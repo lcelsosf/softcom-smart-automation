@@ -1,6 +1,7 @@
 *** Settings ***
-Documentation    Ações atômicas — Dialog Alterar Cliente (CustomerChangeDialog)
-Resource    ../../../resources/helpers/common_keywords.resource
+Documentation       Ações atômicas — Dialog Alterar Cliente (CustomerChangeDialog)
+
+Resource            ../../../resources/helpers/common_keywords.resource
 
 
 *** Keywords ***

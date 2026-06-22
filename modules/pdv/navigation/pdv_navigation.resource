@@ -1,13 +1,14 @@
 *** Settings ***
-Documentation    Fluxos de navegação/configuração do módulo Pdv — composição de page keywords.
+Documentation       Fluxos de navegação/configuração do módulo Pdv — composição de page keywords.
 ...
-...    Nomenclatura: Pdv - Navigate To <Destino>
-...    Dependências: pages abaixo + locators carregados via base_pdv.resource
-Resource    ../pages/home_page.resource
-Resource    ../pages/orders_page.resource
-Resource    ../pages/checkout_page.resource
-Resource    ../pages/clients_page.resource
-Resource    ../pages/orderslist_page.resource
+...                 Nomenclatura: Pdv - Navigate To <Destino>
+...                 Dependências: pages abaixo + locators carregados via base_pdv.resource
+
+Resource            ../pages/home_page.resource
+Resource            ../pages/orders_page.resource
+Resource            ../pages/checkout_page.resource
+Resource            ../pages/clients_page.resource
+Resource            ../pages/orderslist_page.resource
 
 
 *** Keywords ***
@@ -23,7 +24,6 @@ Pdv - Navigate To New Order
 Pdv - Navigate To Initial Screen
     [Documentation]    Retorna da tela de status do pedido para a tela inicial.
     Pdv - Orders Status - Click Home
-
 
 # =============================================================================
 # NAVEGAÇÃO — PEDIDO
@@ -117,9 +117,7 @@ Pdv - Navigate To Select Client
     [Arguments]    ${client_name}
     ${edit_client_visible}=    Run Keyword And Return Status
     ...    Wait Until Element Is Visible    ${cart.btn_edit_client}    timeout=5s
-    IF    ${edit_client_visible}
-        Pdv - Orders - Click Edit Client
-    END
+    IF    ${edit_client_visible}    Pdv - Orders - Click Edit Client
     Pdv - Orders - Input Client Modal Client    ${client_name}
     Pdv - Orders - Click Client By Name    ${client_name}
     Pdv - Orders - Click Client Modal Confirm
@@ -262,7 +260,6 @@ Pdv - Navigate To Apply Additional Integer
     Pdv - Orders - Input Discount Value    ${additional_value}
     Pdv - Orders - Click Apply Discount
 
-
 # =============================================================================
 # NAVEGAÇÃO — LISTA DE PEDIDOS
 # =============================================================================
@@ -312,7 +309,6 @@ Pdv - Navigate To Print Sales Summary
     Orders List - Print Status Should Be Printing
     Orders List - Print Status Should Be Completed
     Orders List - Print Status Should Not Be Completed
-
 
 # =============================================================================
 # NAVEGAÇÃO — LISTA DE CLIENTES
@@ -391,7 +387,6 @@ Pdv - Navigate To Save And Verify Client By Cnpj
     Client List - Client Should Be Visible    ${social_reason}
     Client List - Click Back
 
-
 # =============================================================================
 # CONFIGURAÇÃO — PAGAMENTO
 # =============================================================================
@@ -408,7 +403,6 @@ Pdv - Resolve Payment Method Name
         ${payment_method_name}=    Set Variable    Boleto Bancário
     END
     RETURN    ${payment_method_name}
-
 
 # =============================================================================
 # NAVEGAÇÃO — CHECKOUT

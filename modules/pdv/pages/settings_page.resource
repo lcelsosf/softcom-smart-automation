@@ -1,8 +1,8 @@
 *** Settings ***
-Documentation    Page object da tela Configurações Gerais — módulo PDV.
+Documentation       Page object da tela Configurações Gerais — módulo PDV.
+
 
 *** Keywords ***
-
 Pdv - Settings Click Back
     [Documentation]    Clica no botão Voltar da top bar.
     Wait Visible And Click Element    ${pdv_settings.btn_back}
@@ -94,7 +94,7 @@ Pdv - Smart Pdv Toggle Price Table
 Pdv - Smart Pdv Toggle Edit Item Price
     [Documentation]    Alterna "Alterar preço do item".
     Wait Visible And Click Element    ${smart_pdv_settings.toggle_edit_item_price}
- 
+
 Pdv - Smart Pdv Toggle Option By Name
     [Documentation]    Alterna qualquer toggle pelo título exibido.
     ...    Use para opções além das mapeadas individualmente.
@@ -124,6 +124,7 @@ Pdv - Orders Settings Toggle Fractional Quantity
 Pdv - Orders Settings Toggle Credit Limit Block
     [Documentation]    Alterna "Ativar bloqueio por limite de crédito".
     Wait Visible And Click Element    ${orders_settings.toggle_credit_limit_block}
+
 Pdv - Orders Settings Toggle Option By Name
     [Documentation]    Alterna qualquer toggle da seção Pedidos pelo título exibido.
     ...
@@ -170,6 +171,7 @@ Pdv - Orders Settings Select Barcode Reading
 # =============================================================================
 # Configurações Gerais - Impressoras
 # =============================================================================
+
 Pdv - Printing Settings Open Print On Finish Menu
     [Documentation]    Clica no campo para abrir o dropdown de impressão ao finalizar.
     Wait Visible And Click Element    ${printing_settings.print_on_finish_open_menu}
@@ -219,6 +221,7 @@ Pdv - Printer List Modal Click Close
 # =============================================================================
 # Configurações Gerais - Formas de Pagamento
 # =============================================================================
+
 Pdv - Payment Settings Toggle Method By Name
     [Documentation]    Alterna o switch de um método de pagamento pelo nome exibido.
     ...    Locator genérico — funciona para qualquer método da lista,
@@ -289,6 +292,7 @@ Pdv - Fiscal Settings Toggle Enable Nfe
 ##########################################################################
 # Tela de Configurações Gerais - Ticket Retirada
 ##########################################################################
+
 Pdv - Ticket Settings Open Ticket On Finish Menu
     [Documentation]    Clica no campo para abrir o dropdown de ticket ao finalizar.
     Wait Visible And Click Element    ${ticket_settings.ticket_on_finish_open_menu}

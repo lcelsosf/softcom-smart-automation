@@ -1,25 +1,26 @@
 *** Settings ***
-Documentation    Keywords de abertura de sessão Appium e resolução de dispositivo.
+Documentation       Keywords de abertura de sessão Appium e resolução de dispositivo.
 ...
-...    Responsabilidades:
-...    - Resolver o UDID final a partir de DEVICE_TAG ou DEVICE_UDID
-...    - Ler configurações do dispositivo (system_port, appium_server) do devices.yaml
-...    - Abrir a sessão Appium via Open Application
-...    - Limpar o buffer de logcat após abertura
+...                 Responsabilidades:
+...                 - Resolver o UDID final a partir de DEVICE_TAG ou DEVICE_UDID
+...                 - Ler configurações do dispositivo (system_port, appium_server) do devices.yaml
+...                 - Abrir a sessão Appium via Open Application
+...                 - Limpar o buffer de logcat após abertura
 ...
-...    Dependências resolvidas pela base.resource:
-...    - AppiumLibrary
-...    - LogcatLibrary
-...    - DevicesConfig.py
-...    - structured_logging.resource
-...    - Variáveis: ${DEVICE_TAG}, ${DEVICE_UDID}, ${DEFAULT_UDID}
-Resource    ../helpers/common_keywords.resource
+...                 Dependências resolvidas pela base.resource:
+...                 - AppiumLibrary
+...                 - LogcatLibrary
+...                 - DevicesConfig.py
+...                 - structured_logging.resource
+...                 - Variáveis: ${DEVICE_TAG}, ${DEVICE_UDID}, ${DEFAULT_UDID}
+
+Resource            ../helpers/common_keywords.resource
 
 
 *** Variables ***
-${DEFAULT_PLATFORM_NAME}      Android
-${DEFAULT_AUTOMATION_NAME}    UIAutomator2
-${DEFAULT_UDID}               emulator-5554
+${DEFAULT_PLATFORM_NAME}        Android
+${DEFAULT_AUTOMATION_NAME}      UIAutomator2
+${DEFAULT_UDID}                 emulator-5554
 
 
 *** Keywords ***
@@ -42,7 +43,6 @@ Get Device UDID From Tag
     Log Action    action=device_mapping    message=Tag mapeada para UDID
     ...    tag=${DEVICE_TAG}    udid=${device_udid}
     RETURN    ${device_udid}
-
 
 # =============================================================================
 # ABERTURA DE SESSÃO
@@ -91,7 +91,6 @@ Open App Session
     ...    systemPort=${config.system_port}
     ...    deviceName=${device_tag}
 
-
 Open App
     [Documentation]    Keyword de Test Setup — abre a aplicação e limpa o logcat.
     ...    Use via base_<modulo>.resource no Suite Setup ou Test Setup.
@@ -109,7 +108,6 @@ Open App
         ...    error=${error}    level=ERROR
         Fail    Falha ao abrir a aplicação: ${error}
     END
-
 
 Close App
     [Documentation]    Keyword de Test/Suite Teardown — encerra a sessão Appium com segurança.

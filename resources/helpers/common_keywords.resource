@@ -1,19 +1,20 @@
 *** Settings ***
-Documentation    Keywords utilitárias reutilizáveis entre todos os módulos do projeto.
+Documentation       Keywords utilitárias reutilizáveis entre todos os módulos do projeto.
 ...
-...    Padrão de nomenclatura:
-...    - Keywords públicas: nomes descritivos, chamadas por pages e navigation
-...    - Keywords internas (_Do): delegadas pelo Run With Screenshot On Failure,
-...      nunca chamadas diretamente fora deste arquivo
+...                 Padrão de nomenclatura:
+...                 - Keywords públicas: nomes descritivos, chamadas por pages e navigation
+...                 - Keywords internas (_Do): delegadas pelo Run With Screenshot On Failure,
+...                 nunca chamadas diretamente fora deste arquivo
 ...
-...    Dependências resolvidas pela base.resource:
-...    - AppiumLibrary
-...    - DevicesConfig.py
-...    - structured_logging.resource
-...    - Variáveis: ${SCREENSHOT_DIR}, ${DEVICE_TAG}, ${DEVICE_UDID},
+...                 Dependências resolvidas pela base.resource:
+...                 - AppiumLibrary
+...                 - DevicesConfig.py
+...                 - structured_logging.resource
+...                 - Variáveis: ${SCREENSHOT_DIR}, ${DEVICE_TAG}, ${DEVICE_UDID},
 ...                 ${ELEMENT_TIMEOUT}, ${DEFAULT_TIMEOUT}
-Library     Collections
-Library     String
+
+Library             Collections
+Library             String
 
 
 *** Keywords ***
@@ -39,7 +40,6 @@ Run With Screenshot On Failure
         Fail    ${error_message}: ${error}
     END
 
-
 # =============================================================================
 # INTERAÇÃO COM ELEMENTOS
 # =============================================================================
@@ -59,7 +59,6 @@ _Do Wait Visible And Click Element
     [Arguments]    ${locator}    ${timeout}=${ELEMENT_TIMEOUT}
     Wait Until Element Is Visible    ${locator}    timeout=${timeout}
     Click Element    ${locator}
-
 
 Wait Visible And Click Element With Retry
     [Documentation]    Aguarda o elemento ficar visível e tenta clicar nele.
@@ -91,7 +90,6 @@ _Do Wait Visible And Click Element With Retry
         Fail    Não foi possível interagir com o elemento '${locator}' após ${max_retries} tentativas.
     END
 
-
 Swipe Until Visible And Click Element
     [Documentation]    Tenta clicar no elemento diretamente. Se não estiver visível,
     ...    realiza swipes na tela até que o elemento apareça e clica nele.
@@ -110,7 +108,7 @@ Swipe Until Visible And Click Element
 
 _Do Swipe Until Visible And Click Element
     [Arguments]    ${locator}    ${direction}    ${max_swipes}    ${swipe_timeout}
-    ${width}=     Get Window Width
+    ${width}=    Get Window Width
     ${height}=    Get Window Height
     ${center_x}=    Evaluate    int(${width} / 2)
     ${start_y}=    Evaluate    int(${height} * 0.70)
@@ -147,7 +145,6 @@ _Do Swipe Until Visible And Click Element
     END
     Click Element    ${locator}
 
-
 Wait Visible And Long Press Element
     [Documentation]    Aguarda o elemento ficar visível e realiza long press.
     ...
@@ -169,7 +166,6 @@ _Do Wait Visible And Long Press Element
     Log Action    action=long_press    message=Long press realizado
     ...    locator=${locator}    duration=${duration}
 
-
 Click Element Multiple Times
     [Documentation]    Clica no elemento a quantidade de vezes especificada.
     ...
@@ -180,7 +176,6 @@ Click Element Multiple Times
     FOR    ${i}    IN RANGE    ${times}
         Wait Visible And Click Element    ${locator}
     END
-
 
 # =============================================================================
 # INPUT DE TEXTO
@@ -201,7 +196,6 @@ _Do Wait Visible And Input Text
     Wait Visible And Click Element    ${locator}
     Input Text    ${locator}    ${text}
 
-
 Wait Visible And Input Text Pause
     [Documentation]    Aguarda o elemento, clica e digita o texto caractere a caractere.
     ...    Use em campos de pesquisa onde Input Text normal (paste) causa falha.
@@ -218,7 +212,6 @@ _Do Wait Visible And Input Text Pause
     [Arguments]    ${locator}    ${text}    ${delay}=0.05s
     Wait Visible And Click Element    ${locator}
     Input Text Pause    ${locator}    ${text}    ${delay}
-
 
 Input Text Pause
     [Documentation]    Digita o texto caractere a caractere com pausa entre cada um.
@@ -245,7 +238,6 @@ _Do Input Text Pause
         Sleep    ${delay}
     END
 
-
 # =============================================================================
 # VISIBILIDADE DE ELEMENTOS
 # =============================================================================
@@ -266,7 +258,6 @@ _Do Wait For Element To Disappear
     [Arguments]    ${element}    ${timeout}=${DEFAULT_TIMEOUT}
     Wait Until Page Does Not Contain Element    ${element}    timeout=${timeout}
 
-
 Assert Element Not Visible
     [Documentation]    Verifica que o elemento não está visível na tela.
     ...    Renomeado de 'Element Should Not Be Visible' para evitar colisão
@@ -281,7 +272,6 @@ Assert Element Not Visible
 _Do Assert Element Not Visible
     [Arguments]    ${element}
     AppiumLibrary.Element Should Not Be Visible    ${element}
-
 
 # =============================================================================
 # TECLADO
@@ -314,7 +304,6 @@ Close Keyboard
         ...    error=${error}    level=WARN
         Hide Keyboard
     END
-
 
 # =============================================================================
 # UTILITÁRIOS

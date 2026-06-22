@@ -1,9 +1,10 @@
 *** Settings ***
-Documentation    Fluxos completos do módulo Pdv — composição de navigation keywords.
+Documentation       Fluxos completos do módulo Pdv — composição de navigation keywords.
 ...
-...    Nomenclatura: PDV - Complete Flow - <Fluxo>
-...    Dependências: navigation abaixo + locators carregados via base_pdv.resource
-Resource    pdv_navigation.resource
+...                 Nomenclatura: PDV - Complete Flow - <Fluxo>
+...                 Dependências: navigation abaixo + locators carregados via base_pdv.resource
+
+Resource            pdv_navigation.resource
 
 
 *** Keywords ***
@@ -19,7 +20,6 @@ PDV - Complete Flow - Order Common
     Pdv - Navigate To Finish Sale
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
-
 
 PDV - Complete Flow - Filter Name Reference And Barcode
     [Documentation]    Pesquisa produtos por nome, referência e código de barras, depois finaliza o pedido.
@@ -37,7 +37,6 @@ PDV - Complete Flow - Filter Name Reference And Barcode
     Pdv - Navigate To Finish Sale
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
-
 
 PDV - Complete Flow - Alter Quantity And Remove Item
     [Documentation]    Altera a quantidade de um item, remove outro item e finaliza a venda.
@@ -60,7 +59,6 @@ PDV - Complete Flow - Alter Quantity And Remove Item
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
 
-
 PDV - Complete Flow - Cancel Order After Select Product
     [Documentation]    Seleciona um produto, limpa a pesquisa e cancela o pedido retornando para a tela inicial.
     [Arguments]    ${product_name}
@@ -69,7 +67,6 @@ PDV - Complete Flow - Cancel Order After Select Product
     Pdv - Navigate To Clear Product Search
     Pdv - Navigate To Cancel Order
     Pdv - Home - Verify Visible
-
 
 PDV - Complete Flow - Alter Client And Add Itens From Cart
     [Documentation]    Altera o cliente no carrinho, adiciona outro item e finaliza a venda.
@@ -90,7 +87,6 @@ PDV - Complete Flow - Alter Client And Add Itens From Cart
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
 
-
 PDV - Complete Flow - Discount Integer
     [Documentation]    Aplica desconto em valor fixo no carrinho e finaliza a venda.
     [Arguments]    ${product_name}    ${discount_value}    ${payment_method}
@@ -106,7 +102,6 @@ PDV - Complete Flow - Discount Integer
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
 
-
 PDV - Complete Flow - Discount Percent
     [Documentation]    Aplica desconto percentual no carrinho e finaliza a venda.
     [Arguments]    ${product_name}    ${discount_value}    ${payment_method}
@@ -121,7 +116,6 @@ PDV - Complete Flow - Discount Percent
     Pdv - Navigate To Finish Sale
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
-
 
 PDV - Complete Flow - Discount Item
     [Documentation]    Aplica desconto em valor fixo no item com promoção e percentual no item de desconto antes de finalizar a venda.
@@ -141,7 +135,6 @@ PDV - Complete Flow - Discount Item
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
 
-
 PDV - Complete Flow - Additional Percent
     [Documentation]    Aplica acréscimo percentual no carrinho e finaliza a venda.
     [Arguments]    ${product_name}    ${additional_value}    ${payment_method}
@@ -157,7 +150,6 @@ PDV - Complete Flow - Additional Percent
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
 
-
 PDV - Complete Flow - Additional Integer
     [Documentation]    Aplica acréscimo em valor fixo no carrinho e finaliza a venda.
     [Arguments]    ${product_name}    ${additional_value}    ${payment_method}
@@ -172,7 +164,6 @@ PDV - Complete Flow - Additional Integer
     Pdv - Navigate To Finish Sale
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
-
 
 PDV - Complete Flow - Item Edition
     [Documentation]    Edita quantidades e remove item no carrinho antes de finalizar a venda.
@@ -195,10 +186,15 @@ PDV - Complete Flow - Item Edition
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
 
-
 PDV - Complete Flow - Bankslip
     [Documentation]    Realiza pedido com cliente alterado e pagamento por boleto bancário.
-    [Arguments]    ${product_name}    ${client_name}    ${calendar_day}    ${term_days}=7    ${parcels_add_times}=4   ${payment_method}=bankslip
+    [Arguments]
+    ...    ${product_name}
+    ...    ${client_name}
+    ...    ${calendar_day}
+    ...    ${term_days}=7
+    ...    ${parcels_add_times}=4
+    ...    ${payment_method}=bankslip
     Pdv - Navigate To New Order
     Pdv - Navigate To Select Product    ${product_name}
     Pdv - Navigate To Check Order
@@ -211,10 +207,15 @@ PDV - Complete Flow - Bankslip
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
 
-
 PDV - Complete Flow - Item Variations
     [Documentation]    Realiza pedido com variações de item, badge de promoção e pagamento Pix Off.
-    [Arguments]    ${product_fractional}    ${product_composition}    ${barcode_variation_1}    ${barcode_variation_2}    ${product_promotion}    ${payment_method}
+    [Arguments]
+    ...    ${product_fractional}
+    ...    ${product_composition}
+    ...    ${barcode_variation_1}
+    ...    ${barcode_variation_2}
+    ...    ${product_promotion}
+    ...    ${payment_method}
     Pdv - Navigate To New Order
     Pdv - Navigate To Select Product    ${product_fractional}
     Pdv - Navigate To Long Press Product    ${product_fractional}
@@ -235,7 +236,6 @@ PDV - Complete Flow - Item Variations
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
 
-
 PDV - Complete Flow - Express Mode
     [Documentation]    Adiciona itens pelo modo expresso e finaliza a venda.
     [Arguments]    ${product_primary}    ${product_secondary}    ${payment_method}
@@ -251,7 +251,6 @@ PDV - Complete Flow - Express Mode
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
 
-
 PDV - Complete Flow - Mini PDV Mode
     [Documentation]    Adiciona item via seleção e outro via código de barras ADB, depois finaliza a venda.
     [Arguments]    ${product_name}    ${barcode}    ${payment_method}
@@ -264,10 +263,9 @@ PDV - Complete Flow - Mini PDV Mode
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
 
-
 PDV - Complete Flow - Smart PDV Functions
     [Documentation]    Seleciona cliente, valida estoque, altera preço unitário e finaliza a venda.
-    [Arguments]    ${client_name}    ${product_name}    ${unit_price}   ${payment_method}
+    [Arguments]    ${client_name}    ${product_name}    ${unit_price}    ${payment_method}
     Pdv - Navigate To New Order
 #    Pdv - Navigate To Select Client    ${client_name}
     Pdv - Navigate To Select Product With Stock    ${product_name}
@@ -279,7 +277,6 @@ PDV - Complete Flow - Smart PDV Functions
     Pdv - Navigate To Finish Sale
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
-
 
 PDV - Complete Flow - Price Table
     [Documentation]    Seleciona tabela de preço A, adiciona item da tabela e finaliza a venda.
@@ -294,7 +291,6 @@ PDV - Complete Flow - Price Table
     Pdv - Navigate To Finish Sale
     Pdv - Navigate To Initial Screen
     Pdv - Home - Verify Visible
-
 
 PDV - Complete Flow - Pix Off
     [Documentation]    Realiza pedido com pagamento via Pix Off.
@@ -346,22 +342,35 @@ PDV - Complete Flow - Register Client
     [Arguments]    ${person_type}    ${cep}
     ${phone}=    FakerLibrary.Phone Number
     ${email}=    FakerLibrary.Email
-    ${number}=   FakerLibrary.Building Number
+    ${number}=    FakerLibrary.Building Number
     Pdv - Home - Verify Visible
     Pdv - Home - Click Clients
     Pdv - Navigate To New Client
     IF    '${person_type}' == 'Física'
-        ${cpf}=     FakerLibrary.Cpf
+        ${cpf}=    FakerLibrary.Cpf
         ${name}=    FakerLibrary.Name
-        Pdv - Navigate To Fill Client Details    ${person_type}    ${cpf}    ${name}    ${phone}    ${email}    teste cadastro de cliente
+        Pdv - Navigate To Fill Client Details
+        ...    ${person_type}
+        ...    ${cpf}
+        ...    ${name}
+        ...    ${phone}
+        ...    ${email}
+        ...    teste cadastro de cliente
         Pdv - Navigate To Fill Client Address    ${cep}    ${number}    teste cadastro de cliente
         Pdv - Navigate To Save And Verify Client    ${name}
     ELSE IF    '${person_type}' == 'Jurídica'
-        ${cnpj}=            FakerLibrary.Cnpj
-        ${cnpj_search}=     Evaluate    '${cnpj}'.replace('.', '').replace('/', '').replace('-', '')
+        ${cnpj}=    FakerLibrary.Cnpj
+        ${cnpj_search}=    Evaluate    '${cnpj}'.replace('.', '').replace('/', '').replace('-', '')
         ${fantasy_name}=    FakerLibrary.Company
-        ${social_reason}=   FakerLibrary.Company
-        Pdv - Navigate To Fill Client Details Juridic    ${person_type}    ${cnpj}    ${fantasy_name}    ${social_reason}    ${phone}    ${email}    teste cadastro de cliente
+        ${social_reason}=    FakerLibrary.Company
+        Pdv - Navigate To Fill Client Details Juridic
+        ...    ${person_type}
+        ...    ${cnpj}
+        ...    ${fantasy_name}
+        ...    ${social_reason}
+        ...    ${phone}
+        ...    ${email}
+        ...    teste cadastro de cliente
         Pdv - Navigate To Fill Client Address    ${cep}    ${number}    teste cadastro de cliente
         Pdv - Navigate To Save And Verify Client By Cnpj    ${cnpj_search}    ${social_reason}
     END

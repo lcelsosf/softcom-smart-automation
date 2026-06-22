@@ -1,6 +1,7 @@
 *** Settings ***
-Documentation    Ações atômicas — Painel de Mesas/Comandas (ComandaPainelMesasScreen)
-Resource    ../../../resources/helpers/common_keywords.resource
+Documentation       Ações atômicas — Painel de Mesas/Comandas (ComandaPainelMesasScreen)
+
+Resource            ../../../resources/helpers/common_keywords.resource
 
 
 *** Keywords ***
