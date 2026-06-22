@@ -1,15 +1,13 @@
 *** Settings ***
-Documentation    Fluxos de navegação do módulo Pdv — composição de page keywords.
+Documentation    Fluxos de navegação/configuração do módulo Pdv — composição de page keywords.
 ...
 ...    Nomenclatura: Pdv - Navigate To <Destino>
 ...    Dependências: pages abaixo + locators carregados via base_pdv.resource
-Library    FakerLibrary    locale=pt_BR    WITH NAME    faker
 Resource    ../pages/home_page.resource
-Resource    ../pages/settings_page.resource
 Resource    ../pages/orders_page.resource
+Resource    ../pages/checkout_page.resource
 Resource    ../pages/clients_page.resource
-Resource    ../pages/list_orders_page.resource
-Resource    ../pages/sync_page.resource
+Resource    ../pages/orderslist_page.resource
 
 
 *** Keywords ***
@@ -18,460 +16,425 @@ Resource    ../pages/sync_page.resource
 # =============================================================================
 
 Pdv - Navigate To New Order
-    [Documentation]    Navega da tela inicial para a tela de novo pedido.
+    [Documentation]    Valida a tela inicial e navega para novo pedido.
+    Pdv - Home - Verify Visible
     Pdv - Home - Click New Order
 
-Pdv - Navigate To List Orders
-    [Documentation]    Navega da tela inicial para a lista de pedidos.
-    Pdv - Home - Click List Orders
+Pdv - Navigate To Initial Screen
+    [Documentation]    Retorna da tela de status do pedido para a tela inicial.
+    Pdv - Orders Status - Click Home
 
-Pdv - Navigate To Sync
-    [Documentation]    Navega da tela inicial para a tela de sincronização.
-    Pdv - Home - Click Sync
-
-Pdv - Navigate To Clients
-    [Documentation]    Navega da tela inicial para o cadastro de clientes.
-    Pdv - Home - Click Clients
-
-Pdv - Navigate To Settings
-    [Documentation]    Navega da tela inicial para as configurações.
-    Pdv - Home - Click Settings
 
 # =============================================================================
-# NAVEGAÇÃO — PEDIDOS BÁSICOS
+# NAVEGAÇÃO — PEDIDO
 # =============================================================================
 
-Pdv - Navigate To Create Order
-    [Documentation]    Cria um pedido e finaliza com a forma de pagamento informada.
-    ...    Métodos suportados: money, pixoff, bankslip
-    [Arguments]    ${payment_method}
-    Pdv - Navigate To New Order
-    Pdv - Orders - Click Item
-    Pdv - Orders - Click Conference
-    IF    '${payment_method}' == 'bankslip'
-        Pdv - Orders - Click Client Search
-        Pdv - Orders - Click Client Consumer
-        Pdv - Orders - Input Client Name    Client_Credit
-        Pdv - Orders - Click Client Credit
-        Pdv - Orders - Click Client Confirm
-    END
-    Pdv - Orders - Click Finalize Order
-    IF    '${payment_method}' == 'money'
-        Pdv - Orders - Click Payment Money
-    ELSE IF    '${payment_method}' == 'pixoff'
-        Pdv - Orders - Click Payment Pixoff
-    ELSE IF    '${payment_method}' == 'bankslip'
-        Pdv - Orders - Click Payment Bankslip
-        Pdv - Orders - Click Bankslip Parcel Add
-        Pdv - Orders - Click Bankslip Parcel Add
-        Pdv - Orders - Click Bankslip Parcel Remove
-        Pdv - Orders - Click Bankslip Term Calendar
-        Pdv - Orders - Click Bankslip Term Prefix
-    END
-    Pdv - Orders - Click Confirm Value
-    Pdv - Orders - Click Finish Order
-    Pdv - Orders - Click Home
-    Pdv - Home - Verify Visible
+Pdv - Navigate To Select Product
+    [Documentation]    Pesquisa e seleciona um produto pelo nome.
+    [Arguments]    ${product_name}
+    Pdv - Orders - Click Search Input
+    Pdv - Orders - Type Product Name    ${product_name}
+    Pdv - Orders - Click Product By Name    ${product_name}
 
-Pdv - Navigate To Client Order
-    [Documentation]    Realiza pedido iniciando pelo cadastro de clientes (client1).
-    Pdv - Navigate To Clients
-    Pdv - Clients - Input Search    Client_Credit
-    Pdv - Clients - Click Client 1
-    Pdv - Clients - Click New Order Client
-    Pdv - Orders - Click Item
-    Pdv - Orders - Click Conference
-    Pdv - Orders - Click Finalize Order
-    Pdv - Orders - Click Payment Money
-    Pdv - Orders - Click Confirm Value
-    Pdv - Orders - Click Finish Order
-    Pdv - Orders - Click Home
-    Pdv - Home - Verify Visible
+Pdv - Navigate To Search Product
+    [Documentation]    Pesquisa e seleciona um produto usando o termo informado.
+    [Arguments]    ${search_term}    ${product_name}
+    Pdv - Orders - Click Search Input
+    Pdv - Orders - Type Product Name    ${search_term}
+    Pdv - Orders - Click Product By Name    ${product_name}
 
-# =============================================================================
-# NAVEGAÇÃO — CANCELAMENTO DE PEDIDO
-# =============================================================================
+Pdv - Navigate To Search And Select First Product Card
+    [Documentation]    Pesquisa pelo termo informado e seleciona o primeiro card retornado.
+    [Arguments]    ${search_term}
+    Pdv - Orders - Click Search Input
+    Pdv - Orders - Type Product Name    ${search_term}
+    Pdv - Orders - Click First Product Card
+
+Pdv - Navigate To Input Barcode By Adb
+    [Documentation]    Insere código de barras via ADB e confirma com Enter.
+    [Arguments]    ${barcode}
+    Pdv - Orders - Input Barcode By Adb    ${barcode}
+
+Pdv - Navigate To Search Product And Verify Promotion Badge
+    [Documentation]    Pesquisa um produto e valida o badge de promoção antes da seleção.
+    [Arguments]    ${product_name}
+    Pdv - Orders - Click Search Input
+    Pdv - Orders - Type Product Name    ${product_name}
+    Pdv - Orders - Verify Promotion Badge Visible
+
+Pdv - Navigate To Search Product And Verify Stock
+    [Documentation]    Pesquisa um produto e valida a exibição do estoque antes da seleção.
+    [Arguments]    ${product_name}
+    Pdv - Orders - Click Search Input
+    Pdv - Orders - Type Product Name    ${product_name}
+    Pdv - Orders - Verify Stock Info Visible
+
+Pdv - Navigate To Select Product With Stock
+    [Documentation]    Pesquisa, valida estoque e seleciona o produto.
+    [Arguments]    ${product_name}
+    Pdv - Navigate To Search Product And Verify Stock    ${product_name}
+    Pdv - Orders - Click Product By Name    ${product_name}
+
+Pdv - Navigate To Select Product With Promotion Badge
+    [Documentation]    Pesquisa, valida o badge de promoção e seleciona o produto.
+    [Arguments]    ${product_name}
+    Pdv - Navigate To Search Product And Verify Promotion Badge    ${product_name}
+    Pdv - Orders - Click Product By Name    ${product_name}
+
+Pdv - Navigate To Clear Product Search
+    [Documentation]    Limpa a pesquisa de produto.
+    Pdv - Orders - Click Clear Search
+
+Pdv - Navigate To Select Price Table A
+    [Documentation]    Abre o modal de tabela de preço, seleciona Preço A e confirma.
+    Pdv - Orders - Click Price Table Button
+    Pdv - Orders - Verify Price Table Modal Visible
+    Pdv - Orders - Click Price Table A
+    Pdv - Orders - Click Price Table Modal Confirm
+    Pdv - Orders - Verify Price Table Change Dialog Visible
+    Pdv - Orders - Click Price Table Change Confirm
 
 Pdv - Navigate To Cancel Order
-    [Documentation]    Cancela um pedido em andamento. Origem: new (tela novo pedido) ou cart (carrinho).
-    [Arguments]    ${origin}=new
-    Pdv - Navigate To New Order
-    Pdv - Orders - Click Item
-    IF    '${origin}' == 'cart'
-        Pdv - Orders - Click Conference
-        Pdv - Orders - Click Cancel Order Cart
-    ELSE
-        Pdv - Orders - Click Cancel Order New
-    END
+    [Documentation]    Cancela o pedido atual e confirma o modal de cancelamento.
+    Pdv - Orders - Click Cancel Order New
     Pdv - Orders - Verify Cancel Dialog
     Pdv - Orders - Click Cancel Confirm
-    Pdv - Home - Verify Visible
 
-Pdv - Navigate To Cancel Order no-confirm
-    [Documentation]    Abre o cancelamento, escolhe "Não" e finaliza o pedido normalmente.
-    ...    Origem: new (tela novo pedido) ou cart (carrinho).
-    [Arguments]    ${origin}=new
-    Pdv - Navigate To New Order
-    Pdv - Orders - Click Item
-    IF    '${origin}' == 'cart'
-        Pdv - Orders - Click Conference
-        Pdv - Orders - Click Cancel Order Cart
-    ELSE
-        Pdv - Orders - Click Cancel Order New
-    END
-    Pdv - Orders - Verify Cancel Dialog
-    Pdv - Orders - Click Cancel Cancel
-    IF    '${origin}' == 'new'
-        Pdv - Orders - Click Conference
-    END
-    Pdv - Orders - Click Finalize Order
-    Pdv - Orders - Click Payment Money
-    Pdv - Orders - Click Confirm Value
-    Pdv - Orders - Click Finish Order
-    Pdv - Orders - Click Home
-    Pdv - Home - Verify Visible
-
-# =============================================================================
-# NAVEGAÇÃO — QUANTIDADE DE ITENS
-# =============================================================================
-
-Pdv - Navigate To Change Item Quantity
-    [Documentation]    Altera a quantidade de um item no carrinho e finaliza o pedido.
-    Pdv - Navigate To New Order
-    Click Element Multiple Times    ${orders.item}    5
+Pdv - Navigate To Check Order
+    [Documentation]    Avança para a conferência do pedido.
     Pdv - Orders - Click Conference
-    Pdv - Orders - Click Quantity Remove
-    Click Element Multiple Times    ${orders.quantity_add}    2
+
+Pdv - Navigate To Finish Order
+    [Documentation]    Finaliza o pedido e avança para pagamento.
     Pdv - Orders - Click Finalize Order
-    Pdv - Orders - Click Payment Money
-    Pdv - Orders - Click Confirm Value
-    Pdv - Orders - Click Finish Order
-    Pdv - Orders - Click Home
-    Pdv - Home - Verify Visible
 
-# =============================================================================
-# NAVEGAÇÃO — CONFERÊNCIA DE PEDIDO
-# =============================================================================
+Pdv - Navigate To Finish Order From New Order
+    [Documentation]    Finaliza o pedido pela tela de Novo Pedido e avança para pagamento.
+    Pdv - Orders - Click Finalize Order New Order
 
-Pdv - Navigate To Toggle Conference Setting
-    [Documentation]    Alterna o toggle de conferência ao finalizar pedido nas configurações.
-    Pdv - Navigate To Settings
-    Pdv - Settings - Click Smart PDV
-    Pdv - Settings - Click Mod Operation
-    Pdv - Settings - Click Express
-    Pdv - Settings - Click Back Settings
-    Pdv - Settings - Click Back Settings
+Pdv - Navigate To Select Client
+    [Documentation]    Pesquisa, seleciona e confirma o cliente no carrinho ou no modal já aberto.
+    [Arguments]    ${client_name}
+    ${edit_client_visible}=    Run Keyword And Return Status
+    ...    Wait Until Element Is Visible    ${cart.btn_edit_client}    timeout=5s
+    IF    ${edit_client_visible}
+        Pdv - Orders - Click Edit Client
+    END
+    Pdv - Orders - Input Client Modal Client    ${client_name}
+    Pdv - Orders - Click Client By Name    ${client_name}
+    Pdv - Orders - Click Client Modal Confirm
 
-Pdv - Navigate To Toggle Conference Setting (Default)
-    [Documentation]    Alterna o toggle de conferência ao finalizar pedido nas configurações.
-    Pdv - Navigate To Settings
-    Pdv - Settings - Click Smart PDV
-    Pdv - Settings - Click Mod Operation
-    Pdv - Settings - Click Default
-    Pdv - Settings - Click Back Settings
-    Pdv - Settings - Click Back Settings
-
-Pdv - Navigate To Order Conference Off
-    [Documentation]    Realiza pedido com conferência desativada (fluxo direto sem carrinho).
-    Pdv - Navigate To Toggle Conference Setting
-    Pdv - Navigate To New Order
-    Pdv - Orders - Click Item
-    Pdv - Orders - Click Conference
-    Pdv - Orders - Click Payment Money
-    Pdv - Orders - Click Confirm Value
-    Pdv - Orders - Click Finish Order
-    Pdv - Orders - Click Home
-    Pdv - Home - Verify Visible
-
-Pdv - Navigate To Order Conference Off Cart
-    [Documentation]    Realiza pedido com conferência desativada validando o carrinho.
-    Pdv - Navigate To Toggle Conference Setting
-    Pdv - Navigate To New Order
-    Pdv - Orders - Click Item
+Pdv - Navigate To Add Items From Cart
+    [Documentation]    Retorna do carrinho para a tela de produtos para adicionar itens.
     Pdv - Orders - Click Cart
-    Pdv - Orders - Click Finalize Order
-    Pdv - Orders - Click Payment Money
-    Pdv - Orders - Click Confirm Value
-    Pdv - Orders - Click Finish Order
-    Pdv - Orders - Click Home
-    Pdv - Home - Verify Visible
-    Pdv - Navigate To Toggle Conference Setting (Default)
 
-# =============================================================================
-# NAVEGAÇÃO — DESCONTO
-# =============================================================================
+Pdv - Navigate To Long Press Product
+    [Documentation]    Seleciona um produto pelo nome usando long press.
+    [Arguments]    ${product_name}
+    ${locator}=    Replace String    ${orders.product_by_name}    PRODUCT_NAME    ${product_name}
+    Wait Visible And Long Press Element    ${locator}
 
-Pdv - Navigate To Apply Discount
-    [Documentation]    Aplica desconto em item e finaliza o pedido. Modos: percent, integer.
-    [Arguments]    ${mode}    ${value}
-    Pdv - Navigate To New Order
-    Pdv - Orders - Click Item Discount
-    Pdv - Orders - Click Conference
+Pdv - Navigate To Search And Long Press Product
+    [Documentation]    Pesquisa e seleciona um produto pelo nome usando long press.
+    [Arguments]    ${product_name}
+    Pdv - Orders - Click Search Input
+    Pdv - Orders - Type Product Name    ${product_name}
+    Pdv - Navigate To Long Press Product    ${product_name}
+
+Pdv - Navigate To Add Quantity
+    [Documentation]    Aumenta a quantidade do item no modal de quantidade.
+    [Arguments]    ${times}
+    Repeat Keyword    ${times} times    Pdv - Orders - Click Quantity Add
+
+Pdv - Navigate To Remove Quantity
+    [Documentation]    Diminui a quantidade do item no modal de quantidade.
+    [Arguments]    ${times}
+    Repeat Keyword    ${times} times    Pdv - Orders - Click Quantity Remove
+
+Pdv - Navigate To Confirm Quantity
+    [Documentation]    Confirma a quantidade no modal de quantidade.
+    Pdv - Orders - Click Quantity Confirm
+
+Pdv - Navigate To Edit Quantity
+    [Documentation]    Edita a quantidade diretamente no modal de quantidade.
+    [Arguments]    ${quantity}
+    Pdv - Orders - Click Quantity Field
+    Pdv - Orders - Input Quantity    ${quantity}
+    Pdv - Navigate To Confirm Quantity
+
+Pdv - Navigate To Remove Product From Order
+    [Documentation]    Remove o produto selecionado no modal de quantidade.
+    Pdv - Orders - Click Remove Item
+    Pdv - Orders - Verify Remove Item Dialog
+    Pdv - Orders - Click Remove Item Confirm
+
+Pdv - Navigate To Add Cart Item Quantity
+    [Documentation]    Aumenta a quantidade do item informado diretamente no carrinho.
+    [Arguments]    ${product_name}    ${times}
+    Repeat Keyword    ${times} times    Pdv - Orders - Click Cart Item Add By Name    ${product_name}
+
+Pdv - Navigate To Remove Cart Item Quantity
+    [Documentation]    Diminui a quantidade do item informado diretamente no carrinho.
+    [Arguments]    ${product_name}    ${times}
+    Repeat Keyword    ${times} times    Pdv - Orders - Click Cart Item Sub By Name    ${product_name}
+
+Pdv - Navigate To Remove Cart Item By Name
+    [Documentation]    Abre o modal de edição do item informado, remove o item e confirma o dialog.
+    [Arguments]    ${product_name}
+    Pdv - Orders - Click Cart Item Quantity By Name    ${product_name}
+    Pdv - Orders - Click Remove Item
+    Pdv - Orders - Verify Remove Item Dialog
+    Pdv - Orders - Click Remove Item Confirm
+
+Pdv - Navigate To Remove Cart Item By Icon
+    [Documentation]    Remove o item informado pelo ícone de remoção exibido no carrinho e confirma o dialog.
+    [Arguments]    ${product_name}
+    Pdv - Orders - Click Remove Item Icon By Name    ${product_name}
+    Pdv - Orders - Verify Remove Item Icon Dialog
+    Pdv - Orders - Click Remove Item Icon Confirm
+
+Pdv - Navigate To Edit Cart Item Quantity By Name
+    [Documentation]    Abre o modal de quantidade pelo item informado, ajusta e confirma.
+    [Arguments]    ${product_name}    ${add_times}    ${remove_times}
+    Pdv - Orders - Click Cart Item Quantity By Name    ${product_name}
+    Pdv - Navigate To Add Quantity    ${add_times}
+    Pdv - Navigate To Remove Quantity    ${remove_times}
+    Pdv - Navigate To Confirm Quantity
+
+Pdv - Navigate To Edit Cart Item Unit Price By Name
+    [Documentation]    Abre o modal de edição do item, altera preço unitário e confirma.
+    [Arguments]    ${product_name}    ${unit_price}
+    Pdv - Orders - Click Cart Item Quantity By Name    ${product_name}
+    Pdv - Orders - Input Cart Item Unit Price    ${unit_price}
+    Pdv - Orders - Click Cart Item Edit Confirm
+
+Pdv - Navigate To Apply Cart Item Discount Integer By Name
+    [Documentation]    Aplica desconto em valor fixo no item informado do carrinho.
+    [Arguments]    ${product_name}    ${discount_value}
+    Pdv - Orders - Click Cart Item Quantity By Name    ${product_name}
+    Pdv - Orders - Click Cart Item Discount
+    Pdv - Orders - Click Cart Item R$
+    Pdv - Orders - Input Cart Item Discount Value    ${discount_value}
+    Pdv - Orders - Click Cart Item Edit Confirm
+
+Pdv - Navigate To Apply Cart Item Discount Percent By Name
+    [Documentation]    Aplica desconto percentual no item informado do carrinho.
+    [Arguments]    ${product_name}    ${discount_value}
+    Pdv - Orders - Click Cart Item Quantity By Name    ${product_name}
+    Pdv - Orders - Click Cart Item Discount
+    Pdv - Orders - Click Cart Item Percent
+    Pdv - Orders - Input Cart Item Discount Value    ${discount_value}
+    Pdv - Orders - Click Cart Item Edit Confirm
+
+Pdv - Navigate To Apply Discount Integer
+    [Documentation]    Aplica desconto em valor fixo no carrinho.
+    [Arguments]    ${discount_value}
     Pdv - Orders - Click Discount-Sum
     Pdv - Orders - Click Discount
-    IF    '${mode}' == 'percent'
-        Pdv - Orders - Click Percent
-    ELSE
-        Pdv - Orders - Click R$
-    END
-    Pdv - Orders - Input Discount Value    ${value}
+    Pdv - Orders - Click R$
+    Pdv - Orders - Input Discount Value    ${discount_value}
     Pdv - Orders - Click Apply Discount
-    Pdv - Orders - Click Finalize Order
-    Pdv - Orders - Click Payment Money
-    Pdv - Orders - Click Confirm Value
-    Pdv - Orders - Click Finish Order
-    Pdv - Orders - Click Home
-    Pdv - Home - Verify Visible
 
-# =============================================================================
-# NAVEGAÇÃO — REMOÇÃO DE ITEM
-# =============================================================================
+Pdv - Navigate To Apply Discount Percent
+    [Documentation]    Aplica desconto percentual no carrinho.
+    [Arguments]    ${discount_value}
+    Pdv - Orders - Click Discount-Sum
+    Pdv - Orders - Click Discount
+    Pdv - Orders - Click Percent
+    Pdv - Orders - Input Discount Value    ${discount_value}
+    Pdv - Orders - Click Apply Discount
 
-Pdv - Navigate To Remove Item
-    [Documentation]    Remove itens do pedido via long press e ícone do carrinho, confirmando as remoções.
-    Pdv - Navigate To New Order
-    Pdv - Orders - Click Item
-    Pdv - Orders - Click Item 2
-    Pdv - Orders - Long Press Item 2
-    Pdv - Orders - Click Remove Item
-    Pdv - Orders - Verify Remove Item Dialog
-    Pdv - Orders - Click Remove Item Confirm
-    Pdv - Orders - Click Conference
-    Pdv - Orders - Click Remove Item Icon
-    Pdv - Orders - Verify Remove Item Dialog
-    Pdv - Orders - Click Remove Item Confirm
-    Pdv - Orders - Click Finalize Order
-    Pdv - Orders - Click Payment Money
-    Pdv - Orders - Click Confirm Value
-    Pdv - Orders - Click Finish Order
-    Pdv - Orders - Click Home
-    Pdv - Home - Verify Visible
+Pdv - Navigate To Apply Additional Percent
+    [Documentation]    Aplica acréscimo percentual no carrinho.
+    [Arguments]    ${additional_value}
+    Pdv - Orders - Click Discount-Sum
+    Pdv - Orders - Click Addition
+    Pdv - Orders - Click Percent
+    Pdv - Orders - Input Discount Value    ${additional_value}
+    Pdv - Orders - Click Apply Discount
 
-Pdv - Navigate To Remove Item no-confirm
-    [Documentation]    Tenta remover itens do pedido e cancela as remoções.
-    Pdv - Navigate To New Order
-    Pdv - Orders - Click Item
-##    Pdv - Orders - Click Item 2
-    Pdv - Orders - Click Item Discount
-    Pdv - Orders - Long Press Item 2
-    Pdv - Orders - Click Remove Item
-    Pdv - Orders - Verify Remove Item Dialog
-    Pdv - Orders - Click Remove Item Cancel
-    Pdv - Orders - Click Conference
-    Pdv - Orders - Click Remove Item Icon
-    Pdv - Orders - Verify Remove Item Dialog
-    Pdv - Orders - Click Remove Item Cancel
-    Pdv - Orders - Click Finalize Order
-    Pdv - Orders - Click Payment Money
-    Pdv - Orders - Click Confirm Value
-    Pdv - Orders - Click Finish Order
-    Pdv - Orders - Click Home
-    Pdv - Home - Verify Visible
+Pdv - Navigate To Apply Additional Integer
+    [Documentation]    Aplica acréscimo em valor fixo no carrinho.
+    [Arguments]    ${additional_value}
+    Pdv - Orders - Click Discount-Sum
+    Pdv - Orders - Click Addition
+    Pdv - Orders - Click R$
+    Pdv - Orders - Input Discount Value    ${additional_value}
+    Pdv - Orders - Click Apply Discount
 
-# =============================================================================
-# NAVEGAÇÃO — TICKET
-# =============================================================================
-
-Pdv - Navigate To Configure Ticket
-    [Documentation]    Configura o modo de emissão de ticket nas configurações. Modos: print, quest_yes, quest_no, noaction.
-    [Arguments]    ${mode}
-    Pdv - Navigate To Settings
-    Swipe    start_x=469    start_y=603    end_x=466    end_y=417
-    Pdv - Settings - Click Ticket
-    Pdv - Settings - Click Ticket Action List
-    IF    '${mode}' == 'print'
-        Pdv - Settings - Click Ticket Print
-    ELSE IF    '${mode}' in ['quest_yes', 'quest_no']
-        Pdv - Settings - Click Ticket Quest
-    ELSE IF    '${mode}' == 'noaction'
-        Pdv - Settings - Click Ticket Noaction
-    END
-    Pdv - Settings - Click Back
-    Pdv - Settings - Click Back Settings
-
-Pdv - Navigate To Create Order With Ticket
-    [Documentation]    Cria pedido com ticket (10 itens) e finaliza com pagamento em dinheiro.
-    Pdv - Navigate To New Order
-    Pdv - Orders - Click Item
-    Pdv - Orders - Click Conference
-    Pdv - Orders - Click Quantity Field
-    Pdv - Orders - Input Quantity    10
-    Pdv - Orders - Click Quantity Confirm
-    Pdv - Orders - Click Finalize Order
-    Pdv - Orders - Click Payment Money
-    Pdv - Orders - Click Confirm Value
-    Pdv - Orders - Click Finish Order
-
-Pdv - Navigate To Ticket Print
-    [Documentation]    Realiza pedido com ticket configurado para imprimir automaticamente.
-    Pdv - Navigate To Configure Ticket    mode=print
-    Pdv - Navigate To Create Order With Ticket
-    Pdv - Orders - Click Home
-    Pdv - Navigate To Configure Ticket    mode=noaction
-    Pdv - Home - Verify Visible
-
-Pdv - Navigate To Ticket Quest Yes
-    [Documentation]    Realiza pedido com ticket configurado para perguntar, responde Sim.
-    Pdv - Navigate To Configure Ticket    mode=quest_yes
-    Pdv - Navigate To Create Order With Ticket
-    Pdv - Settings - Verify Ticket Quest Visible
-    Pdv - Settings - Click Ticket Quest Confirm
-    Pdv - Orders - Click Home
-    Pdv - Navigate To Configure Ticket    mode=noaction
-    Pdv - Home - Verify Visible
-
-Pdv - Navigate To Ticket Quest No
-    [Documentation]    Realiza pedido com ticket configurado para perguntar, responde Não.
-    Pdv - Navigate To Configure Ticket    mode=quest_no
-    Pdv - Navigate To Create Order With Ticket
-    Pdv - Settings - Verify Ticket Quest Visible
-    Pdv - Settings - Click Ticket Quest Cancel
-    Pdv - Orders - Click Home
-    Pdv - Navigate To Configure Ticket    mode=noaction
-    Pdv - Home - Verify Visible
 
 # =============================================================================
 # NAVEGAÇÃO — LISTA DE PEDIDOS
 # =============================================================================
 
-Pdv - Navigate To Visualize Order
-    [Documentation]    Abre a lista de pedidos, visualiza o primeiro e retorna à tela inicial.
-    Pdv - Navigate To List Orders
-    Pdv - List Orders - Click First Order
-    Pdv - List Orders - Click Visualize Order
-    Pdv - List Orders - Verify Details Visible
-    Pdv - List Orders - Click Back
-    Pdv - List Orders - Click Back
-    Pdv - Home - Verify Visible
+Pdv - Navigate To View Order
+    [Documentation]    Clica no primeiro pedido, visualiza, verifica a tela e volta para a lista.
+    Orders List - Click First Order
+    Orders List - Actions Modal Click View Order
+    Orders List - View Order Screen Should Be Visible
+    Orders List - Click Back
 
-Pdv - Navigate To Reprint Order
-    [Documentation]    Abre a lista de pedidos e reimprime o primeiro pedido.
-    Pdv - Navigate To List Orders
-    Pdv - List Orders - Click First Order
-    Pdv - List Orders - Click Reprint
-    Pdv - List Orders - Verify Reprint Visible
-    Pdv - List Orders - Click Back
-    Pdv - Home - Verify Visible
+Pdv - Navigate To Reprint First Order Receipt
+    [Documentation]    Clica no primeiro pedido, reimprimi o comprovante e verifica o status de impressão.
+    Orders List - Click First Order
+    Orders List - Actions Modal Click Reprint Receipt
+    Orders List - Print Status Should Be Printing
+    Orders List - Print Status Should Not Be Completed
 
-Pdv - Navigate To List Orders Cancel Order
-    [Documentation]    Abre a lista de pedidos e cancela o primeiro pedido.
-    Pdv - Navigate To List Orders
-    Pdv - List Orders - Click First Order
-    Pdv - List Orders - Click Cancel Order
-    Pdv - List Orders - Verify Cancel Dialog
-    Pdv - List Orders - Click Cancel Confirm
-    Pdv - List Orders - Click Back
-    Pdv - Home - Verify Visible
+Pdv - Navigate To Fiscal Details First Order
+    [Documentation]    Clica no primeiro pedido, abre Detalhes da Nota Fiscal, verifica e volta para a lista.
+    Orders List - Click First Order
+    Orders List - Actions Modal Click Fiscal Details
+    Orders List - Fiscal Details Screen Should Be Visible
+    Orders List - Click Back
+
+Pdv - Navigate To Cancel First Order
+    [Documentation]    Clica no primeiro pedido, cancela, confirma e fecha o modal de sucesso.
+    Orders List - Click First Order
+    Orders List - Actions Modal Click Cancel Order
+    Orders List - Cancel Order Modal Should Be Visible
+    Orders List - Cancel Order Modal Click Yes
+    Orders List - Cancel Order Success Should Be Visible
+    Orders List - Cancel Order Click Ok
 
 Pdv - Navigate To Print Receipts
-    [Documentation]    Abre o menu de impressão da lista de pedidos e imprime recebimentos.
-    Pdv - Navigate To List Orders
-    Pdv - List Orders - Click Print
-    Pdv - List Orders - Click Receipts
-    Pdv - List Orders - Click Back
-    Pdv - Home - Verify Visible
+    [Documentation]    Abre o modal de impressão, seleciona Recebimentos e verifica o ciclo de status.
+    Orders List - Click Print
+    Orders List - Print Options Click Receipts
+    Orders List - Print Status Should Be Printing
+    Orders List - Print Status Should Be Completed
+    Orders List - Print Status Should Not Be Completed
 
 Pdv - Navigate To Print Sales Summary
-    [Documentation]    Abre o menu de impressão da lista de pedidos e imprime resumo de vendas.
-    Pdv - Navigate To List Orders
-    Pdv - List Orders - Click Print
-    Pdv - List Orders - Click Sales Summary
-    Pdv - List Orders - Click Back
-    Pdv - Home - Verify Visible
+    [Documentation]    Abre o modal de impressão, seleciona Resumo de Vendas e verifica o ciclo de status.
+    Orders List - Click Print
+    Orders List - Print Options Click Sales Summary
+    Orders List - Print Status Should Be Printing
+    Orders List - Print Status Should Be Completed
+    Orders List - Print Status Should Not Be Completed
 
-Pdv - Navigate To Print Cancel
-    [Documentation]    Abre o menu de impressão da lista de pedidos e volta sem imprimir.
-    Pdv - Navigate To List Orders
-    Pdv - List Orders - Click Print
-    Pdv - List Orders - Click Print Back
-    Pdv - List Orders - Click Back
-    Pdv - Home - Verify Visible
 
 # =============================================================================
-# NAVEGAÇÃO — SINCRONIZAÇÃO
+# NAVEGAÇÃO — LISTA DE CLIENTES
 # =============================================================================
 
-Pdv - Navigate To Sync Products
-    [Documentation]    Sincroniza os produtos.
-    Pdv - Navigate To Sync
-    Pdv - Sync - Click Products
-    Pdv - Sync - Click Sync Button
-    Pdv - Sync - Verify Sync Done
-    Pdv - Sync - Click Sync Confirm
-    Pdv - Home - Verify Visible
+Pdv - Navigate To Clients
+    [Documentation]    Navega da Home para a Lista de Clientes.
+    Pdv - Home - Click Clients
 
-Pdv - Navigate To Sync Clients
-    [Documentation]    Sincroniza os clientes.
-    Pdv - Navigate To Sync
-    Pdv - Sync - Click Clients
-    Pdv - Sync - Click Sync Button
-    Pdv - Sync - Verify Sync Done
-    Pdv - Sync - Click Sync Confirm
-    Pdv - Home - Verify Visible
+Pdv - Navigate To Sync Client List
+    [Documentation]    Aciona a sincronização na Lista de Clientes, aguarda o modal de confirmação e fecha.
+    Client List - Click Sync And Confirm
 
-Pdv - Navigate To Sync Orders
-    [Documentation]    Sincroniza os pedidos.
-    Pdv - Navigate To Sync
-    Pdv - Sync - Click Orders
-    Pdv - Sync - Click Sync Button
-    Pdv - Sync - Verify Sync Done
-    Pdv - Sync - Click Sync Confirm
-    Pdv - Home - Verify Visible
+Pdv - Navigate To Search And Select Client
+    [Documentation]    Pesquisa e seleciona um cliente na Lista de Clientes pelo nome.
+    [Arguments]    ${client_name}
+    Client List - Search Client    ${client_name}
+    Client List - Click Client By Name    ${client_name}
 
-Pdv - Navigate To Sync All
-    [Documentation]    Sincroniza todos os dados (produtos, clientes e pedidos).
-    Pdv - Navigate To Sync
-    Pdv - Sync - Click Products
-    Pdv - Sync - Click Clients
-    Pdv - Sync - Click Orders
-    Pdv - Sync - Click Sync Button
-    Pdv - Sync - Verify Sync Done
-    Pdv - Sync - Click Sync Confirm
-    Pdv - Home - Verify Visible
+Pdv - Navigate To Init Order From Client
+    [Documentation]    Clica em "Iniciar Venda" no cadastro do cliente para iniciar um novo pedido.
+    Client Register - Click Init Order
 
-Pdv - Navigate To Cancel Sync
-    [Documentation]    Abre a sincronização e cancela antes de concluir.
-    Pdv - Navigate To Sync
-    Pdv - Sync - Click Cancel
-    Pdv - Home - Verify Visible
+Pdv - Navigate To New Client
+    [Documentation]    Clica em "+ Novo Cliente" e posiciona na tab Detalhes.
+    Client List - Click New Client
+    Client Register - Click Tab Details
+
+Pdv - Navigate To Fill Client Details
+    [Documentation]    Preenche os campos de detalhes do cadastro: tipo de pessoa, CPF, nome, telefone, e-mail e observação.
+    [Arguments]    ${person_type}    ${cpf}    ${name}    ${phone}    ${email}    ${note}
+    Client Register - Select Person Type    ${person_type}
+    Client Register - Fill Cpf    ${cpf}
+    Client Register - Fill Name    ${name}
+    Client Register - Fill Phone    ${phone}
+    Client Register - Fill Email    ${email}
+    Client Register - Fill Note    ${note}
+
+Pdv - Navigate To Fill Client Details Juridic
+    [Documentation]    Preenche os campos de detalhes do cadastro Jurídico: tipo de pessoa, CNPJ, nome fantasia, razão social, telefone, e-mail e observação.
+    [Arguments]    ${person_type}    ${cnpj}    ${fantasy_name}    ${social_reason}    ${phone}    ${email}    ${note}
+    Client Register - Select Person Type    ${person_type}
+    Client Register - Fill Cnpj    ${cnpj}
+    Client Register - Fill Fantasy Name    ${fantasy_name}
+    Client Register - Fill Social Reason    ${social_reason}
+    Client Register - Fill Phone    ${phone}
+    Client Register - Fill Email    ${email}
+    Client Register - Fill Note    ${note}
+
+Pdv - Navigate To Fill Client Address
+    [Documentation]    Seleciona a tab Endereço, preenche CEP, consulta e preenche número e complemento.
+    [Arguments]    ${cep}    ${number}    ${complement}
+    Client Register - Click Tab Address
+    Client Register - Fill Cep    ${cep}
+    Client Register - Click Consultar Cep
+    Client Register - Fill Number    ${number}
+    Client Register - Fill Complement    ${complement}
+
+Pdv - Navigate To Save And Verify Client
+    [Documentation]    Salva o cadastro, aguarda o formulário fechar, pesquisa pelo nome, verifica e volta.
+    [Arguments]    ${client_name}
+    Client Register - Click Save
+    Wait For Element To Disappear    ${client_register.btn_save}
+    Wait Until Element Is Visible    ${client_list.search_input}    timeout=${ELEMENT_TIMEOUT}
+    Client List - Search Client    ${client_name}
+    Client List - Client Should Be Visible    ${client_name}
+    Client List - Click Back
+
+Pdv - Navigate To Save And Verify Client By Cnpj
+    [Documentation]    Salva o cadastro, aguarda o formulário fechar, pesquisa pelo CNPJ, verifica pela Razão Social e volta.
+    [Arguments]    ${cnpj}    ${social_reason}
+    Client Register - Click Save
+    Wait For Element To Disappear    ${client_register.btn_save}
+    Wait Until Element Is Visible    ${client_list.search_input}
+    Client List - Search Client    ${cnpj}
+    Client List - Client Should Be Visible    ${social_reason}
+    Client List - Click Back
+
 
 # =============================================================================
-# NAVEGAÇÃO — CLIENTES
+# CONFIGURAÇÃO — PAGAMENTO
 # =============================================================================
 
-Pdv - Navigate To Register Client
-    [Documentation]    Cadastra um novo cliente pessoa física com dados gerados via Faker.
-    ${raw_cpf}=    faker.Cpf
-    ${cpf}=    Normalize Digits    ${raw_cpf}
-    ${name}=    faker.Name
-    ${email}=    faker.Email
-    ${zip_code}=    faker.Postcode
-    ${address}=    faker.Street Address
-    ${number}=    faker.Building Number
-    ${neighborhood}=    faker.Bairro
-    ${complement}=    faker.Bothify    Apto ?##
-    ${raw_telephone}=    faker.Cellphone Number
-    ${telephone}=    Normalize Digits    ${raw_telephone}
-    Pdv - Navigate To Clients
-    Pdv - Clients - Click New Client
-    Pdv - Clients - Click Type Client
-    Pdv - Clients - Click Type Fisic
-    Pdv - Clients - Input CPF    ${cpf}
-    Pdv - Clients - Input Name    ${name}
-    Pdv - Clients - Input Telephone    ${telephone}
-    Pdv - Clients - Input Email    ${email}
-    Pdv - Clients - Click Address Page
-    Pdv - Clients - Input CEP    ${zip_code}
-    Pdv - Clients - Input Address    ${address}
-    Pdv - Clients - Input Number    ${number}
-    Pdv - Clients - Input Neighborhood    ${neighborhood}
-    Pdv - Clients - Click UF
-    Swipe    start_x=123    start_y=722    end_x=123    end_y=252
-    Swipe    start_x=120    start_y=728    end_x=120    end_y=215
-    Pdv - Clients - Click UF PB
-    Pdv - Clients - Click City
-    Pdv - Clients - Click City Select
-    Pdv - Clients - Input Complement    ${complement}
-    Pdv - Clients - Click Save
-    Pdv - Clients - Click Back
-    Pdv - Home - Verify Visible
+Pdv - Resolve Payment Method Name
+    [Documentation]    Converte aliases de pagamento para o nome exibido na tela.
+    [Arguments]    ${payment_method}
+    ${payment_method_name}=    Set Variable    ${payment_method}
+    IF    '${payment_method}' == 'money'
+        ${payment_method_name}=    Set Variable    Dinheiro
+    ELSE IF    '${payment_method}' == 'pixoff'
+        ${payment_method_name}=    Set Variable    PIX OFF
+    ELSE IF    '${payment_method}' == 'bankslip'
+        ${payment_method_name}=    Set Variable    Boleto Bancário
+    END
+    RETURN    ${payment_method_name}
+
+
+# =============================================================================
+# NAVEGAÇÃO — CHECKOUT
+# =============================================================================
+
+Pdv - Navigate To Select Payment Method
+    [Documentation]    Seleciona a forma de pagamento informada.
+    [Arguments]    ${payment_method}
+    ${payment_method_name}=    Pdv - Resolve Payment Method Name    ${payment_method}
+    Pdv - Checkout - Click Method By Name    ${payment_method_name}
+
+Pdv - Navigate To Confirm Payment Value
+    [Documentation]    Confirma o valor sugerido no modal de pagamento.
+    Pdv - Checkout - Click Value Confirm
+
+Pdv - Navigate To Configure Bank Slip Payment
+    [Documentation]    Configura parcelas, prazo e data do boleto antes de confirmar o pagamento.
+    [Arguments]    ${parcels_add_times}    ${term_days}    ${due_day}
+    ${due_day}=    Convert To Integer    ${due_day}
+    ${due_day}=    Convert To String    ${due_day}
+    Repeat Keyword    ${parcels_add_times} times    Pdv - Checkout - Click Bank Slip Add
+    Pdv - Checkout - Input Bank Slip Term    ${term_days}
+    Pdv - Checkout - Click Calendar
+    Pdv - Checkout - Verify Calendar Day Visible    ${due_day}
+    Pdv - Checkout - Click Day By Number    ${due_day}
+
+Pdv - Navigate To Finish Sale
+    [Documentation]    Finaliza a venda no checkout.
+    Pdv - Checkout - Click Finish Sale

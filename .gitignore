@@ -8,3 +8,20 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Local environment variables
+.env
+
+# Test reports and generated outputs
+allure-results/
+allure-report/
+pabot_results/
+output.xml
+output*.xml
+log.html
+report.html
+pabot_manager.log
+robot_*.log
+robot_argfile.txt
+robot_stderr.out
+robot_stdout.out

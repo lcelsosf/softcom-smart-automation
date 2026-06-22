@@ -1,7 +1,0 @@
-sync:
-  products: softcom.mobile.smart2:id/dialog_sincronizar_tgb_produtos
-  clients: softcom.mobile.smart2:id/dialog_sincronizar_tgb_clientes
-  orders: softcom.mobile.smart2:id/dialog_sincronizar_tgb_pedidos
-  sync_button: softcom.mobile.smart2:id/dialog_sincronizar_btn_confirmar
-  ok_button: android:id/button1
-  cancel_button: softcom.mobile.smart2:id/dialog_sincronizar_btn_cancelar

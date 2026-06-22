@@ -1,0 +1,46 @@
+##############################
+# Tela de Checkout - Pagamento
+##############################
+Checkout:
+  # Botão Voltar
+  btn_back: xpath=//*[@resource-id='PaymentScreenIconButton_0']
+  # Botão Sincronizar dados (top bar)
+  btn_sync: xpath=//*[@resource-id='PaymentScreenIconButton_1']
+  # Selecionar método pelo nome — genérico, passa o nome como argumento
+  method_by_name: xpath=//*[contains(@resource-id,'PaymentMethodTileCard') and .//*[@text='METHOD_NAME']]
+  # Botão de ações do pagamento selecionado (editar/remover)
+  selected_method_actions: xpath=//*[android.widget.ImageView[@content-desc="Ações"]]
+  # Botão "Finalizar Venda"
+  btn_finish_sale: xpath=//*[@resource-id='PaymentBottomBarButton_0']
+
+#################################################################
+# Modal de Valores - Exibido após selecionar a forma de pagamento
+#################################################################
+payment_value_modal:
+  # Tecla Limpar — apaga o valor inteiro
+  key_clear: xpath=//*[@resource-id='ValorPagamentoDialogButton_2']
+  # Tecla ⌫ (backspace) — apaga o último dígito
+  key_backspace: xpath=//*[@resource-id='ValorPagamentoDialogButton_3']
+  # Botão "Cancelar" — fecha o modal sem confirmar
+  btn_cancel: xpath=//*[@resource-id='ValorPagamentoDialogOutlinedButton_10']
+  # Botão "Confirmar" — confirma o valor e adiciona o pagamento
+  btn_confirm: xpath=//*[@resource-id='ValorPagamentoDialogButton_4']
+  # Tecla numérica pelo dígito exibido
+  key_by_digit: xpath=//*[starts-with(@resource-id,'ValorPagamentoDialog') and @clickable='true' and .//android.widget.TextView[@text='DIGIT']]
+
+################################################
+# Elementos quando a forma de pagamento é boleto
+################################################
+bank_slip:
+  # Botao de adicionar parcela
+  btn_add: xpath=//*[@resource-id='ValorPagamentoDialogButton_1']
+  # Botao de remover parcela
+  btn_sub: xpath=//*[@resource-id='ValorPagamentoDialogButton_0']
+  # Quantidade de parcelas exibida no seletor
+  parcels_quantity: xpath=//*[@resource-id='ValorPagamentoDialogColumn_0']//android.widget.TextView[1]
+  # Input de prazo — visível apenas em métodos que exigem prazo (ex: Boleto Bancário)
+  term_input: xpath=//*[@resource-id='ValorPagamentoDialogBasicOutlinedField_0']
+  # Botao Calendario
+  calendar: xpath=//*[android.view.View[@resource-id="ValorPagamentoDialogIconButton_0"]]
+  # Uso: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='DAY']]
+  day_by_number: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='DAY_NUMBER']]

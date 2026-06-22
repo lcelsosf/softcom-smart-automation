@@ -1,0 +1,178 @@
+##########################################################################
+# Tela de Configurações Gerais
+##########################################################################
+pdv_settings:
+  # Botao de Voltar
+  btn_back: xpath=//*[@content-desc='Voltar']
+  # Smart PDV — "Fluxo do Smart PDV"
+  option_smart_pdv: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Smart PDV']]
+  # Pedidos — "Configurações de seus pedidos"
+  option_orders: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Pedidos']]
+  # Impressões — "Configurações de Impressão"
+  option_printing: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Impressões']]
+  # Formas de Pagamento — "Habilite seus meios de pagamento"
+  option_payment_methods: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Formas de Pagamento']]
+  # Adquirente — "Configuração específica da adquirente"
+  option_acquirer: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Adquirente']]
+  # SoftcomPay — "PIX Softcom"
+  option_softcompay: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='SoftcomPay']]
+  # Fiscal — "Emissão NFC-e/NF-e"
+  option_fiscal: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Fiscal']]
+  # Emissão de Ticket — "Ticket de retirada"
+  option_ticket: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Emissão de Ticket']]
+  # Dispositivo — "Importar/Exportar configurações"
+  option_device: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Dispositivo']]
+  # Outros — "Configurações gerais"
+  option_others: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Outros']]
+  # Opção genérica pelo título — usar via argumento na page
+  # Uso: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='OPTION_NAME']]
+  option_by_name: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='OPTION_NAME']]
+
+##########################################################################
+# Tela de Configurações Gerais - Smart PDV
+##########################################################################
+smart_pdv_settings:
+  # Botão "Abrir menu" do seletor de modo
+  operation_mode_open_menu: xpath=//*[@text='Modo de Operação']/following-sibling::android.view.View[1]//*[@content-desc='Abrir menu']
+  # Descrição do modo selecionado — texto varia conforme o modo
+  operation_mode_description: xpath=//*[@text='Modo de Operação']/following-sibling::android.widget.TextView[1
+  # Opção pelo nome — genérico, usar via argumento na page
+  # Uso: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='OPTION_NAME']]
+  operation_mode_option_by_name: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='OPTION_NAME']]
+  # Opções mapeadas individualmente (nomes reais do dropdown)
+  operation_mode_option_default: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Padrão (Conferência Ativa)']]
+  operation_mode_option_express: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Express (Venda Rápida)']]
+  operation_mode_option_mini_pdv: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Mini PDV']]
+  # Solicitar cliente ao iniciar pedido
+  toggle_request_client: xpath=//*[@text='Solicitar cliente ao iniciar pedido']/following-sibling::android.view.View[1]
+  # Exibir estoque do produto
+  toggle_show_stock: xpath=//*[@text='Exibir estoque do produto']/following-sibling::android.view.View[1]
+  # Desconto/Acréscimo por item
+  toggle_discount_per_item: xpath=//*[@text='Desconto/Acréscimo por item']/following-sibling::android.view.View[1]
+  # Obrigar pagamentos na venda
+  toggle_require_payment: xpath=//*[@text='Obrigar pagamentos na venda']/following-sibling::android.view.View[1]
+  # Tabela de Preço
+  toggle_price_table: xpath=//*[@text='Tabela de Preço']/following-sibling::android.view.View[1]
+  # Alterar preço do item
+  toggle_edit_item_price: xpath=//*[@text='Alterar preço do item']/following-sibling::android.view.View[1]
+  # Toggle genérico pelo título — usar via argumento na page
+  # Uso: xpath=//*[@text='OPTION_NAME']/following-sibling::android.view.View[1]
+  toggle_by_name: xpath=//*[@text='OPTION_NAME']/following-sibling::android.view.View[1]
+
+##########################################################################
+# Tela de Configurações Gerais - Pedidos
+##########################################################################
+orders_settings:
+  # Finalizar pedido após pagamento
+  toggle_finish_after_payment: xpath=//*[@text='Finalizar pedido após pagamento']/following-sibling::android.view.View[1]
+  # Enviar pedido ao servidor ao finalizar
+  toggle_send_order_to_server: xpath=//*[@text='Enviar pedido ao servidor ao finalizar']/following-sibling::android.view.View[1]
+  # Ativar quantidade fracionada
+  toggle_fractional_quantity: xpath=//*[@text='Ativar quantidade fracionada']/following-sibling::android.view.View[1]
+  # Ativar bloqueio por limite de crédito
+  toggle_credit_limit_block: xpath=//*[@text='Ativar bloqueio por limite de crédito']/following-sibling::android.view.View[1]
+  # Toggle genérico pelo título — usar via argumento na page
+  toggle_by_name: xpath=//*[@text='OPTION_NAME']/following-sibling::android.view.View[1]
+  # Balanca
+  # Botão "Abrir menu" do seletor
+  product_code_size_open_menu: xpath=//*[@text='Tamanho do códigos do produto']/following-sibling::android.view.View[1]//*[@content-desc='Abrir menu']
+  # Opções do dropdown — mapeadas individualmente
+  product_code_size_option_4: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='4 dígitos']]
+  product_code_size_option_5: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='5 dígitos']]
+  product_code_size_option_6: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='6 dígitos']]
+  # Opção genérica pelo nome — usar via argumento na page
+  product_code_size_option_by_name: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='OPTION_NAME']]
+  # Botão "Abrir menu" do seletor
+  barcode_reading_open_menu: xpath=//*[@text='Leitura do código de barras por:']/following-sibling::android.view.View[1]//*[@content-desc='Abrir menu']
+  # Opções do dropdown — mapeadas individualmente
+  barcode_reading_option_price: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Preço']]
+  barcode_reading_option_weight: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Peso']]
+  # Opção genérica pelo nome — usar via argumento na page
+  barcode_reading_option_by_name: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='OPTION_NAME']]
+
+##########################################################################
+# Tela de Configurações Gerais - Impressoras
+##########################################################################
+printing_settings:
+  # Botão "Abrir menu" do seletor
+  print_on_finish_open_menu: xpath=//*[@text='Impressão ao finalizar venda']/following-sibling::android.view.View[1]//*[@content-desc='Abrir menu']
+  # Opções do dropdown — mapeadas individualmente
+  # Nenhuma Ação
+  print_on_finish_option_none: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Nenhuma Ação']]
+  # Imprimir
+  print_on_finish_option_print: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Imprimir']]
+  # Perguntar
+  print_on_finish_option_ask: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Perguntar']]
+  # Opção genérica pelo nome — usar via argumento na page
+  print_on_finish_option_by_name: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='OPTION_NAME']]
+  # Exibir cabeçalho na via do pedido
+  toggle_print_header: xpath=//android.view.View[.//android.widget.TextView[@text='Exibir cabeçalho na via do pedido']]
+  # Agrupar impressão da via da cozinha
+  toggle_group_kitchen_print: xpath=//android.view.View[.//android.widget.TextView[@text='Agrupar impressão da via da cozinha']]
+  # Toggle genérico pelo título — usar via argumento na page
+  toggle_by_name: xpath=//android.view.View[.//android.widget.TextView[@text='OPTION_NAME']]
+  # Lista de Impressoras
+  btn_open_printer_list: xpath=//android.widget.TextView[@text='Lista de Impressoras']/following-sibling::android.widget.ImageView[@content-desc='Abrir']
+  # Área do ícone/logo — define a impressora cadastrada como padrão
+  first_printer_icon_area: xpath=(//*[@content-desc='Editar impressora']/ancestor::android.view.View[2]/android.view.View[@clickable='true'])[1]
+  # Fecha a planilha/modal de lista de impressoras
+  btn_close_printer_list: xpath=//*[@content-desc='Fechar planilha']
+
+##########################################################################
+# Tela de Configurações Gerais - Formas de Pagamento
+##########################################################################
+payment_settings:
+  # Nome do método pelo argumento — genérico, usar via parâmetro na page
+  method_name_by_method: xpath=//*[@text='METHOD_NAME']
+  # Switch do método — âncora pelo nome, sobe ao container do switch
+  method_switch_by_method: xpath=//*[@text='METHOD_NAME']/following-sibling::android.view.View[1]
+  # Switches mapeados individualmente (âncora pelo nome do método)
+  # Voucher
+  method_switch_voucher: xpath=//*[@text='Voucher']/following-sibling::android.view.View[1]
+  # Dinheiro
+  method_switch_money: xpath=//*[@text='Dinheiro']/following-sibling::android.view.View[1]
+  # Cheque
+  method_switch_check: xpath=//*[@text='Cheque']/following-sibling::android.view.View[1]
+  # Cartão de Crédito
+  method_switch_credit_card: xpath=//*[@text='Cartão de Crédito']/following-sibling::android.view.View[1]
+  # Cartão de Débito
+  method_switch_debit_card: xpath=//*[@text='Cartão de Débito']/following-sibling::android.view.View[1]
+  # Crédito Loja
+  method_switch_store_credit: xpath=//*[@text='Crédito Loja']/following-sibling::android.view.View[1]
+  # Boleto Bancário
+  method_switch_bank_slip: xpath=//*[@text='Boleto Bancário']/following-sibling::android.view.View[1]
+  # PIX
+  method_switch_pix: xpath=//*[@text='PIX']/following-sibling::android.view.View[1]
+  # PIX OFF
+  method_switch_pix_off: xpath=//*[@text='PIX OFF']/following-sibling::android.view.View[1]
+  # Outros
+  method_switch_others: xpath=//*[@text='Outros']/following-sibling::android.view.View[1]
+  # POS
+  method_switch_pos: xpath=//*[@text='POS']/following-sibling::android.view.View[1]
+
+##########################################################################
+# Tela de Configurações Gerais - Fiscal
+##########################################################################
+fiscal_settings:
+  # Habilitar emissão de NFC-e
+  toggle_enable_nfce: xpath=//*[@text='Habilitar NFC-e']/following-sibling::android.view.View[1]
+  # Habilitar emissão de NF-e
+  toggle_enable_nfe: xpath=//*[@text='Habilitar NF-e']/following-sibling::android.view.View[1]
+
+##########################################################################
+# Tela de Configurações Gerais - Ticket Retirada
+##########################################################################
+ticket_settings:
+  # Botão "Abrir menu" do seletor
+  ticket_on_finish_open_menu: xpath=//*[@text='Ticket de retirada ao finalizar']/following-sibling::android.view.View[1]//*[@content-desc='Abrir menu']
+  # Opções do dropdown — mapeadas individualmente
+  # Nenhuma Ação
+  ticket_on_finish_option_none: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Nenhuma Ação']]
+  # Imprimir
+  ticket_on_finish_option_print: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Imprimir']]
+  # Perguntar
+  ticket_on_finish_option_ask: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Perguntar']]
+  # Opção genérica pelo nome — usar via argumento na page
+  ticket_on_finish_option_by_name: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='OPTION_NAME']]
+  # Toggle "Permitir reimpressão de ticket"
+  toggle_allow_reprint: xpath=//*[@text='Permitir reimpressão de ticket']/following-sibling::android.view.View[1]

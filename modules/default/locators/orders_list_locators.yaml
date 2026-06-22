@@ -1,3 +1,0 @@
-orders_list:
-  order: //android.widget.ListView[@resource-id="softcom.mobile.smart2:id/pedidos_lv"]/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout
-  reprint: //android.widget.TextView[@resource-id="android:id/title" and @text="Reimprimir Comprovante"]

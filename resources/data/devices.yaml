@@ -9,7 +9,7 @@ devices:
 
   rede:
     udid: "${REDE_L400_UDID}"
-    keyboard_close: "hide"
+    keyboard_close: "back"
     system_port: 8202
     appium_server: "${APPIUM_SERVER_URL}"
 

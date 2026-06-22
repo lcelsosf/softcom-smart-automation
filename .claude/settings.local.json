@@ -12,7 +12,8 @@
       "Bash(Select-Object -ExpandProperty FullName)",
       "Bash(Sort-Object)",
       "Bash(dir D:\\\\Softcom\\\\LAB *)",
-      "Bash(dir *)"
+      "Bash(dir *)",
+      "PowerShell(rtk uv *)"
     ]
   }
 }

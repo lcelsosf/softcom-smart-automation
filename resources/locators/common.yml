@@ -1,8 +1,0 @@
-# ----------------------------------------------------------------------------
-# Login
-# ----------------------------------------------------------------------------
-login:
-  email: ${APP_PACKAGE}:id/login_email
-  password: ${APP_PACKAGE}:id/login_password
-  button: ${APP_PACKAGE}:id/btn_login
-  error_message: ${APP_PACKAGE}:id/text_errors

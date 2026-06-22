@@ -1,29 +1,65 @@
 *** Settings ***
-Documentation    Ações atômicas — Tela Inicial (HomeScreen)
+Documentation    Ações atômicas — Tela Home e status do pedido do módulo PDV.
 Resource    ../../../resources/helpers/common_keywords.resource
 
 
 *** Keywords ***
+Pdv - Home - Verify Visible
+    [Documentation]    Card "Novo Pedido" — destaque na home.
+    Wait Until Element Is Visible    ${home.btn_new_order}
+
 Pdv - Home - Click New Order
-    Wait Visible And Click Element    ${home.new_order}
+    [Documentation]    Card "Novo Pedido" — destaque na home.
+    Wait Visible And Click Element    ${home.btn_new_order}
 
 Pdv - Home - Click List Orders
-    Wait Visible And Click Element    ${home.list_orders}
-
-Pdv - Home - Click Sync
-    Wait Visible And Click Element    ${home.sync}
+    [Documentation]    Card "Lista de Pedidos".
+    Wait Visible And Click Element    ${home.btn_orders_list}
 
 Pdv - Home - Click Clients
-    Wait Visible And Click Element    ${home.clients}
+    [Documentation]    Card "Clientes".
+    Wait Visible And Click Element    ${home.btn_clients}
+
+Pdv - Home - Click Sync
+    [Documentation]    Card "Sincronizar Dados".
+    Wait Visible And Click Element    ${home.btn_sync}
 
 Pdv - Home - Click Settings
-    Wait Visible And Click Element    ${home.settings}
+    [Documentation]    Card "Configurações".
+    Wait Visible And Click Element    ${home.btn_settings}
 
 Pdv - Home - Click Logoff
-    Wait Visible And Click Element    ${home.logoff}
+    [Documentation]    Card "Logoff".
+    Wait Visible And Click Element    ${home.btn_logoff}
 
-Pdv - Home - Click Logoff Confirm
-    Wait Visible And Click Element    ${home.logoff_confirm}
+Pdv - Logoff - Verify Visible
+    [Documentation]    Texto de confirmação.
+    Wait Until Element Is Visible    ${logoff.text_confirmation}
 
-Pdv - Home - Verify Visible
-    Wait Until Element Is Visible    ${home.home}
+Pdv - Logoff - Click Confirm
+    [Documentation]    Botão "Sim" — confirma o logoff.
+    Wait Visible And Click Element    ${logoff.btn_yes}
+
+Pdv - Logoff - Click Cancel
+    [Documentation]    Botão "Não" — cancela o logoff.
+    Wait Visible And Click Element    ${logoff.btn_no}
+
+Pdv - Orders Status - Click Reprint
+    [Documentation]    Botão Reimprimir (top bar).
+    Wait Visible And Click Element    ${orders_status.btn_reprint}
+
+Pdv - Orders Status - Click New Order
+    [Documentation]    Botão "Novo Pedido" — inicia um novo ciclo de venda.
+    Wait Visible And Click Element    ${orders_status.btn_new_order}
+
+Pdv - Orders Status - Click Share
+    [Documentation]    Botão "Compartilhar" — compartilha o comprovante.
+    Wait Visible And Click Element    ${orders_status.btn_share}
+
+Pdv - Orders Status - Click Home
+    [Documentation]    Botão "Tela Inicial" — retorna para a Home.
+    Wait Visible And Click Element    ${orders_status.btn_home}
+
+Pdv - Orders - Click Home
+    [Documentation]    Botão "Tela Inicial" — retorna para a Home.
+    Wait Visible And Click Element    ${orders_status.btn_home}
