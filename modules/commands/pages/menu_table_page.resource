@@ -1,6 +1,7 @@
 *** Settings ***
-Documentation    Ações atômicas — Menu Lateral da Mesa (ConfigDrawerMenu)
-Resource    ../../../resources/helpers/common_keywords.resource
+Documentation       Ações atômicas — Menu Lateral da Mesa (ConfigDrawerMenu)
+
+Resource            ../../../resources/helpers/common_keywords.resource
 
 
 *** Keywords ***

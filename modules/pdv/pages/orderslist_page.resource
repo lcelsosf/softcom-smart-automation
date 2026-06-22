@@ -1,8 +1,8 @@
 *** Settings ***
-Documentation    Page object da tela Lista de Pedidos — módulo PDV.
+Documentation       Page object da tela Lista de Pedidos — módulo PDV.
+
 
 *** Keywords ***
-
 Orders List - Click Back
     [Documentation]    Clica no botão Voltar da top bar.
     Wait Visible And Click Element    ${orders_list.btn_back}
@@ -15,7 +15,7 @@ Orders List - Click Print
 Orders List - Search
     [Documentation]    Digita um termo no campo de busca da lista de pedidos.
     [Arguments]    ${search_term}
-    Wait Visible And Click Element       ${orders_list.search_input}
+    Wait Visible And Click Element    ${orders_list.search_input}
     Wait Visible And Input Text Pause    ${orders_list.search_input}    ${search_term}
 
 Orders List - Click Filters

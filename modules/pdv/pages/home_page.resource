@@ -1,6 +1,7 @@
 *** Settings ***
-Documentation    Ações atômicas — Tela Home e status do pedido do módulo PDV.
-Resource    ../../../resources/helpers/common_keywords.resource
+Documentation       Ações atômicas — Tela Home e status do pedido do módulo PDV.
+
+Resource            ../../../resources/helpers/common_keywords.resource
 
 
 *** Keywords ***

@@ -1,8 +1,8 @@
 *** Settings ***
-Documentation    Page object da tela Lista de Clientes — módulo PDV.
+Documentation       Page object da tela Lista de Clientes — módulo PDV.
+
 
 *** Keywords ***
-
 Client List - Click Back
     [Documentation]    Clica no botão Voltar da top bar.
     Wait Visible And Click Element    ${client_list.btn_back}
@@ -14,7 +14,7 @@ Client List - Click Sync
 Client List - Search Client
     [Documentation]    Digita o nome ou documento no campo de busca.
     [Arguments]    ${search_term}
-    Wait Visible And Click Element       ${client_list.search_input}
+    Wait Visible And Click Element    ${client_list.search_input}
     Wait Visible And Input Text    ${client_list.search_input}    ${search_term}
 
 Client List - Click Client By Name
@@ -49,7 +49,7 @@ Client List - Click Refresh Success Ok
 
 Client List - Click Sync And Confirm
     [Documentation]    Clica em Atualizar, aguarda o modal de confirmação
-    ...    e fecha clicando em "Ok". Fluxo completo de sincronização.   
+    ...    e fecha clicando em "Ok". Fluxo completo de sincronização.
     Client List - Click Sync
     Client List - Refresh Success Modal Should Be Visible
     Client List - Click Refresh Success Ok
@@ -83,40 +83,40 @@ Client Register - Fill Cpf
     [Documentation]    Preenche o campo CPF.
     [Arguments]    ${cpf}
     Wait Visible And Click Element    ${client_register.cpf_input}
-    Clear Text                        ${client_register.cpf_input}
-    Input Text                        ${client_register.cpf_input}    ${cpf}
+    Clear Text    ${client_register.cpf_input}
+    Input Text    ${client_register.cpf_input}    ${cpf}
     Close Keyboard
 
 Client Register - Fill Cnpj
     [Documentation]    Preenche o campo CNPJ.
     [Arguments]    ${cnpj}
     Wait Visible And Click Element    ${client_register.cnpj_input}
-    Clear Text                        ${client_register.cnpj_input}
-    Input Text                        ${client_register.cnpj_input}    ${cnpj}
+    Clear Text    ${client_register.cnpj_input}
+    Input Text    ${client_register.cnpj_input}    ${cnpj}
     Close Keyboard
 
 Client Register - Fill Fantasy Name
     [Documentation]    Preenche o campo Nome Fantasia (Jurídica).
     [Arguments]    ${fantasy_name}
     Wait Visible And Click Element    ${client_register.fantasy_name_input}
-    Clear Text                        ${client_register.fantasy_name_input}
-    Input Text                        ${client_register.fantasy_name_input}    ${fantasy_name}
+    Clear Text    ${client_register.fantasy_name_input}
+    Input Text    ${client_register.fantasy_name_input}    ${fantasy_name}
     Close Keyboard
 
 Client Register - Fill Social Reason
     [Documentation]    Preenche o campo Razão Social (Jurídica).
     [Arguments]    ${social_reason}
     Wait Visible And Click Element    ${client_register.social_reason_input}
-    Clear Text                        ${client_register.social_reason_input}
-    Input Text                        ${client_register.social_reason_input}    ${social_reason}
+    Clear Text    ${client_register.social_reason_input}
+    Input Text    ${client_register.social_reason_input}    ${social_reason}
     Close Keyboard
 
 Client Register - Fill Name
     [Documentation]    Preenche o campo Nome.
     [Arguments]    ${name}
     Wait Visible And Click Element    ${client_register.name_input}
-    Clear Text                        ${client_register.name_input}
-    Input Text                        ${client_register.name_input}    ${name}
+    Clear Text    ${client_register.name_input}
+    Input Text    ${client_register.name_input}    ${name}
     Close Keyboard
 
 Client Register - Open Icms Contributor Menu
@@ -139,8 +139,8 @@ Client Register - Fill Phone
     ...    Clica no campo, executa swipe para reposicioná-lo caso o teclado o oculte e digita o valor.
     [Arguments]    ${phone}
     Wait Visible And Click Element    ${client_register.phone_input}
-    Swipe By Percent                  50    70    50    30
-    Input Text                        ${client_register.phone_input}    ${phone}
+    Swipe By Percent    50    70    50    30
+    Input Text    ${client_register.phone_input}    ${phone}
     Close Keyboard
 
 Client Register - Fill Email
@@ -148,8 +148,8 @@ Client Register - Fill Email
     ...    Clica no campo, executa swipe para reposicioná-lo caso o teclado o oculte e digita o valor.
     [Arguments]    ${email}
     Wait Visible And Click Element    ${client_register.email_input}
-    Swipe By Percent                  50    70    50    30
-    Input Text                        ${client_register.email_input}    ${email}
+    Swipe By Percent    50    70    50    30
+    Input Text    ${client_register.email_input}    ${email}
     Close Keyboard
 
 Client Register - Fill Note
@@ -157,16 +157,16 @@ Client Register - Fill Note
     ...    Clica no campo, executa swipe para reposicioná-lo caso o teclado o oculte e digita o valor.
     [Arguments]    ${note}
     Wait Visible And Click Element    ${client_register.note_input}
-    Swipe By Percent                  50    70    50    30
-    Input Text                        ${client_register.note_input}    ${note}
+    Swipe By Percent    50    70    50    30
+    Input Text    ${client_register.note_input}    ${note}
     Close Keyboard
 
 Client Register - Fill Cep
     [Documentation]    Preenche o campo CEP.
     [Arguments]    ${cep}
     Wait Visible And Click Element    ${client_register.cep_input}
-    Clear Text                        ${client_register.cep_input}
-    Input Text                        ${client_register.cep_input}    ${cep}
+    Clear Text    ${client_register.cep_input}
+    Input Text    ${client_register.cep_input}    ${cep}
     Close Keyboard
 
 Client Register - Click Consultar Cep
@@ -177,24 +177,24 @@ Client Register - Fill Address
     [Documentation]    Preenche o campo Endereço.
     [Arguments]    ${address}
     Wait Visible And Click Element    ${client_register.address_input}
-    Clear Text                        ${client_register.address_input}
-    Input Text                        ${client_register.address_input}    ${address}
+    Clear Text    ${client_register.address_input}
+    Input Text    ${client_register.address_input}    ${address}
     Close Keyboard
 
 Client Register - Fill Number
     [Documentation]    Preenche o campo Número.
     [Arguments]    ${number}
     Wait Visible And Click Element    ${client_register.number_input}
-    Clear Text                        ${client_register.number_input}
-    Input Text                        ${client_register.number_input}    ${number}
+    Clear Text    ${client_register.number_input}
+    Input Text    ${client_register.number_input}    ${number}
     Close Keyboard
 
 Client Register - Fill Neighborhood
     [Documentation]    Preenche o campo Bairro.
     [Arguments]    ${neighborhood}
     Wait Visible And Click Element    ${client_register.neighborhood_input}
-    Clear Text                        ${client_register.neighborhood_input}
-    Input Text                        ${client_register.neighborhood_input}    ${neighborhood}
+    Clear Text    ${client_register.neighborhood_input}
+    Input Text    ${client_register.neighborhood_input}    ${neighborhood}
     Close Keyboard
 
 Client Register - Open State Menu
@@ -225,8 +225,8 @@ Client Register - Fill Complement
     ...    Clica no campo, executa swipe para reposicioná-lo caso o teclado o oculte e digita o valor.
     [Arguments]    ${complement}
     Wait Visible And Click Element    ${client_register.complement_input}
-    Swipe By Percent                  50    70    50    30
-    Input Text                        ${client_register.complement_input}    ${complement}
+    Swipe By Percent    50    70    50    30
+    Input Text    ${client_register.complement_input}    ${complement}
     Close Keyboard
 
 Client Register - Click Init Order

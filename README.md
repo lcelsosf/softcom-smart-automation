@@ -23,15 +23,15 @@ Construído com Robot Framework + Appium, suporta execução paralela em múltip
 
 ## Pré-requisitos
 
-| Dependência | Versão mínima | Instalação |
-|---|---|---|
-| Python | 3.12+ | [python.org](https://python.org) |
-| uv | latest | `pip install uv` |
-| Node.js | 18+ | [nodejs.org](https://nodejs.org) |
-| Android SDK (adb) | — | Android Studio → SDK Platform Tools |
-| Appium Server | 2.x | `npm install -g appium` |
-| Appium UIAutomator2 | — | `appium driver install uiautomator2` |
-| Allure CLI | latest | `npm install -g allure-commandline` |
+| Dependência         | Versão mínima | Instalação                           |
+| ------------------- | ------------- | ------------------------------------ |
+| Python              | 3.12+         | [python.org](https://python.org)     |
+| uv                  | latest        | `pip install uv`                     |
+| Node.js             | 18+           | [nodejs.org](https://nodejs.org)     |
+| Android SDK (adb)   | —             | Android Studio → SDK Platform Tools  |
+| Appium Server       | 2.x           | `npm install -g appium`              |
+| Appium UIAutomator2 | —             | `appium driver install uiautomator2` |
+| Allure CLI          | latest        | `npm install -g allure-commandline`  |
 
 Verificar instalação:
 
@@ -70,7 +70,7 @@ Cada adquirente tem uma entrada com UDID (lido do `.env`), método de fechar tec
 ```yaml
 cielo:
   udid: "${CIELO_DX8000_UDID}"
-  keyboard_close: "back"       # "back" = keycode 4 | "hide" = Hide Keyboard
+  keyboard_close: "back" # "back" = keycode 4 | "hide" = Hide Keyboard
   system_port: 8200
   appium_server: "${APPIUM_SERVER_URL}"
 
@@ -214,12 +214,12 @@ tests/regression/<modulo>/<modulo>.robot
 
 As suites usam keywords wrapper de `resources/base/setup.resource`:
 
-| Keyword | Comportamento |
-|---|---|
-| `Suite Setup Default` | Abre o app; registra início de suite no log |
-| `Suite Teardown Default` | Fecha o app; consolida screenshots |
-| `Test Setup Default` | Pula o teste se o anterior falhou por erro de UI (evita cascata de falhas) |
-| `Test Teardown Default` | Captura screenshot em falha; fecha teclado se necessário |
+| Keyword                  | Comportamento                                                              |
+| ------------------------ | -------------------------------------------------------------------------- |
+| `Suite Setup Default`    | Abre o app; registra início de suite no log                                |
+| `Suite Teardown Default` | Fecha o app; consolida screenshots                                         |
+| `Test Setup Default`     | Pula o teste se o anterior falhou por erro de UI (evita cascata de falhas) |
+| `Test Teardown Default`  | Captura screenshot em falha; fecha teclado se necessário                   |
 
 ---
 
@@ -232,6 +232,7 @@ As suites usam keywords wrapper de `resources/base/setup.resource`:
 ```
 
 O script:
+
 1. Lê o `.env` automaticamente
 2. Detecta devices Android conectados via ADB
 3. Exibe menu de seleção de devices (individual ou todos)
@@ -313,23 +314,14 @@ allure open allure-report
 
 ```powershell
 # Lint em todos os arquivos
-uv run robocop resources/ modules/ tests/
+uv run robocop check
 
-# Lint em um módulo específico
-uv run robocop modules/pdv/
-```
+# Corrige violações de regras que têm fix
+uv run robocop check --fix
 
-### Formatar com Robotidy
-
-```powershell
 # Formatar todos os arquivos
-uv run robotidy resources/ modules/ tests/
-
-# Verificar sem alterar
-uv run robotidy --check resources/ modules/ tests/
+uv run robocop format
 ```
-
-Execute o Robocop antes de cada commit para garantir que o código está dentro das convenções do projeto.
 
 ---
 
@@ -383,18 +375,18 @@ Pdv - Home - Click Settings
 
 Use sempre as keywords de `common_keywords.resource` — elas têm tratamento de erro e screenshot automático:
 
-| Keyword | Uso |
-|---|---|
-| `Wait Visible And Click Element` | Aguarda visível e clica |
-| `Wait Visible And Click Element With Retry` | Clica com retry em caso de stale element |
-| `Wait Visible And Input Text` | Aguarda visível e digita (paste) |
-| `Wait Visible And Input Text Pause` | Digita caractere a caractere (campos de busca) |
-| `Wait Visible And Long Press Element` | Long press com duração configurável |
-| `Swipe Until Visible And Click Element` | Scroll + clique para elementos fora da tela |
-| `Wait For Element To Disappear` | Aguarda elemento sumir |
-| `Assert Element Not Visible` | Valida que elemento não está visível |
-| `Close Keyboard` | Fecha o teclado (método lido do devices.yaml) |
-| `Normalize Digits` | Remove caracteres não numéricos de uma string |
+| Keyword                                     | Uso                                            |
+| ------------------------------------------- | ---------------------------------------------- |
+| `Wait Visible And Click Element`            | Aguarda visível e clica                        |
+| `Wait Visible And Click Element With Retry` | Clica com retry em caso de stale element       |
+| `Wait Visible And Input Text`               | Aguarda visível e digita (paste)               |
+| `Wait Visible And Input Text Pause`         | Digita caractere a caractere (campos de busca) |
+| `Wait Visible And Long Press Element`       | Long press com duração configurável            |
+| `Swipe Until Visible And Click Element`     | Scroll + clique para elementos fora da tela    |
+| `Wait For Element To Disappear`             | Aguarda elemento sumir                         |
+| `Assert Element Not Visible`                | Valida que elemento não está visível           |
+| `Close Keyboard`                            | Fecha o teclado (método lido do devices.yaml)  |
+| `Normalize Digits`                          | Remove caracteres não numéricos de uma string  |
 
 ### 3. Navigation (fluxo composto)
 
@@ -473,6 +465,7 @@ Variables    ../../resources/libraries/locators_loader.py \
 ## Adicionando um Novo Adquirente
 
 1. **`resources/data/devices.yaml`** — adicionar a entrada:
+
    ```yaml
    novo_adquirente:
      udid: "${NOVO_ADQUIRENTE_UDID}"
@@ -480,14 +473,17 @@ Variables    ../../resources/libraries/locators_loader.py \
      system_port: 8236
      appium_server: "${APPIUM_SERVER_URL}"
    ```
+
    > Escolha uma `system_port` única (par, sequencial ao último usado).
 
 2. **`.env` e `.env.example`** — adicionar a variável:
+
    ```
    NOVO_ADQUIRENTE_UDID=
    ```
 
 3. **`resources/variables/env_variables.py`** — adicionar:
+
    ```python
    NOVO_ADQUIRENTE_UDID = os.getenv("NOVO_ADQUIRENTE_UDID", "")
    ```
@@ -504,6 +500,7 @@ Após isso, o `run_tests.ps1` detecta o device automaticamente pelo UDID e carre
 ## Adicionando um Novo Módulo
 
 1. **Criar a estrutura de pastas:**
+
    ```powershell
    mkdir modules\novo_modulo\locators
    mkdir modules\novo_modulo\pages
@@ -511,6 +508,7 @@ Após isso, o `run_tests.ps1` detecta o device automaticamente pelo UDID e carre
    ```
 
 2. **Criar `modules/novo_modulo/base_novo_modulo.resource`** seguindo o padrão dos módulos existentes:
+
    ```robotframework
    *** Settings ***
    Documentation    Base do módulo Novo Modulo.
@@ -523,6 +521,7 @@ Após isso, o `run_tests.ps1` detecta o device automaticamente pelo UDID e carre
 3. **Criar os locators, pages e navigation** seguindo a convenção de nomenclatura documentada acima.
 
 4. **Criar a suite `tests/regression/novo_modulo/novo_modulo.robot`:**
+
    ```robotframework
    *** Settings ***
    Resource    ../../../modules/novo_modulo/base_novo_modulo.resource

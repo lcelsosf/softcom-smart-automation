@@ -1,6 +1,7 @@
 *** Settings ***
-Documentation    Ações atômicas — Aba Produtos + Dialog Adicionar Produto
-Resource    ../../../resources/helpers/common_keywords.resource
+Documentation       Ações atômicas — Aba Produtos + Dialog Adicionar Produto
+
+Resource            ../../../resources/helpers/common_keywords.resource
 
 
 *** Keywords ***
@@ -31,7 +32,7 @@ Commands - Products - Click Additional Add 2
 
 Commands - Products - Click Additional Add 3
     Wait Visible And Click Element    ${products.item_adc_add_3}
-    
+
 Commands - Products - Click Additional Add 4
     Wait Visible And Click Element    ${products.item_adc_add_4}
 

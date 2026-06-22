@@ -1,6 +1,7 @@
 *** Settings ***
-Documentation    Ações atômicas — Tela de checkout do módulo PDV.
-Resource    ../../../resources/helpers/common_keywords.resource
+Documentation       Ações atômicas — Tela de checkout do módulo PDV.
+
+Resource            ../../../resources/helpers/common_keywords.resource
 
 
 *** Keywords ***
@@ -49,7 +50,12 @@ Pdv - Checkout - Click Bank Slip Add
     Wait Visible And Click Element    ${bank_slip.btn_add}
     ${expected_quantity}=    Evaluate    int(${previous_quantity}) + 1
     ${expected_quantity}=    Convert To String    ${expected_quantity}
-    Wait Until Keyword Succeeds    5x    1s    Element Text Should Be    ${bank_slip.parcels_quantity}    ${expected_quantity}
+    Wait Until Keyword Succeeds
+    ...    5x
+    ...    1s
+    ...    Element Text Should Be
+    ...    ${bank_slip.parcels_quantity}
+    ...    ${expected_quantity}
 
 Pdv - Checkout - Click Bank Slip Sub
     [Documentation]    Botao de remover parcela.
@@ -58,7 +64,12 @@ Pdv - Checkout - Click Bank Slip Sub
     Wait Visible And Click Element    ${bank_slip.btn_sub}
     ${expected_quantity}=    Evaluate    int(${previous_quantity}) - 1
     ${expected_quantity}=    Convert To String    ${expected_quantity}
-    Wait Until Keyword Succeeds    5x    1s    Element Text Should Be    ${bank_slip.parcels_quantity}    ${expected_quantity}
+    Wait Until Keyword Succeeds
+    ...    5x
+    ...    1s
+    ...    Element Text Should Be
+    ...    ${bank_slip.parcels_quantity}
+    ...    ${expected_quantity}
 
 Pdv - Checkout - Input Bank Slip Term
     [Documentation]    Input de prazo — visível apenas em métodos que exigem prazo (ex: Boleto Bancário).

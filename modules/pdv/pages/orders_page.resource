@@ -1,7 +1,8 @@
 *** Settings ***
-Documentation    Ações atômicas — Tela de pedidos e carrinho do módulo PDV.
-Library     Process
-Resource    ../../../resources/helpers/common_keywords.resource
+Documentation       Ações atômicas — Tela de pedidos e carrinho do módulo PDV.
+
+Library             Process
+Resource            ../../../resources/helpers/common_keywords.resource
 
 
 *** Keywords ***

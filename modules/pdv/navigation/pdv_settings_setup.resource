@@ -1,15 +1,16 @@
 *** Settings ***
-Documentation    Fluxos de configuração do módulo Pdv — composição de page keywords.
+Documentation       Fluxos de configuração do módulo Pdv — composição de page keywords.
 ...
-...    Nomenclatura: Pdv - Settings <Módulo>
-...    Dependências: pages abaixo + locators carregados via base_pdv.resource
-Resource    ../pages/home_page.resource
-Resource    ../pages/orders_page.resource
-Resource    ../pages/checkout_page.resource
-Resource    ../pages/settings_page.resource
+...                 Nomenclatura: Pdv - Settings <Módulo>
+...                 Dependências: pages abaixo + locators carregados via base_pdv.resource
+
+Resource            ../pages/home_page.resource
+Resource            ../pages/orders_page.resource
+Resource            ../pages/checkout_page.resource
+Resource            ../pages/settings_page.resource
+
 
 *** Keywords ***
-
 Pdv - Setup Printers
     [Documentation]    Configura impressão ao finalizar venda e acessa a impressora cadastrada.
     ...    Opções disponíveis: Imprimir, Perguntar ou Nenhuma Ação.
@@ -137,4 +138,3 @@ Pdv - Setup Active/Deactive Ticket
     Pdv - Settings Click Back
     Pdv - Settings Click Back
     Pdv - Home - Verify Visible
-

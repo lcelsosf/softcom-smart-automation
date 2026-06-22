@@ -1,9 +1,8 @@
 *** Settings ***
-Library    DateTime
+Library     DateTime
 
 
 *** Keywords ***
-
 Log Action
     [Arguments]    ${action}    ${message}    ${level}=INFO    &{kwargs}
     ${timestamp}=    Get Current Date    result_format=%Y-%m-%d %H:%M:%S

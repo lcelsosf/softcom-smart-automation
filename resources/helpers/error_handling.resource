@@ -1,5 +1,4 @@
 *** Keywords ***
-
 Handle Error With Screenshot
     [Documentation]    Trata erro capturando screenshot e falhando o teste
     ...

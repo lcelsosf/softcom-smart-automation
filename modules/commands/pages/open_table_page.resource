@@ -1,6 +1,7 @@
 *** Settings ***
-Documentation    Ações atômicas — Dialog Abrir Mesa (OpenMesaDialog)
-Resource    ../../../resources/helpers/common_keywords.resource
+Documentation       Ações atômicas — Dialog Abrir Mesa (OpenMesaDialog)
+
+Resource            ../../../resources/helpers/common_keywords.resource
 
 
 *** Keywords ***

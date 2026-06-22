@@ -1,37 +1,39 @@
 *** Settings ***
-Documentation    Suite de regressão — módulo Commands (Comanda/Mesa)
+Documentation       Suite de regressão — módulo Commands (Comanda/Mesa)
 ...
-...    Cobre os fluxos principais de abertura, operação e encerramento de mesas.
-...    Pré-condição: app iniciado no Painel de Mesas.
-Resource         ../../../modules/commands/base_commands.resource
-Suite Setup      Suite Setup Default
-Suite Teardown   Suite Teardown Default
-Test Setup       Test Setup Default
-Test Teardown    Test Teardown Default
+...                 Cobre os fluxos principais de abertura, operação e encerramento de mesas.
+...                 Pré-condição: app iniciado no Painel de Mesas.
+
+Resource            ../../../modules/commands/base_commands.resource
+
+Suite Setup         Suite Setup Default
+Suite Teardown      Suite Teardown Default
+Test Setup          Test Setup Default
+Test Teardown       Test Teardown Default
 
 
 *** Variables ***
-${TABLE_CLIENT}          Cliente Teste
-${CANCEL_REASON}         Motivo de cancelamento automático
-${ITEM_OBS}              Observação do item
+${TABLE_CLIENT}     Cliente Teste
+${CANCEL_REASON}    Motivo de cancelamento automático
+${ITEM_OBS}         Observação do item
 
 
 *** Test Cases ***
-Commands - Open table, select product, alter quantity and invoice 
+Commands - Open table, select product, alter quantity and invoice
     [Documentation]    Verifica o fluxo de abertura de mesa, seleção de produto, alteração de quantidade e pagamento com dinheiro.
     [Tags]    @allure.label.severity:critical    regression    commands    invoice
-    Commands - Complete Flow - Select Product And Alter Quantity   1    ${TABLE_CLIENT}    money
+    Commands - Complete Flow - Select Product And Alter Quantity    1    ${TABLE_CLIENT}    money
 
-Commands - Open table, select product Additionals and invoice 
+Commands - Open table, select product Additionals and invoice
     [Documentation]    Verifica o fluxo de abertura de mesa, seleção de produto com adicional e pagamento com dinheiro.
     [Tags]    @allure.label.severity:critical    regression    commands    additionals
-    Commands - Complete Flow - Select Product Additionals   2    ${TABLE_CLIENT}    money
+    Commands - Complete Flow - Select Product Additionals    2    ${TABLE_CLIENT}    money
 
 # Commands - Open table, select product combo and invoice
-#     [Documentation]    Verifica o fluxo de abertura de mesa, selecao de produto combo flexivel + produto final e pagamento.
-#     [Tags]    @allure.label.severity:critical    regression    commands    combo_flexivel_produto_final
-#     Commands - Complete Flow - Add Item Combo    3    ${TABLE_CLIENT}    money
-    
+#    [Documentation]    Verifica o fluxo de abertura de mesa, selecao de produto combo flexivel + produto final e pagamento.
+#    [Tags]    @allure.label.severity:critical    regression    commands    combo_flexivel_produto_final
+#    Commands - Complete Flow - Add Item Combo    3    ${TABLE_CLIENT}    money
+
 Commands - Open table, select product, add observations to additional to item and invoice
     [Documentation]    Verifica o fluxo de abertura de mesa, seleção de produto, adição de observação aos adicionais e pagamento.
     [Tags]    @allure.label.severity:critical    regression    commands    invoice
@@ -42,30 +44,30 @@ Commands - Open table, select product, add observation and invoice
     [Tags]    @allure.label.severity:critical    regression    commands    invoice
     Commands - Complete Flow - Add Observation    3    ${TABLE_CLIENT}    ${ITEM_OBS}    money
 
-Commands - Open table, select product not service and invoice 
+Commands - Open table, select product not service and invoice
     [Documentation]    Verifica o fluxo de abertura de mesa, seleção de produto marcado pra nao contabilizar serviço e pagamento com dinheiro.
     [Tags]    @allure.label.severity:critical    regression    commands    not_selling
-    Commands - Complete Flow - Select Product Not Service   4    ${TABLE_CLIENT}    money
+    Commands - Complete Flow - Select Product Not Service    4    ${TABLE_CLIENT}    money
 
 Commands - Open table, select product disabled and invoice
     [Documentation]    Verifica o fluxo de abertura de mesa, seleção de produto desativado e pagamento com dinheiro.
     [Tags]    @allure.label.severity:critical    regression    commands    not_selling
-    Commands - Complete Flow - Select Product Disabled   5    ${TABLE_CLIENT}    money
+    Commands - Complete Flow - Select Product Disabled    5    ${TABLE_CLIENT}    money
 
-Commands - Open table, select product not send to order and invoice 
+Commands - Open table, select product not send to order and invoice
     [Documentation]    Verifica o fluxo de abertura de mesa, seleção de produto marcado como não enviar para a comanda e pagamento com dinheiro.
     [Tags]    @allure.label.severity:critical    regression    commands    not_selling
-    Commands- Complete Flow - Select Product Not Send To Order   6    ${TABLE_CLIENT}    money
+    Commands- Complete Flow - Select Product Not Send To Order    6    ${TABLE_CLIENT}    money
 
 Commands - Open table, select product not selling and invoice
     [Documentation]    Verifica o fluxo de abertura de mesa, seleção de produto marcado como não vender e pagamento com dinheiro.
     [Tags]    @allure.label.severity:critical    regression    commands    not_selling
-    Commands - Complete Flow - Select Product Not Selling   6    ${TABLE_CLIENT}    money
+    Commands - Complete Flow - Select Product Not Selling    6    ${TABLE_CLIENT}    money
 
 Commands - Open table, select product promotion and invoice
     [Documentation]    Verifica o fluxo de abertura de mesa, seleção de produto em promoção e pagamento com dinheiro.
     [Tags]    @allure.label.severity:critical    regression    commands    promotion
-    Commands - Complete Flow - Select Product Promotion   7    ${TABLE_CLIENT}    money
+    Commands - Complete Flow - Select Product Promotion    7    ${TABLE_CLIENT}    money
 
 Commands - Open table, apply filter, select product and invoice
     [Documentation]    Verifica o fluxo de abertura de mesa, aplicacao de filtro, selecao de produto e pagamento em dinheiro.
@@ -88,7 +90,7 @@ Commands - Open table, print conference and invoice
     Commands - Complete Flow - Print Conference    10    ${TABLE_CLIENT}    money
 
 Commands - Open table and invoice with money
-    [Documentation]    Verifica o fluxo de abertura de mesa, adição de itens, e pagamento com dinheiro.    
+    [Documentation]    Verifica o fluxo de abertura de mesa, adição de itens, e pagamento com dinheiro.
     [Tags]    @allure.label.severity:critical    regression    commands    invoice
     Commands - Complete Flow - Invoice With Money    11    ${TABLE_CLIENT}    money
 
