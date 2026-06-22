@@ -22,11 +22,13 @@ modules/pdv/locators/ordersLocators.yml
 modules/pdv/locators/checkoutLocators.yml
 modules/pdv/locators/settingsLocators.yml
 modules/pdv/locators/clientsLocators.yml
+modules/pdv/locators/orderslistLocators.yml
 modules/pdv/pages/home_page.resource
 modules/pdv/pages/orders_page.resource
 modules/pdv/pages/checkout_page.resource
 modules/pdv/pages/settings_page.resource
 modules/pdv/pages/clients_page.resource
+modules/pdv/pages/orderslist_page.resource
 modules/pdv/navigation/pdv_navigation.resource
 modules/pdv/navigation/pdv_complete_streams.resource
 modules/pdv/navigation/pdv_settings_setup.resource
@@ -54,6 +56,7 @@ pdv.robot
         │           └── pages/orders_page.resource
         │           └── pages/checkout_page.resource
         │           └── pages/clients_page.resource
+        │           └── pages/orderslist_page.resource
         └── navigation/pdv_settings_setup.resource
               └── pages/home_page.resource
               └── pages/orders_page.resource
@@ -75,6 +78,8 @@ Ponto importante: a suíte `pdv.robot` não deve importar diretamente pages, nav
 | `modules/pdv/navigation/pdv_complete_streams.resource` | Compõe navigations e pages em fluxos completos de negócio. |
 | `modules/pdv/pages/clients_page.resource` | Contém PageObjects/actions atômicas da tela Lista de Clientes, modal de confirmação de sync e cadastro de cliente. |
 | `modules/pdv/locators/clientsLocators.yml` | Armazena os elementos da tela Lista de Clientes, modal de sync e formulário de cadastro. |
+| `modules/pdv/pages/orderslist_page.resource` | Contém PageObjects/actions atômicas da tela Lista de Pedidos, modal de ações, modal de impressão, cancelamento e status de impressão. |
+| `modules/pdv/locators/orderslistLocators.yml` | Armazena os elementos da tela Lista de Pedidos, modais de ações, impressão, cancelamento e status. |
 | `modules/pdv/navigation/pdv_settings_setup.resource` | Centraliza fluxos de configuração do app (modo de operação, formas de pagamento, impressoras etc.). Usado em setup de suíte ou teste. |
 | `tests/regression/pdv/pdv.robot` | Suíte principal que chama as keywords de fluxo completo. |
 
@@ -103,7 +108,7 @@ Hoje este arquivo:
 Exemplo atual de carregamento:
 
 ```robotframework
-Variables    ../../resources/libraries/locators_loader.py    modules/pdv/locators/homeLocators.yml    modules/pdv/locators/ordersLocators.yml    modules/pdv/locators/checkoutLocators.yml    modules/pdv/locators/settingsLocators.yml    modules/pdv/locators/clientsLocators.yml    modules/pdv/data/pdv_data.yml    ${DEVICE_TAG}
+Variables    ../../resources/libraries/locators_loader.py    modules/pdv/locators/homeLocators.yml    modules/pdv/locators/ordersLocators.yml    modules/pdv/locators/checkoutLocators.yml    modules/pdv/locators/settingsLocators.yml    modules/pdv/locators/clientsLocators.yml    modules/pdv/locators/orderslistLocators.yml    modules/pdv/data/pdv_data.yml    ${DEVICE_TAG}
 Resource     navigation/pdv_complete_streams.resource
 Resource     navigation/pdv_settings_setup.resource
 ```
@@ -132,6 +137,7 @@ Atualmente existem dados agrupados em:
 products:
 clients:
 payment_data:
+client_data:
 ```
 
 Exemplos de dados já implementados:
@@ -156,7 +162,9 @@ Exemplos de dados já implementados:
 - cliente:
   - `${clients.client_credit}`;
 - dados de pagamento:
-  - `${payment_data.bank_slip_calendar_day}`.
+  - `${payment_data.bank_slip_calendar_day}`;
+- dados de cadastro de cliente:
+  - `${client_data.cep}`.
 
 ### Quando alterar este arquivo
 
@@ -179,7 +187,7 @@ Os locators ficam em:
 modules/pdv/locators/*.yml
 ```
 
-Atualmente existem cinco arquivos principais.
+Atualmente existem seis arquivos principais.
 
 ### `homeLocators.yml`
 
@@ -319,6 +327,28 @@ Este arquivo cobre:
 
 Todos os namespaces possuem locators genéricos com placeholder `OPTION_NAME` ou `CLIENT_NAME` para uso dinâmico nas pages.
 
+### `orderslistLocators.yml`
+
+Responsável pelos elementos da tela Lista de Pedidos, modais de ações, impressão, cancelamento e status.
+
+Namespaces existentes:
+
+```yaml
+orders_list:
+order_actions_modal:
+print_options_modal:
+cancel_order_modal:
+print_status_modal:
+```
+
+Este arquivo cobre:
+
+- lista de pedidos: botão Voltar, botão Imprimir, campo de busca, botão Filtros e primeiro card de pedido;
+- modal de ações do pedido: botões Visualizar Pedido, Reimprimir Comprovante, Detalhes da Nota Fiscal, Cancelar Pedido e overlay de fechamento; telas de visualização e detalhes fiscais;
+- modal de opções de impressão: título, botões Recebimentos, Resumo de Vendas e Voltar;
+- modal de cancelamento: mensagem de confirmação, botão Sim, mensagem de sucesso e botão Ok;
+- modal de status de impressão: mensagens "Realizando a impressão!" e "Impressão concluída!".
+
 ### Boas práticas para locators
 
 - Manter os locators no arquivo correspondente à tela/contexto.
@@ -359,7 +389,11 @@ Pdv - Home - Click Logoff
 Pdv - Logoff - Verify Visible
 Pdv - Logoff - Click Confirm
 Pdv - Logoff - Click Cancel
+Pdv - Orders Status - Click Reprint
+Pdv - Orders Status - Click New Order
+Pdv - Orders Status - Click Share
 Pdv - Orders Status - Click Home
+Pdv - Orders - Click Home
 ```
 
 ### `orders_page.resource`
@@ -406,10 +440,17 @@ Contém ações atômicas de checkout e pagamento.
 Exemplos já existentes:
 
 ```robotframework
+Pdv - Checkout - Click Back
+Pdv - Checkout - Click Sync
 Pdv - Checkout - Click Method By Name
+Pdv - Checkout - Click Selected Method Actions
 Pdv - Checkout - Click Finish Sale
+Pdv - Checkout - Click Value Clear
+Pdv - Checkout - Click Value Backspace
+Pdv - Checkout - Click Value Cancel
 Pdv - Checkout - Click Value Confirm
 Pdv - Checkout - Click Bank Slip Add
+Pdv - Checkout - Click Bank Slip Sub
 Pdv - Checkout - Input Bank Slip Term
 Pdv - Checkout - Click Value Key
 Pdv - Checkout - Click Calendar
@@ -534,6 +575,9 @@ Client Register - Click Tab Details
 Client Register - Click Tab Address
 Client Register - Select Person Type
 Client Register - Fill Cpf
+Client Register - Fill Cnpj
+Client Register - Fill Fantasy Name
+Client Register - Fill Social Reason
 Client Register - Fill Name
 Client Register - Select Icms Contributor
 Client Register - Fill Phone
@@ -550,6 +594,64 @@ Client Register - Fill Complement
 Client Register - Click Init Order
 Client Register - Click Cancel
 Client Register - Click Save
+```
+
+As keywords `Fill Cnpj`, `Fill Fantasy Name` e `Fill Social Reason` são usadas exclusivamente no fluxo de cadastro de cliente Jurídico.
+
+### `orderslist_page.resource`
+
+Contém ações atômicas da tela Lista de Pedidos, modal de ações, modal de impressão, cancelamento e status de impressão.
+
+Keywords da Lista de Pedidos:
+
+```robotframework
+Orders List - Click Back
+Orders List - Click Print
+Orders List - Search
+Orders List - Click Filters
+Orders List - Click First Order
+Orders List - Should Be Visible
+```
+
+Keywords do Modal de Ações:
+
+```robotframework
+Orders List - Actions Modal Should Be Visible
+Orders List - Actions Modal Should Not Be Visible
+Orders List - Actions Modal Click View Order
+Orders List - Actions Modal Click Reprint Receipt
+Orders List - Actions Modal Click Fiscal Details
+Orders List - Actions Modal Click Cancel Order
+Orders List - Actions Modal Close By Overlay
+Orders List - View Order Screen Should Be Visible
+Orders List - Fiscal Details Screen Should Be Visible
+```
+
+Keywords do Modal de Impressão:
+
+```robotframework
+Orders List - Print Options Modal Should Be Visible
+Orders List - Print Options Modal Should Not Be Visible
+Orders List - Print Options Click Receipts
+Orders List - Print Options Click Sales Summary
+Orders List - Print Options Click Back
+```
+
+Keywords de Cancelamento de Pedido:
+
+```robotframework
+Orders List - Cancel Order Modal Should Be Visible
+Orders List - Cancel Order Modal Click Yes
+Orders List - Cancel Order Success Should Be Visible
+Orders List - Cancel Order Click Ok
+```
+
+Keywords de Status de Impressão:
+
+```robotframework
+Orders List - Print Status Should Be Printing
+Orders List - Print Status Should Be Completed
+Orders List - Print Status Should Not Be Completed
 ```
 
 ### Boas práticas para pages
@@ -589,6 +691,7 @@ Resource    ../pages/home_page.resource
 Resource    ../pages/orders_page.resource
 Resource    ../pages/checkout_page.resource
 Resource    ../pages/clients_page.resource
+Resource    ../pages/orderslist_page.resource
 ```
 
 As keywords de navigation agrupam ações atômicas das pages em passos de navegação reutilizáveis.
@@ -601,20 +704,32 @@ Pdv - Navigate To <Destino/Ação>
 
 Exemplos já existentes:
 
+Navegação — Home:
+
 ```robotframework
 Pdv - Navigate To New Order
 Pdv - Navigate To Initial Screen
+```
+
+Navegação — Pedido:
+
+```robotframework
 Pdv - Navigate To Select Product
 Pdv - Navigate To Search Product
 Pdv - Navigate To Search And Select First Product Card
 Pdv - Navigate To Input Barcode By Adb
 Pdv - Navigate To Select Product With Stock
 Pdv - Navigate To Select Product With Promotion Badge
+Pdv - Navigate To Search Product And Verify Stock
+Pdv - Navigate To Search Product And Verify Promotion Badge
+Pdv - Navigate To Long Press Product
+Pdv - Navigate To Search And Long Press Product
 Pdv - Navigate To Clear Product Search
 Pdv - Navigate To Select Price Table A
 Pdv - Navigate To Cancel Order
 Pdv - Navigate To Check Order
 Pdv - Navigate To Finish Order
+Pdv - Navigate To Finish Order From New Order
 Pdv - Navigate To Select Client
 Pdv - Navigate To Add Items From Cart
 Pdv - Navigate To Add Quantity
@@ -622,24 +737,56 @@ Pdv - Navigate To Remove Quantity
 Pdv - Navigate To Confirm Quantity
 Pdv - Navigate To Edit Quantity
 Pdv - Navigate To Remove Product From Order
+Pdv - Navigate To Add Cart Item Quantity
+Pdv - Navigate To Remove Cart Item Quantity
+Pdv - Navigate To Remove Cart Item By Name
+Pdv - Navigate To Remove Cart Item By Icon
+Pdv - Navigate To Edit Cart Item Quantity By Name
+Pdv - Navigate To Edit Cart Item Unit Price By Name
+Pdv - Navigate To Apply Cart Item Discount Integer By Name
+Pdv - Navigate To Apply Cart Item Discount Percent By Name
 Pdv - Navigate To Apply Discount Integer
 Pdv - Navigate To Apply Discount Percent
 Pdv - Navigate To Apply Additional Percent
 Pdv - Navigate To Apply Additional Integer
+```
+
+Navegação — Checkout:
+
+```robotframework
 Pdv - Navigate To Select Payment Method
+Pdv - Navigate To Confirm Payment Value
 Pdv - Navigate To Configure Bank Slip Payment
 Pdv - Navigate To Finish Sale
+```
+
+Navegação — Lista de Pedidos:
+
+```robotframework
+Pdv - Navigate To View Order
+Pdv - Navigate To Reprint First Order Receipt
+Pdv - Navigate To Fiscal Details First Order
+Pdv - Navigate To Cancel First Order
+Pdv - Navigate To Print Receipts
+Pdv - Navigate To Print Sales Summary
+```
+
+Navegação — Clientes:
+
+```robotframework
 Pdv - Navigate To Clients
 Pdv - Navigate To Sync Client List
 Pdv - Navigate To Search And Select Client
 Pdv - Navigate To Init Order From Client
 Pdv - Navigate To New Client
 Pdv - Navigate To Fill Client Details
+Pdv - Navigate To Fill Client Details Juridic
 Pdv - Navigate To Fill Client Address
 Pdv - Navigate To Save And Verify Client
+Pdv - Navigate To Save And Verify Client By Cnpj
 ```
 
-`Pdv - Navigate To Save And Verify Client` aguarda o campo de busca da lista aparecer após salvar antes de pesquisar — isso evita `StaleElementReferenceException` durante a transição de tela.
+`Pdv - Navigate To Save And Verify Client` e `Pdv - Navigate To Save And Verify Client By Cnpj` aguardam o campo de busca da lista aparecer após salvar antes de pesquisar — isso evita `StaleElementReferenceException` durante a transição de tela. A variante `By Cnpj` pesquisa pelo CNPJ (sem formatação) e verifica pela Razão Social.
 
 ### Pagamentos suportados por alias
 
@@ -700,21 +847,25 @@ Atualmente existem os seguintes fluxos completos:
 | `PDV - Complete Flow - Alter Quantity And Remove Item` | Altera quantidade, remove item e finaliza venda. |
 | `PDV - Complete Flow - Cancel Order After Select Product` | Seleciona produto e cancela pedido. |
 | `PDV - Complete Flow - Alter Client And Add Itens From Cart` | Altera cliente no carrinho, adiciona item e finaliza venda. |
-| `PDV - Complete Flow - Discount Integer` | Aplica desconto em valor fixo. |
-| `PDV - Complete Flow - Discount Percent` | Aplica desconto percentual. |
-| `PDV - Complete Flow - Additional Percent` | Aplica acréscimo percentual. |
-| `PDV - Complete Flow - Additional Integer` | Aplica acréscimo em valor fixo. |
+| `PDV - Complete Flow - Discount Integer` | Aplica desconto em valor fixo no carrinho. |
+| `PDV - Complete Flow - Discount Percent` | Aplica desconto percentual no carrinho. |
+| `PDV - Complete Flow - Discount Item` | Aplica desconto por item: valor fixo em um produto e percentual em outro. |
+| `PDV - Complete Flow - Additional Percent` | Aplica acréscimo percentual no carrinho. |
+| `PDV - Complete Flow - Additional Integer` | Aplica acréscimo em valor fixo no carrinho. |
 | `PDV - Complete Flow - Item Edition` | Edita quantidades e remove itens no carrinho. |
 | `PDV - Complete Flow - Bankslip` | Pedido com cliente e pagamento por boleto bancário. |
 | `PDV - Complete Flow - Item Variations` | Pedido com item fracionado, composição, variações por código de barras e promoção. |
 | `PDV - Complete Flow - Express Mode` | Pedido adicionando itens pelo modo expresso. |
 | `PDV - Complete Flow - Mini PDV Mode` | Pedido usando código de barras via ADB. |
-| `PDV - Complete Flow - Smart PDV Functions` | Seleciona cliente, valida estoque e altera preço unitário. |
+| `PDV - Complete Flow - Smart PDV Functions` | Valida estoque e altera preço unitário. |
 | `PDV - Complete Flow - Price Table` | Seleciona tabela de preço A e finaliza venda. |
 | `PDV - Complete Flow - Pix Off` | Pedido com pagamento via Pix Off. |
+| `PDV - Complete Flow - NFCe Disable` | Pedido realizado com fiscal desativado. |
+| `PDV - Complete Flow - No Payment Method` | Pedido finalizado sem selecionar método de pagamento. |
 | `PDV - Complete Flow - Ticket Order` | Pedido com emissão de ticket de retirada (quantidade aumentada 10x no carrinho). |
 | `PDV - Complete Flow - Sync Search Client And Init Order` | Sincroniza lista de clientes, seleciona cliente, inicia pedido via "Iniciar Venda" e finaliza. |
-| `PDV - Complete Flow - Register Client Type Fisic` | Cadastra cliente pessoa Física ou Jurídica com dados gerados pelo Faker e verifica o registro. |
+| `PDV - Complete Flow - Register Client` | Cadastra cliente pessoa Física ou Jurídica com dados gerados pelo Faker e verifica o registro. |
+| `PDV - Complete Flow - List Orders Functions` | Navega pela Lista de Pedidos: visualiza, reimprimi, cancela pedido e imprime relatórios. |
 
 ### Boas práticas para fluxos completos
 
@@ -768,6 +919,7 @@ Pdv - Setup <O Que Configura>
 | `Pdv - Setup Active/Deactive NFCe` | Alterna NFC-e nas configurações fiscais. |
 | `Pdv - Setup Active/Deactive Discount Item` | Alterna Desconto/Acréscimo por item no Smart PDV. |
 | `Pdv - Setup Active/Deactive Payment Method` | Alterna Obrigar pagamentos na venda no Smart PDV. |
+| `Pdv - Setup Active/Deactive Ticket` | Seleciona opção de ticket ao finalizar e alterna reimpressão de ticket. |
 
 ### Alias de modo de operação
 
@@ -814,6 +966,36 @@ PDV - Order common
     ...    money
 ```
 
+Cenários implementados na suíte (atualmente comentados):
+
+| Test Case | Fluxo chamado |
+| --- | --- |
+| `PDV - Order common` | `PDV - Complete Flow - Order Common` |
+| `PDV - Filter name, reference and barcode` | `PDV - Complete Flow - Filter Name Reference And Barcode` |
+| `PDV - Alter Quantity and Remove item` | `PDV - Complete Flow - Alter Quantity And Remove Item` |
+| `PDV - Cancel Order` | `PDV - Complete Flow - Cancel Order After Select Product` |
+| `PDV - Alter Client and Add Itens from Cart` | `PDV - Complete Flow - Alter Client And Add Itens From Cart` |
+| `PDV - Discount Integer` | `PDV - Complete Flow - Discount Integer` |
+| `PDV - Discount Percent` | `PDV - Complete Flow - Discount Percent` |
+| `PDV - Discount Item` | `PDV - Complete Flow - Discount Item` |
+| `PDV - Additional Percent` | `PDV - Complete Flow - Additional Percent` |
+| `PDV - Additional Integer` | `PDV - Complete Flow - Additional Integer` |
+| `PDV - Item edition` | `PDV - Complete Flow - Item Edition` |
+| `PDV - Bankslip` | `PDV - Complete Flow - Bankslip` |
+| `PDV - Pix Off` | `PDV - Complete Flow - Pix Off` |
+| `PDV - Item Variations` | `PDV - Complete Flow - Item Variations` |
+| `PDV - Price Table` | `PDV - Complete Flow - Price Table` |
+| `PDV - Express Mode` | `PDV - Complete Flow - Express Mode` |
+| `PDV - Mini PDV Mode` | `PDV - Complete Flow - Mini PDV Mode` |
+| `PDV - Smart PDV Functions` | `PDV - Complete Flow - Smart PDV Functions` |
+| `PDV - NFCe Disable` | `PDV - Complete Flow - NFCe Disable` |
+| `PDV - No Payment Method` | `PDV - Complete Flow - No Payment Method` |
+| `PDV - Ticket` | `PDV - Complete Flow - Ticket Order` |
+| `PDV - Sync Search Client And Init Order` | `PDV - Complete Flow - Sync Search Client And Init Order` |
+| `PDV - Register Client Type Fisic` | `PDV - Complete Flow - Register Client` com `Física` |
+| `PDV - Register Client Type Juridic` | `PDV - Complete Flow - Register Client` com `Jurídica` |
+| `PDV - List Orders Functions` | `PDV - Complete Flow - List Orders Functions` |
+
 ### Ao adicionar um novo fluxo na suíte
 
 Adicionar um novo test case em `tests/regression/pdv/pdv.robot` chamando a keyword criada em `pdv_complete_streams.resource`.
@@ -843,7 +1025,8 @@ Quando um novo fluxo for informado no terminal, seguir esta ordem:
      - `modules/pdv/locators/ordersLocators.yml`;
      - `modules/pdv/locators/checkoutLocators.yml`;
      - `modules/pdv/locators/settingsLocators.yml`;
-     - `modules/pdv/locators/clientsLocators.yml`.
+     - `modules/pdv/locators/clientsLocators.yml`;
+     - `modules/pdv/locators/orderslistLocators.yml`.
    - Criar novos locators apenas quando necessário.
 
 4. **Criar ou atualizar PageObjects**
@@ -852,7 +1035,8 @@ Quando um novo fluxo for informado no terminal, seguir esta ordem:
      - `modules/pdv/pages/orders_page.resource`;
      - `modules/pdv/pages/checkout_page.resource`;
      - `modules/pdv/pages/settings_page.resource` (para ações nas telas de configuração);
-     - `modules/pdv/pages/clients_page.resource` (para ações na Lista de Clientes e cadastro).
+     - `modules/pdv/pages/clients_page.resource` (para ações na Lista de Clientes e cadastro);
+     - `modules/pdv/pages/orderslist_page.resource` (para ações na Lista de Pedidos).
    - Criar actions atômicas de clique, input, validação ou interação.
 
 5. **Criar ou atualizar navigation**
@@ -923,7 +1107,7 @@ PDV - Complete Flow - Pix Off
 - Os locators e dados são carregados via `locators_loader.py` em `base_pdv.resource`.
 - A suíte principal deve importar apenas `base_pdv.resource`.
 - `pdv_complete_streams.resource` importa `pdv_navigation.resource`.
-- `pdv_navigation.resource` importa as pages de fluxo de negócio (home, orders, checkout, clients).
+- `pdv_navigation.resource` importa as pages de fluxo de negócio (home, orders, checkout, clients, orderslist).
 - `pdv_settings_setup.resource` importa as pages de configuração (home, orders, checkout, settings).
 - Se uma nova page de fluxo de negócio for criada, importar em `pdv_navigation.resource`.
 - Se uma nova page de configuração for criada, importar em `pdv_settings_setup.resource`.
@@ -1036,7 +1220,7 @@ PDV - Discount Integer
 
 - [ ] O fluxo informado foi entendido e dividido em passos.
 - [ ] Os dados necessários foram reutilizados ou adicionados em `pdv_data.yml`.
-- [ ] Os locators necessários existem nos arquivos `.yml` corretos (incluindo `settingsLocators.yml` para fluxos de configuração).
+- [ ] Os locators necessários existem nos arquivos `.yml` corretos (incluindo `settingsLocators.yml` para fluxos de configuração e `orderslistLocators.yml` para fluxos da Lista de Pedidos).
 - [ ] As PageObjects foram criadas como ações atômicas.
 - [ ] As navigations reutilizáveis foram criadas ou reaproveitadas.
 - [ ] A keyword de fluxo completo foi criada em `pdv_complete_streams.resource` (fluxos de negócio) ou em `pdv_settings_setup.resource` (fluxos de configuração do app).

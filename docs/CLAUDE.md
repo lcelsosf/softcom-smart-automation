@@ -8,18 +8,19 @@ Em caso de dúvida, este arquivo prevalece sobre qualquer convenção genérica.
 
 ## 1. Stack e ferramentas
 
-| Ferramenta | Versão mínima | Função |
-|---|---|---|
-| Python | 3.11 | Runtime |
-| uv | latest | Gerenciador de pacotes (substitui pip) |
-| Robot Framework | 7.4.2 | Framework de automação |
-| AppiumLibrary | 3.2.1 | Keywords mobile Android |
-| Pabot | 5.2.2 | Execução paralela por device |
-| Allure Robot Framework | 2.13.5 | Relatórios |
-| Robocop | 8.2.2 | Linter (dev dependency) |
-| RobotFramework Faker | 6.0.0 | Geração de dados de teste |
-| python-dotenv | 1.2.2 | Leitura de variáveis de ambiente |
-| PyYAML | 6.0.3 | Leitura de arquivos YAML |
+| Ferramenta             | Versão mínima | Função                                 |
+| ---------------------- | ------------- | -------------------------------------- |
+| Python                 | 3.12          | Runtime                                |
+| uv                     | latest        | Gerenciador de pacotes (substitui pip) |
+| Robot Framework        | 7.4.2         | Framework de automação                 |
+| AppiumLibrary          | 3.2.1         | Keywords mobile Android                |
+| Pabot                  | 5.2.2         | Execução paralela por device           |
+| Allure Robot Framework | 2.16.0        | Relatórios                             |
+| Robocop                | 8.2.7         | Linter                                 |
+| RobotFramework Faker   | 6.0.0         | Geração de dados de teste              |
+| python-dotenv          | 1.2.2         | Leitura de variáveis de ambiente       |
+| PyYAML                 | 6.0.3         | Leitura de arquivos YAML               |
+| pytest                 | 9.0.3         | Testes unitários (dev dependency)      |
 
 Gerenciamento de dependências exclusivamente via `uv`. Nunca usar `pip install` diretamente.
 
@@ -50,42 +51,27 @@ projeto/
 │   │   └── validation.resource        # Validação via logcat (renomeado de .robot)
 │   │
 │   ├── libraries/
-│   │   ├── DevicesConfig.py            # Lê devices.yaml, expande env vars, fallback por UDID
-│   │   ├── LogcatLibrary.py            # Captura e validação de logcat Android
+│   │   ├── devicesconfig.py            # Lê devices.yaml, expande env vars, fallback por UDID
+│   │   ├── logcatlibrary.py            # Captura e validação de logcat Android
 │   │   └── locators_loader.py          # Resolve APP_PACKAGE e faz merge dos YAMLs de locators
-│   │
-│   ├── locators/                       # YAMLs de locators globais/compartilhados
-│   │   ├── common.yml
-│   │   ├── default.yml
-│   │   ├── pdv.yml
-│   │   └── commands.yml
 │   │
 │   ├── data/
 │   │   ├── devices.yaml                # FONTE ÚNICA: tag → udid, app_package, keyboard_close,
 │   │   │                               # system_port, appium_server
-│   │   ├── user_data.yaml
 │   │   └── endpoints.yaml
-│   │
-│   ├── fixtures/                       # Massa de dados por módulo
-│   │   ├── commands/
-│   │   ├── default/
-│   │   └── common/
 │   │
 │   └── variables/
 │       └── env_variables.py            # Leitura de variáveis de ambiente via python-dotenv
 │
 ├── modules/                            # Camada modular — cada módulo é auto-contido
-│   ├── default/
-│   │   ├── base_default.resource       # ÚNICO ponto de entrada do módulo
-│   │   ├── locators/
-│   │   ├── pages/
-│   │   └── navigation/
-│   │
 │   ├── pdv/
-│   │   ├── base_pdv.resource
+│   │   ├── base_pdv.resource           # ÚNICO ponto de entrada do módulo
+│   │   ├── data/
+│   │   │   └── pdv_data.yml
 │   │   ├── locators/
 │   │   ├── pages/
-│   │   └── navigation/
+│   │   ├── navigation/
+│   │   └── pdv_guide.md
 │   │
 │   ├── commands/
 │   │   ├── base_commands.resource
@@ -93,45 +79,23 @@ projeto/
 │   │   ├── pages/
 │   │   └── navigation/
 │   │
-│   ├── prevenda/
-│   │   ├── base_prevenda.resource
-│   │   ├── locators/
-│   │   ├── pages/
-│   │   └── navigation/
-│   │
-│   ├── mini_mercado/
-│   │   ├── base_mini_mercado.resource
-│   │   ├── locators/
-│   │   ├── pages/
-│   │   └── navigation/
-│   │
-│   └── common/                         # Pages e locators compartilhados entre módulos
-│       ├── pages/
-│       │   ├── login_page.resource
-│       │   └── verifications.resource
-│       └── locators/
+│   └── common/                         # Pages compartilhadas entre módulos
+│       └── pages/
+│           ├── loginPage.resource
+│           └── verifications.resource
 │
 ├── tests/                              # Suites de teste — uma pasta por módulo
-│   ├── regression/
-│   │   ├── default/
-│   │   │   └── default.robot
-│   │   ├── pdv/
-│   │   │   └── pdv.robot
-│   │   ├── commands/
-│   │   │   └── commands.robot
-│   │   ├── prevenda/
-│   │   │   └── prevenda.robot
-│   │   └── mini_mercado/
-│   │       └── mini_mercado.robot
-│   ├── smoke/
-│   │   └── smoke.robot
-│   └── unit/
-│       └── test_logcat_library.py
+│   └── regression/
+│       ├── pdv/
+│       │   └── pdv.robot
+│       └── commands/
+│           └── commands.robot
 │
 ├── pabot_configs/                      # Um .args por adquirente
 │   ├── cielo.args
 │   ├── rede.args
 │   ├── rede_n960k.args
+│   ├── getnet.args
 │   ├── getnet_dx8000.args
 │   ├── getnet_p2.args
 │   ├── getnet_p3.args
@@ -144,15 +108,16 @@ projeto/
 │   ├── sipag_dx8000.args
 │   ├── safra.args
 │   ├── mercadopago.args
+│   ├── quickpay.args
 │   ├── quickpay_a910.args
-│   ├── clover.args
-│   └── README.md
+│   └── clover.args
 │
+├── docs/
+│   └── CLAUDE.md                       # Documento arquitetural — você está aqui
 ├── pabot_results/                      # Gerado automaticamente — gitignore
-├── allure-report/                      # Gerado automaticamente — gitignore
-├── documentation/                      # Documentação do projeto
-│   └── PROJECT_ANALYSIS.md
-├── run_tests.sh                        # Detecção de devices via ADB + menu interativo
+├── allure-results/                     # Gerado automaticamente pelo listener — gitignore
+├── allure-report/                      # Gerado automaticamente pelo allure generate — gitignore
+├── run_tests.ps1                       # Detecção de devices via ADB + menu interativo (PowerShell)
 ├── .env                                # UDIDs reais — gitignore
 ├── .env.example                        # Template de variáveis de ambiente
 ├── .gitignore
@@ -186,36 +151,36 @@ default_app_package: "softcom.mobile.smart2"
 
 devices:
   <tag>:
-    udid: "${NOME_DA_VAR_ENV}"        # lido via os.getenv() com python-dotenv
-    app_package: "com.pacote.app"     # opcional — usa default_app_package se omitido
-    keyboard_close: "hide"            # "hide" ou "back"
-    system_port: 8200                 # porta única por device — evitar colisões no pabot
+    udid: "${NOME_DA_VAR_ENV}" # lido via os.getenv() com python-dotenv
+    app_package: "com.pacote.app" # opcional — usa default_app_package se omitido
+    keyboard_close: "hide" # "hide" ou "back"
+    system_port: 8200 # porta única por device — evitar colisões no pabot
     appium_server: "http://localhost:4723"
 ```
 
 **Adquirentes cadastrados:**
 
-| Tag | UDID env var | system_port |
-|---|---|---|
-| cielo | CIELO_DX8000_UDID | 8200 |
-| rede | REDE_L400_UDID | 8202 |
-| rede_n960k | REDE_N960K_UDID | 8204 |
-| getnet | GETNET_DX8000_UDID | 8206 |
-| getnet_dx8000 | GETNET_DX8000_UDID | 8206 |
-| getnet_p2 | GETNET_P2_UDID | 8208 |
-| getnet_p3 | GETNET_P3_UDID | 8210 |
-| stone | STONE_UDID | 8212 |
-| pagbank | PAGBANK_A7_1_UDID | 8214 |
-| pagbank_a11 | PAGBANK_A11_UDID | 8216 |
-| fiserv | FISERV_UDID | 8218 |
-| sipag_p2 | SIPAG_P2_UDID | 8220 |
-| sipag_x990 | SIPAG_X990_UDID | 8222 |
-| sipag_dx8000 | SIPAG_DX8000_UDID | 8224 |
-| safra | SAFRA_UDID | 8226 |
-| mercadopago | MERCADOPAGO_UDID | 8228 |
-| quickpay | QUICKPAY_A910_UDID | 8230 |
-| quickpay_a910 | QUICKPAY_A910_UDID | 8230 |
-| clover | CLOVER_UDID | 8232 |
+| Tag           | UDID env var       | system_port |
+| ------------- | ------------------ | ----------- |
+| cielo         | CIELO_DX8000_UDID  | 8200        |
+| rede          | REDE_L400_UDID     | 8202        |
+| rede_n960k    | REDE_N960K_UDID    | 8204        |
+| getnet        | GETNET_DX8000_UDID | 8206        |
+| getnet_dx8000 | GETNET_DX8000_UDID | 8206        |
+| getnet_p2     | GETNET_P2_UDID     | 8208        |
+| getnet_p3     | GETNET_P3_UDID     | 8210        |
+| stone         | STONE_UDID         | 8212        |
+| pagbank       | PAGBANK_A7_1_UDID  | 8214        |
+| pagbank_a11   | PAGBANK_A11_UDID   | 8216        |
+| fiserv        | FISERV_UDID        | 8218        |
+| sipag_p2      | SIPAG_P2_UDID      | 8220        |
+| sipag_x990    | SIPAG_X990_UDID    | 8222        |
+| sipag_dx8000  | SIPAG_DX8000_UDID  | 8224        |
+| safra         | SAFRA_UDID         | 8226        |
+| mercadopago   | MERCADOPAGO_UDID   | 8228        |
+| quickpay      | QUICKPAY_A910_UDID | 8230        |
+| quickpay_a910 | QUICKPAY_A910_UDID | 8230        |
+| clover        | CLOVER_UDID        | 8232        |
 
 ---
 
@@ -240,6 +205,7 @@ class DevicesConfig:
 ```
 
 Regras de implementação:
+
 - Usar `python-dotenv` para expandir variáveis de ambiente (`${VAR}` no YAML)
 - Nunca usar a sintaxe customizada `%{VAR=default}` — usar `os.getenv("VAR", default)` padrão
 - Carregar o `.env` automaticamente via `load_dotenv()` no `__init__`
@@ -266,23 +232,25 @@ essas informações vivem exclusivamente no `devices.yaml`.
 ```robot
 *** Settings ***
 Library     AppiumLibrary
-Library     resources/libraries/DevicesConfig.py
-Library     resources/libraries/LogcatLibrary.py
-Resource    resources/helpers/structured_logging.resource
-Resource    resources/helpers/common_keywords.resource
-Resource    resources/helpers/error_handling.resource
-Resource    resources/base/open_app.resource
-Resource    resources/base/setup.resource
+Library     FakerLibrary    locale=pt_BR
+Library     ../libraries/devicesconfig.py
+Library     ../libraries/logcatlibrary.py
+Variables   ../variables/env_variables.py
+Resource    ../helpers/structured_logging.resource
+Resource    ../helpers/error_handling.resource
+Resource    ../helpers/common_keywords.resource
+Resource    open_app.resource
+Resource    setup.resource
 
 *** Variables ***
-${SCREENSHOT_DIR}     results/screenshots
-${TIMEOUT}            30s
-${SHORT_TIMEOUT}      10s
-${ELEMENT_TIMEOUT}    15s
-${DEFAULT_TIMEOUT}    30s
 ${DEVICE_TAG}         ${EMPTY}
 ${DEVICE_UDID}        emulator-5554
 ${DEFAULT_UDID}       emulator-5554
+${TIMEOUT}            60s
+${SHORT_TIMEOUT}      10s
+${ELEMENT_TIMEOUT}    60s
+${DEFAULT_TIMEOUT}    60s
+${SCREENSHOT_DIR}     results/screenshots
 ```
 
 ---
@@ -309,9 +277,10 @@ Resource    ./navigation/<modulo>_navigation.resource
 *** Settings ***
 Documentation    Suite de regressão — módulo <modulo>
 Resource         ../../modules/<modulo>/base_<modulo>.resource
-Suite Setup      Open App
-Suite Teardown   Close App
-Test Setup       <keyword de setup do módulo se necessário>
+Suite Setup      Suite Setup Default
+Suite Teardown   Suite Teardown Default
+Test Setup       Test Setup Default
+Test Teardown    Test Teardown Default
 
 *** Test Cases ***
 <Nome do cenário em português>
@@ -321,8 +290,12 @@ Test Setup       <keyword de setup do módulo se necessário>
 ```
 
 Regras:
+
 - Importar **apenas** o `base_<modulo>.resource` — nunca importar resources diretamente
-- Usar `Open App` e `Close App` de `open_app.resource` no Setup/Teardown
+- Usar `Suite Setup Default` / `Suite Teardown Default` / `Test Setup Default` / `Test Teardown Default` de `setup.resource`
+- `Suite Setup Default` chama `Open App` internamente; `Suite Teardown Default` chama `Close App`
+- `Test Setup Default` ignora o teste automaticamente se uma falha de UI foi detectada no teste anterior
+- `Test Teardown Default` captura screenshot em falha e seta flag de falha de UI para a suite
 - Tags Allure em todos os casos de teste
 
 ---
@@ -330,6 +303,7 @@ Regras:
 ## 10. Padrão de nomenclatura
 
 ### Keywords
+
 - **Pages:** `<Modulo> - <Tela> - <Ação>`
   - Exemplo: `Default - Orders - Select Product`
 - **Navigation:** `<Modulo> - Navigate To <Destino>`
@@ -341,6 +315,7 @@ Regras:
 - **Setup/Teardown:** `Open App`, `Close App`
 
 ### Arquivos
+
 - Pages: `<tela>_page.resource`
 - Locators: `<tela>_locators.yaml`
 - Navigation: `<modulo>_navigation.resource`
@@ -348,6 +323,7 @@ Regras:
 - Suites: `<modulo>.robot` ou `<funcionalidade>_suite.robot`
 
 ### Variáveis Robot Framework
+
 - Globais: `${UPPER_CASE}`
 - Locators carregados: `${nome_tela.nome_elemento}` (notação de ponto via locators_loader)
 
@@ -380,16 +356,16 @@ _Do Wait Visible And Click Element
 O arquivo `variables/variables.resource` foi eliminado na refatoração.
 Suas responsabilidades foram redistribuídas:
 
-| Variável | Destino |
-|---|---|
-| `${APPIUM_SERVER_URL}` | `devices.yaml` por tag → lido pelo `DevicesConfig.py` |
-| `${SYSTEM_PORT}` | `devices.yaml` por tag → lido pelo `DevicesConfig.py` |
-| `${DEVICE_TAG}` | Seção `*** Variables ***` do `base.resource` |
-| `${DEVICE_UDID}` | Seção `*** Variables ***` do `base.resource` |
-| `${DEFAULT_UDID}` | Seção `*** Variables ***` do `base.resource` |
-| `${SCREENSHOT_DIR}` | Seção `*** Variables ***` do `base.resource` |
+| Variável                   | Destino                                                  |
+| -------------------------- | -------------------------------------------------------- |
+| `${APPIUM_SERVER_URL}`     | `devices.yaml` por tag → lido pelo `DevicesConfig.py`    |
+| `${SYSTEM_PORT}`           | `devices.yaml` por tag → lido pelo `DevicesConfig.py`    |
+| `${DEVICE_TAG}`            | Seção `*** Variables ***` do `base.resource`             |
+| `${DEVICE_UDID}`           | Seção `*** Variables ***` do `base.resource`             |
+| `${DEFAULT_UDID}`          | Seção `*** Variables ***` do `base.resource`             |
+| `${SCREENSHOT_DIR}`        | Seção `*** Variables ***` do `base.resource`             |
 | `${*_UDID}` por adquirente | Eliminadas — `get_tag_from_udid()` no `DevicesConfig.py` |
-| Credenciais de teste | `.env` → `env_variables.py` via `python-dotenv` |
+| Credenciais de teste       | `.env` → `env_variables.py` via `python-dotenv`          |
 
 ---
 
@@ -408,14 +384,14 @@ A keyword `Get Device Type` foi absorvida:
 
 A pasta `common/` foi dissolvida. Mapeamento dos arquivos:
 
-| Arquivo original | Destino |
-|---|---|
-| `common/open_app.resource` | `resources/base/open_app.resource` |
-| `common/common_keywords.resource` | `resources/helpers/common_keywords.resource` |
-| `common/error_handling.resource` | `resources/helpers/error_handling.resource` |
-| `common/structured_logging.resource` | `resources/helpers/structured_logging.resource` |
-| `common/validation.robot` | `resources/helpers/validation.resource` (renomear extensão) |
-| `common/device.resource` | **Eliminado** |
+| Arquivo original                     | Destino                                                     |
+| ------------------------------------ | ----------------------------------------------------------- |
+| `common/open_app.resource`           | `resources/base/open_app.resource`                          |
+| `common/common_keywords.resource`    | `resources/helpers/common_keywords.resource`                |
+| `common/error_handling.resource`     | `resources/helpers/error_handling.resource`                 |
+| `common/structured_logging.resource` | `resources/helpers/structured_logging.resource`             |
+| `common/validation.robot`            | `resources/helpers/validation.resource` (renomear extensão) |
+| `common/device.resource`             | **Eliminado**                                               |
 
 ---
 
@@ -423,47 +399,52 @@ A pasta `common/` foi dissolvida. Mapeamento dos arquivos:
 
 Renomeações aplicadas para evitar colisão com AppiumLibrary:
 
-| Nome antigo | Nome novo | Motivo |
-|---|---|---|
-| `Wait Until Element Is Not Visible` | `Wait For Element To Disappear` | Colisão com AppiumLibrary |
-| `Element Should Not Be Visible` | `Assert Element Not Visible` | Colisão com AppiumLibrary |
-| `Limpar Logcat` | `Clear Logcat` (direto da LogcatLibrary) | Wrapper desnecessário |
-| `Wait And Click Element` | `Wait Visible And Click Element` com `timeout` opcional | Duplicação |
+| Nome antigo                         | Nome novo                                               | Motivo                    |
+| ----------------------------------- | ------------------------------------------------------- | ------------------------- |
+| `Wait Until Element Is Not Visible` | `Wait For Element To Disappear`                         | Colisão com AppiumLibrary |
+| `Element Should Not Be Visible`     | `Assert Element Not Visible`                            | Colisão com AppiumLibrary |
+| `Limpar Logcat`                     | `Clear Logcat` (direto da LogcatLibrary)                | Wrapper desnecessário     |
+| `Wait And Click Element`            | `Wait Visible And Click Element` com `timeout` opcional | Duplicação                |
 
 ---
 
 ## 16. Execução de testes
 
 ### Execução interativa (recomendado)
-```bash
-chmod +x run_tests.sh
-./run_tests.sh
+
+```powershell
+.\run_tests.ps1
 # → detecta devices via ADB
 # → exibe menu de seleção de devices e suites
 # → monta e executa o comando pabot
-# → gera allure report
+# → gera allure report automaticamente
 ```
 
 ### Execução manual — device único
+
 ```bash
-uv run robot -v DEVICE_TAG:cielo tests/regression/default/default.robot
+uv run robot -v DEVICE_TAG:rede tests/regression/pdv/pdv.robot
 ```
 
 ### Execução manual — paralela
+
 ```bash
 uv run pabot --processes 2 \
       --argumentfile1 pabot_configs/cielo.args \
       --argumentfile2 pabot_configs/clover.args \
-      --outputdir pabot_results/ \
-      --listener allure_robotframework:allure-report/ \
+      --outputdir . \
+      --listener allure_robotframework:allure-results \
       tests/
 ```
 
 ### Gerar relatório Allure
+
 ```bash
-uv run allure generate allure-report/ -o allure-report/html --clean
-uv run allure open allure-report/html
+allure generate allure-results -o allure-report --clean
+allure open allure-report
 ```
+
+> Allure é instalado via npm (`npm install -g allure-commandline`), não via uv.
 
 ---
 
@@ -475,6 +456,7 @@ uv run allure open allure-report/html
 
 # Resultados de execução
 pabot_results/
+allure-results/
 allure-report/
 results/
 
@@ -493,21 +475,21 @@ __pycache__/
 
 ## 18. Plano de migração — ordem de execução
 
-| # | Ação | Arquivos afetados | Risco | Status |
-|---|---|---|---|---|
-| 1 | Remover import `.venv` de `commands/main_navigation.resource` | 1 arquivo | Baixo | ✅ 2026-05-05 |
-| 2 | Renomear `common/validation.robot` → `resources/helpers/validation.resource` | 1 arquivo | Baixo | ✅ 2026-05-05 |
-| 3 | Refatorar `DevicesConfig.py` — adicionar `get_tag_from_udid()` e `get_device_config()`, migrar para `python-dotenv` | 1 arquivo | Médio | ✅ 2026-05-05 |
-| 4 | Adicionar `system_port` e `appium_server` ao `devices.yaml` para todos os adquirentes | 1 arquivo | Baixo | ✅ 2026-05-05 |
-| 5 | Simplificar todos os `.args` — remover tudo exceto `--variable DEVICE_TAG:<tag>` | 19 arquivos | Baixo | ✅ 2026-05-05 |
-| 6 | Criar `resources/base/base.resource` com variáveis globais (substitui `variables.resource`) | 1 arquivo novo | Médio | ✅ 2026-05-05 |
-| 7 | Mover e adaptar arquivos de `common/` para `resources/base/` e `resources/helpers/` | 6 arquivos | Médio | ✅ 2026-05-05 |
-| 8 | Eliminar `common/device.resource` — adaptar `Close Keyboard` e `comboPage.resource` | 2 arquivos | Médio | ✅ 2026-05-05 |
-| 9 | Criar `base_<modulo>.resource` para cada módulo centralizando todos os imports | 5 arquivos | Médio | ⏳ Pendente |
-| 10 | Adaptar suites para importar apenas o `base_<modulo>.resource` do módulo | 5 suites | Médio | ⏳ Pendente |
-| 11 | Mover `pages/` e `navigation/` para dentro de `modules/<modulo>/` | ~40 arquivos | Alto | ⏳ Pendente |
-| 12 | Resolver `base_minimarket.resource` — implementar ou remover | 1-5 arquivos | Baixo | ⏳ Pendente |
-| 13 | Limpar `orders_navigation.resource` (shim) e código morto em `commands/` | 2 arquivos | Médio | ⏳ Pendente |
+| #   | Ação                                                                                                                | Arquivos afetados   | Risco | Status                        |
+| --- | ------------------------------------------------------------------------------------------------------------------- | ------------------- | ----- | ----------------------------- |
+| 1   | Remover import `.venv` de `commands/main_navigation.resource`                                                       | 1 arquivo           | Baixo | ✅ 2026-05-05                 |
+| 2   | Renomear `common/validation.robot` → `resources/helpers/validation.resource`                                        | 1 arquivo           | Baixo | ✅ 2026-05-05                 |
+| 3   | Refatorar `DevicesConfig.py` — adicionar `get_tag_from_udid()` e `get_device_config()`, migrar para `python-dotenv` | 1 arquivo           | Médio | ✅ 2026-05-05                 |
+| 4   | Adicionar `system_port` e `appium_server` ao `devices.yaml` para todos os adquirentes                               | 1 arquivo           | Baixo | ✅ 2026-05-05                 |
+| 5   | Simplificar todos os `.args` — remover tudo exceto `--variable DEVICE_TAG:<tag>`                                    | 19 arquivos         | Baixo | ✅ 2026-05-05                 |
+| 6   | Criar `resources/base/base.resource` com variáveis globais (substitui `variables.resource`)                         | 1 arquivo novo      | Médio | ✅ 2026-05-05                 |
+| 7   | Mover e adaptar arquivos de `common/` para `resources/base/` e `resources/helpers/`                                 | 6 arquivos          | Médio | ✅ 2026-05-05                 |
+| 8   | Eliminar `common/device.resource` — adaptar `Close Keyboard` e `comboPage.resource`                                 | 2 arquivos          | Médio | ✅ 2026-05-05                 |
+| 9   | Criar `base_<modulo>.resource` para cada módulo centralizando todos os imports                                      | pdv ✅, commands ✅ | Médio | ✅ Concluído (pdv + commands) |
+| 10  | Adaptar suites para importar apenas o `base_<modulo>.resource` do módulo                                            | pdv ✅, commands ✅ | Médio | ✅ Concluído (pdv + commands) |
+| 11  | Mover `pages/` e `navigation/` para dentro de `modules/<modulo>/`                                                   | pdv ✅, commands ✅ | Alto  | ✅ Concluído (pdv + commands) |
+| 12  | Resolver `base_minimarket.resource` — implementar ou remover                                                        | 1-5 arquivos        | Baixo | ⏳ Pendente                   |
+| 13  | Limpar `orders_navigation.resource` (shim) e código morto em `commands/`                                            | 2 arquivos          | Médio | ⏳ Pendente                   |
 
 ---
 
@@ -520,24 +502,28 @@ __pycache__/
 - ✅ `resources/base/base.resource` — variáveis globais, imports centralizados
 - ✅ `resources/base/open_app.resource` — abertura de sessão via DevicesConfig.py
 - ✅ `resources/base/setup.resource` — Suite/Test Setup e Teardown padronizados
-- ✅ `resources/libraries/DevicesConfig.py` — get_device_udid, get_device_config, get_keyboard_close_method, get_tag_from_udid
+- ✅ `resources/libraries/devicesconfig.py` — get_device_udid, get_device_config, get_keyboard_close_method, get_tag_from_udid
 - ✅ `resources/data/devices.yaml` — 19 adquirentes com system_port e appium_server
 - ✅ `resources/variables/env_variables.py` — UDIDs via python-dotenv
 - ✅ `pabot_configs/*.args` — 19 arquivos simplificados (apenas DEVICE_TAG)
-- ✅ `run_tests.sh` — detecção automática de devices via ADB
+- ✅ `run_tests.ps1` — detecção automática de devices via ADB (PowerShell)
 
 ### Fase 2 — Dissolução de common/
 
-- ✅ `resources/helpers/common_keywords.resource` — keywords utilitárias com padrão _Do
+- ✅ `resources/helpers/common_keywords.resource` — keywords utilitárias com padrão \_Do
 - ✅ `resources/helpers/structured_logging.resource` — Log Action com timestamp
 - ✅ `resources/helpers/error_handling.resource` — screenshot em falha
 - ✅ `resources/helpers/validation.resource` — validação via logcat (era validation.robot)
 
-### Pendentes (Fases 3 e 4)
+### Fase 3 — Módulos implementados
 
-- ⏳ `modules/*/base_<modulo>.resource` — implementar conteúdo real (arquivos criados, vazios)
-- ⏳ `modules/*/navigation/` — criar após análise do legado
-- ⏳ `tests/regression/` — adaptar suites para importar apenas base_<modulo>.resource
+- ✅ `modules/pdv/` — arquitetura completa: base, locators, pages, navigation, data, guide
+- ✅ `modules/commands/` — arquitetura completa: base, locators, pages, navigation
+
+### Pendentes (Fase 4)
+
+- ⏳ `modules/prevenda/` — não implementado
+- ⏳ `modules/mini_mercado/` — não implementado
 
 ---
 
@@ -553,31 +539,31 @@ __pycache__/
 2. **DevicesConfig.py como fonte única** — toda configuração de device (UDID, system_port, appium_server, app_package, keyboard_close) centralizada em `devices.yaml` lido via `DevicesConfig.py`; eliminadas variáveis hardcoded por adquirente
 3. **python-dotenv como padrão** — substituída a sintaxe customizada `%{VAR=default}` por `os.getenv("VAR", default)` com `load_dotenv()`, alinhando com convenção Python padrão
 4. **Padrão `_Do`** — todas as keywords com tratamento de falha delegam lógica real a uma keyword interna prefixada com `_Do`, chamada via `Run With Screenshot On Failure`
-5. **Arquitetura modular** — cada módulo de negócio (default, pdv, commands, prevenda, mini_mercado) é auto-contido em `modules/<modulo>/` com seu próprio `base_<modulo>.resource` como único ponto de entrada
+5. **Arquitetura modular** — cada módulo de negócio (default, pdv, commands, prevenda, mini*mercado) é auto-contido em `modules/<modulo>/` com seu próprio `base*<modulo>.resource` como único ponto de entrada
 
 ### Arquivos eliminados
 
-| Arquivo | Motivo |
-|---|---|
-| `common/device.resource` | Lógica de `Get Device Type` absorvida por `Close Keyboard` em `common_keywords.resource` via `get_tag_from_udid()` |
+| Arquivo                                  | Motivo                                                                                                                             |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `common/device.resource`                 | Lógica de `Get Device Type` absorvida por `Close Keyboard` em `common_keywords.resource` via `get_tag_from_udid()`                 |
 | `resources/variables/variables.resource` | Variáveis globais migradas para seção `*** Variables ***` do `base.resource`; configurações de device migradas para `devices.yaml` |
-| `common/` (pasta) | Dissolvida — arquivos redistribuídos para `resources/base/` e `resources/helpers/` |
+| `common/` (pasta)                        | Dissolvida — arquivos redistribuídos para `resources/base/` e `resources/helpers/`                                                 |
 
 ### Arquivos renomeados
 
-| Nome original | Nome final | Motivo |
-|---|---|---|
-| `common/validation.robot` | `resources/helpers/validation.resource` | Não é suite de teste — é helper reutilizável; extensão `.robot` reservada para suites |
-| `common/open_app.resource` | `resources/base/open_app.resource` | Movido para camada de infraestrutura de sessão |
-| `common/common_keywords.resource` | `resources/helpers/common_keywords.resource` | Movido para camada de helpers globais |
-| `common/error_handling.resource` | `resources/helpers/error_handling.resource` | Movido para camada de helpers globais |
-| `common/structured_logging.resource` | `resources/helpers/structured_logging.resource` | Movido para camada de helpers globais |
+| Nome original                        | Nome final                                      | Motivo                                                                                |
+| ------------------------------------ | ----------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `common/validation.robot`            | `resources/helpers/validation.resource`         | Não é suite de teste — é helper reutilizável; extensão `.robot` reservada para suites |
+| `common/open_app.resource`           | `resources/base/open_app.resource`              | Movido para camada de infraestrutura de sessão                                        |
+| `common/common_keywords.resource`    | `resources/helpers/common_keywords.resource`    | Movido para camada de helpers globais                                                 |
+| `common/error_handling.resource`     | `resources/helpers/error_handling.resource`     | Movido para camada de helpers globais                                                 |
+| `common/structured_logging.resource` | `resources/helpers/structured_logging.resource` | Movido para camada de helpers globais                                                 |
 
 ### Keywords renomeadas
 
-| Nome antigo | Nome novo | Motivo |
-|---|---|---|
-| `Wait Until Element Is Not Visible` | `Wait For Element To Disappear` | Colisão de nome com AppiumLibrary |
-| `Element Should Not Be Visible` | `Assert Element Not Visible` | Colisão de nome com AppiumLibrary |
-| `Limpar Logcat` | `Clear Logcat` | Wrapper eliminado — keyword exposta diretamente pela LogcatLibrary |
-| `Wait And Click Element` | `Wait Visible And Click Element` | Renomeado para maior clareza; aceita `timeout` opcional |
+| Nome antigo                         | Nome novo                        | Motivo                                                             |
+| ----------------------------------- | -------------------------------- | ------------------------------------------------------------------ |
+| `Wait Until Element Is Not Visible` | `Wait For Element To Disappear`  | Colisão de nome com AppiumLibrary                                  |
+| `Element Should Not Be Visible`     | `Assert Element Not Visible`     | Colisão de nome com AppiumLibrary                                  |
+| `Limpar Logcat`                     | `Clear Logcat`                   | Wrapper eliminado — keyword exposta diretamente pela LogcatLibrary |
+| `Wait And Click Element`            | `Wait Visible And Click Element` | Renomeado para maior clareza; aceita `timeout` opcional            |

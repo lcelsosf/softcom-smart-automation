@@ -248,7 +248,7 @@ function Invoke-AllureCli {
             }
         }
 
-        & $allureExecutable @Arguments
+        & $allureExecutable @Arguments | Out-Host
         return $LASTEXITCODE
     }
 
@@ -262,7 +262,7 @@ function Invoke-AllureCli {
             }
         }
 
-        & $npxExecutable --yes allure-commandline @Arguments
+        & $npxExecutable --yes allure-commandline @Arguments | Out-Host
         return $LASTEXITCODE
     }
 

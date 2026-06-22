@@ -314,7 +314,7 @@ PDV - Complete Flow - NFCe Disable
     [Arguments]    ${product_name}    ${payment_method}
     PDV - Complete Flow - Order Common    ${product_name}    ${payment_method}
 
-PDV - Complete FLow - No Payment Method
+PDV - Complete Flow - No Payment Method
     [Documentation]    Realiza pedido sem método de pagamento.
     [Arguments]    ${product_name}
     Pdv - Navigate To New Order
