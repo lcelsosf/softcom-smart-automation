@@ -1,0 +1,142 @@
+##########################################################################
+# Tela Mesa (Comanda) — exibida ao clicar em uma mesa no Painel de Mesas
+##########################################################################
+table_screen:
+  # Botao Menu
+  btn_menu: xpath=//*[@content-desc='Menu']
+  # Botao Imprimir
+  btn_print: xpath=//*[@content-desc='Imprimir']
+
+  # ============================================================
+  # TABS — Produtos | Conferência | Lançados
+  # ============================================================
+  tab_products: xpath=//*[@text='Produtos']
+  tab_conference: xpath=//*[@text='Conferência']
+  tab_launched: xpath=//*[@text='Lançados']
+  # Campo de pesquisa de produtos
+  products_search_input: xpath=//*[@resource-id='ComandaMesaProdutosContentSearchBarCustom_0']//android.widget.EditText
+  # Botao de Filtros
+  btn_products_filter: xpath=//*[@content-desc='Filtrar']
+  # Item da lista de produtos pelo nome — genérico
+  product_item_by_name: xpath=//*[@resource-id='ComandaMesaProdutosContentLazyColumn_1']//*[@text='PRODUCT_NAME']/ancestor::android.view.View[@clickable='true'][1]
+  # Item lançado pelo nome — genérico
+  launched_item_by_name: xpath=//*[contains(@resource-id,'ComandaMesaLancadoItemText_0') and @text='PRODUCT_NAME']
+  # Botão "Editar item" — âncora pelo nome do item
+  btn_edit_launched_item_by_name: xpath=//*[@text='PRODUCT_NAME']/following-sibling::*[@content-desc='Editar item']
+  # Botão "Remover item" — âncora pelo nome do item (versão com remoção direta)
+  btn_remove_launched_item_by_name: xpath=//*[@text='PRODUCT_NAME']/following-sibling::*[@content-desc='Remover item']
+  # Quantidade do item lançado pelo nome (ex: '1x')
+  launched_item_quantity_by_name: xpath=//*[@text='PRODUCT_NAME']/following::android.widget.TextView[contains(@resource-id,'ComandaMesaLancadoItemText_1')][1]
+  # Valor do item lançado pelo nome
+  launched_item_value_by_name: xpath=//*[@text='PRODUCT_NAME']/following::android.widget.TextView[contains(@resource-id,'ComandaMesaLancadoItemText_3')][1]
+
+  # ============================================================
+  # RESUMO FINANCEIRO (exibido na aba Lançados/Conferência)
+  # ============================================================
+  # Valor subtotal
+  subtotal_value: xpath=//*[@text='Sub-Total:']/following-sibling::android.widget.TextView[1]
+  # Valor dos descontos
+  discount_value: xpath=//*[@text='Descontos:']/following-sibling::android.widget.TextView[1]
+  # Valor do Servico
+  service_value: xpath=//*[@text='Serviço:']/following-sibling::android.widget.TextView[1]
+  # Valor total
+  total_value: xpath=//*[@text='Total:']/following-sibling::android.widget.TextView[1]
+  # Valor Pago
+  paid_value: xpath=//*[@text='Valor Pago:']/following-sibling::android.widget.TextView[1]
+  # Valor Restante
+  remaining_value: xpath=//*[@text='Valor Restante:']/following-sibling::android.widget.TextView[1]
+  ##################
+  # FOOTER - Actions
+  ##################
+  # Botao Cancelar
+  btn_cancel: xpath=//*[@resource-id='ComandaMesaScreenBottomBarOutlinedButton_0']
+  # Botao Avançar
+  btn_advance: xpath=//*[@resource-id='ComandaMesaScreenBottomBarButton_0']
+  # Botao Receber Pedido
+  btn_receive_order: xpath=//*[@resource-id='ComandaMesaScreenBottomBarButton_0']
+
+########################################################################
+# DIALOG — Confirmar Solicitação de Conferência
+# Exibido ao clicar em "Imprimir"
+########################################################################
+conference_dialog:
+  # Mensagem de confirmação
+  title: xpath=//*[@text='Deseja solicitar a conferência?']
+  # Botao Não
+  btn_no: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Não']]
+  # Botao Sim
+  btn_yes: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Sim']]
+
+########################################################################
+# DIALOG — Confirmar Cancelamento de Item
+# Exibido ao tentar cancelar um item lançado
+########################################################################
+cancel_item_dialog:
+  # Mensagem de confirmação
+  title: xpath=//*[@text='Deseja cancelar o item?']
+  # Botao Não
+  btn_no: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Não']]
+  # Botao Sim
+  btn_yes: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Sim']]
+
+########################################################################
+# DIALOG — Filtro de Grupos
+# Exibido ao clicar no botão Filtrar na aba Produtos
+########################################################################
+group_filter_dialog:
+  # titulo do dialog - pode ser usado para verificar se o modal foi aberto
+  title: xpath=//*[@text='Ocultar exibição dos grupos']
+  # Campo de pesquisa
+  search_input: xpath=//*[@resource-id='ComandaMesaProdutosContentFilterDialogSearchBar_0']//android.widget.EditText
+  # Grupo pelo nome — genérico (ex: 'Adicional', 'COUVERT', 'combo', 'common')
+  group_card_by_name: xpath=//*[@resource-id='ComandaMesaProdutosContentFilterDialogLazyColumn_0']//*[@text='GROUP_NAME']/ancestor::android.view.View[@clickable='true'][1]
+  # Botao de Cancelar
+  btn_cancel: xpath=//*[@resource-id='ComandaMesaProdutosContentFilterDialogOutlinedButton_0']
+  # Botao de Aplicar
+  btn_apply: xpath=//*[@resource-id='ComandaMesaProdutosContentFilterDialogButton_0']
+
+########################################################################
+# TELA — Adicionar Produto (acessada ao clicar em um produto na aba Produtos)
+########################################################################
+add_product_screen:
+  # Botao Voltar
+  btn_back: xpath=//*[@content-desc='Voltar']
+  # Botao Pesquisar
+  btn_search: xpath=//*[@content-desc='Pesquisar']
+  # Título da tela
+  screen_title: xpath=//*[@text='Adicionar Produto']
+  # Input de observação
+  observations_input: xpath=//*[@resource-id='ComandaAddProdutoObservacoesSectionBasicOutlinedField_0']//android.widget.EditText
+  # Botao de subtrair quantidade
+  quantity_sub: xpath=//*[@content-desc='Remover']
+  # Input de quantidade
+  quantity_input: xpath=//*[@resource-id='ComandaAddProdutoItemSectionQuantityRowSelectorText_0']//android.widget.EditText
+  # Botao de adicionar quantidade
+  quantity_add: xpath=//*[@content-desc='Adicionar']
+  # Botao de adicionar produto
+  btn_add_product: xpath=//*[@resource-id='ComandaAddProdutoBottomBarButton_0']
+
+########################################################################
+# DRAWER MENU da tela Mesa
+########################################################################
+table_drawer_menu:
+  # Botao Voltar
+  option_back: xpath=//*[@content-desc='Voltar']
+  # Botao Faturar
+  option_invoice: xpath=//*[@content-desc='Faturar']
+  # Botao Adiantamento
+  option_advance: xpath=//*[@content-desc='Adiantamento']
+  # Botao Dividir conta
+  option_split_account: xpath=//*[@content-desc='Dividir conta']
+  # Botao Alterar cliente
+  option_change_client: xpath=//*[@content-desc='Alterar cliente']
+  # Botao Juntar Contas
+  option_join_accounts: xpath=//*[@content-desc='Juntar Contas']
+  # Botao Transferir itens
+  option_transfer_items: xpath=//*[@content-desc='Transferir itens']
+  # Botao Cancelar Mesa
+  option_cancel_table: xpath=//*[@content-desc='Cancelar Mesa']
+  # Botao Gerenciar taxa de serviço
+  option_service_fee: xpath=//*[@content-desc='Gerenciar taxa de serviço']
+  # Opção genérica pelo content-desc do ícone
+  option_by_name: xpath=//*[@content-desc='OPTION_NAME']

@@ -1,0 +1,92 @@
+########################
+# TELA — Painel de Mesas
+########################
+table_panel:
+  # Botao "Menu"
+  btn_menu: xpath=//*[@content-desc='Menu']
+  # Botao "Home"
+  btn_home: xpath=//*[@content-desc='Home']
+  # Campo de busca
+  search_input: xpath=//*[@resource-id='ComandaPainelMesasScreenSearchAndFilterSection_0']//android.widget.EditText
+  # Botao "Filtro"
+  btn_filter: xpath=//*[@content-desc='Filtro']
+  # Botão principal "Abrir Mesa"
+  btn_open_table: xpath=//*[@resource-id='ComandaPainelMesasScreenTopBarButton_0']
+  ########################
+  # GRID de mesas/comandas
+  ########################
+  # Mesa pelo número — genérico, usar via argumento na page
+  table_by_number: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='TABLE_NUMBER']]
+  # Primeira mesa do grid — independente do número/status
+  first_table: xpath=(//android.view.View[@clickable='true' and contains(@resource-id,'ComandaPainelMesasItemColumn_0')])[1]
+
+######################################
+# Drawer Menu
+# Exibido após clicar no botão de menu
+######################################
+menu:
+  # Botao Sincronizar dados
+  option_sync_data: xpath=//*[@content-desc='Sincronizar Dados']
+  # Botao Transferir mesa
+  option_transfer_table: xpath=//*[@content-desc='Transferir Mesa']
+  # Botao Lista de Pedidos
+  option_orders_list: xpath=//*[@content-desc='Lista de Pedidos']
+  # Botao Configurações
+  option_settings: xpath=//*[@content-desc='Configurações']
+  # Botao Realizar Logoff
+  option_logoff: xpath=//*[@content-desc='Realizar Logoff']
+  # Opção genérica pelo content-desc do ícone — usar via argumento
+  option_by_name: xpath=//*[@content-desc='OPTION_NAME']
+
+#######################################################
+# Dialog - Confirmar Logoff
+# Exibido ao clicar em "Realizar Logoff" no drawer menu
+#######################################################
+logoff_dialog:
+  # Mensagem de confirmação
+  title: xpath=//*[@text='Deseja realizar logoff?']
+  # Botão "Não"
+  btn_no: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Não']]
+  # Botão "Sim"
+  btn_yes: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Sim']]
+
+######################################################
+# DIALOG — Filtros do Painel de Mesas
+# Exibido ao clicar no botão Filtro no Painel de Mesas
+######################################################
+filter_dialog:
+  # titulo do modal (pode ser utilizado para verificar se o modal foi aberto)
+  title: xpath=//*[@resource-id='FilterDialogText_0']
+  # Opções de filtro
+  # Opção para mesas abertas
+  option_open_tables: xpath=//*[@resource-id='FilterDialogFilterRadioOptionRow_0']
+  # Opção para minhas mesas
+  option_my_tables: xpath=//*[@resource-id='FilterDialogFilterRadioOptionRow_1']
+  # Opção para todas as mesas
+  option_all_tables: xpath=//*[@resource-id='FilterDialogFilterRadioOptionRow_2']
+  # Opção genérica pelo texto exibido — usar via argumento na page
+  option_by_text: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='OPTION_TEXT']]
+  # Botao Cancelar
+  btn_cancel: xpath=//*[@resource-id='FilterDialogOutlinedButton_0']
+  # Botao Aplicar
+  btn_apply: xpath=//*[@resource-id='FilterDialogButton_0']
+
+######################################################
+# MODAL — Abrir Mesa
+# Exibido ao clicar em "Abrir Mesa" no Painel de Mesas
+######################################################
+open_table_modal:
+  # Campo de input de numero da mesa
+  table_number_input: xpath=//*[@resource-id='OpenMesaDialogBasicOutlinedField_1']//android.widget.EditText
+  # Campo de input do cliente
+  client_input: xpath=//*[@resource-id='OpenMesaDialogBasicOutlinedField_2']//android.widget.EditText
+  # Botão para pesquisar cliente
+  btn_search_client: xpath=//*[@content-desc='Buscar cliente']
+  # Botão para diminuir o número de pessoas
+  btn_people_sub: xpath=//*[@content-desc='Diminuir']
+  # Botão para aumentar o número de pessoas
+  btn_people_add: xpath=//*[@content-desc='Aumentar']
+  # Botão para cancelar
+  btn_cancel: xpath=//*[@resource-id='OpenMesaDialogOutlinedButton_0']
+  # Botão para confirmar
+  btn_confirm: xpath=//*[@resource-id='OpenMesaDialogButton_0'
