@@ -15,21 +15,6 @@ home:
   # Card "Logoff"
   btn_logoff: xpath=//*[@resource-id='HomeOptionCard_4']
 
-##########################################################################
-# Modal de Sincronização - Exibido após clicar no card "Sincronizar Dados"
-##########################################################################
-sync:
-  # Opção "Produtos"
-  option_products: xpath=//android.view.View[.//android.widget.TextView[@text='Produtos'] and @clickable='true']
-  # Opção "Clientes"
-  option_clients: xpath=//android.view.View[.//android.widget.TextView[@text='Clientes'] and @clickable='true']
-  # Opção "Pedidos"
-  option_orders: xpath=//android.view.View[.//android.widget.TextView[@text='Pedidos'] and @clickable='true']
-  # Botão "Sincronizar" — inicia a sincronização das opções selecionadas
-  btn_sync: xpath=//android.view.View[.//android.widget.TextView[@text='Sincronizar']]
-  # Botão "Cancelar" — fecha o modal sem sincronizar
-  btn_cancel: xpath=//android.view.View[.//android.widget.TextView[@text='Cancelar']]
-
 #########################################################################
 # Modal de confirmacao do logoff - Exibido após clicar no card "Logoff"
 #########################################################################

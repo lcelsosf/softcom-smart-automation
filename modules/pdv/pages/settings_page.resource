@@ -37,7 +37,7 @@ Pdv - Settings Click Fiscal
 
 Pdv - Settings Click Ticket
     [Documentation]    Clica na opção "Emissão de Ticket" — ticket de retirada.
-    Wait Visible And Click Element    ${pdv_settings.option_ticket}
+    Swipe Until Visible And Click Element    ${pdv_settings.option_ticket}
 
 Pdv - Settings Click Device
     [Documentation]    Clica na opção "Dispositivo" — importar/exportar configurações.
@@ -93,7 +93,7 @@ Pdv - Smart Pdv Toggle Price Table
 
 Pdv - Smart Pdv Toggle Edit Item Price
     [Documentation]    Alterna "Alterar preço do item".
-    Wait Visible And Click Element    ${smart_pdv_settings.toggle_edit_item_price}
+    Swipe Until Visible And Click Element    ${smart_pdv_settings.toggle_edit_item_price}
 
 Pdv - Smart Pdv Toggle Option By Name
     [Documentation]    Alterna qualquer toggle pelo título exibido.
@@ -259,15 +259,15 @@ Pdv - Payment Settings Toggle Store Credit
 
 Pdv - Payment Settings Toggle Bank Slip
     [Documentation]    Alterna o switch do método "Boleto Bancário".
-    Wait Visible And Click Element    ${payment_settings.method_switch_bank_slip}
+    Swipe Until Visible And Click Element    ${payment_settings.method_switch_bank_slip}    up
 
 Pdv - Payment Settings Toggle Pix
     [Documentation]    Alterna o switch do método "PIX".
-    Wait Visible And Click Element    ${payment_settings.method_switch_pix}
+    Swipe Until Visible And Click Element    ${payment_settings.method_switch_pix}    up
 
 Pdv - Payment Settings Toggle Pix Off
     [Documentation]    Alterna o switch do método "PIX OFF".
-    Wait Visible And Click Element    ${payment_settings.method_switch_pix_off}
+    Swipe Until Visible And Click Element    ${payment_settings.method_switch_pix_off}    up
 
 Pdv - Payment Settings Toggle Others
     [Documentation]    Alterna o switch do método "Outros".

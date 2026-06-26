@@ -1,0 +1,26 @@
+##########################################################################
+# Modal de Sincronizar Dados
+##########################################################################
+sync_modal:
+  # Modal "Sincronizar Dados" — exibido ao clicar em "Sincronizar Dados" na Home
+  title: xpath=//*[@text='Sincronizar Dados']
+  # Opção "Produtos"
+  option_products: xpath=//android.view.View[@clickable='true' and @enabled='true' and .//android.widget.TextView[@text='Produtos']]
+  # Opção "Clientes"
+  option_clients: xpath=//android.view.View[@clickable='true' and @enabled='true' and .//android.widget.TextView[@text='Clientes']]
+  # Opção "Pedidos"
+  option_orders: xpath=//android.view.View[@clickable='true' and @enabled='true' and .//android.widget.TextView[@text='Pedidos']]
+  # Botão "Sincronizar"
+  btn_sync: xpath=//android.view.View[@clickable='true' and @enabled='true' and .//android.widget.TextView[@text='Sincronizar']]
+  # Botão "Cancelar"
+  btn_cancel: xpath=//android.view.View[@clickable='true' and @enabled='true' and .//android.widget.TextView[@text='Cancelar']]
+###################################
+# Modal de Sucesso da Sincronização
+###################################
+sync_success_modal:
+  # Modal "Atualização concluída!" — exibido após confirmar a sincronização
+  title: xpath=//*[@text='Atualização concluída!']
+  # Mensagem de sucesso
+  message: xpath=//*[@text='Os dados foram sincronizados com sucesso!']
+  # Botão "Ok"
+  btn_ok: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Ok']]

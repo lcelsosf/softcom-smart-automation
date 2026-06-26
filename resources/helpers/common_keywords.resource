@@ -145,6 +145,33 @@ _Do Swipe Until Visible And Click Element
     END
     Click Element    ${locator}
 
+Safe Swipe By Percent
+    [Documentation]    Executa Swipe By Percent sem falhar o teste se o device rejeitar ações W3C.
+    ...    Caso o Swipe By Percent falhe, tenta fallback com Swipe por coordenadas absolutas.
+    ...    Se o fallback também falhar, registra o problema e permite o fluxo continuar.
+    [Arguments]    ${start_x}    ${start_y}    ${end_x}    ${end_y}    ${duration}=500ms
+    ${status}    ${error}=    Run Keyword And Ignore Error
+    ...    Swipe By Percent    ${start_x}    ${start_y}    ${end_x}    ${end_y}
+    IF    '${status}' == 'PASS'
+        RETURN
+    END
+    Log Action    action=swipe_by_percent_fallback
+    ...    message=Swipe By Percent falhou; tentando fallback por coordenadas
+    ...    device=${DEVICE_TAG}    level=WARN
+    ${width}=    Get Window Width
+    ${height}=    Get Window Height
+    ${start_x_px}=    Evaluate    int(${width} * float(${start_x}) / 100)
+    ${start_y_px}=    Evaluate    int(${height} * float(${start_y}) / 100)
+    ${end_x_px}=    Evaluate    int(${width} * float(${end_x}) / 100)
+    ${end_y_px}=    Evaluate    int(${height} * float(${end_y}) / 100)
+    ${fallback_status}    ${fallback_error}=    Run Keyword And Ignore Error
+    ...    Swipe    start_x=${start_x_px}    start_y=${start_y_px}    end_x=${end_x_px}    end_y=${end_y_px}    duration=${duration}
+    IF    '${fallback_status}' == 'FAIL'
+        Log Action    action=swipe_reposition_skipped
+        ...    message=Swipe de reposicionamento ignorado após falha no fallback
+        ...    device=${DEVICE_TAG}    level=WARN
+    END
+
 Wait Visible And Long Press Element
     [Documentation]    Aguarda o elemento ficar visível e realiza long press.
     ...

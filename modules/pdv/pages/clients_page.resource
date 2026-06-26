@@ -34,26 +34,6 @@ Client List - Click New Client
     [Documentation]    Clica em "+ Novo Cliente" — abre o cadastro de novo cliente.
     Wait Visible And Click Element    ${client_list.btn_new_client}
 
-Client List - Refresh Success Modal Should Be Visible
-    [Documentation]    Verifica que o modal de confirmação de atualização está visível.
-    ...    Use após clicar em Atualizar para confirmar que a sincronização concluiu.
-    Wait Until Element Is Visible    ${sync_success_modal.title}
-
-Client List - Refresh Success Modal Should Not Be Visible
-    [Documentation]    Verifica que o modal de confirmação foi fechado.
-    Wait For Element To Disappear    ${sync_success_modal.title}
-
-Client List - Click Refresh Success Ok
-    [Documentation]    Clica em "Ok" — fecha o modal de atualização concluída.
-    Wait Visible And Click Element    ${sync_success_modal.btn_ok}
-
-Client List - Click Sync And Confirm
-    [Documentation]    Clica em Atualizar, aguarda o modal de confirmação
-    ...    e fecha clicando em "Ok". Fluxo completo de sincronização.
-    Client List - Click Sync
-    Client List - Refresh Success Modal Should Be Visible
-    Client List - Click Refresh Success Ok
-
 Client Register - Click Tab Details
     [Documentation]    Seleciona a aba "Detalhes".
     Wait Visible And Click Element    ${client_register.tab_details}
@@ -99,6 +79,7 @@ Client Register - Fill Fantasy Name
     [Documentation]    Preenche o campo Nome Fantasia (Jurídica).
     [Arguments]    ${fantasy_name}
     Wait Visible And Click Element    ${client_register.fantasy_name_input}
+    Safe Swipe By Percent    50    70    50    30
     Clear Text    ${client_register.fantasy_name_input}
     Input Text    ${client_register.fantasy_name_input}    ${fantasy_name}
     Close Keyboard
@@ -107,6 +88,7 @@ Client Register - Fill Social Reason
     [Documentation]    Preenche o campo Razão Social (Jurídica).
     [Arguments]    ${social_reason}
     Wait Visible And Click Element    ${client_register.social_reason_input}
+    Safe Swipe By Percent    50    70    50    30
     Clear Text    ${client_register.social_reason_input}
     Input Text    ${client_register.social_reason_input}    ${social_reason}
     Close Keyboard
@@ -139,7 +121,7 @@ Client Register - Fill Phone
     ...    Clica no campo, executa swipe para reposicioná-lo caso o teclado o oculte e digita o valor.
     [Arguments]    ${phone}
     Wait Visible And Click Element    ${client_register.phone_input}
-    Swipe By Percent    50    70    50    30
+    Safe Swipe By Percent    50    70    50    30
     Input Text    ${client_register.phone_input}    ${phone}
     Close Keyboard
 
@@ -148,7 +130,7 @@ Client Register - Fill Email
     ...    Clica no campo, executa swipe para reposicioná-lo caso o teclado o oculte e digita o valor.
     [Arguments]    ${email}
     Wait Visible And Click Element    ${client_register.email_input}
-    Swipe By Percent    50    70    50    30
+    Safe Swipe By Percent    50    70    50    30
     Input Text    ${client_register.email_input}    ${email}
     Close Keyboard
 
@@ -157,7 +139,7 @@ Client Register - Fill Note
     ...    Clica no campo, executa swipe para reposicioná-lo caso o teclado o oculte e digita o valor.
     [Arguments]    ${note}
     Wait Visible And Click Element    ${client_register.note_input}
-    Swipe By Percent    50    70    50    30
+    Safe Swipe By Percent    50    70    50    30
     Input Text    ${client_register.note_input}    ${note}
     Close Keyboard
 
@@ -225,7 +207,7 @@ Client Register - Fill Complement
     ...    Clica no campo, executa swipe para reposicioná-lo caso o teclado o oculte e digita o valor.
     [Arguments]    ${complement}
     Wait Visible And Click Element    ${client_register.complement_input}
-    Swipe By Percent    50    70    50    30
+    Safe Swipe By Percent    50    70    50    30
     Input Text    ${client_register.complement_input}    ${complement}
     Close Keyboard
 

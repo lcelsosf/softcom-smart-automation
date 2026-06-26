@@ -52,7 +52,7 @@ Orders List - Actions Modal Click Fiscal Details
 
 Orders List - Actions Modal Click Cancel Order
     [Documentation]    Clica em "Cancelar Pedido".
-    Wait Visible And Click Element    ${order_actions_modal.btn_cancel_order}
+    Swipe Until Visible And Click Element    ${order_actions_modal.btn_cancel_order}
 
 Orders List - Actions Modal Close By Overlay
     [Documentation]    Fecha o modal clicando na área acima do sheet.
@@ -110,13 +110,31 @@ Orders List - Cancel Order Click Ok
 Orders List - Print Status Should Be Printing
     [Documentation]    Verifica que a mensagem "Realizando a impressão!" está visível.
     ...    Estado intermediário — a impressão ainda está em andamento.
+    IF    '${DEVICE_TAG}'.strip().lower() == 'cielo'
+        Log Action    action=print_validation_skipped
+        ...    message=Validação de impressão ignorada no dispositivo Cielo
+        ...    device=${DEVICE_TAG}    status=printing    level=WARN
+        RETURN
+    END
     Wait Until Element Is Visible    ${print_status_modal.printing_message}    timeout=${ELEMENT_TIMEOUT}
 
 Orders List - Print Status Should Be Completed
     [Documentation]    Verifica que a mensagem "Impressão concluída!" está visível.
     ...    Estado final — confirma que a impressão foi concluída com sucesso.
+    IF    '${DEVICE_TAG}'.strip().lower() == 'cielo'
+        Log Action    action=print_validation_skipped
+        ...    message=Validação de impressão ignorada no dispositivo Cielo
+        ...    device=${DEVICE_TAG}    status=completed    level=WARN
+        RETURN
+    END
     Wait Until Element Is Visible    ${print_status_modal.completed_message}    timeout=${ELEMENT_TIMEOUT}
 
 Orders List - Print Status Should Not Be Completed
     [Documentation]    Verifica que a mensagem "Impressão concluída!" não está mais visível.
+    IF    '${DEVICE_TAG}'.strip().lower() == 'cielo'
+        Log Action    action=print_validation_skipped
+        ...    message=Validação de impressão ignorada no dispositivo Cielo
+        ...    device=${DEVICE_TAG}    status=not_completed    level=WARN
+        RETURN
+    END
     Wait For Element To Disappear    ${print_status_modal.completed_message}

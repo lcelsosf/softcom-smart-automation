@@ -15,7 +15,18 @@ Documentation       Base do módulo Pdv — único import necessário nas suites
 # --- Base global ---
 Resource            ../../resources/base/base.resource
 # --- Locators e dados do módulo ---
-Variables           ../../resources/libraries/locators_loader.py    modules/pdv/locators/homeLocators.yml    modules/pdv/locators/ordersLocators.yml    modules/pdv/locators/checkoutLocators.yml    modules/pdv/locators/settingsLocators.yml    modules/pdv/locators/clientsLocators.yml    modules/pdv/locators/orderslistLocators.yml    modules/pdv/data/pdv_data.yml    ${DEVICE_TAG}
+Variables           ../../resources/libraries/locators_loader.py
+...                 modules/pdv/locators/homeLocators.yml
+...                 modules/pdv/locators/syncLocators.yml
+...                 modules/pdv/locators/ordersLocators.yml
+...                 modules/pdv/locators/checkoutLocators.yml
+...                 modules/pdv/locators/settingsLocators.yml
+...                 modules/pdv/locators/clientsLocators.yml
+...                 modules/pdv/locators/orderslistLocators.yml
+...                 modules/pdv/data/pdv_data.yml
+...                 ${DEVICE_TAG}
+# --- Page compartilhada do módulo ---
+Resource            pages/sync_page.resource
 # --- Fluxos completos do módulo (importa navigation e pages transitivamente) ---
 Resource            navigation/pdv_complete_streams.resource
 Resource            navigation/pdv_settings_setup.resource

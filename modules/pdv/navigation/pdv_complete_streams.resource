@@ -8,6 +8,22 @@ Resource            pdv_navigation.resource
 
 
 *** Keywords ***
+PDV - Complete FLow - Sync Options
+    [Documentation]    Fluxo completo de sincronização de dados via Home.
+    ...    Verifica a Home, abre o modal de sincronização, seleciona
+    ...    Produtos/Clientes/Pedidos, sincroniza e confirma o modal
+    ...    de conclusão, retornando à Home.
+    Pdv - Home - Verify Visible
+    Pdv - Home - Click Sync
+    Sync - Modal Should Be Visible
+    Sync - Select Products
+    Sync - Select Clients
+    Sync - Select Orders
+    Sync - Click Sync Button
+    Sync - Success Modal Should Be Visible
+    Sync - Click Success Ok
+    Pdv - Home - Verify Visible
+
 PDV - Complete Flow - Order Common
     [Documentation]    Executa o fluxo comum de pedido e pagamento.
     [Arguments]    ${product_name}    ${payment_method}

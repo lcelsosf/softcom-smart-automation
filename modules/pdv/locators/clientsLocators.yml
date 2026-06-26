@@ -13,17 +13,6 @@ client_list:
   # Botao de Novo Cliente
   btn_new_client: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='+ Novo Cliente']]
 
-###################################################################################################
-# Modal de confirmacao da sincronizacao de clientes - Exibido apos clicar no botao de sincronizacao
-###################################################################################################
-sync_success_modal:
-  # Título do modal — usado para verificação de abertura
-  title: xpath=//*[@text='Atualização concluída!']
-  # Mensagem de confirmação
-  message: xpath=//*[@text='Os dados foram sincronizados com sucesso!']
-  # Botão "Ok" — fecha o modal
-  btn_ok: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Ok']]
-
 ######################################
 # Tela de Lista de Clientes - Cadastro
 ######################################

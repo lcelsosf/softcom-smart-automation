@@ -9,6 +9,7 @@ Resource            ../pages/orders_page.resource
 Resource            ../pages/checkout_page.resource
 Resource            ../pages/clients_page.resource
 Resource            ../pages/orderslist_page.resource
+Resource            ../pages/sync_page.resource
 
 
 *** Keywords ***
@@ -320,7 +321,9 @@ Pdv - Navigate To Clients
 
 Pdv - Navigate To Sync Client List
     [Documentation]    Aciona a sincronização na Lista de Clientes, aguarda o modal de confirmação e fecha.
-    Client List - Click Sync And Confirm
+    Client List - Click Sync
+    Sync - Success Modal Should Be Visible
+    Sync - Click Success Ok
 
 Pdv - Navigate To Search And Select Client
     [Documentation]    Pesquisa e seleciona um cliente na Lista de Clientes pelo nome.
