@@ -117,9 +117,9 @@ add_product_screen:
   btn_add_product: xpath=//*[@resource-id='ComandaAddProdutoBottomBarButton_0']
 
 ########################################################################
-# DRAWER MENU da tela Mesa
+# DRAWER MENU da Comanda
 ########################################################################
-table_drawer_menu:
+command_drawer_menu:
   # Botao Voltar
   option_back: xpath=//*[@content-desc='Voltar']
   # Botao Faturar
@@ -140,3 +140,24 @@ table_drawer_menu:
   option_service_fee: xpath=//*[@content-desc='Gerenciar taxa de serviço']
   # Opção genérica pelo content-desc do ícone
   option_by_name: xpath=//*[@content-desc='OPTION_NAME']
+
+#####################
+# DRAWER MENU da Mesa
+#####################
+table_drawer_menu:
+  # Botao Voltar
+  option_back: xpath=//*[@content-desc='Voltar']
+  # Botao Juntar Comandas
+  option_join_commands: xpath=//*[@content-desc='Juntar Comandas']
+
+########################################################################
+# DIALOG — Confirmar Envio da Comanda
+# Exibido ao avançar/confirmar o envio de uma comanda
+########################################################################
+send_comanda_dialog:
+  # Mensagem de confirmacao
+  message: xpath=//*[@text='A comanda será enviada. Confirma o envio?']
+  # Botao Nao
+  btn_no: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Não']]
+  # Botao Enviar
+  btn_send: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Enviar']]

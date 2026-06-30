@@ -238,6 +238,10 @@ Commands - Table Drawer Click Back
     [Documentation]    Clica em "Voltar" — retorna ao Painel de Mesas.
     Wait Visible And Click Element With Retry    ${table_drawer_menu.option_back}
 
+Commands - Command Drawer Click Back
+    [Documentation]    Clica em "Voltar" — retorna ao Painel de Mesas.
+    Wait Visible And Click Element    ${command_drawer_menu.option_back}
+    
 Commands - Table Drawer Click Invoice
     [Documentation]    Clica em "Faturar" — inicia o faturamento da mesa.
     Wait Visible And Click Element With Retry    ${table_drawer_menu.option_invoice}
@@ -258,6 +262,10 @@ Commands - Table Drawer Click Join Accounts
     [Documentation]    Clica em "Juntar Contas".
     Wait Visible And Click Element With Retry    ${table_drawer_menu.option_join_accounts}
 
+Commands - Table Drawer Click Join Commands
+    [Documentation]    Clica em "Juntar Comandas".
+    Wait Visible And Click Element    ${table_drawer_menu.option_join_commands}
+
 Commands - Table Drawer Click Transfer Items
     [Documentation]    Clica em "Transferir itens".
     Wait Visible And Click Element With Retry    ${table_drawer_menu.option_transfer_items}
@@ -277,3 +285,18 @@ Commands - Table Drawer Click Option By Name
     ...    Commands - Table Drawer Click Option By Name    Faturar
     [Arguments]    ${option_name}
     Wait Visible And Click Element With Retry    xpath=//*[@content-desc='${option_name}']
+
+# =============================================================================
+# DIALOG — CONFIRMAR ENVIO DA COMANDA
+# =============================================================================
+Commands - Send Comanda Dialog Should Be Visible
+    [Documentation]    Verifica que o dialog de confirmação de envio da comanda está aberto.
+    Wait Until Element Is Visible    ${send_comanda_dialog.message}
+
+Commands - Confirm Send Comanda
+    [Documentation]    Clica em "Enviar" — confirma o envio da comanda.
+    Wait Visible And Click Element    ${send_comanda_dialog.btn_send}
+
+Commands - Cancel Send Comanda
+    [Documentation]    Clica em "Não" — cancela o envio da comanda.
+    Wait Visible And Click Element    ${send_comanda_dialog.btn_no}

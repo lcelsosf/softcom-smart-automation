@@ -76,6 +76,8 @@ filter_dialog:
 # Exibido ao clicar em "Abrir Mesa" no Painel de Mesas
 ######################################################
 open_table_modal:
+  # Campo de input do número da comanda
+  comanda_number_input: xpath=//*[@resource-id='OpenMesaDialogBasicOutlinedField_0']//android.widget.EditText
   # Campo de input de numero da mesa
   table_number_input: xpath=//*[@resource-id='OpenMesaDialogBasicOutlinedField_1']//android.widget.EditText
   # Campo de input do cliente
@@ -89,4 +91,4 @@ open_table_modal:
   # Botão para cancelar
   btn_cancel: xpath=//*[@resource-id='OpenMesaDialogOutlinedButton_0']
   # Botão para confirmar
-  btn_confirm: xpath=//*[@resource-id='OpenMesaDialogButton_0'
+  btn_confirm: xpath=//*[@resource-id='OpenMesaDialogButton_0']

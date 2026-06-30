@@ -1,0 +1,15 @@
+#####################################
+# Elementos do fluxo: Juntar Comandas
+#####################################
+join_command:
+  # Comanda/mesa de destino pelo número — genérico, usar via argumento
+  # Cada item: número | "Aberta às HH:MM:SS" | valor
+  destination_by_number: xpath=//*[@text='DESTINATION_NUMBER']/ancestor::android.view.View[@clickable='true'][1]
+  # Primeira comanda/mesa da lista — independente do número
+  first_destination: xpath=(//android.widget.ScrollView//android.view.View[@clickable='true'])[1]
+  # Botao Cancelar
+  btn_cancel: xpath=//android.view.View[@clickable='true' and .//android.widget.TextView[@text='Cancelar']]
+
+#
+#
+#

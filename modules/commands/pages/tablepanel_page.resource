@@ -114,6 +114,14 @@ Commands - Open Table Modal Should Be Visible
     [Documentation]    Verifica que o modal "Abrir Mesa" está aberto.
     Wait Until Element Is Visible With Retry    ${open_table_modal.title}
 
+Commands - Open Table Fill Comanda Number
+    [Documentation]    Preenche o número da comanda a ser aberta.
+    [Arguments]    ${comanda_number}
+    Wait Visible And Click Element    ${open_table_modal.comanda_number_input}
+    Clear Text                        ${open_table_modal.comanda_number_input}
+    Input Text                        ${open_table_modal.comanda_number_input}    ${comanda_number}
+    Close Keyboard
+
 Commands - Open Table Fill Table Number
     [Documentation]    Preenche o número da mesa a ser aberta.
     [Arguments]    ${table_number}
