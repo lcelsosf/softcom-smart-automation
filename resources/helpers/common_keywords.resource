@@ -60,6 +60,30 @@ _Do Wait Visible And Click Element
     Wait Until Element Is Visible    ${locator}    timeout=${timeout}
     Click Element    ${locator}
 
+Wait Until Element Is Visible With Retry
+    [Documentation]    Aguarda o elemento ficar visível com retry para StaleElementReferenceException.
+    ...
+    ...    Args:
+    ...    - locator: Localizador do elemento
+    ...    - timeout: Tempo máximo de espera por tentativa (padrão: ${ELEMENT_TIMEOUT})
+    ...    - max_retries: Número máximo de tentativas (padrão: 3)
+    [Arguments]    ${locator}    ${timeout}=${ELEMENT_TIMEOUT}    ${max_retries}=3
+    ${passed}=    Set Variable    ${FALSE}
+    FOR    ${retry}    IN RANGE    ${max_retries}
+        ${status}    ${error}=    Run Keyword And Ignore Error
+        ...    Wait Until Element Is Visible    ${locator}    timeout=${timeout}
+        IF    '${status}' == 'PASS'
+            ${passed}=    Set Variable    ${TRUE}
+            BREAK
+        END
+        Log Action    action=visibility_retry
+        ...    message=Elemento instável, tentando novamente
+        ...    retry=${retry + 1}    max=${max_retries}    level=WARN
+    END
+    IF    not ${passed}
+        Fail    Elemento '${locator}' não ficou visível após ${max_retries} tentativas: ${error}
+    END
+
 Wait Visible And Click Element With Retry
     [Documentation]    Aguarda o elemento ficar visível e tenta clicar nele.
     ...    Reexecuta em caso de elemento obsoleto (stale element).

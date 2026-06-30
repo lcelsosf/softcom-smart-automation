@@ -16,7 +16,7 @@ Test Teardown       Test Teardown Default
 PDV - Setup
     [Documentation]    Configura o ambiente do PDV.
     [Tags]    @allure.label.severity:critical    regression    pdv    setup
-    Pdv - Setup Printers    Nenhuma Ação
+    Pdv - Setup Printers    Imprimir
     Pdv - Setup Payment Methods
 
 PDV - Order common

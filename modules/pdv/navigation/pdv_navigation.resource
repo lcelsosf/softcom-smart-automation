@@ -117,7 +117,7 @@ Pdv - Navigate To Select Client
     [Documentation]    Pesquisa, seleciona e confirma o cliente no carrinho ou no modal já aberto.
     [Arguments]    ${client_name}
     ${edit_client_visible}=    Run Keyword And Return Status
-    ...    Wait Until Element Is Visible    ${cart.btn_edit_client}    timeout=5s
+    ...    Wait Until Element Is Visible With Retry    ${cart.btn_edit_client}    timeout=5s
     IF    ${edit_client_visible}    Pdv - Orders - Click Edit Client
     Pdv - Orders - Input Client Modal Client    ${client_name}
     Pdv - Orders - Click Client By Name    ${client_name}
@@ -375,7 +375,7 @@ Pdv - Navigate To Save And Verify Client
     [Arguments]    ${client_name}
     Client Register - Click Save
     Wait For Element To Disappear    ${client_register.btn_save}
-    Wait Until Element Is Visible    ${client_list.search_input}    timeout=${ELEMENT_TIMEOUT}
+    Wait Until Element Is Visible With Retry    ${client_list.search_input}    timeout=${ELEMENT_TIMEOUT}
     Client List - Search Client    ${client_name}
     Client List - Client Should Be Visible    ${client_name}
     Client List - Click Back
@@ -385,7 +385,7 @@ Pdv - Navigate To Save And Verify Client By Cnpj
     [Arguments]    ${cnpj}    ${social_reason}
     Client Register - Click Save
     Wait For Element To Disappear    ${client_register.btn_save}
-    Wait Until Element Is Visible    ${client_list.search_input}
+    Wait Until Element Is Visible With Retry    ${client_list.search_input}
     Client List - Search Client    ${cnpj}
     Client List - Client Should Be Visible    ${social_reason}
     Client List - Click Back

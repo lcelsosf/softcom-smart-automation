@@ -8,7 +8,7 @@ Documentation    Page object dos modais de Sincronização de Dados.
 
 Sync - Modal Should Be Visible
     [Documentation]    Verifica que o modal "Sincronizar Dados" está aberto.
-    Wait Until Element Is Visible    ${sync_modal.title}    timeout=${ELEMENT_TIMEOUT}
+    Wait Until Element Is Visible With Retry    ${sync_modal.title}    timeout=${ELEMENT_TIMEOUT}
 
 Sync - Modal Should Not Be Visible
     [Documentation]    Verifica que o modal "Sincronizar Dados" foi fechado.
@@ -42,7 +42,7 @@ Sync - Tap Option
 Sync - Tap Element At Percent
     [Documentation]    Toca um elemento usando coordenadas relativas ao seu retângulo.
     [Arguments]    ${locator}    ${x_percent}=50    ${y_percent}=50
-    Wait Until Element Is Visible    ${locator}    timeout=${ELEMENT_TIMEOUT}
+    Wait Until Element Is Visible With Retry    ${locator}    timeout=${ELEMENT_TIMEOUT}
     ${location}=    Get Element Location    ${locator}
     ${size}=    Get Element Size    ${locator}
     ${tap_x}=    Evaluate    int(${location}[x] + (${size}[width] * float(${x_percent}) / 100))
@@ -52,7 +52,7 @@ Sync - Tap Element At Percent
 
 Sync - Click Cancel
     [Documentation]    Clica em "Cancelar" — fecha o modal sem sincronizar.
-    Wait Visible And Click Element    ${sync_modal.btn_cancel}
+    Wait Visible And Click Element With Retry    ${sync_modal.btn_cancel}
 
 # =============================================================================
 # MODAL — ATUALIZAÇÃO CONCLUÍDA
@@ -60,7 +60,7 @@ Sync - Click Cancel
 
 Sync - Success Modal Should Be Visible
     [Documentation]    Verifica que o modal "Atualização concluída!" está visível.
-    Wait Until Element Is Visible    ${sync_success_modal.title}    timeout=${ELEMENT_TIMEOUT}
+    Wait Until Element Is Visible With Retry    ${sync_success_modal.title}    timeout=${ELEMENT_TIMEOUT}
 
 Sync - Success Modal Should Not Be Visible
     [Documentation]    Verifica que o modal "Atualização concluída!" foi fechado.
@@ -68,4 +68,4 @@ Sync - Success Modal Should Not Be Visible
 
 Sync - Click Success Ok
     [Documentation]    Clica em "Ok" — fecha o modal de confirmação.
-    Wait Visible And Click Element    ${sync_success_modal.btn_ok}
+    Wait Visible And Click Element With Retry    ${sync_success_modal.btn_ok}
