@@ -37,7 +37,7 @@ PDV - Filter name, reference and barcode
 
 PDV - Alter Quantity and Remove item
    [Documentation]    Altera a quantidade de um item e remove outro item antes de finalizar a venda.
-   [Tags]    @allure.label.severity:normal    regression    pdv    orders    quantity    remove
+   [Tags]    @allure.label.severity:normal    regression    pdv    orders    quantity
    PDV - Complete Flow - Alter Quantity And Remove Item
    ...    ${products.product_1}
    ...    ${products.product_2}
@@ -51,7 +51,7 @@ PDV - Cancel Order
 
 PDV - Alter Client and Add Itens from Cart
    [Documentation]    Altera o cliente no carrinho, adiciona outro item e finaliza a venda.
-   [Tags]    @allure.label.severity:normal    regression    pdv    orders    client    cart
+   [Tags]    @allure.label.severity:normal    regression    pdv    orders    client
    PDV - Complete Flow - Alter Client And Add Itens From Cart
    ...    ${products.product_1}
    ...    ${clients.client_credit}
@@ -102,7 +102,7 @@ PDV - Additional Integer
 
 PDV - Item edition
    [Documentation]    Edita quantidades e remove item no carrinho antes de finalizar a venda.
-   [Tags]    @allure.label.severity:normal    regression    pdv    orders    quantity    remove    edit
+   [Tags]    @allure.label.severity:normal    regression    pdv    orders    quantity
    PDV - Complete Flow - Item Edition
    ...    ${products.product_1}
    ...    ${products.product_2}
@@ -125,7 +125,7 @@ PDV - Pix Off
 
 PDV - Item Variations
    [Documentation]    Realiza pedido com variações de item e promoção.
-   [Tags]    @allure.label.severity:normal    regression    pdv    orders    quantity    promotion    pixoff
+   [Tags]    @allure.label.severity:normal    regression    pdv    orders    item
    PDV - Setup Active Fractional Units
    PDV - Complete Flow - Item Variations
    ...    ${products.fractional}
@@ -202,7 +202,7 @@ PDV - Ticket
 
 PDV - Sync Search Client And Init Order
    [Documentation]    Sincroniza a lista de clientes, seleciona um cliente e inicia um pedido.
-   [Tags]    @allure.label.severity:normal    regression    pdv    orders    client    sync
+   [Tags]    @allure.label.severity:normal    regression    pdv    orders    client
    PDV - Complete Flow - Sync Search Client And Init Order
    ...    ${clients.client_credit}
    ...    ${products.product_1}
@@ -224,7 +224,7 @@ PDV - Register Client Type Juridic
 
 PDV - List Orders Functions
    [Documentation]    Navega pela Lista de Pedidos: visualiza, reimprimi, acessa nota fiscal, cancela pedido e imprime relatórios.
-   [Tags]    @allure.label.severity:normal    regression    pdv    orders    orders-list
+   [Tags]    @allure.label.severity:normal    regression    pdv    orders-list
    PDV - Complete Flow - List Orders Functions
 
 PDV - Sync Options

@@ -1,6 +1,6 @@
 # Tests Coverage — Cenários Implementados
 
-> Última atualização: 2026-05-13
+> Última atualização: 2026-06-30
 > Suites analisadas: `tests/regression/commands/commands.robot` · `tests/regression/pdv/pdv.robot`
 
 ---
@@ -53,94 +53,111 @@ Pré-condição: app iniciado no Painel de Mesas.
 
 Pré-condição: app iniciado na tela inicial do Smart PDV.
 
-> **Nota:** os cenários de Login, Configurações e Cadastro de Cliente estão comentados no arquivo fonte — ainda não implementados.
+### Grupo: Setup
+
+| #  | Cenário                         | Severidade | Tipo         | Tags       |
+| -- | ------------------------------- | ---------- | ------------ | ---------- |
+| 1  | Configuração do ambiente do PDV | critical   | automatizado | pdv, setup |
 
 ### Grupo: Pedidos (Orders)
 
-| #   | Cenário                                                                      | Severidade | Tags               |
-| --- | ---------------------------------------------------------------------------- | ---------- | ------------------ |
-| 1   | Pedido iniciado a partir da tela de clientes                                 | normal     | orders             |
-| 2   | Cancelar pedido em andamento na tela de novo pedido                          | normal     | orders, cancel     |
-| 3   | Cancelar pedido em andamento na tela de carrinho                             | normal     | orders, cancel     |
-| 4   | Abrir cancelamento na tela de novo pedido, escolher Não e finalizar o pedido | minor      | orders, cancel     |
-| 5   | Abrir cancelamento na tela de carrinho, escolher Não e finalizar o pedido    | minor      | orders, cancel     |
-| 6   | Alterar a quantidade de um item no carrinho e finalizar o pedido             | normal     | orders             |
-| 7   | Pedido com conferência desativada (fluxo direto)                             | normal     | orders, conference |
-| 8   | Pedido com conferência desativada validando o carrinho                       | normal     | orders, conference |
-| 9   | Aplicar desconto percentual em um item e finalizar o pedido                  | normal     | orders, discount   |
-| 10  | Aplicar desconto em valor inteiro em um item e finalizar o pedido            | normal     | orders, discount   |
-| 11  | Remover itens via long press e ícone do carrinho (confirma)                  | normal     | orders             |
-| 12  | Tentar remover itens e cancelar as remoções                                  | minor      | orders             |
-| 13  | Pedido com ticket configurado para impressão automática                      | normal     | orders, ticket     |
-| 14  | Pedido com ticket configurado para perguntar — responde Sim                  | normal     | orders, ticket     |
-| 15  | Pedido com ticket configurado para perguntar — responde Não                  | normal     | orders, ticket     |
-| 16  | Pedido com pagamento em dinheiro                                             | critical   | orders, payment    |
-| 17  | Pedido com pagamento em Pix Off                                              | critical   | orders, payment    |
-| 18  | Pedido com pagamento em boleto bancário                                      | normal     | orders, payment    |
+| #  | Cenário                                                                          | Severidade | Tipo         | Tags                   |
+| -- | -------------------------------------------------------------------------------- | ---------- | ------------ | ---------------------- |
+| 2  | Pedido simples                                                                   | critical   | automatizado | orders                 |
+| 3  | Pedido pesquisando produto por nome, referência e código de barras               | normal     | automatizado | orders, filter         |
+| 4  | Alterar quantidade de um item e remover outro item antes de finalizar a venda    | normal     | automatizado | orders, quantity       |
+| 5  | Selecionar item, limpar pesquisa e cancelar pedido retornando à tela inicial     | normal     | automatizado | orders, cancel         |
+| 6  | Alterar cliente no carrinho, adicionar outro item e finalizar a venda            | normal     | automatizado | orders, client         |
+| 7  | Aplicar desconto em valor fixo no carrinho e finalizar a venda                   | normal     | automatizado | orders, discount       |
+| 8  | Aplicar desconto percentual no carrinho e finalizar a venda                      | normal     | automatizado | orders, discount       |
+| 9  | Aplicar desconto percentual em um item e desconto em valor fixo em outro item    | normal     | automatizado | orders, discount, item |
+| 10 | Aplicar acréscimo percentual no carrinho e finalizar a venda                     | normal     | automatizado | orders, additional     |
+| 11 | Aplicar acréscimo em valor fixo no carrinho e finalizar a venda                  | normal     | automatizado | orders, additional     |
+| 12 | Editar quantidades e remover item no carrinho antes de finalizar a venda         | normal     | automatizado | orders, quantity       |
+| 13 | Alterar cliente e finalizar pedido com boleto bancário                           | critical   | automatizado | orders, bankslip       |
+| 14 | Pedido com pagamento em Pix Off                                                  | critical   | automatizado | orders, pixoff         |
+| 15 | Pedido com variações de item e promoção                                          | normal     | automatizado | orders, item           |
+| 16 | Pedido com tabela de preço                                                       | normal     | automatizado | orders, price-table    |
+| 17 | Pedido adicionando itens pelo modo expresso                                      | normal     | automatizado | orders, express        |
+| 18 | Pedido adicionando item pelo modo mini PDV                                       | normal     | automatizado | orders, mini-pdv       |
+| 19 | Selecionar cliente no início do pedido, validar estoque e alterar preço unitário | normal     | automatizado | orders, smart-pdv      |
+| 20 | Pedido com fiscal desativado (NFCe)                                              | critical   | automatizado | orders, fiscal         |
+| 21 | Pedido sem método de pagamento configurado                                       | normal     | automatizado | orders, no-payment     |
+| 22 | Pedido com emissão e reimpressão de ticket de retirada                           | normal     | automatizado | orders, ticket         |
+| 23 | Sincronizar lista de clientes, selecionar cliente e iniciar pedido               | normal     | automatizado | orders, client         |
+| 28 | Pedido com pagamento em Cartão de Crédito                                        | critical   | manual       | orders, payment        |
+| 29 | Pedido com pagamento em Cartão de Débito                                         | critical   | manual       | orders, payment        |
+| 30 | Pedido com pagamento em Pix (Adquirente)                                         | critical   | manual       | orders, payment        |
+| 31 | Pedido com pagamento em Pix (Softcompay)                                         | critical   | manual       | orders, payment        |
+
+### Grupo: Clientes (Clients)
+
+| #  | Cenário                                                                     | Severidade | Tipo         | Tags              |
+| -- | --------------------------------------------------------------------------- | ---------- | ------------ | ----------------- |
+| 24 | Cadastrar cliente pessoa física com dados do Faker e verificar o registro   | normal     | automatizado | clients, register |
+| 25 | Cadastrar cliente pessoa jurídica com dados do Faker e verificar o registro | normal     | automatizado | clients, register |
 
 ### Grupo: Lista de Pedidos (List Orders)
 
-| #   | Cenário                                                           | Severidade | Tags        |
-| --- | ----------------------------------------------------------------- | ---------- | ----------- |
-| 19  | Visualizar detalhes do primeiro pedido na lista                   | minor      | list_orders |
-| 20  | Reimprimir o primeiro pedido na lista                             | minor      | list_orders |
-| 21  | Cancelar o primeiro pedido na lista                               | normal     | list_orders |
-| 22  | Imprimir recebimentos a partir da lista de pedidos                | minor      | list_orders |
-| 23  | Imprimir resumo de vendas a partir da lista de pedidos            | minor      | list_orders |
-| 24  | Abrir menu de impressão da lista de pedidos e voltar sem imprimir | minor      | list_orders |
+| #  | Cenário                                                                                                  | Severidade | Tipo         | Tags        |
+| -- | -------------------------------------------------------------------------------------------------------- | ---------- | ------------ | ----------- |
+| 26 | Navegar pela lista de pedidos: visualizar, reimprimir, acessar NF, cancelar pedido e imprimir relatórios | normal     | automatizado | orders-list |
 
 ### Grupo: Sincronização (Sync)
 
-| #   | Cenário                                          | Severidade | Tags |
-| --- | ------------------------------------------------ | ---------- | ---- |
-| 25  | Abrir sincronização e cancelar antes de concluir | minor      | sync |
-| 26  | Sincronizar produtos                             | normal     | sync |
-| 27  | Sincronizar clientes                             | normal     | sync |
-| 28  | Sincronizar pedidos                              | normal     | sync |
-| 29  | Sincronizar todos os dados                       | normal     | sync |
+| #  | Cenário                             | Severidade | Tipo         | Tags |
+| -- | ----------------------------------- | ---------- | ------------ | ---- |
+| 27 | Sincronizar dados via modal na Home | critical   | automatizado | sync |
 
-**Total implementado:** 29 cenários
+### Grupo: Estornos (Chargebacks)
 
-### Cenários comentados (não implementados) — PDV
+| #  | Cenário                                    | Severidade | Tipo   | Tags              |
+| -- | ------------------------------------------ | ---------- | ------ | ----------------- |
+| 32 | Estorno com pagamento em Cartão de Crédito | critical   | manual | estorno, payment  |
+| 33 | Estorno com pagamento em Cartão de Débito  | critical   | manual | estorno, payment  |
+| 34 | Estorno com pagamento em Pix               | critical   | manual | estorno, payment  |
+| 35 | Estorno com pagamento em Softcompay        | critical   | manual | estorno, payment  |
 
-| Cenário                                                   | Motivo                          |
-| --------------------------------------------------------- | ------------------------------- |
-| Login — email inválido                                    | Comentado, keyword não definida |
-| Login — senha inválida                                    | Comentado, keyword não definida |
-| Login — logoff                                            | Comentado, keyword não definida |
-| Login — sucesso                                           | Comentado, keyword não definida |
-| Configurações — setup de impressora e formas de pagamento | Comentado, keyword não definida |
-| Clientes — cadastrar novo cliente                         | Comentado, keyword não definida |
+**Total implementado:** 35 cenários (27 automatizados · 8 manuais)
 
 ### Agrupamento por funcionalidade — PDV
 
-| Funcionalidade                | Cenários               |
-| ----------------------------- | ---------------------- |
-| Pedidos — fluxo de cliente    | 1                      |
-| Pedidos — cancelamento        | 2, 3, 4, 5             |
-| Pedidos — quantidade de itens | 6                      |
-| Pedidos — conferência         | 7, 8                   |
-| Pedidos — desconto            | 9, 10                  |
-| Pedidos — remoção de itens    | 11, 12                 |
-| Pedidos — ticket              | 13, 14, 15             |
-| Pedidos — formas de pagamento | 16, 17, 18             |
-| Lista de pedidos              | 19, 20, 21, 22, 23, 24 |
-| Sincronização                 | 25, 26, 27, 28, 29     |
+| Funcionalidade                 | Cenários               |
+| ------------------------------ | ---------------------- |
+| Setup                          | 1                      |
+| Pedidos — fluxo padrão         | 2, 3                   |
+| Pedidos — quantidade e remoção | 4, 12                  |
+| Pedidos — cancelamento         | 5                      |
+| Pedidos — cliente              | 6, 23                  |
+| Pedidos — desconto             | 7, 8, 9                |
+| Pedidos — acréscimo            | 10, 11                 |
+| Pedidos — formas de pagamento  | 13, 14, 28, 29, 30, 31 |
+| Pedidos — variações e promoção | 15                     |
+| Pedidos — tabela de preço      | 16                     |
+| Pedidos — modos de operação    | 17, 18                 |
+| Pedidos — funções Smart PDV    | 19                     |
+| Pedidos — fiscal               | 20                     |
+| Pedidos — sem pagamento        | 21                     |
+| Pedidos — ticket               | 22                     |
+| Clientes — cadastro            | 24, 25                 |
+| Lista de pedidos               | 26                     |
+| Sincronização                  | 27                     |
+| Estornos                       | 32, 33, 34, 35         |
 
 ---
 
 ## Resumo Geral
 
-| Suite          | Implementados | Comentados / Pendentes |
-| -------------- | :-----------: | :--------------------: |
-| commands.robot |      18       |           0            |
-| pdv.robot      |      29       |           6            |
-| **Total**      |    **47**     |         **6**          |
+| Suite          | Automatizados | Manuais | Total |
+| -------------- | :-----------: | :-----: | :---: |
+| commands.robot |      18       |    0    |  18   |
+| pdv.robot      |      27       |    8    |  35   |
+| **Total**      |    **45**     |  **8**  | **53** |
 
 ### Distribuição por severidade (cenários implementados)
 
 | Severidade | Commands | PDV | Total |
 | ---------- | :------: | :-: | :---: |
-| critical   |    10    |  3  |  13   |
-| normal     |    8     | 18  |  26   |
-| minor      |    0     |  8  |   8   |
+| critical   |    10    | 14  |  24   |
+| normal     |    8     | 21  |  29   |
+| minor      |    0     |  0  |   0   |
